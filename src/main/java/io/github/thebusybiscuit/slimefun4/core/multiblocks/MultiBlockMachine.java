@@ -138,7 +138,9 @@ public abstract class MultiBlockMachine extends SlimefunItem implements NotPlace
                 if (canUse(p, true)
                         && Slimefun.getProtectionManager()
                                 .hasPermission(p, b.getLocation(), Interaction.INTERACT_BLOCK)) {
-                    onInteract(p, b);
+                    Slimefun.getFoliaLib().getScheduler().runAtLocation(b.getLocation(), wrappedTask-> {
+                        onInteract(p, b);
+                    });
                 }
 
                 return true;

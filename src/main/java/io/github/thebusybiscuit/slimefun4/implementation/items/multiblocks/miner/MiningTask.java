@@ -1,5 +1,6 @@
 package io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks.miner;
 
+import com.tcoded.folialib.impl.PlatformScheduler;
 import io.github.bakedlibs.dough.blocks.BlockPosition;
 import io.github.bakedlibs.dough.inventory.InvUtils;
 import io.github.bakedlibs.dough.items.ItemUtils;
@@ -84,7 +85,7 @@ class MiningTask implements Runnable {
         miner.activeMiners.put(b.getLocation(), this);
         running = true;
 
-        warmUp();
+        warmUp(b);
     }
 
     /**
@@ -165,6 +166,56 @@ class MiningTask implements Runnable {
         queue.execute(Slimefun.instance());
     }
 
+    private void warmUp(Block b) {
+        PlatformScheduler sc = Slimefun.getFoliaLib().getScheduler();
+        /*
+         * This is our warm up animation.
+         * The pistons will push after another in decreasing intervals
+         */
+        TaskQueue queue = new TaskQueue();
+
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], true);}, 4);
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], false);}, 10);
+
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], true);}, 8);
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], false);}, 10);
+
+        /*
+         * Fixes #3336
+         * Trigger each piston once, so that the structure is validated.
+         * Then consume fuel.
+         */
+        sc.runAtLocation(b.getLocation(), wrappedTask -> {
+            consumeFuel();
+
+            if (fuelLevel <= 0) {
+                // This Miner has not got enough fuel to run.
+                stop(MinerStoppingReason.NO_FUEL);
+                return;
+            }
+        });
+
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], true);}, 6);
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], false);}, 9);
+
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], true);}, 4);
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], false);}, 7);
+
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], true);}, 3);
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], false);}, 5);
+
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], true);}, 2);
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], false);}, 4);
+
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], true);}, 1);
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], false);}, 3);
+
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], true);}, 1);
+        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], false);}, 2);
+
+        sc.runAtLocationLater(b.getLocation(), this,1);
+    }
+
     @Override
     public void run() {
         if (!running) {
@@ -173,14 +224,16 @@ class MiningTask implements Runnable {
         }
 
         TaskQueue queue = new TaskQueue();
+        PlatformScheduler sc = Slimefun.getFoliaLib().getScheduler();
+        Location l = chest.getLocation();
 
-        queue.thenRun(1, () -> setPistonState(pistons[0], true));
-        queue.thenRun(3, () -> setPistonState(pistons[0], false));
+        sc.runAtLocationLater(l, () -> {setPistonState(pistons[0], true);}, 1);
+        sc.runAtLocationLater(l, () -> {setPistonState(pistons[0], false);}, 3);
 
-        queue.thenRun(1, () -> setPistonState(pistons[1], true));
-        queue.thenRun(3, () -> setPistonState(pistons[1], false));
+        sc.runAtLocationLater(l, () -> {setPistonState(pistons[1], true);}, 1);
+        sc.runAtLocationLater(l, () -> {setPistonState(pistons[1], false);}, 3);
 
-        queue.thenRun(() -> {
+        sc.runAtLocation(l,wrappedTask -> {
             try {
                 Block furnace = chest.getRelative(BlockFace.DOWN);
                 furnace.getWorld().playEffect(furnace.getLocation(), Effect.STEP_SOUND, Material.STONE);
@@ -223,7 +276,6 @@ class MiningTask implements Runnable {
             }
         });
 
-        queue.execute(Slimefun.instance());
     }
 
     /**

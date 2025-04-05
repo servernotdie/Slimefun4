@@ -1,5 +1,6 @@
 package io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks;
 
+import com.tcoded.folialib.impl.PlatformScheduler;
 import io.github.bakedlibs.dough.items.ItemUtils;
 import io.github.bakedlibs.dough.scheduling.TaskQueue;
 import io.github.thebusybiscuit.slimefun4.api.events.MultiBlockCraftEvent;
@@ -99,11 +100,13 @@ public class AutomatedPanningMachine extends MultiBlockMachine {
             ItemUtils.consumeItem(input, false);
         }
 
-        TaskQueue queue = new TaskQueue();
+        PlatformScheduler sc = Slimefun.getFoliaLib().getScheduler();
 
-        queue.thenRepeatEvery(20, 5, () -> b.getWorld()
-                .playEffect(b.getRelative(BlockFace.DOWN).getLocation(), Effect.STEP_SOUND, material));
-        queue.thenRun(20, () -> {
+        sc.runAtLocationLater(b.getLocation(), () -> {
+            b.getWorld()
+                .playEffect(b.getRelative(BlockFace.DOWN).getLocation(), Effect.STEP_SOUND, material);
+        },20);
+        sc.runAtLocationLater(b.getLocation(), () -> {
             if (finalOutput.getType() != Material.AIR) {
                 Optional<Inventory> outputChest = OutputChest.findOutputChestFor(b.getRelative(BlockFace.DOWN), output);
 
@@ -117,8 +120,6 @@ public class AutomatedPanningMachine extends MultiBlockMachine {
             } else {
                 SoundEffect.AUTOMATED_PANNING_MACHINE_FAIL_SOUND.playAt(b);
             }
-        });
-
-        queue.execute(Slimefun.instance());
+        },20);
     }
 }
