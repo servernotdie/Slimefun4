@@ -83,7 +83,7 @@ public class InfusedHopper extends SimpleSlimefunItem<BlockTicker> {
                     l.getBlock().getBoundingBox().expand(range, range, range),
                     n -> isValidItem(l, n))) {
                     item.setVelocity(new Vector(0, 0.1, 0));
-                    item.teleport(l);
+                    item.teleportAsync(l);
                     playSound = true;
                 }
 
