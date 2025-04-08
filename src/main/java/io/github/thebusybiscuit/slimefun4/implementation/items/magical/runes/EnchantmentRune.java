@@ -26,6 +26,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Slime;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -97,7 +98,7 @@ public class EnchantmentRune extends SimpleSlimefunItem<ItemDropHandler> {
         }
 
         Location l = rune.getLocation();
-        Collection<Entity> entites = l.getWorld().getNearbyEntities(l, RANGE, RANGE, RANGE, this::findCompatibleItem);
+        Collection<Entity> entites = Slimefun.getNearbyEntities(l.getBlock(), l.getBlock().getBoundingBox().expand(RANGE, RANGE, RANGE), this::findCompatibleItem);
         Optional<Entity> optional = entites.stream().findFirst();
 
         if (optional.isPresent()) {

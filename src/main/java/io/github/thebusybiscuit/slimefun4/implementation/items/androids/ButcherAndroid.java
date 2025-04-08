@@ -40,17 +40,15 @@ public class ButcherAndroid extends ProgrammableAndroid {
         double damage = getTier() >= 3 ? 20D : 4D * getTier();
         double radius = 4.0 + getTier();
 
-        for (Entity n : b.getWorld()
+        for (Entity n : Slimefun
                 .getNearbyEntities(
-                        b.getLocation(),
-                        radius,
-                        radius,
-                        radius,
-                        n -> n instanceof LivingEntity livingEntity
-                                && !(n instanceof ArmorStand)
-                                && !(n instanceof Player)
-                                && n.isValid()
-                                && predicate.test(livingEntity))) {
+                    b, b.getBoundingBox().expand(radius, radius, radius),
+                n -> n instanceof LivingEntity livingEntity
+                        && !(n instanceof ArmorStand)
+                        && !(n instanceof Player)
+                        && n.isValid()
+                        && predicate.test(livingEntity))){
+
             // Check if our android is facing this entity.
             boolean willAttack =
                     switch (face) {

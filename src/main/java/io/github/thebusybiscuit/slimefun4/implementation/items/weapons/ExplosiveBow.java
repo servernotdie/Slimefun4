@@ -6,6 +6,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BowShootHandler;
 import io.github.thebusybiscuit.slimefun4.core.services.sounds.SoundEffect;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.utils.compatibility.VersionedParticle;
 import java.util.Collection;
 import javax.annotation.Nonnull;
@@ -49,9 +50,9 @@ public class ExplosiveBow extends SlimefunBow {
             target.getWorld().spawnParticle(VersionedParticle.EXPLOSION, target.getLocation(), 1);
             SoundEffect.EXPLOSIVE_BOW_HIT_SOUND.playAt(target.getLocation(), SoundCategory.PLAYERS);
             int radius = range.getValue();
-
+            
             Collection<Entity> entities =
-                    target.getWorld().getNearbyEntities(target.getLocation(), radius, radius, radius, this::canDamage);
+                Slimefun.getNearbyEntities(target.getLocation().getBlock(), target.getBoundingBox().expand(radius, radius, radius), this::canDamage);
             for (Entity nearby : entities) {
                 LivingEntity entity = (LivingEntity) nearby;
 

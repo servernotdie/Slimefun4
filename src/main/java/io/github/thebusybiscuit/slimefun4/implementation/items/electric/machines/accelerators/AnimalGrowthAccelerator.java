@@ -5,6 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.items.misc.OrganicFood;
 import io.github.thebusybiscuit.slimefun4.utils.compatibility.VersionedParticle;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -33,7 +34,7 @@ public class AnimalGrowthAccelerator extends AbstractGrowthAccelerator {
     protected void tick(Block b) {
         BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
 
-        for (Entity n : b.getWorld().getNearbyEntities(b.getLocation(), RADIUS, RADIUS, RADIUS, this::isReadyToGrow)) {
+        for (Entity n : Slimefun.getNearbyEntities(b, b.getBoundingBox().expand(RADIUS, RADIUS, RADIUS), this::isReadyToGrow)) {
             for (int slot : getInputSlots()) {
                 var item = inv.getItemInSlot(slot);
 

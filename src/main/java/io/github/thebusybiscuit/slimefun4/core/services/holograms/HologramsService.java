@@ -131,36 +131,6 @@ public class HologramsService {
      * @return The existing (or newly created) hologram
      */
 
-    public Collection<Entity> getNearbyEntities(final Block block, final BoundingBox boundingBox, final Predicate<Entity> filter){
-        final World world = block.getWorld();
-        if (Slimefun.getFoliaLib().isFolia()) {
-            final int minChunkX = boundingBox.getMin().getBlockX() >> 4;
-            final int maxChunkX = boundingBox.getMax().getBlockX() >> 4;
-            final int minChunkZ = boundingBox.getMin().getBlockZ() >> 4;
-            final int maxChunkZ = boundingBox.getMax().getBlockZ() >> 4;
-            final List<Entity> nearbyEntities = new ArrayList<>();
-            for (int chunkX = minChunkX; chunkX <= maxChunkX; ++chunkX) {
-                for (int chunkZ = minChunkZ; chunkZ <= maxChunkZ; ++chunkZ) {
-                    if (!world.isChunkLoaded(chunkX, chunkZ)) {
-                        continue;
-                    }
-                    final Chunk chunk = world.getChunkAt(chunkX, chunkZ);
-                    if (!chunk.isEntitiesLoaded()) {
-                        continue;
-                    }
-                    for (final Entity entity : chunk.getEntities()) {
-                        if ((filter == null || filter.test(entity)) && boundingBox.overlaps(entity.getBoundingBox())) {
-                            nearbyEntities.add(entity);
-                        }
-                    }
-                }
-            }
-            return nearbyEntities;
-        } else {
-            return world.getNearbyEntities(boundingBox, filter);
-        }
-    }
-
     @Nullable private Hologram getHologram(@Nonnull Location loc, boolean createIfNoneExists) {
         Validate.notNull(loc, "Location cannot be null");
 
@@ -173,8 +143,7 @@ public class HologramsService {
         }
 
         // Scan all nearby entities which could be possible holograms
-//        Collection<Entity> holograms = loc.getWorld().getNearbyEntities(loc, RADIUS, RADIUS, RADIUS, this::isHologram);
-        Collection<Entity> holograms = getNearbyEntities(loc.getBlock(), loc.getBlock().getBoundingBox().expand(RADIUS, RADIUS, RADIUS), this::isHologram);
+        Collection<Entity> holograms = Slimefun.getNearbyEntities(loc.getBlock(), loc.getBlock().getBoundingBox().expand(RADIUS, RADIUS, RADIUS), this::isHologram);
         for (Entity n : holograms) {
             if (n instanceof ArmorStand) {
                 PersistentDataContainer container = n.getPersistentDataContainer();

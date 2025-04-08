@@ -7,6 +7,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import javax.annotation.ParametersAreNonnullByDefault;
 import org.bukkit.Location;
@@ -39,7 +40,7 @@ public class TelepositionScroll extends SimpleSlimefunItem<ItemUseHandler> {
         return e -> {
             int range = radius.getValue();
 
-            for (Entity n : e.getPlayer().getNearbyEntities(range, range, range)) {
+            for (Entity n : Slimefun.getNearbyEntities(e.getPlayer(), e.getPlayer().getBoundingBox().expand(range, range, range), Entity::isValid)) {
                 if (n instanceof LivingEntity
                         && !(n instanceof ArmorStand)
                         && !n.getUniqueId().equals(e.getPlayer().getUniqueId())) {

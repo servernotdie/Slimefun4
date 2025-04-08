@@ -119,6 +119,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -129,9 +130,11 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.MenuListener;
 import net.guizhanss.slimefun4.updater.AutoUpdateTask;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -142,6 +145,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.BoundingBox;
 
 /**
  * This is the main class of Slimefun.
@@ -1275,5 +1279,65 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
 
     public static FoliaLib getFoliaLib() {
         return foliaLib;
+    }
+
+    public static Collection<Entity> getNearbyEntities(final Block block, final BoundingBox boundingBox, final Predicate<Entity> filter){
+        final World world = block.getWorld();
+        if (Slimefun.getFoliaLib().isFolia()) {
+            final int minChunkX = boundingBox.getMin().getBlockX() >> 4;
+            final int maxChunkX = boundingBox.getMax().getBlockX() >> 4;
+            final int minChunkZ = boundingBox.getMin().getBlockZ() >> 4;
+            final int maxChunkZ = boundingBox.getMax().getBlockZ() >> 4;
+            final List<Entity> nearbyEntities = new ArrayList<>();
+            for (int chunkX = minChunkX; chunkX <= maxChunkX; ++chunkX) {
+                for (int chunkZ = minChunkZ; chunkZ <= maxChunkZ; ++chunkZ) {
+                    if (!world.isChunkLoaded(chunkX, chunkZ)) {
+                        continue;
+                    }
+                    final Chunk chunk = world.getChunkAt(chunkX, chunkZ);
+                    if (!chunk.isEntitiesLoaded()) {
+                        continue;
+                    }
+                    for (final Entity entity : chunk.getEntities()) {
+                        if ((filter == null || filter.test(entity)) && boundingBox.overlaps(entity.getBoundingBox())) {
+                            nearbyEntities.add(entity);
+                        }
+                    }
+                }
+            }
+            return nearbyEntities;
+        } else {
+            return world.getNearbyEntities(boundingBox, filter);
+        }
+    }
+
+    public static Collection<Entity> getNearbyEntities(final Entity e, final BoundingBox boundingBox, final Predicate<Entity> filter){
+        final World world = e.getWorld();
+        if (Slimefun.getFoliaLib().isFolia()) {
+            final int minChunkX = boundingBox.getMin().getBlockX() >> 4;
+            final int maxChunkX = boundingBox.getMax().getBlockX() >> 4;
+            final int minChunkZ = boundingBox.getMin().getBlockZ() >> 4;
+            final int maxChunkZ = boundingBox.getMax().getBlockZ() >> 4;
+            final List<Entity> nearbyEntities = new ArrayList<>();
+            for (int chunkX = minChunkX; chunkX <= maxChunkX; ++chunkX) {
+                for (int chunkZ = minChunkZ; chunkZ <= maxChunkZ; ++chunkZ) {
+                    if (!world.isChunkLoaded(chunkX, chunkZ)) {
+                        continue;
+                    }
+                    final Chunk chunk = world.getChunkAt(chunkX, chunkZ);
+                    if (!chunk.isEntitiesLoaded()) {
+                        continue;
+                    }
+                    for (final Entity entity : chunk.getEntities()) {
+                        if ((filter == null || filter.test(entity)) && boundingBox.overlaps(entity.getBoundingBox())) {
+                            nearbyEntities.add(entity);
+                        }
+                    }
+                }
+            }
+            return nearbyEntities;
+        } else {
+            return world.getNearbyEntities(boundingBox, filter);
+        }
     }
 }

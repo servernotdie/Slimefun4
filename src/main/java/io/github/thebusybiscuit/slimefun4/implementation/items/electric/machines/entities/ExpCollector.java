@@ -12,6 +12,7 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.attributes.rotations.NotDiagonallyRotatable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.magical.KnowledgeFlask;
@@ -127,9 +128,10 @@ public class ExpCollector extends SlimefunItem implements InventoryBlock, Energy
 
     protected void tick(Block block) {
         Location location = block.getLocation();
-        Iterator<Entity> iterator = block.getWorld()
-                .getNearbyEntities(location, 4.0, 4.0, 4.0, n -> n instanceof ExperienceOrb && n.isValid())
-                .iterator();
+        Iterator<Entity> iterator = Slimefun.getNearbyEntities(
+            location.getBlock(),
+            location.getBlock().getBoundingBox().expand(4.0, 4.0, 4.0),
+            n -> n instanceof ExperienceOrb && n.isValid()).iterator();
         int experiencePoints = 0;
 
         while (iterator.hasNext() && experiencePoints == 0) {

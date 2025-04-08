@@ -10,6 +10,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
@@ -108,7 +109,7 @@ public class AutoBreeder extends SlimefunItem implements InventoryBlock, EnergyN
     protected void tick(Block b) {
         BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
 
-        for (Entity n : b.getWorld().getNearbyEntities(b.getLocation(), 4.0, 2.0, 4.0, this::canBreed)) {
+        for (Entity n : Slimefun.getNearbyEntities(b, b.getBoundingBox().expand(4.0, 2.0, 4.0), this::canBreed)) {
             for (int slot : getInputSlots()) {
                 if (SlimefunUtils.isItemSimilar(inv.getItemInSlot(slot), organicFood, false)) {
                     if (getCharge(b.getLocation()) < ENERGY_CONSUMPTION) {
