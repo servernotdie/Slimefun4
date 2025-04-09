@@ -96,7 +96,7 @@ public class AncientPedestal extends SimpleSlimefunItem<BlockDispenseHandler> im
     public @Nonnull Optional<Item> getPlacedItem(@Nonnull Block pedestal) {
         Location l = pedestal.getLocation().add(0.5, 1.2, 0.5);
 
-        for (Entity n : Slimefun.getNearbyEntities(l.getBlock(), l.getBlock().getBoundingBox().expand(0.5, 0.5, 0.5), AncientPedestal::testItem)) {
+        for (Entity n : Slimefun.getNearbyEntities(l, 0.5, 0.5, 0.5, AncientPedestal::testItem)) {
             if (n instanceof Item item) {
                 return Optional.of(item);
             }
@@ -113,7 +113,7 @@ public class AncientPedestal extends SimpleSlimefunItem<BlockDispenseHandler> im
         }
 
         Location l = pedestal.getLocation().add(0.5, 1.2, 0.5);
-        for (Entity n : Slimefun.getNearbyEntities(l.getBlock(), l.getBlock().getBoundingBox().expand(0.5, 0.5, 0.5), this::testArmorStand)) {
+        for (Entity n : Slimefun.getNearbyEntities(l, 0.5, 0.5, 0.5, this::testArmorStand)) {
             if (n instanceof ArmorStand armorStand) {
                 return armorStand;
             }

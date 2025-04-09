@@ -109,7 +109,7 @@ public class AutoBreeder extends SlimefunItem implements InventoryBlock, EnergyN
     protected void tick(Block b) {
         BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
 
-        for (Entity n : Slimefun.getNearbyEntities(b, b.getBoundingBox().expand(4.0, 2.0, 4.0), this::canBreed)) {
+        for (Entity n : Slimefun.getNearbyEntities(b.getLocation(), 4.0, 2.0, 4.0, this::canBreed)) {
             for (int slot : getInputSlots()) {
                 if (SlimefunUtils.isItemSimilar(inv.getItemInSlot(slot), organicFood, false)) {
                     if (getCharge(b.getLocation()) < ENERGY_CONSUMPTION) {

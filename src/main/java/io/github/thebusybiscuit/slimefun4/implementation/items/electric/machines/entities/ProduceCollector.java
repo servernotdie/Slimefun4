@@ -151,8 +151,8 @@ public class ProduceCollector extends AContainer implements RecipeDisplayItem {
     private boolean isAnimalNearby(Block b, Predicate<LivingEntity> predicate) {
         int radius = range.getValue();
         return !Slimefun.getNearbyEntities(
-            b,
-            b.getBoundingBox().expand(radius, radius, radius),
+            b.getLocation(),
+            radius, radius, radius,
             n -> isValidAnimal(n, predicate)).isEmpty();
     }
 

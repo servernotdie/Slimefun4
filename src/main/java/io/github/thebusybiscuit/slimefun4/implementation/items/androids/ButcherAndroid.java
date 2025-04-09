@@ -42,7 +42,7 @@ public class ButcherAndroid extends ProgrammableAndroid {
 
         for (Entity n : Slimefun
                 .getNearbyEntities(
-                    b, b.getBoundingBox().expand(radius, radius, radius),
+                    b.getLocation(), radius, radius, radius,
                 n -> n instanceof LivingEntity livingEntity
                         && !(n instanceof ArmorStand)
                         && !(n instanceof Player)

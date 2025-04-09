@@ -52,7 +52,7 @@ public class ExplosiveBow extends SlimefunBow {
             int radius = range.getValue();
             
             Collection<Entity> entities =
-                Slimefun.getNearbyEntities(target.getLocation().getBlock(), target.getBoundingBox().expand(radius, radius, radius), this::canDamage);
+                Slimefun.getNearbyEntities(target.getLocation(), radius, radius, radius, this::canDamage);
             for (Entity nearby : entities) {
                 LivingEntity entity = (LivingEntity) nearby;
 

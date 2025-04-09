@@ -98,7 +98,7 @@ public class EnchantmentRune extends SimpleSlimefunItem<ItemDropHandler> {
         }
 
         Location l = rune.getLocation();
-        Collection<Entity> entites = Slimefun.getNearbyEntities(l.getBlock(), l.getBlock().getBoundingBox().expand(RANGE, RANGE, RANGE), this::findCompatibleItem);
+        Collection<Entity> entites = Slimefun.getNearbyEntities(l, RANGE, RANGE, RANGE, this::findCompatibleItem);
         Optional<Entity> optional = entites.stream().findFirst();
 
         if (optional.isPresent()) {

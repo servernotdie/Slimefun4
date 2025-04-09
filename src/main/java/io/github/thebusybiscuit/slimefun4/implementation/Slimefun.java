@@ -1281,8 +1281,9 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
         return foliaLib;
     }
 
-    public static Collection<Entity> getNearbyEntities(final Block block, final BoundingBox boundingBox, final Predicate<Entity> filter){
-        final World world = block.getWorld();
+    public static Collection<Entity> getNearbyEntities(final Location l, double x, double y, double z, final Predicate<Entity> filter){
+        final World world = l.getWorld();
+        BoundingBox boundingBox = BoundingBox.of(l, l).expand(x, y, z);
         if (Slimefun.getFoliaLib().isFolia()) {
             final int minChunkX = boundingBox.getMin().getBlockX() >> 4;
             final int maxChunkX = boundingBox.getMax().getBlockX() >> 4;

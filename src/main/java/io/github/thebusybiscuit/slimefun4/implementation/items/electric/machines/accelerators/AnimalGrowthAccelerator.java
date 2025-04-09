@@ -34,7 +34,7 @@ public class AnimalGrowthAccelerator extends AbstractGrowthAccelerator {
     protected void tick(Block b) {
         BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
 
-        for (Entity n : Slimefun.getNearbyEntities(b, b.getBoundingBox().expand(RADIUS, RADIUS, RADIUS), this::isReadyToGrow)) {
+        for (Entity n : Slimefun.getNearbyEntities(b.getLocation(), RADIUS, RADIUS, RADIUS, this::isReadyToGrow)) {
             for (int slot : getInputSlots()) {
                 var item = inv.getItemInSlot(slot);
 

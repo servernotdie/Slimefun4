@@ -143,7 +143,7 @@ public class HologramsService {
         }
 
         // Scan all nearby entities which could be possible holograms
-        Collection<Entity> holograms = Slimefun.getNearbyEntities(loc.getBlock(), loc.getBlock().getBoundingBox().expand(RADIUS, RADIUS, RADIUS), this::isHologram);
+        Collection<Entity> holograms = Slimefun.getNearbyEntities(loc, RADIUS, RADIUS, RADIUS, this::isHologram);
         for (Entity n : holograms) {
             if (n instanceof ArmorStand) {
                 PersistentDataContainer container = n.getPersistentDataContainer();
