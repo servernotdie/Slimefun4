@@ -15,6 +15,7 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.MachineProcessHolder;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.machines.MachineProcessor;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.handlers.SimpleBlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.operations.CraftingOperation;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
@@ -353,36 +354,38 @@ public abstract class AContainer extends SlimefunItem
     }
 
     protected void tick(Block b) {
-        BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
-        CraftingOperation currentOperation = processor.getOperation(b);
+        Slimefun.getFoliaLib().getScheduler().runAsync(wrappedTask -> {
+            BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
+            CraftingOperation currentOperation = processor.getOperation(b);
 
-        if (currentOperation != null) {
-            if (takeCharge(b.getLocation())) {
+            if (currentOperation != null) {
+                if (takeCharge(b.getLocation())) {
 
-                if (!currentOperation.isFinished()) {
-                    processor.updateProgressBar(inv, 22, currentOperation);
-                    currentOperation.addProgress(1);
-                } else {
-                    inv.replaceExistingItem(22, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
+                    if (!currentOperation.isFinished()) {
+                        processor.updateProgressBar(inv, 22, currentOperation);
+                        currentOperation.addProgress(1);
+                    } else {
+                        inv.replaceExistingItem(22, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
 
-                    for (ItemStack output : currentOperation.getResults()) {
-                        inv.pushItem(output.clone(), getOutputSlots());
+                        for (ItemStack output : currentOperation.getResults()) {
+                            inv.pushItem(output.clone(), getOutputSlots());
+                        }
+
+                        processor.endOperation(b);
                     }
+                }
+            } else {
+                MachineRecipe next = findNextRecipe(inv);
 
-                    processor.endOperation(b);
+                if (next != null) {
+                    currentOperation = new CraftingOperation(next);
+                    processor.startOperation(b, currentOperation);
+
+                    // Fixes #3534 - Update indicator immediately
+                    processor.updateProgressBar(inv, 22, currentOperation);
                 }
             }
-        } else {
-            MachineRecipe next = findNextRecipe(inv);
-
-            if (next != null) {
-                currentOperation = new CraftingOperation(next);
-                processor.startOperation(b, currentOperation);
-
-                // Fixes #3534 - Update indicator immediately
-                processor.updateProgressBar(inv, 22, currentOperation);
-            }
-        }
+        });
     }
 
     /**
