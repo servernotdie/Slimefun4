@@ -57,6 +57,7 @@ jobs:
         run: mvn clean package
       - name: select SlimeFun.jar
         run: |
+          cd target
           rm -rf original*
           echo "FILE=$(ls | grep jar)" >> $GITHUB_ENV
       - name: Upload Artifact
