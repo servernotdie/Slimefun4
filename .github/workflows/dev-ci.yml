@@ -47,7 +47,7 @@ jobs:
           cp ${NEW}/${NEW} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
           
           cd ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
-          export OLD=$(ls)
+          export OLD=$(ls) && echo ${OLD}
           cd ${OLD}
           rm -rf dough-api-${OLD}}.jar dough-api-${OLD}.jar.sha1
 
