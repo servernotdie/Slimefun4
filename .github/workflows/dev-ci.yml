@@ -7,9 +7,6 @@ on:
   push:
     branches:
       - dev
-    paths:
-      - 'src/**'
-      - 'pom.xml'
   workflow_dispatch:
 
 jobs:
@@ -45,7 +42,7 @@ jobs:
           use_unzip: true
       - name: replace dough
         run: |
-          cd ${{ env.PATH_DIR }}
+          cd ${{ env.PATH_DIR }} && ls
           echo "new_dough_file=$(ls | grep dough-api)" >> $GITHUB_ENV
           cp ${{ env.new_dough_file}}/${{ env.new_dough_file}} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
           
