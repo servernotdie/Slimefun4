@@ -24,6 +24,12 @@ jobs:
           java-package: jdk
           architecture: x64
           cache: maven
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
       - name: "first build: download depends file"
         run: |
           rm -rf ~/.m2/repository/com/github/StarWishsama/
