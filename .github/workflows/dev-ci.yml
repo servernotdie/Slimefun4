@@ -42,17 +42,17 @@ jobs:
           use_unzip: true
       - name: replace dough
         run: |
-          cd ${{ env.PATH_DIR }} && ls
+          cd ${{ env.PATH_DIR }} && echo "NEW=$(ls | grep dough)"
           echo "NEW=$(ls | grep dough)" >> $GITHUB_ENV
-          cp ${{ env.NEW}}/${{ env.NEW}} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
+          cp ${{ env.NEW }}/${{ env.NEW }} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
           
           cd ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
           echo "OLD=$(ls)" >> $GITHUB_ENV
           cd ${{ env.OLD }}
           rm -rf dough-api-${{ env.OLD }}.jar dough-api-${{ env.OLD }}.jar.sha1
 
-          echo $(sha1sum ${{ env.NEW}}) >> dough-api-${{ env.OLD }}.jar.sha1
-          mv ../${{ env.NEW}} ./dough-api-${{ env.OLD }}.jar
+          echo $(sha1sum ${{ env.NEW }}) >> dough-api-${{ env.OLD }}.jar.sha1
+          mv ../${{ env.NEW }} ./dough-api-${{ env.OLD }}.jar
       - name: Build SlimeFun
         run: mvn clean package
       - name: select SlimeFun.jar
