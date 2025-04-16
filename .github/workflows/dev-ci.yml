@@ -24,22 +24,38 @@ jobs:
           java-package: jdk
           architecture: x64
           cache: maven
-      - name: Codestyle check
-        run: mvn -s .mvn/settings.xml -B spotless:check --errors
-      - name: Build Slimefun
-        run: mvn -s .mvn/settings.xml -B package --errors
-      - name: Mask Output
+      - name: "first build: download depends file"
         run: |
-          echo "::add-mask::$CF_API_TOKEN"
-        env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-      - name: Get build artifact filename
-        run: |
-          cd target && FILENAME=$(find . -maxdepth 1 -mindepth 1 -name "Slimefun-*" | cut -d'/' -f 2)
-          echo "slimefun-artifact-name=$FILENAME" >> "$GITHUB_ENV"
-          cd ..
-      - name: Upload Build to R2
-        uses: cloudflare/wrangler-action@v3
+          rm -rf ~/.m2/repository/com/github/StarWishsama/
+          mvn package
+      - name: download dough api
+        uses: dawidd6/action-download-artifact@v9
         with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          command: "r2 object put slimefun-dev/${{ env.slimefun-artifact-name }} --file=./target/${{ env.slimefun-artifact-name }} --content-type=application/java-archive"
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: maven.yml
+          workflow_conclusion: success
+          repo: Craft233MC/dough
+          use_unzip: true
+      - name: replace dough
+        run: |
+          echo "new_dough_file=$(ls | grep dough-api)" >> $GITHUB_ENV
+          cp ${{ env.new_dough_file}} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
+          
+          cd ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
+          echo "old_dough_ver=$(ls)" >> $GITHUB_ENV
+          cd ${{ env.old_dough_ver }}
+          rm -rf dough-api-${{ env.old_dough_ver }}.jar dough-api-${{ env.old_dough_ver }}.jar.sha1
+
+          echo $(sha1sum ${{ env.new_dough_file}}) >> dough-api-${{ env.old_dough_ver }}.jar.sha1
+          mv ../${{ env.new_dough_file}} ./dough-api-${{ env.old_dough_ver }}.jar
+      - name: Build SlimeFun
+        run: mvn clean package
+      - name: select SlimeFun.jar
+        run: |
+          rm -rf original*
+          echo "FILE=$(ls | grep jar)" >> $GITHUB_ENV
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.FILE }}
+          path: target/${{ env.FILE }}
