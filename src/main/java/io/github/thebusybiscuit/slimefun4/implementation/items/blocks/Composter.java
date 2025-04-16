@@ -107,14 +107,16 @@ public class Composter extends SimpleSlimefunItem<BlockUseHandler> implements Re
     }
 
     private void pushItem(Block b, ItemStack output) {
-        Optional<Inventory> outputChest = findOutputChest(b, output);
+        Slimefun.getFoliaLib().getScheduler().runAtLocation(b.getLocation(), wrappedTask -> {
+            Optional<Inventory> outputChest = findOutputChest(b, output);
 
-        if (outputChest.isPresent()) {
-            outputChest.get().addItem(output);
-        } else {
-            Location loc = b.getRelative(BlockFace.UP).getLocation();
-            b.getWorld().dropItemNaturally(loc, output);
-        }
+            if (outputChest.isPresent()) {
+                outputChest.get().addItem(output);
+            } else {
+                Location loc = b.getRelative(BlockFace.UP).getLocation();
+                b.getWorld().dropItemNaturally(loc, output);
+            }
+        });
     }
 
     @Nonnull
