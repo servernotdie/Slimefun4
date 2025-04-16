@@ -30,6 +30,7 @@ import org.bukkit.inventory.ItemStack;
  *
  */
 public class OutputChest extends SlimefunItem {
+    private static Optional<Inventory> finalOutputChestOptional = Optional.empty();
 
     // @formatter:off
     private static final BlockFace[] possibleFaces = {
@@ -47,32 +48,34 @@ public class OutputChest extends SlimefunItem {
 
     @Nonnull
     public static Optional<Inventory> findOutputChestFor(@Nonnull Block b, @Nonnull ItemStack item) {
-        Slimefun.runSyncAtLocation(() -> {},b.getLocation());
-        for (BlockFace face : possibleFaces) {
-            Block potentialOutput = b.getRelative(face);
+        Slimefun.runSyncAtLocation(() -> {
+            for (BlockFace face : possibleFaces) {
+                Block potentialOutput = b.getRelative(face);
 
-            // Check if the target block is a Chest
-            if (potentialOutput.getType() == Material.CHEST) {
-                SlimefunItem slimefunItem = StorageCacheUtils.getSfItem(potentialOutput.getLocation());
+                // Check if the target block is a Chest
+                if (potentialOutput.getType() == Material.CHEST) {
+                    SlimefunItem slimefunItem = StorageCacheUtils.getSfItem(potentialOutput.getLocation());
 
-                // Fixes #3012 - Check if the OutputChest is not disabled here.
-                if (slimefunItem instanceof OutputChest && !slimefunItem.isDisabledIn(b.getWorld())) {
-                    // Found the output chest! Now, let's check if we can fit the product in it.
-                    BlockState state =
+                    // Fixes #3012 - Check if the OutputChest is not disabled here.
+                    if (slimefunItem instanceof OutputChest && !slimefunItem.isDisabledIn(b.getWorld())) {
+                        // Found the output chest! Now, let's check if we can fit the product in it.
+                        BlockState state =
                             PaperLib.getBlockState(potentialOutput, false).getState();
 
-                    if (state instanceof Chest chest) {
-                        Inventory inv = chest.getInventory();
+                        if (state instanceof Chest chest) {
+                            Inventory inv = chest.getInventory();
 
-                        // Check if the Item fits into that inventory.
-                        if (InvUtils.fits(inv, item)) {
-                            return Optional.of(inv);
+                            // Check if the Item fits into that inventory.
+                            if (InvUtils.fits(inv, item)) {
+                                finalOutputChestOptional = Optional.of(inv);
+                            }
                         }
                     }
                 }
             }
-        }
+        },b.getLocation());
 
-        return Optional.empty();
+
+        return finalOutputChestOptional;
     }
 }
