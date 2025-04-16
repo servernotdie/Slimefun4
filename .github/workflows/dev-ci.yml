@@ -34,6 +34,7 @@ jobs:
         run: |
           rm -rf ~/.m2/repository/com/github/StarWishsama/
           mvn package
+          echo "PATH_DIR=$PWD" >> $GITHUB_ENV
       - name: download dough api
         uses: dawidd6/action-download-artifact@v9
         with:
@@ -44,8 +45,9 @@ jobs:
           use_unzip: true
       - name: replace dough
         run: |
+          cd ${{ env.PATH_DIR }}
           echo "new_dough_file=$(ls | grep dough-api)" >> $GITHUB_ENV
-          cp ${{ env.new_dough_file}} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
+          cp ${{ env.new_dough_file}}/${{ env.new_dough_file}} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
           
           cd ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
           echo "old_dough_ver=$(ls)" >> $GITHUB_ENV
