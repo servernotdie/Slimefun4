@@ -43,16 +43,16 @@ jobs:
       - name: replace dough
         run: |
           cd ${{ env.PATH_DIR }} && ls
-          echo "new_dough_file=$(ls | grep dough-api)" >> $GITHUB_ENV
-          cp ${{ env.new_dough_file}}/${{ env.new_dough_file}} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
+          echo "NEW=$(ls | grep dough)" >> $GITHUB_ENV
+          cp ${{ env.NEW}}/${{ env.NEW}} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
           
           cd ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
-          echo "old_dough_ver=$(ls)" >> $GITHUB_ENV
-          cd ${{ env.old_dough_ver }}
-          rm -rf dough-api-${{ env.old_dough_ver }}.jar dough-api-${{ env.old_dough_ver }}.jar.sha1
+          echo "OLD=$(ls)" >> $GITHUB_ENV
+          cd ${{ env.OLD }}
+          rm -rf dough-api-${{ env.OLD }}.jar dough-api-${{ env.OLD }}.jar.sha1
 
-          echo $(sha1sum ${{ env.new_dough_file}}) >> dough-api-${{ env.old_dough_ver }}.jar.sha1
-          mv ../${{ env.new_dough_file}} ./dough-api-${{ env.old_dough_ver }}.jar
+          echo $(sha1sum ${{ env.NEW}}) >> dough-api-${{ env.OLD }}.jar.sha1
+          mv ../${{ env.NEW}} ./dough-api-${{ env.OLD }}.jar
       - name: Build SlimeFun
         run: mvn clean package
       - name: select SlimeFun.jar
