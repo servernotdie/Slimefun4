@@ -37,14 +37,11 @@ Slimefun 让每个玩家可以自行决定在魔法或科技方面发展。
 * **[FAQ](https://slimefun-wiki.guizhanss.cn/FAQ)**
 * 
 ## :computer: 如何编译
-要编译 Slimefun4，你必须先安装 [Git](https://git-scm.com/)
-然后 `git clone https://github.com/SlimefunGuguProject/Slimefun4.git`
-编译需要分两步  
-第一次直接编译，补全下载的依赖  
-第二步使用自编译的dough等依赖替换本地仓库的文件并在idea开启离线模式，使用`mvn clean package`编译
-**需要使用Craft233仓库内的dough进行编译，以解决聊天事件问题**
-最后如果你是 Windows 系统: `.\mvnw.cmd package`
-如果你是类 Unix 系统: `.\mvnw package`
+要编译 Slimefun4，你必须先安装 [Git](https://git-scm.com/)  
+然后 `git clone https://github.com/Craft233MC/Slimefun4.git`  
+可参照action的编译流程  
+最后如果你是 Windows 系统: `.\mvnw.cmd package`  
+如果你是类 Unix 系统: `.\mvnw package`  
 
 ## :framed_picture: 截图
 
@@ -70,7 +67,7 @@ Slimefun 让每个玩家可以自行决定在魔法或科技方面发展。
 单击下面的徽标加入 Discord 服务器反馈问题和提出意见，或者讨论关于此插件的内容。  
 Slimefun 官方经常会举办一些社区活动，加入我们了解更多。  
 **注意**：Slimefun 官方在 Discord 服务器 **不**
-接受任何形式的问题反馈，请使用 [问题追踪器](https://github.com/SlimefunGuguProject/Slimefun4/issues) 反馈问题！
+接受任何形式的问题反馈，请使用 [问题追踪器](https://github.com/Craft233MC/Slimefun4/issues) 反馈问题！
 
 在加入前请先了解官方 Discord 服务器[重要的规则](https://github.com/Slimefun/Slimefun4/wiki/Discord-Rules)。  
 不遵守以上规则的人可能会被从服务器中踢出甚至封禁。
