@@ -61,12 +61,12 @@ public class DirtyChestMenu extends ChestMenu {
     }
 
     @Override
-    public void open(Player... players) {
+    public void open(Player p) {
         if (locked()) {
             return;
         }
 
-        super.open(players);
+        super.open(p);
 
         // The Inventory will likely be modified soon
         markDirty();

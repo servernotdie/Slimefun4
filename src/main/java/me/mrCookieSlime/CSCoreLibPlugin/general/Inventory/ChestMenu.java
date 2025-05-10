@@ -295,15 +295,13 @@ public class ChestMenu extends SlimefunInventoryHolder {
     /**
      * Opens this Menu for the specified Player/s
      *
-     * @param players The Players who will see this Menu
+     * @param p The Players who will see this Menu
      */
-    public void open(Player... players) {
+    public void open(Player p) {
         setup();
-        for (Player p : players) {
-            p.openInventory(this.inventory);
-            addViewer(p.getUniqueId());
-            if (open != null) open.onOpen(p);
-        }
+        if (open != null) open.onOpen(p);
+        p.openInventory(this.inventory);
+        addViewer(p.getUniqueId());
     }
 
     /**
