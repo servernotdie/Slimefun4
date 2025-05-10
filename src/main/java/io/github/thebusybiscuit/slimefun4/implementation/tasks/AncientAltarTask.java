@@ -107,7 +107,7 @@ public class AncientAltarTask implements Runnable {
         }
 
         this.stage += 1;
-        Slimefun.runSync(this, stepDelay);
+        Slimefun.runSyncAtLocation(this, stepDelay, altar.getLocation());
     }
 
     private boolean checkLockedItems() {
