@@ -308,7 +308,7 @@ public class BlockDataController extends ADataController {
         data.put(FieldKey.SLIMEFUN_ID, sfId);
 
         var scopeKey = new LocationKey(DataScope.NONE, l);
-        removeDelayedBlockDataUpdates(scopeKey); // Shouldn't have.. But for safe..
+        removeDelayedDataUpdates(scopeKey); // Shouldn't have.. But for safe..
         scheduleWriteTask(scopeKey, key, data, true);
     }
 
@@ -331,7 +331,7 @@ public class BlockDataController extends ADataController {
         data.put(FieldKey.UNIVERSAL_TRAITS, traitsStr);
 
         var scopeKey = new UUIDKey(DataScope.NONE, uuid);
-        removeDelayedBlockDataUpdates(scopeKey); // Shouldn't have.. But for safe..
+        removeDelayedDataUpdates(scopeKey); // Shouldn't have.. But for safe..
         scheduleWriteTask(scopeKey, key, data, true);
     }
 
@@ -434,7 +434,7 @@ public class BlockDataController extends ADataController {
     void removeBlockDirectly(Location l) {
         checkDestroy();
         var scopeKey = new LocationKey(DataScope.NONE, l);
-        removeDelayedBlockDataUpdates(scopeKey);
+        removeDelayedDataUpdates(scopeKey);
 
         var key = new RecordKey(DataScope.BLOCK_RECORD);
         key.addCondition(FieldKey.LOCATION, LocationUtils.getLocKey(l));
@@ -444,7 +444,7 @@ public class BlockDataController extends ADataController {
     void removeUniversalBlockDirectly(UUID uuid) {
         checkDestroy();
         var scopeKey = new UUIDKey(DataScope.NONE, uuid);
-        removeDelayedBlockDataUpdates(scopeKey);
+        removeDelayedDataUpdates(scopeKey);
 
         var key = new RecordKey(DataScope.UNIVERSAL_RECORD);
         key.addCondition(FieldKey.UNIVERSAL_UUID, uuid.toString());
@@ -913,25 +913,32 @@ public class BlockDataController extends ADataController {
             uniData.setIsDataLoaded(true);
 
             if (uniData instanceof SlimefunUniversalBlockData ubd) {
-                if (uniData.hasTrait(UniversalDataTrait.BLOCK)) {
+                if (ubd.hasTrait(UniversalDataTrait.BLOCK)) {
                     // 初始化 上次出现位置
                     var lStr = ubd.getData(UniversalDataTrait.BLOCK.getReservedKey());
+
+                    if (lStr == null || lStr.isBlank()) {
+                        loadedUniversalData.remove(uniData.getUUID());
+                        uniData.setIsDataLoaded(false);
+                        throw new IllegalArgumentException(uniData.getKey() + " 缺少 location 数据");
+                    }
+
                     ubd.setLastPresent(LocationUtils.toLocation(lStr));
 
                     var sfItem = SlimefunItem.getById(ubd.getSfId());
 
                     if (sfItem != null && sfItem.isTicking()) {
                         Slimefun.getTickerTask()
-                                .enableTicker(ubd.getLastPresent().toLocation(), uniData.getUUID());
+                                .enableTicker(ubd.getLastPresent().toLocation(), ubd.getUUID());
                     }
                 }
 
-                if (uniData.hasTrait(UniversalDataTrait.INVENTORY)) {
+                if (ubd.hasTrait(UniversalDataTrait.INVENTORY)) {
                     // 加载菜单
-                    var menuPreset = UniversalMenuPreset.getPreset(uniData.getSfId());
+                    var menuPreset = UniversalMenuPreset.getPreset(ubd.getSfId());
                     if (menuPreset != null) {
                         var menuKey = new RecordKey(DataScope.UNIVERSAL_INVENTORY);
-                        menuKey.addCondition(FieldKey.UNIVERSAL_UUID, uniData.getKey());
+                        menuKey.addCondition(FieldKey.UNIVERSAL_UUID, ubd.getKey());
                         menuKey.addField(FieldKey.INVENTORY_SLOT);
                         menuKey.addField(FieldKey.INVENTORY_ITEM);
 
@@ -941,15 +948,15 @@ public class BlockDataController extends ADataController {
                                 .forEach(recordSet -> inv[recordSet.getInt(FieldKey.INVENTORY_SLOT)] =
                                         recordSet.getItemStack(FieldKey.INVENTORY_ITEM));
 
-                        var location = uniData.hasTrait(UniversalDataTrait.BLOCK)
+                        var location = ubd.hasTrait(UniversalDataTrait.BLOCK)
                                 ? ubd.getLastPresent().toLocation()
                                 : null;
 
-                        uniData.setMenu(new UniversalMenu(menuPreset, uniData.getUUID(), location, inv));
+                        ubd.setMenu(new UniversalMenu(menuPreset, ubd.getUUID(), location, inv));
 
-                        var content = uniData.getMenuContents();
+                        var content = ubd.getMenuContents();
                         if (content != null) {
-                            invSnapshots.put(uniData.getKey(), InvStorageUtils.getInvSnapshot(content));
+                            invSnapshots.put(ubd.getKey(), InvStorageUtils.getInvSnapshot(content));
                         }
                     }
                 }
@@ -1244,7 +1251,7 @@ public class BlockDataController extends ADataController {
         }
     }
 
-    private void removeDelayedBlockDataUpdates(ScopeKey scopeKey) {
+    private void removeDelayedDataUpdates(ScopeKey scopeKey) {
         synchronized (delayedWriteTasks) {
             delayedWriteTasks
                     .entrySet()
@@ -1366,7 +1373,7 @@ public class BlockDataController extends ADataController {
         Slimefun.getNetworkManager().updateAllNetworks(l);
 
         var scopeKey = new LocationKey(DataScope.NONE, l);
-        removeDelayedBlockDataUpdates(scopeKey);
+        removeDelayedDataUpdates(scopeKey);
         abortScopeTask(scopeKey);
     }
 
