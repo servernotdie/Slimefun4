@@ -116,9 +116,10 @@ public class DebugFishListener implements Listener {
 
             try {
                 if (data == null) {
-                    TaskUtil.runSyncMethod(() -> Slimefun.getBlockDataService()
-                            .getUniversalDataUUID(b)
-                            .ifPresentOrElse(
+                    Slimefun.getFoliaLib().getScheduler().runAtLocation(b.getLocation(),
+                wrappedTask -> Slimefun.getBlockDataService()
+                                .getUniversalDataUUID(b)
+                                .ifPresentOrElse(
                                     (uuid) -> {
                                         p.sendMessage(ChatColors.color(
                                                 "&c检测到损坏的通用数据物品, UUID: " + uuid + ", 请检查数据库对应数据是否存在!"));
