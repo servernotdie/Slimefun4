@@ -125,10 +125,12 @@ public class HologramProjector extends SlimefunItem implements HologramOwner {
                     return;
                 }
 
-                ArmorStand hologram = getArmorStand(projector, true);
-                hologram.setCustomName(ChatColors.color(message));
-                StorageCacheUtils.setData(projector.getLocation(), "text", hologram.getCustomName());
-                openEditor(pl, projector);
+                Slimefun.getFoliaLib().getScheduler().runAtLocation(pl.getLocation(), wrappedTask -> {
+                    ArmorStand hologram = getArmorStand(projector, true);
+                    hologram.setCustomName(ChatColors.color(message));
+                    StorageCacheUtils.setData(projector.getLocation(), "text", hologram.getCustomName());
+                    openEditor(pl, projector);
+                });
             });
 
             return false;
