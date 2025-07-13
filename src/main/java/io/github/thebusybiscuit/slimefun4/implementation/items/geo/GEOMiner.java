@@ -344,38 +344,40 @@ public class GEOMiner extends SlimefunItem
     }
 
     private void start(@Nonnull Block b, @Nonnull BlockMenu inv) {
-        boolean success = Slimefun.getRegistry().getGEOResources().values().isEmpty();
-        for (GEOResource resource : Slimefun.getRegistry().getGEOResources().values()) {
-            if (resource.isObtainableFromGEOMiner()) {
-                OptionalInt optional = Slimefun.getGPSNetwork()
+        Slimefun.getFoliaLib().getScheduler().runAtLocation(b.getLocation(), wrappedTask -> {
+            boolean success = Slimefun.getRegistry().getGEOResources().values().isEmpty();
+            for (GEOResource resource : Slimefun.getRegistry().getGEOResources().values()) {
+                if (resource.isObtainableFromGEOMiner()) {
+                    OptionalInt optional = Slimefun.getGPSNetwork()
                         .getResourceManager()
                         .getSupplies(resource, b.getWorld(), b.getX() >> 4, b.getZ() >> 4);
 
-                if (optional.isEmpty()) continue;
+                    if (optional.isEmpty()) continue;
 
-                success = true;
+                    success = true;
 
-                int supplies = optional.getAsInt();
-                if (supplies > 0) {
-                    if (!inv.fits(resource.getItem(), OUTPUT_SLOTS)) {
-                        return;
-                    }
+                    int supplies = optional.getAsInt();
+                    if (supplies > 0) {
+                        if (!inv.fits(resource.getItem(), OUTPUT_SLOTS)) {
+                            return;
+                        }
 
-                    processor.startOperation(b, new GEOMiningOperation(resource, PROCESSING_TIME));
-                    Slimefun.getGPSNetwork()
+                        processor.startOperation(b, new GEOMiningOperation(resource, PROCESSING_TIME));
+                        Slimefun.getGPSNetwork()
                             .getResourceManager()
                             .setSupplies(resource, b.getWorld(), b.getX() >> 4, b.getZ() >> 4, supplies - 1);
-                    updateHologram(b, "&7开采中: &r" + resource.getName());
-                    return;
+                        updateHologram(b, "&7开采中: &r" + resource.getName());
+                        return;
+                    }
                 }
             }
-        }
 
-        if (!success) {
-            updateHologram(b, "&4需要先进行地形扫描!");
-            return;
-        }
+            if (!success) {
+                updateHologram(b, "&4需要先进行地形扫描!");
+                return;
+            }
 
-        updateHologram(b, "&7开采完成");
+            updateHologram(b, "&7开采完成");
+        });
     }
 }
