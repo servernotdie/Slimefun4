@@ -30,11 +30,6 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: "first build: download depends file"
-        run: |
-          rm -rf ~/.m2/repository/io/github/baked-libs/
-          mvn package
-          echo "PATH_DIR=$PWD" >> $GITHUB_ENV
       - name: download dough api
         uses: dawidd6/action-download-artifact@v9
         with:
@@ -43,19 +38,12 @@ jobs:
           workflow_conclusion: success
           repo: Craft233MC/dough
           use_unzip: true
-      - name: replace dough
+      - name: install local depend
         run: |
-          cd ${{ env.PATH_DIR }}
-          export NEW=$(ls | grep dough)
-          cp ${NEW}/${NEW} ~/.m2/repository/io/github/baked-libs/dough/dough-api/*/
+          rm -rf ~/.m2/repository/io/github/baked-libs/
           
-          cd ~/.m2/repository/io/github/baked-libs/dough/dough-api/
-          export OLD=$(ls)
-          cd ${OLD}
-          rm -rf dough-api-${OLD}}.jar dough-api-${OLD}.jar.sha1
-
-          echo $(sha1sum ${NEW}) >> dough-api-${OLD}.jar.sha1
-          mv ${NEW} ./dough-api-${OLD}.jar
+          export NEW=$(ls | grep dough)
+          mvn install:install-file -Dfile=${NEW}/${NEW} -DgroupId=io.github.baked-libs -DartifactId=dough-api -Dversion=1.3.1-SNAPSHOT -Dpackaging=jar
       - name: Build SlimeFun
         run: mvn clean package
       - name: select SlimeFun.jar
