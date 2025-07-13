@@ -354,7 +354,7 @@ public abstract class AContainer extends SlimefunItem
     }
 
     protected void tick(Block b) {
-        Slimefun.getFoliaLib().getScheduler().runAsync(wrappedTask -> {
+        Slimefun.getFoliaLib().getScheduler().runAtLocation(b.getLocation(), wrappedTask -> {
             BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
             CraftingOperation currentOperation = processor.getOperation(b);
 
