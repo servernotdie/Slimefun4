@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - dev
+    paths:
+      - 'src/**'
+      - 'pom.xml'
   workflow_dispatch:
 
 jobs:
@@ -29,7 +32,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: "first build: download depends file"
         run: |
-          rm -rf ~/.m2/repository/com/github/StarWishsama/
+          rm -rf ~/.m2/repository/io/github/baked-libs/
           mvn package
           echo "PATH_DIR=$PWD" >> $GITHUB_ENV
       - name: download dough api
@@ -44,9 +47,9 @@ jobs:
         run: |
           cd ${{ env.PATH_DIR }}
           export NEW=$(ls | grep dough)
-          cp ${NEW}/${NEW} ~/.m2/repository/com/github/StarWishsama/dough/dough-api/*/
+          cp ${NEW}/${NEW} ~/.m2/repository/io/github/baked-libs/dough/dough-api/*/
           
-          cd ~/.m2/repository/com/github/StarWishsama/dough/dough-api/
+          cd ~/.m2/repository/io/github/baked-libs/dough/dough-api/
           export OLD=$(ls)
           cd ${OLD}
           rm -rf dough-api-${OLD}}.jar dough-api-${OLD}.jar.sha1
