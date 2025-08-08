@@ -1,6 +1,6 @@
 name: spotless.yml
 on:
-  push:
+#  push:
 #    branches: [ master, dev ]
 #    paths:
 #      - 'src/**'

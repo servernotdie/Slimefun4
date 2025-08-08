@@ -6,6 +6,11 @@ name: Slimefun Dev CI
 on:
   workflow_call:
   workflow_dispatch:
+  push:
+    branches: [ master, dev ]
+    paths:
+      - 'src/**'
+      - 'pom.xml'
 
 env:
   TZ: 'Asia/Shanghai'
