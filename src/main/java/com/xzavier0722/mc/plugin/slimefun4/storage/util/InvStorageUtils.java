@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BundleMeta;
 
 public class InvStorageUtils {
     private static final Pair<ItemStack, Integer> emptyPair = new Pair<>(null, 0);
@@ -54,6 +55,17 @@ public class InvStorageUtils {
 
             if (!curr.equals(each.getFirstValue()) || curr.getAmount() != each.getSecondValue()) {
                 re.add(i);
+                continue;
+            }
+
+            try {
+                var currBundleMeta = (BundleMeta) curr.getItemMeta();
+                var eachBundleMeta = (BundleMeta) each.getFirstValue().getItemMeta();
+                if (currBundleMeta != null || eachBundleMeta != null) {
+                    re.add(i);
+                }
+            } catch (ClassCastException e) {
+                continue;
             }
         }
 
