@@ -3,8 +3,8 @@ package com.xzavier0722.mc.plugin.slimefun4.storage.controller;
 import city.norain.slimefun4.api.menu.UniversalMenu;
 import city.norain.slimefun4.api.menu.UniversalMenuPreset;
 import city.norain.slimefun4.utils.InventoryUtil;
-import com.tcoded.folialib.wrapper.task.WrappedTask;
 import city.norain.slimefun4.utils.StringUtil;
+import com.tcoded.folialib.wrapper.task.WrappedTask;
 import com.xzavier0722.mc.plugin.slimefun4.storage.adapter.IDataSourceAdapter;
 import com.xzavier0722.mc.plugin.slimefun4.storage.callback.IAsyncReadCallback;
 import com.xzavier0722.mc.plugin.slimefun4.storage.common.DataScope;
@@ -24,7 +24,6 @@ import com.xzavier0722.mc.plugin.slimefun4.storage.util.LocationUtils;
 import io.github.bakedlibs.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -46,7 +45,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitTask;
 
 /**
  * 方块数据控制器
@@ -131,7 +129,8 @@ public class BlockDataController extends ADataController {
             case LOAD_ON_STARTUP -> loadLoadedWorlds();
         }
 
-        Slimefun.getFoliaLib().getScheduler()
+        Slimefun.getFoliaLib()
+                .getScheduler()
                 .runLater(
                         () -> {
                             initLoading = true;
@@ -145,7 +144,8 @@ public class BlockDataController extends ADataController {
      * 加载所有服务器已加载的世界中的数据
      */
     private void loadLoadedWorlds() {
-        Slimefun.getFoliaLib().getScheduler()
+        Slimefun.getFoliaLib()
+                .getScheduler()
                 .runLater(
                         () -> {
                             initLoading = true;
@@ -161,7 +161,8 @@ public class BlockDataController extends ADataController {
      * 加载所有服务器已加载的世界区块中的数据
      */
     private void loadLoadedChunks() {
-        Slimefun.getFoliaLib().getScheduler()
+        Slimefun.getFoliaLib()
+                .getScheduler()
                 .runLater(
                         () -> {
                             initLoading = true;
@@ -189,7 +190,8 @@ public class BlockDataController extends ADataController {
         }
         enableDelayedSaving = true;
         this.delayedSecond = delayedSecond;
-        looperTask = Slimefun.getFoliaLib().getScheduler()
+        looperTask = Slimefun.getFoliaLib()
+                .getScheduler()
                 .runTimerAsync(
                         new DelayedSavingLooperTask(
                                 forceSavePeriod, () -> new HashMap<>(delayedWriteTasks), delayedWriteTasks::remove),
@@ -1455,7 +1457,8 @@ public class BlockDataController extends ADataController {
                                     .updateUniversalDataUUID(l.getBlock(), String.valueOf(universalData.getUUID()));
                         }
                     },
-                    10L,l);
+                    10L,
+                    l);
 
             kvData.forEach(recordSet -> universalData.setData(
                     recordSet.get(FieldKey.DATA_KEY), DataUtils.blockDataDebase64(recordSet.get(FieldKey.DATA_VALUE))));

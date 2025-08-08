@@ -220,15 +220,17 @@ public abstract class BlockMenuPreset extends ChestMenu {
     public void newInstance(@Nonnull BlockMenu menu, @Nonnull Location l) {
         Validate.notNull(l, "Cannot create a new BlockMenu without a Location");
 
-        Slimefun.runSyncAtLocation(() -> {
-            locked = true;
+        Slimefun.runSyncAtLocation(
+                () -> {
+                    locked = true;
 
-            try {
-                newInstance(menu, l.getBlock());
-            } catch (Exception | LinkageError x) {
-                getSlimefunItem().error("An Error occurred while trying to create a BlockMenu", x);
-            }
-        },l);
+                    try {
+                        newInstance(menu, l.getBlock());
+                    } catch (Exception | LinkageError x) {
+                        getSlimefunItem().error("An Error occurred while trying to create a BlockMenu", x);
+                    }
+                },
+                l);
     }
 
     /**

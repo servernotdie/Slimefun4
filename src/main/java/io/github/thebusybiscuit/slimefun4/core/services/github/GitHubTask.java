@@ -78,7 +78,7 @@ class GitHubTask implements Runnable {
                 && Slimefun.instance() != null
                 && Slimefun.instance().isEnabled()) {
             // Slow down API requests and wait a minute after more than x requests were made
-            Slimefun.getFoliaLib().getScheduler().runLaterAsync( this::grabTextures, 2 * 60 * 20L);
+            Slimefun.getFoliaLib().getScheduler().runLaterAsync(this::grabTextures, 2 * 60 * 20L);
         }
 
         for (GitHubConnector connector : gitHubService.getConnectors()) {
@@ -128,8 +128,7 @@ class GitHubTask implements Runnable {
 
                 // Retry after 5 minutes if it was just rate-limiting
                 if (msg != null && msg.contains("429")) {
-                    Slimefun.getFoliaLib().getScheduler()
-                            .runLaterAsync( this::grabTextures, 5 * 60 * 20L);
+                    Slimefun.getFoliaLib().getScheduler().runLaterAsync(this::grabTextures, 5 * 60 * 20L);
                 }
 
                 return -1;

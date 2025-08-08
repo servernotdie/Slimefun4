@@ -25,6 +25,7 @@ public class InfusedMagnetTask extends AbstractPlayerTask {
      * The radius in which an {@link Item} is picked up.
      */
     private final double radius;
+
     private static Boolean playSound = false;
 
     /**
@@ -46,12 +47,13 @@ public class InfusedMagnetTask extends AbstractPlayerTask {
     protected void executeTask() {
         playSound = false;
 
-        Slimefun.getFoliaLib().getScheduler().runAtLocation(p.getLocation(), wrappedTask-> {
-            for (Entity entity : Slimefun.getNearbyEntities(p, p.getBoundingBox().expand(radius, radius, radius), Entity::isValid)) {
+        Slimefun.getFoliaLib().getScheduler().runAtLocation(p.getLocation(), wrappedTask -> {
+            for (Entity entity :
+                    Slimefun.getNearbyEntities(p, p.getBoundingBox().expand(radius, radius, radius), Entity::isValid)) {
                 if (entity instanceof Item item
-                    && !SlimefunUtils.hasNoPickupFlag(item)
-                    && item.getPickupDelay() <= 0
-                    && p.getLocation().distanceSquared(item.getLocation()) > 0.3) {
+                        && !SlimefunUtils.hasNoPickupFlag(item)
+                        && item.getPickupDelay() <= 0
+                        && p.getLocation().distanceSquared(item.getLocation()) > 0.3) {
                     item.teleportAsync(p.getLocation());
                     playSound = true;
                 }

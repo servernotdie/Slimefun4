@@ -13,7 +13,7 @@ public class PlayerChatListener implements Listener {
     public void onChat(AsyncPlayerChatEvent e) {
         Slimefun.getChatCatcher().pollCatcher(e.getPlayer().getUniqueId()).ifPresent(h -> {
             e.setCancelled(true);
-            Slimefun.runSyncAtEntity(() -> h.accept(e.getMessage()),e.getPlayer());
+            Slimefun.runSyncAtEntity(() -> h.accept(e.getMessage()), e.getPlayer());
         });
     }
 

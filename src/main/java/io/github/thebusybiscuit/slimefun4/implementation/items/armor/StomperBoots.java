@@ -48,7 +48,8 @@ public class StomperBoots extends SlimefunItem {
         SoundEffect.STOMPER_BOOTS_STOMP_SOUND.playFor(player);
         player.setVelocity(new Vector(0, 0.7, 0));
 
-        for (Entity entity : Slimefun.getNearbyEntities(player, player.getBoundingBox().expand(4,4,4), Entity::isValid)) {
+        for (Entity entity :
+                Slimefun.getNearbyEntities(player, player.getBoundingBox().expand(4, 4, 4), Entity::isValid)) {
             if (entity instanceof LivingEntity livingEntity && canPush(player, livingEntity)) {
                 Vector velocity = getShockwave(player.getLocation(), entity.getLocation());
                 entity.setVelocity(velocity);

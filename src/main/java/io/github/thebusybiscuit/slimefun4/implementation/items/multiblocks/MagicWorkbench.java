@@ -130,7 +130,8 @@ public class MagicWorkbench extends AbstractCraftingTable {
                             handleCraftedItem(output, dispenser, dispInv);
                         }
                     },
-                    j * 20L,b.getLocation());
+                    j * 20L,
+                    b.getLocation());
         }
     }
 

@@ -79,9 +79,7 @@ public class InfusedHopper extends SimpleSlimefunItem<BlockTicker> {
                 boolean playSound = false;
 
                 // Check for any nearby Items that can be picked up
-                for (Entity item : Slimefun.getNearbyEntities(l,
-                    range, range, range,
-                    n -> isValidItem(l, n))) {
+                for (Entity item : Slimefun.getNearbyEntities(l, range, range, range, n -> isValidItem(l, n))) {
                     item.setVelocity(new Vector(0, 0.1, 0));
                     item.teleportAsync(l);
                     playSound = true;

@@ -129,9 +129,8 @@ public class ExpCollector extends SlimefunItem implements InventoryBlock, Energy
     protected void tick(Block block) {
         Location location = block.getLocation();
         Iterator<Entity> iterator = Slimefun.getNearbyEntities(
-            location,
-            4.0, 4.0, 4.0,
-            n -> n instanceof ExperienceOrb && n.isValid()).iterator();
+                        location, 4.0, 4.0, 4.0, n -> n instanceof ExperienceOrb && n.isValid())
+                .iterator();
         int experiencePoints = 0;
 
         while (iterator.hasNext() && experiencePoints == 0) {

@@ -133,7 +133,7 @@ public final class TeleportationManager {
                     index++;
                 }
 
-                Slimefun.runSyncAtEntity(() -> menu.open(p),p);
+                Slimefun.runSyncAtEntity(() -> menu.open(p), p);
             });
         }
     }
@@ -240,7 +240,7 @@ public final class TeleportationManager {
                 source.getWorld().spawnParticle(Particle.PORTAL, source, progress * 2, 0.2F, 0.8F, 0.2F);
                 SoundEffect.TELEPORT_UPDATE_SOUND.playFor(p);
                 Slimefun.runSyncAtEntity(
-                        () -> updateProgress(uuid, speed, progress + speed, source, destination, resistance), 10L,p);
+                        () -> updateProgress(uuid, speed, progress + speed, source, destination, resistance), 10L, p);
             }
         } else {
             cancel(uuid, p);
@@ -253,27 +253,29 @@ public final class TeleportationManager {
          * This needs to run on the main Thread so we force it, as
          * the async teleportation might happen on a separate Thread.
          */
-        Slimefun.runSyncAtEntity(() -> {
-            if (success) {
-                // Apply Resistance Effect, if enabled
-                if (resistance) {
-                    p.addPotionEffect(new PotionEffect(VersionedPotionEffectType.RESISTANCE, 600, 20));
-                    Slimefun.getLocalization().sendMessage(p, "machines.TELEPORTER.invulnerability");
-                }
+        Slimefun.runSyncAtEntity(
+                () -> {
+                    if (success) {
+                        // Apply Resistance Effect, if enabled
+                        if (resistance) {
+                            p.addPotionEffect(new PotionEffect(VersionedPotionEffectType.RESISTANCE, 600, 20));
+                            Slimefun.getLocalization().sendMessage(p, "machines.TELEPORTER.invulnerability");
+                        }
 
-                // Spawn some particles for aesthetic reasons.
-                Location loc = new Location(
-                        destination.getWorld(), destination.getX(), destination.getY() + 1, destination.getZ());
-                destination.getWorld().spawnParticle(Particle.PORTAL, loc, 200, 0.2F, 0.8F, 0.2F);
-                SoundEffect.TELEPORT_SOUND.playFor(p);
-                teleporterUsers.remove(p.getUniqueId());
-            } else {
-                /*
-                 * Make sure the Player is removed from the actively teleporting
-                 * users and notified about the failed teleportation
-                 */
-                cancel(p.getUniqueId(), p);
-            }
-        },p);
+                        // Spawn some particles for aesthetic reasons.
+                        Location loc = new Location(
+                                destination.getWorld(), destination.getX(), destination.getY() + 1, destination.getZ());
+                        destination.getWorld().spawnParticle(Particle.PORTAL, loc, 200, 0.2F, 0.8F, 0.2F);
+                        SoundEffect.TELEPORT_SOUND.playFor(p);
+                        teleporterUsers.remove(p.getUniqueId());
+                    } else {
+                        /*
+                         * Make sure the Player is removed from the actively teleporting
+                         * users and notified about the failed teleportation
+                         */
+                        cancel(p.getUniqueId(), p);
+                    }
+                },
+                p);
     }
 }

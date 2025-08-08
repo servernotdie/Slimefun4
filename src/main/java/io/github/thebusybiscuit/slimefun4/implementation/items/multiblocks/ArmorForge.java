@@ -111,7 +111,8 @@ public class ArmorForge extends AbstractCraftingTable {
                                 handleCraftedItem(output, dispenser, inv);
                             }
                         },
-                        j * 20L, outputInv.getLocation());
+                        j * 20L,
+                        outputInv.getLocation());
             }
 
         } else {

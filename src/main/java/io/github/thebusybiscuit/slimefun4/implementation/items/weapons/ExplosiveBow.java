@@ -50,9 +50,9 @@ public class ExplosiveBow extends SlimefunBow {
             target.getWorld().spawnParticle(VersionedParticle.EXPLOSION, target.getLocation(), 1);
             SoundEffect.EXPLOSIVE_BOW_HIT_SOUND.playAt(target.getLocation(), SoundCategory.PLAYERS);
             int radius = range.getValue();
-            
+
             Collection<Entity> entities =
-                Slimefun.getNearbyEntities(target.getLocation(), radius, radius, radius, this::canDamage);
+                    Slimefun.getNearbyEntities(target.getLocation(), radius, radius, radius, this::canDamage);
             for (Entity nearby : entities) {
                 LivingEntity entity = (LivingEntity) nearby;
 

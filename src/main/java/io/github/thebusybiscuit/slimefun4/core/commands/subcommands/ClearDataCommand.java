@@ -53,10 +53,15 @@ public class ClearDataCommand extends SubCommand {
                         if (cleartype.equals("block")) {
                             controller.removeAllDataInWorldAsync(
                                     world,
-                                    () -> Slimefun.runSyncAtEntity(() -> Slimefun.getLocalization()
-                                            .sendMessage(sender, "commands.cleardata.success", true, msg -> msg.replace(
-                                                            "{0}", world.getName())
-                                                    .replace("{1}", block)), Bukkit.getPlayer(sender.getName())));
+                                    () -> Slimefun.runSyncAtEntity(
+                                            () -> Slimefun.getLocalization()
+                                                    .sendMessage(
+                                                            sender,
+                                                            "commands.cleardata.success",
+                                                            true,
+                                                            msg -> msg.replace("{0}", world.getName())
+                                                                    .replace("{1}", block)),
+                                            Bukkit.getPlayer(sender.getName())));
                         } else if (cleartype.equals("oil")) {
                             GEOResource oilresource = null;
                             for (GEOResource resource :
@@ -70,10 +75,15 @@ public class ClearDataCommand extends SubCommand {
                             controller.removeFromAllChunkInWorldAsync(
                                     world,
                                     oilresource.getKey().toString().replace(":", "-"),
-                                    () -> Slimefun.runSyncAtEntity(() -> Slimefun.getLocalization()
-                                            .sendMessage(sender, "commands.cleardata.success", true, msg -> msg.replace(
-                                                            "{0}", world.getName())
-                                                    .replace("{1}", oil)),Bukkit.getPlayer(sender.getName())));
+                                    () -> Slimefun.runSyncAtEntity(
+                                            () -> Slimefun.getLocalization()
+                                                    .sendMessage(
+                                                            sender,
+                                                            "commands.cleardata.success",
+                                                            true,
+                                                            msg -> msg.replace("{0}", world.getName())
+                                                                    .replace("{1}", oil)),
+                                            Bukkit.getPlayer(sender.getName())));
                         }
                     }
                 }

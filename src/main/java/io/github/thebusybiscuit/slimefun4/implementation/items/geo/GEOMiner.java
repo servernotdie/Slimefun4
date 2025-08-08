@@ -349,8 +349,8 @@ public class GEOMiner extends SlimefunItem
             for (GEOResource resource : Slimefun.getRegistry().getGEOResources().values()) {
                 if (resource.isObtainableFromGEOMiner()) {
                     OptionalInt optional = Slimefun.getGPSNetwork()
-                        .getResourceManager()
-                        .getSupplies(resource, b.getWorld(), b.getX() >> 4, b.getZ() >> 4);
+                            .getResourceManager()
+                            .getSupplies(resource, b.getWorld(), b.getX() >> 4, b.getZ() >> 4);
 
                     if (optional.isEmpty()) continue;
 
@@ -364,8 +364,8 @@ public class GEOMiner extends SlimefunItem
 
                         processor.startOperation(b, new GEOMiningOperation(resource, PROCESSING_TIME));
                         Slimefun.getGPSNetwork()
-                            .getResourceManager()
-                            .setSupplies(resource, b.getWorld(), b.getX() >> 4, b.getZ() >> 4, supplies - 1);
+                                .getResourceManager()
+                                .setSupplies(resource, b.getWorld(), b.getX() >> 4, b.getZ() >> 4, supplies - 1);
                         updateHologram(b, "&7开采中: &r" + resource.getName());
                         return;
                     }

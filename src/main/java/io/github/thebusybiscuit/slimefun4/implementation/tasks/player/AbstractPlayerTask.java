@@ -3,7 +3,6 @@ package io.github.thebusybiscuit.slimefun4.implementation.tasks.player;
 import com.tcoded.folialib.wrapper.task.WrappedTask;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import javax.annotation.Nonnull;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 abstract class AbstractPlayerTask implements Runnable {
@@ -15,16 +14,16 @@ abstract class AbstractPlayerTask implements Runnable {
         this.p = p;
     }
 
-    private void setCancelTask(WrappedTask task){
+    private void setCancelTask(WrappedTask task) {
         this.task = task;
     }
 
     public void schedule(long delay) {
-        setCancelTask(Slimefun.getFoliaLib().getScheduler().runLater(this,delay));
+        setCancelTask(Slimefun.getFoliaLib().getScheduler().runLater(this, delay));
     }
 
     public void scheduleRepeating(long delay, long interval) {
-        setCancelTask(Slimefun.getFoliaLib().getScheduler().runTimer(this,delay,interval));
+        setCancelTask(Slimefun.getFoliaLib().getScheduler().runTimer(this, delay, interval));
     }
 
     @Override

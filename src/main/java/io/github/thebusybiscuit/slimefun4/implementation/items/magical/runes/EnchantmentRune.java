@@ -26,7 +26,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Slime;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -81,7 +80,8 @@ public class EnchantmentRune extends SimpleSlimefunItem<ItemDropHandler> {
                                     error("An Exception occurred while trying to apply an Enchantment Rune", x);
                                 }
                             },
-                            20L,p);
+                            20L,
+                            p);
                 }
 
                 return true;
@@ -172,7 +172,8 @@ public class EnchantmentRune extends SimpleSlimefunItem<ItemDropHandler> {
                                 l.getWorld().dropItemNaturally(l, itemStack);
                             }
                         },
-                        10L, p);
+                        10L,
+                        p);
             } else {
                 Slimefun.getLocalization().sendMessage(p, "messages.enchantment-rune.fail", true);
             }

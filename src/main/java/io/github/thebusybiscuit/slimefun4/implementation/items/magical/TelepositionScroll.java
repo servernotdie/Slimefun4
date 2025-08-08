@@ -40,7 +40,8 @@ public class TelepositionScroll extends SimpleSlimefunItem<ItemUseHandler> {
         return e -> {
             int range = radius.getValue();
 
-            for (Entity n : Slimefun.getNearbyEntities(e.getPlayer(), e.getPlayer().getBoundingBox().expand(range, range, range), Entity::isValid)) {
+            for (Entity n : Slimefun.getNearbyEntities(
+                    e.getPlayer(), e.getPlayer().getBoundingBox().expand(range, range, range), Entity::isValid)) {
                 if (n instanceof LivingEntity
                         && !(n instanceof ArmorStand)
                         && !n.getUniqueId().equals(e.getPlayer().getUniqueId())) {

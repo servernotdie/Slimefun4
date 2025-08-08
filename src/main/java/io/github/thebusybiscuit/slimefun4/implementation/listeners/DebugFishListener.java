@@ -1,6 +1,5 @@
 package io.github.thebusybiscuit.slimefun4.implementation.listeners;
 
-import city.norain.slimefun4.utils.TaskUtil;
 import com.xzavier0722.mc.plugin.slimefun4.storage.callback.IAsyncReadCallback;
 import com.xzavier0722.mc.plugin.slimefun4.storage.controller.ASlimefunDataContainer;
 import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunBlockData;
@@ -105,7 +104,8 @@ public class DebugFishListener implements Listener {
                         PlayerHead.setSkin(block, HeadTexture.MISSING_TEXTURE.getAsSkin(), true);
                         SoundEffect.DEBUG_FISH_CLICK_SOUND.playFor(p);
                     },
-                    2L, b.getLocation());
+                    2L,
+                    b.getLocation());
             return;
         }
 
@@ -116,16 +116,17 @@ public class DebugFishListener implements Listener {
 
             try {
                 if (data == null) {
-                    Slimefun.getFoliaLib().getScheduler().runAtLocation(b.getLocation(),
-                wrappedTask -> Slimefun.getBlockDataService()
-                                .getUniversalDataUUID(b)
-                                .ifPresentOrElse(
-                                    (uuid) -> {
-                                        p.sendMessage(ChatColors.color(
-                                                "&c检测到损坏的通用数据物品, UUID: " + uuid + ", 请检查数据库对应数据是否存在!"));
-                                        sendVanillaInfo(p, b);
-                                    },
-                                    () -> sendVanillaInfo(p, b)));
+                    Slimefun.getFoliaLib()
+                            .getScheduler()
+                            .runAtLocation(b.getLocation(), wrappedTask -> Slimefun.getBlockDataService()
+                                    .getUniversalDataUUID(b)
+                                    .ifPresentOrElse(
+                                            (uuid) -> {
+                                                p.sendMessage(ChatColors.color(
+                                                        "&c检测到损坏的通用数据物品, UUID: " + uuid + ", 请检查数据库对应数据是否存在!"));
+                                                sendVanillaInfo(p, b);
+                                            },
+                                            () -> sendVanillaInfo(p, b)));
 
                     return;
                 }

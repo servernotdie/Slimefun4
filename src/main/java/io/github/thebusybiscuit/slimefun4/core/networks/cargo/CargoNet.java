@@ -151,20 +151,22 @@ public class CargoNet extends AbstractItemNetwork implements HologramOwner {
                 display();
             }
 
-            Slimefun.runSyncAtLocation(() -> {
-                if (blockData.isPendingRemove()) {
-                    return;
-                }
-                var event = new CargoTickEvent(inputs, outputs);
-                Bukkit.getPluginManager().callEvent(event);
-                event.getHologramMsg().ifPresent(msg -> updateHologram(b, msg));
-                if (event.isCancelled()) {
-                    return;
-                }
+            Slimefun.runSyncAtLocation(
+                    () -> {
+                        if (blockData.isPendingRemove()) {
+                            return;
+                        }
+                        var event = new CargoTickEvent(inputs, outputs);
+                        Bukkit.getPluginManager().callEvent(event);
+                        event.getHologramMsg().ifPresent(msg -> updateHologram(b, msg));
+                        if (event.isCancelled()) {
+                            return;
+                        }
 
-                Slimefun.getProfiler().scheduleEntries(inputs.size() + 1);
-                new CargoNetworkTask(this, inputs, outputs).run();
-            },b.getLocation());
+                        Slimefun.getProfiler().scheduleEntries(inputs.size() + 1);
+                        new CargoNetworkTask(this, inputs, outputs).run();
+                    },
+                    b.getLocation());
         }
     }
 

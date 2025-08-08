@@ -26,7 +26,10 @@ public class TaskUtil {
             return callable.call();
         } else {
             try {
-                return Slimefun.getFoliaLib().getPlugin().getServer().getScheduler()
+                return Slimefun.getFoliaLib()
+                        .getPlugin()
+                        .getServer()
+                        .getScheduler()
                         .callSyncMethod(Slimefun.instance(), callable)
                         .get(1, TimeUnit.SECONDS);
             } catch (TimeoutException e) {

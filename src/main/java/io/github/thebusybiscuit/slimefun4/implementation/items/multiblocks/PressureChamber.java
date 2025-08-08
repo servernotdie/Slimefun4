@@ -108,7 +108,8 @@ public class PressureChamber extends MultiBlockMachine {
                             handleCraftedItem(output, dispenser, dispInv);
                         }
                     },
-                    i * 20L, b.getLocation());
+                    i * 20L,
+                    b.getLocation());
         }
     }
 }

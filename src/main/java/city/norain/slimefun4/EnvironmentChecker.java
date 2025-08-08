@@ -74,7 +74,8 @@ class EnvironmentChecker {
     }
 
     static void scheduleSlimeGlueCheck(@Nonnull Slimefun sf) {
-        Slimefun.getFoliaLib().getScheduler()
+        Slimefun.getFoliaLib()
+                .getScheduler()
                 .runLater(
                         () -> {
                             if (Bukkit.getPluginManager().getPlugin("SlimeGlue") == null) {

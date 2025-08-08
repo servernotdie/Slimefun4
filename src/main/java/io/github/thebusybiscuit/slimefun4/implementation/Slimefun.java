@@ -118,7 +118,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -134,7 +133,6 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -307,7 +305,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
         Logger logger = getLogger();
 
         // Check if Paper (<3) is installed
-        if (getFoliaLib().isFolia()){
+        if (getFoliaLib().isFolia()) {
             logger.log(Level.INFO, "检测到你正在使用 Folia 服务端! 已应用Paper性能优化.");
         } else if (PaperLib.isPaper()) {
             logger.log(Level.INFO, "检测到你正在使用 Paper 服务端! 性能优化已应用.");
@@ -459,7 +457,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
 
         if (cfgManager.isAutoUpdate()) {
             // 汉化版自动更新
-            getFoliaLib().getScheduler().runAsync(wrappedTask ->  new AutoUpdateTask(this, getFile()));
+            getFoliaLib().getScheduler().runAsync(wrappedTask -> new AutoUpdateTask(this, getFile()));
         }
 
         // Hooray!
@@ -1177,7 +1175,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
             return null;
         }
 
-        return Slimefun.getFoliaLib().getScheduler().runAtEntityLater(e ,runnable, delay);
+        return Slimefun.getFoliaLib().getScheduler().runAtEntityLater(e, runnable, delay);
     }
 
     public static @Nullable WrappedTask runSyncAtLocation(@Nonnull Runnable runnable, long delay, Location loc) {
@@ -1194,7 +1192,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
             return null;
         }
 
-        return Slimefun.getFoliaLib().getScheduler().runAtLocationLater(loc,runnable, delay);
+        return Slimefun.getFoliaLib().getScheduler().runAtLocationLater(loc, runnable, delay);
     }
 
     /**
@@ -1222,7 +1220,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
             return null;
         }
 
-        return Slimefun.getFoliaLib().getScheduler().runLater(runnable,1);
+        return Slimefun.getFoliaLib().getScheduler().runLater(runnable, 1);
     }
 
     public static @Nullable WrappedTask runSyncAtEntity(@Nonnull Runnable runnable, Entity e) {
@@ -1238,7 +1236,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
             return null;
         }
 
-        return Slimefun.getFoliaLib().getScheduler().runAtEntityLater(e,runnable,1);
+        return Slimefun.getFoliaLib().getScheduler().runAtEntityLater(e, runnable, 1);
     }
 
     public static @Nullable WrappedTask runSyncAtLocation(@Nonnull Runnable runnable, Location loc) {
@@ -1254,7 +1252,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
             return null;
         }
 
-        return Slimefun.getFoliaLib().getScheduler().runAtLocationLater(loc,runnable,1);
+        return Slimefun.getFoliaLib().getScheduler().runAtLocationLater(loc, runnable, 1);
     }
 
     @Nonnull
@@ -1281,7 +1279,8 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
         return foliaLib;
     }
 
-    public static Collection<Entity> getNearbyEntities(final Location l, double x, double y, double z, final Predicate<Entity> filter){
+    public static Collection<Entity> getNearbyEntities(
+            final Location l, double x, double y, double z, final Predicate<Entity> filter) {
         final World world = l.getWorld();
         BoundingBox boundingBox = BoundingBox.of(l, l).expand(x, y, z);
         if (Slimefun.getFoliaLib().isFolia()) {
@@ -1312,7 +1311,8 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
         }
     }
 
-    public static Collection<Entity> getNearbyEntities(final Entity e, final BoundingBox boundingBox, final Predicate<Entity> filter){
+    public static Collection<Entity> getNearbyEntities(
+            final Entity e, final BoundingBox boundingBox, final Predicate<Entity> filter) {
         final World world = e.getWorld();
         if (Slimefun.getFoliaLib().isFolia()) {
             final int minChunkX = boundingBox.getMin().getBlockX() >> 4;

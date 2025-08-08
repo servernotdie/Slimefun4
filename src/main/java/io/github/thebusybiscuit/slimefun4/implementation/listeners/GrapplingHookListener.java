@@ -76,7 +76,8 @@ public class GrapplingHookListener implements Listener {
                         handleGrapplingHook(arrow);
                     }
                 },
-                2L, e.getEntity().getLocation());
+                2L,
+                e.getEntity().getLocation());
     }
 
     @EventHandler
@@ -238,9 +239,11 @@ public class GrapplingHookListener implements Listener {
                                     activeHooks.remove(uuid);
                                     invulnerability.remove(uuid);
                                 },
-                                20L,arrow.getLocation());
+                                20L,
+                                arrow.getLocation());
                     }
                 },
-                despawnTicks, arrow.getLocation());
+                despawnTicks,
+                arrow.getLocation());
     }
 }

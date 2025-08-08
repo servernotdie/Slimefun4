@@ -174,11 +174,31 @@ class MiningTask implements Runnable {
          */
         TaskQueue queue = new TaskQueue();
 
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], true);}, 4);
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], false);}, 10);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[0], true);
+                },
+                4);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[0], false);
+                },
+                10);
 
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], true);}, 8);
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], false);}, 10);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[1], true);
+                },
+                8);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[1], false);
+                },
+                10);
 
         /*
          * Fixes #3336
@@ -195,25 +215,85 @@ class MiningTask implements Runnable {
             }
         });
 
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], true);}, 6);
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], false);}, 9);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[0], true);
+                },
+                6);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[0], false);
+                },
+                9);
 
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], true);}, 4);
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], false);}, 7);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[1], true);
+                },
+                4);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[1], false);
+                },
+                7);
 
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], true);}, 3);
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], false);}, 5);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[0], true);
+                },
+                3);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[0], false);
+                },
+                5);
 
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], true);}, 2);
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], false);}, 4);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[1], true);
+                },
+                2);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[1], false);
+                },
+                4);
 
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], true);}, 1);
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[0], false);}, 3);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[0], true);
+                },
+                1);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[0], false);
+                },
+                3);
 
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], true);}, 1);
-        sc.runAtLocationLater(b.getLocation(), () -> {setPistonState(pistons[1], false);}, 2);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[1], true);
+                },
+                1);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    setPistonState(pistons[1], false);
+                },
+                2);
 
-        sc.runAtLocationLater(b.getLocation(), this,1);
+        sc.runAtLocationLater(b.getLocation(), this, 1);
     }
 
     @Override
@@ -227,13 +307,33 @@ class MiningTask implements Runnable {
         PlatformScheduler sc = Slimefun.getFoliaLib().getScheduler();
         Location l = chest.getLocation();
 
-        sc.runAtLocationLater(l, () -> {setPistonState(pistons[0], true);}, 1);
-        sc.runAtLocationLater(l, () -> {setPistonState(pistons[0], false);}, 3);
+        sc.runAtLocationLater(
+                l,
+                () -> {
+                    setPistonState(pistons[0], true);
+                },
+                1);
+        sc.runAtLocationLater(
+                l,
+                () -> {
+                    setPistonState(pistons[0], false);
+                },
+                3);
 
-        sc.runAtLocationLater(l, () -> {setPistonState(pistons[1], true);}, 1);
-        sc.runAtLocationLater(l, () -> {setPistonState(pistons[1], false);}, 3);
+        sc.runAtLocationLater(
+                l,
+                () -> {
+                    setPistonState(pistons[1], true);
+                },
+                1);
+        sc.runAtLocationLater(
+                l,
+                () -> {
+                    setPistonState(pistons[1], false);
+                },
+                3);
 
-        sc.runAtLocation(l,wrappedTask -> {
+        sc.runAtLocation(l, wrappedTask -> {
             try {
                 Block furnace = chest.getRelative(BlockFace.DOWN);
                 furnace.getWorld().playEffect(furnace.getLocation(), Effect.STEP_SOUND, Material.STONE);
@@ -259,7 +359,7 @@ class MiningTask implements Runnable {
                         ores++;
 
                         // Repeat the same column when we hit an ore.
-                        Slimefun.runSyncAtLocation(this, 4,b.getLocation());
+                        Slimefun.runSyncAtLocation(this, 4, b.getLocation());
                         return;
                     }
                 }
@@ -275,7 +375,6 @@ class MiningTask implements Runnable {
                 stop();
             }
         });
-
     }
 
     /**
@@ -305,7 +404,7 @@ class MiningTask implements Runnable {
             return;
         }
 
-        Slimefun.runSyncAtEntity(this, 5,Bukkit.getPlayer(owner));
+        Slimefun.runSyncAtEntity(this, 5, Bukkit.getPlayer(owner));
     }
 
     /**

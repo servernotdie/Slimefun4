@@ -69,7 +69,7 @@ public class TickerTask implements Runnable {
         this.tickRate = Slimefun.getCfg().getInt("URID.custom-ticker-delay");
 
         PlatformScheduler scheduler = Slimefun.getFoliaLib().getScheduler();
-        scheduler.runTimerAsync( this, 100L, tickRate);
+        scheduler.runTimerAsync(this, 100L, tickRate);
     }
 
     /**
@@ -167,12 +167,14 @@ public class TickerTask implements Runnable {
                      * We are inserting a new timestamp because synchronized actions
                      * are always ran with a 50ms delay (1 game tick)
                      */
-                    Slimefun.runSyncAtLocation(() -> {
-                        if (blockData.isPendingRemove()) {
-                            return;
-                        }
-                        tickBlock(l, item, blockData, System.nanoTime());
-                    },l);
+                    Slimefun.runSyncAtLocation(
+                            () -> {
+                                if (blockData.isPendingRemove()) {
+                                    return;
+                                }
+                                tickBlock(l, item, blockData, System.nanoTime());
+                            },
+                            l);
                 } else {
                     long timestamp = Slimefun.getProfiler().newEntry();
                     item.getBlockTicker().update();
@@ -181,9 +183,11 @@ public class TickerTask implements Runnable {
 
                 tickers.add(item.getBlockTicker());
             } catch (Exception x) {
-                Slimefun.runSyncAtLocation(() -> {
-                    reportErrors(l, item, x);
-                }, l);
+                Slimefun.runSyncAtLocation(
+                        () -> {
+                            reportErrors(l, item, x);
+                        },
+                        l);
             }
         }
     }
@@ -207,12 +211,14 @@ public class TickerTask implements Runnable {
                      * We are inserting a new timestamp because synchronized actions
                      * are always ran with a 50ms delay (1 game tick)
                      */
-                    Slimefun.runSyncAtLocation(() -> {
-                        if (data.isPendingRemove()) {
-                            return;
-                        }
-                        tickBlock(l, item, data, System.nanoTime());
-                    },l);
+                    Slimefun.runSyncAtLocation(
+                            () -> {
+                                if (data.isPendingRemove()) {
+                                    return;
+                                }
+                                tickBlock(l, item, data, System.nanoTime());
+                            },
+                            l);
                 } else {
                     long timestamp = Slimefun.getProfiler().newEntry();
                     item.getBlockTicker().update();
@@ -221,9 +227,11 @@ public class TickerTask implements Runnable {
 
                 tickers.add(item.getBlockTicker());
             } catch (Exception x) {
-                Slimefun.runSyncAtLocation(() -> {
-                    reportErrors(l, item, x);
-                }, l);
+                Slimefun.runSyncAtLocation(
+                        () -> {
+                            reportErrors(l, item, x);
+                        },
+                        l);
             }
         }
     }
@@ -239,17 +247,21 @@ public class TickerTask implements Runnable {
                 }
             } else {
                 if (data instanceof SlimefunBlockData blockData) {
-                    Slimefun.runSyncAtLocation(() -> {
-                        item.getBlockTicker().tick(l.getBlock(), item, blockData);
-                    }, l);
+                    Slimefun.runSyncAtLocation(
+                            () -> {
+                                item.getBlockTicker().tick(l.getBlock(), item, blockData);
+                            },
+                            l);
                 } else {
                     throw new IllegalStateException("BlockTicker is non-universal but item is universal!");
                 }
             }
         } catch (Exception | LinkageError x) {
-            Slimefun.runSyncAtLocation(() -> {
-                reportErrors(l, item, x);
-            }, l);
+            Slimefun.runSyncAtLocation(
+                    () -> {
+                        reportErrors(l, item, x);
+                    },
+                    l);
         } finally {
             Slimefun.getProfiler().closeEntry(l, item, timestamp);
         }

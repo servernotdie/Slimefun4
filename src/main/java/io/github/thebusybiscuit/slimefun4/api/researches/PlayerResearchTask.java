@@ -68,7 +68,8 @@ public class PlayerResearchTask implements Consumer<PlayerProfile> {
                                                     PLACEHOLDER, research.getName(p))
                                             .replace("%progress%", "0%"));
                         },
-                        5L, p);
+                        5L,
+                        p);
             }
 
             ResearchUnlockEvent event = new ResearchUnlockEvent(p, research);
@@ -76,7 +77,7 @@ public class PlayerResearchTask implements Consumer<PlayerProfile> {
 
             if (!event.isCancelled()) {
                 if (isInstant) {
-                    Slimefun.runSyncAtEntity(() -> unlockResearch(p, profile),p);
+                    Slimefun.runSyncAtEntity(() -> unlockResearch(p, profile), p);
                 } else if (Slimefun.getRegistry()
                         .getCurrentlyResearchingPlayers()
                         .add(p.getUniqueId())) {
@@ -95,7 +96,8 @@ public class PlayerResearchTask implements Consumer<PlayerProfile> {
                                         .getCurrentlyResearchingPlayers()
                                         .remove(p.getUniqueId());
                             },
-                            (RESEARCH_PROGRESS.length + 1) * 20L, p);
+                            (RESEARCH_PROGRESS.length + 1) * 20L,
+                            p);
                 }
             }
         }
@@ -114,7 +116,8 @@ public class PlayerResearchTask implements Consumer<PlayerProfile> {
                             return msg.replace(PLACEHOLDER, research.getName(p)).replace("%progress%", progress);
                         });
                     },
-                    i * 20L, p);
+                    i * 20L,
+                    p);
         }
     }
 

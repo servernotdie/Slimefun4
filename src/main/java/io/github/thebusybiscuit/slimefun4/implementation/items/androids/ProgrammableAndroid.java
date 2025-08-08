@@ -1048,14 +1048,16 @@ public class ProgrammableAndroid extends SlimefunItem
             Slimefun.getBlockDataService()
                     .updateUniversalDataUUID(to, uniData.getUUID().toString());
 
-            Slimefun.runSyncAtLocation(() -> {
-                PlayerSkin skin = PlayerSkin.fromBase64(texture);
-                Material type = to.getType();
-                // Ensure that this Block is still a Player Head
-                if (type == Material.PLAYER_HEAD || type == Material.PLAYER_WALL_HEAD) {
-                    PlayerHead.setSkin(to, skin, true);
-                }
-            },to.getLocation());
+            Slimefun.runSyncAtLocation(
+                    () -> {
+                        PlayerSkin skin = PlayerSkin.fromBase64(texture);
+                        Material type = to.getType();
+                        // Ensure that this Block is still a Player Head
+                        if (type == Material.PLAYER_HEAD || type == Material.PLAYER_WALL_HEAD) {
+                            PlayerHead.setSkin(to, skin, true);
+                        }
+                    },
+                    to.getLocation());
 
             from.setType(Material.AIR);
             uniData.setLastPresent(new BlockPosition(to.getLocation()));

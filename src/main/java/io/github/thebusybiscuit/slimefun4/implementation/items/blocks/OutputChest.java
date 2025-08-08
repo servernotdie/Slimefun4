@@ -7,7 +7,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.handlers.VanillaInventoryDropHandler;
 import io.papermc.lib.PaperLib;
 import java.util.Optional;
@@ -58,14 +57,14 @@ public class OutputChest extends SlimefunItem {
                 if (slimefunItem instanceof OutputChest && !slimefunItem.isDisabledIn(b.getWorld())) {
                     // Found the output chest! Now, let's check if we can fit the product in it.
                     BlockState state =
-                        PaperLib.getBlockState(potentialOutput, false).getState();
+                            PaperLib.getBlockState(potentialOutput, false).getState();
 
                     if (state instanceof Chest chest) {
                         Inventory inv = chest.getInventory();
 
                         // Check if the Item fits into that inventory.
                         if (InvUtils.fits(inv, item)) {
-                                return Optional.of(inv);
+                            return Optional.of(inv);
                         }
                     }
                 }

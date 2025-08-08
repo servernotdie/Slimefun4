@@ -29,8 +29,10 @@ public class AutoSavingService {
      */
     public void start(@Nonnull Slimefun plugin, int interval) {
         this.interval = interval;
-        Slimefun.getFoliaLib().getScheduler().runTimer( this::saveAllPlayers, 2000L, interval * 60L * 20L);
-        Slimefun.getFoliaLib().getScheduler().runTimerAsync(
+        Slimefun.getFoliaLib().getScheduler().runTimer(this::saveAllPlayers, 2000L, interval * 60L * 20L);
+        Slimefun.getFoliaLib()
+                .getScheduler()
+                .runTimerAsync(
                         () -> {
                             Slimefun.getDatabaseManager()
                                     .getBlockDataController()

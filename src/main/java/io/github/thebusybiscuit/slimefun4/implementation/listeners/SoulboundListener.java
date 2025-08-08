@@ -57,10 +57,14 @@ public class SoulboundListener implements Listener {
         // Remove soulbound items from our drops
         e.getDrops().removeIf(itemStack -> SlimefunUtils.isSoulbound(itemStack, p.getWorld()));
 
-        if (Slimefun.getFoliaLib().isFolia()){  // only Folia can do
-            Slimefun.getFoliaLib().getScheduler().runLaterAsync(wrappedTask -> {
-                returnSoulboundItems(p);
-            }, 10);
+        if (Slimefun.getFoliaLib().isFolia()) { // only Folia can do
+            Slimefun.getFoliaLib()
+                    .getScheduler()
+                    .runLaterAsync(
+                            wrappedTask -> {
+                                returnSoulboundItems(p);
+                            },
+                            10);
         }
     }
 

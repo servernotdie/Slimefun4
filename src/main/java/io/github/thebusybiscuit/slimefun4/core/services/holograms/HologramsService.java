@@ -3,33 +3,26 @@ package io.github.thebusybiscuit.slimefun4.core.services.holograms;
 import io.github.bakedlibs.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.core.attributes.HologramOwner;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 import java.util.logging.Level;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Server;
-import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.util.BoundingBox;
 import org.bukkit.util.Vector;
 
 /**
@@ -90,7 +83,7 @@ public class HologramsService {
      * purge-task.
      */
     public void start() {
-        Slimefun.getFoliaLib().getScheduler().runTimer( this::purge, PURGE_RATE, PURGE_RATE);
+        Slimefun.getFoliaLib().getScheduler().runTimer(this::purge, PURGE_RATE, PURGE_RATE);
     }
 
     /**
@@ -130,7 +123,6 @@ public class HologramsService {
      *
      * @return The existing (or newly created) hologram
      */
-
     @Nullable private Hologram getHologram(@Nonnull Location loc, boolean createIfNoneExists) {
         Validate.notNull(loc, "Location cannot be null");
 
@@ -268,14 +260,13 @@ public class HologramsService {
             }
         };
 
-        if (Slimefun.getFoliaLib().isFolia()){
+        if (Slimefun.getFoliaLib().isFolia()) {
             Slimefun.runSyncAtLocation(runnable, loc);
         } else if (Bukkit.isPrimaryThread()) {
             runnable.run();
         } else {
             Slimefun.runSyncAtLocation(runnable, loc);
         }
-
     }
 
     /**

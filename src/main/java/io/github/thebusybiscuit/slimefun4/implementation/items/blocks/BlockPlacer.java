@@ -264,7 +264,8 @@ public class BlockPlacer extends SlimefunItem {
                         }
                     }
                 },
-                2L,b.getLocation());
+                2L,
+                b.getLocation());
     }
 
     @Override

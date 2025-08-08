@@ -122,7 +122,8 @@ public class Compressor extends MultiBlockMachine {
                             handleCraftedItem(output, dispenser, dispInv);
                         }
                     },
-                    i * 20L,dispenser.getLocation());
+                    i * 20L,
+                    dispenser.getLocation());
         }
     }
 }

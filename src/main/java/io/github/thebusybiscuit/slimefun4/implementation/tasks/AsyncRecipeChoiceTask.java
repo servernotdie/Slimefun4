@@ -9,7 +9,6 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import javax.annotation.Nonnull;
 import org.apache.commons.lang.Validate;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Tag;
 import org.bukkit.inventory.Inventory;
@@ -105,8 +104,9 @@ public class AsyncRecipeChoiceTask implements Runnable {
     public void run() {
         // Terminate the task when noone is viewing the Inventory
         if (inventory.getViewers().isEmpty()) {
-            Slimefun.getFoliaLib().getScheduler().cancelTask(Slimefun.getFoliaLib().getScheduler()
-                .runTimerAsync(this, 1, UPDATE_INTERVAL));
+            Slimefun.getFoliaLib()
+                    .getScheduler()
+                    .cancelTask(Slimefun.getFoliaLib().getScheduler().runTimerAsync(this, 1, UPDATE_INTERVAL));
             return;
         }
 

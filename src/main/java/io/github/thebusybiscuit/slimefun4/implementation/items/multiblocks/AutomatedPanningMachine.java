@@ -2,7 +2,6 @@ package io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks;
 
 import com.tcoded.folialib.impl.PlatformScheduler;
 import io.github.bakedlibs.dough.items.ItemUtils;
-import io.github.bakedlibs.dough.scheduling.TaskQueue;
 import io.github.thebusybiscuit.slimefun4.api.events.MultiBlockCraftEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -102,24 +101,30 @@ public class AutomatedPanningMachine extends MultiBlockMachine {
 
         PlatformScheduler sc = Slimefun.getFoliaLib().getScheduler();
 
-        sc.runAtLocationLater(b.getLocation(), () -> {
-            b.getWorld()
-                .playEffect(b.getRelative(BlockFace.DOWN).getLocation(), Effect.STEP_SOUND, material);
-        },20);
-        sc.runAtLocationLater(b.getLocation(), () -> {
-            if (finalOutput.getType() != Material.AIR) {
-                Optional<Inventory> outputChest = OutputChest.findOutputChestFor(b.getRelative(BlockFace.DOWN), output);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    b.getWorld().playEffect(b.getRelative(BlockFace.DOWN).getLocation(), Effect.STEP_SOUND, material);
+                },
+                20);
+        sc.runAtLocationLater(
+                b.getLocation(),
+                () -> {
+                    if (finalOutput.getType() != Material.AIR) {
+                        Optional<Inventory> outputChest =
+                                OutputChest.findOutputChestFor(b.getRelative(BlockFace.DOWN), output);
 
-                if (outputChest.isPresent()) {
-                    outputChest.get().addItem(finalOutput.clone());
-                } else {
-                    b.getWorld().dropItemNaturally(b.getLocation(), finalOutput.clone());
-                }
+                        if (outputChest.isPresent()) {
+                            outputChest.get().addItem(finalOutput.clone());
+                        } else {
+                            b.getWorld().dropItemNaturally(b.getLocation(), finalOutput.clone());
+                        }
 
-                SoundEffect.AUTOMATED_PANNING_MACHINE_SUCCESS_SOUND.playAt(b);
-            } else {
-                SoundEffect.AUTOMATED_PANNING_MACHINE_FAIL_SOUND.playAt(b);
-            }
-        },20);
+                        SoundEffect.AUTOMATED_PANNING_MACHINE_SUCCESS_SOUND.playAt(b);
+                    } else {
+                        SoundEffect.AUTOMATED_PANNING_MACHINE_FAIL_SOUND.playAt(b);
+                    }
+                },
+                20);
     }
 }
