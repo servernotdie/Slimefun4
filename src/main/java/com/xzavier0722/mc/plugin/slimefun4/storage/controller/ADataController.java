@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -73,7 +74,7 @@ public abstract class ADataController {
                 maxReadThread,
                 10,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(32),
+                new LinkedBlockingQueue<>(),
                 new DatabaseThreadFactory("SF-DB-Read-Thread #"));
 
         writeExecutor = new ControllerPoolExecutor(
@@ -81,14 +82,14 @@ public abstract class ADataController {
                 maxWriteThread,
                 10,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(32),
+                new LinkedBlockingQueue<>(),
                 new DatabaseThreadFactory("SF-DB-Write-Thread #"));
         callbackExecutor = new ThreadPoolExecutor(
-                1,
-                Runtime.getRuntime().availableProcessors() / 2,
+                2,
+                Runtime.getRuntime().availableProcessors(),
                 10,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(64),
+                new ArrayBlockingQueue<>(128),
                 new DatabaseThreadFactory("SF-DB-CB-Thread #"));
     }
 
