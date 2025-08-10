@@ -14,16 +14,16 @@ abstract class AbstractPlayerTask implements Runnable {
         this.p = p;
     }
 
-    private void setCancelTask(WrappedTask task) {
+    private void setID(WrappedTask task) {
         this.task = task;
     }
 
     public void schedule(long delay) {
-        setCancelTask(Slimefun.getFoliaLib().getScheduler().runLater(this, delay));
+        setID(Slimefun.getFoliaLib().getScheduler().runLater(this, delay));
     }
 
     public void scheduleRepeating(long delay, long interval) {
-        setCancelTask(Slimefun.getFoliaLib().getScheduler().runTimer(this, delay, interval));
+        setID(Slimefun.getFoliaLib().getScheduler().runTimer(this, delay, interval));
     }
 
     @Override
