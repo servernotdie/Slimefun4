@@ -41,15 +41,15 @@ public class NetworkManager {
     private final boolean deleteExcessItems;
 
     /**
-     * Fixes #3041
-     *
-     * We use a {@link CopyOnWriteArrayList} to store {@link Network} objects here to ensure thread-safety.
-     * This {@link List} is also much more frequently read than being written to.
-     * Therefore a {@link CopyOnWriteArrayList} should be perfect for this, even
-     * if insertions come at a slight cost.
-     *
-     * For large-scaled networks, we use {@link ChunkPosition} as key
-     * for quicker access to relevant networks in certain chunks.
+     * The `networks` stores all registered {@link Network} instances,
+     * organized by their corresponding {@link ChunkPosition}.
+     * <p>
+     * We use a {@link ConcurrentHashMap} to allow for thread-safe
+     * operations on network updates and retrievals.
+     * <p>
+     * For improve retrieval performance, we organize networks by their chunk positions.
+     * This allows us to quickly find networks relevant to a specific location
+     * without iterating all networks.
      */
     private final Map<ChunkPosition, List<Network>> networks = new ConcurrentHashMap<>();
 
@@ -129,16 +129,16 @@ public class NetworkManager {
 
         Validate.notNull(type, "Type must not be null");
 
-        ChunkPosition chunkPos = new ChunkPosition(l);
-        List<Network> chunkNetworks = networks.get(chunkPos);
+        var nearbyChunks = getNearbyChunks(new ChunkPosition(l));
 
-        if (chunkNetworks == null) {
-            return Optional.empty();
-        }
-
-        for (Network network : chunkNetworks) {
-            if (type.isInstance(network) && network.connectsTo(l)) {
-                return Optional.of(type.cast(network));
+        for (ChunkPosition c : nearbyChunks) {
+            List<Network> networks = this.networks.get(c);
+            if (networks != null) {
+                for (Network network : networks) {
+                    if (type.isInstance(network) && network.connectsTo(l)) {
+                        return Optional.of(type.cast(network));
+                    }
+                }
             }
         }
 
@@ -155,16 +155,16 @@ public class NetworkManager {
         Validate.notNull(type, "Type must not be null");
         List<T> list = new ArrayList<>();
 
-        ChunkPosition chunkPos = new ChunkPosition(l);
-        List<Network> chunkNetworks = networks.get(chunkPos);
+        var nearbyChunks = getNearbyChunks(new ChunkPosition(l));
 
-        if (chunkNetworks == null) {
-            return list;
-        }
-
-        for (Network network : chunkNetworks) {
-            if (type.isInstance(network) && network.connectsTo(l)) {
-                list.add(type.cast(network));
+        for (ChunkPosition c : nearbyChunks) {
+            List<Network> networks = this.networks.get(c);
+            if (networks != null) {
+                for (Network network : networks) {
+                    if (type.isInstance(network) && network.connectsTo(l)) {
+                        list.add(type.cast(network));
+                    }
+                }
             }
         }
 
@@ -183,15 +183,8 @@ public class NetworkManager {
         Debug.log(
                 TestCase.ENERGYNET, "Registering network @ " + LocationUtils.locationToString(network.getRegulator()));
 
-        var chunkPos = new ChunkPosition(network.getRegulator());
-
-        networks.compute(chunkPos, (pos, nets) -> {
-            if (nets == null) {
-                nets = new CopyOnWriteArrayList<>();
-            }
-            nets.add(network);
-            return nets;
-        });
+        networks.computeIfAbsent(network.getChunk(), k -> new CopyOnWriteArrayList<>())
+                .add(network);
     }
 
     /**
@@ -207,11 +200,9 @@ public class NetworkManager {
                 TestCase.ENERGYNET,
                 "Unregistering network @ " + LocationUtils.locationToString(network.getRegulator()));
 
-        ChunkPosition chunkPos = new ChunkPosition(network.getRegulator());
-
-        networks.computeIfPresent(chunkPos, (pos, nets) -> {
-            nets.remove(network);
-            return nets.isEmpty() ? null : nets;
+        networks.computeIfPresent(network.getChunk(), (k, v) -> {
+            v.remove(network);
+            return v.isEmpty() ? null : v;
         });
     }
 
@@ -246,5 +237,31 @@ public class NetworkManager {
                             x,
                             () -> "An Exception was thrown while causing a networks update @ " + new BlockPosition(l));
         }
+    }
+
+    private ChunkPosition[] getNearbyChunks(ChunkPosition chunk) {
+        ChunkPosition[] chunks = new ChunkPosition[9];
+
+        chunks[0] = chunk;
+
+        int x = chunk.getX();
+        int z = chunk.getZ();
+
+        int index = 1;
+        // 遍历 x 方向偏移 -1 到 1
+        for (int dx = -1; dx <= 1; dx++) {
+            // 遍历 z 方向偏移 -1 到 1
+            for (int dz = -1; dz <= 1; dz++) {
+                // 跳过中心区块自身 (偏移量均为 0 时)
+                if (dx == 0 && dz == 0) {
+                    continue;
+                }
+
+                // 根据偏移量创建新的 ChunkPosition 对象
+                chunks[index++] = new ChunkPosition(chunk.getWorld(), x + dx, z + dz);
+            }
+        }
+
+        return chunks;
     }
 }
