@@ -398,13 +398,15 @@ public abstract class Reactor extends AbstractEnergyProvider
         boolean explosion = explosionsQueue.contains(l);
 
         if (explosion) {
-            Slimefun.runSyncAtLocation(() -> {
-                ReactorExplodeEvent event = new ReactorExplodeEvent(l, Reactor.this);
-                Bukkit.getPluginManager().callEvent(event);
+            Slimefun.runSyncAtLocation(
+                    () -> {
+                        ReactorExplodeEvent event = new ReactorExplodeEvent(l, Reactor.this);
+                        Bukkit.getPluginManager().callEvent(event);
 
-                ((SlimefunBlockData) data).getBlockMenu().close();
-                removeHologram(l.getBlock());
-            }, l);
+                        ((SlimefunBlockData) data).getBlockMenu().close();
+                        removeHologram(l.getBlock());
+                    },
+                    l);
 
             explosionsQueue.remove(l);
             processor.endOperation(l);

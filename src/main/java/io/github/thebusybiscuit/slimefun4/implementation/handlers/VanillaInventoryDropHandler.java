@@ -2,6 +2,7 @@ package io.github.thebusybiscuit.slimefun4.implementation.handlers;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -53,18 +54,20 @@ public class VanillaInventoryDropHandler<T extends BlockState & InventoryHolder>
     @Override
     @ParametersAreNonnullByDefault
     public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
-        Block b = e.getBlock();
-        BlockState state = b.getState(false);
+        Slimefun.getFoliaLib().getScheduler().runAtLocation(e.getBlock().getLocation(), wrappedTask -> {
+            Block b = e.getBlock();
+            BlockState state = b.getState(false);
 
-        if (blockStateClass.isInstance(state)) {
-            T inventoryHolder = blockStateClass.cast(state);
+            if (blockStateClass.isInstance(state)) {
+                T inventoryHolder = blockStateClass.cast(state);
 
-            for (ItemStack stack : getInventory(inventoryHolder)) {
-                if (stack != null && !stack.getType().isAir()) {
-                    drops.add(stack);
+                for (ItemStack stack : getInventory(inventoryHolder)) {
+                    if (stack != null && !stack.getType().isAir()) {
+                        drops.add(stack);
+                    }
                 }
             }
-        }
+        });
     }
 
     @Nonnull
