@@ -1,6 +1,6 @@
 package io.github.thebusybiscuit.slimefun4.implementation.tasks.player;
 
-import com.tcoded.folialib.wrapper.task.WrappedTask;
+import io.github.bakedlibs.dough.folialib.wrapper.task.WrappedTask;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import javax.annotation.Nonnull;
 import org.bukkit.entity.Player;

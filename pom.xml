@@ -107,11 +107,6 @@
             <id>codemc-repo</id>
             <url>https://repo.codemc.io/repository/maven-public/</url>
         </repository>
-        <repository>
-            <!-- FoliaLib -->
-            <id>tcoded-releases</id>
-            <url>https://repo.tcoded.com/releases</url>
-        </repository>
     </repositories>
 
     <build>
@@ -177,11 +172,6 @@
                         <relocation>
                             <pattern>net.guizhanss.guizhanlib</pattern>
                             <shadedPattern>io.github.thebusybiscuit.slimefun4.libraries.guizhanlib</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>com.tcoded.folialib</pattern>
-                            <!-- !! MAKE SURE TO CHANGE THIS TO YOUR PLUGIN'S GROUP & PLUGIN NAME !! -->
-                            <shadedPattern>io.github.thebusybiscuit.slimefun4.libraries.folialib</shadedPattern>
                         </relocation>
                     </relocations>
 
@@ -396,6 +386,13 @@
             <artifactId>dough-api</artifactId>
             <version>1.3.1-SNAPSHOT</version>
             <scope>compile</scope>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>com.tcoded</groupId>
+                    <artifactId>FoliaLib</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.papermc</groupId>
@@ -427,12 +424,6 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.7</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.tcoded</groupId>
-            <artifactId>FoliaLib</artifactId>
-            <version>0.5.1</version>
             <scope>compile</scope>
         </dependency>
 

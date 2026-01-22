@@ -1,6 +1,6 @@
 package io.github.thebusybiscuit.slimefun4.implementation.tasks;
 
-import com.tcoded.folialib.wrapper.task.WrappedTask;
+import io.github.bakedlibs.dough.folialib.wrapper.task.WrappedTask;
 import io.github.bakedlibs.dough.collections.LoopIterator;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.guide.SurvivalSlimefunGuide;

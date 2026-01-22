@@ -1,6 +1,6 @@
 package io.github.thebusybiscuit.slimefun4.implementation.tasks;
 
-import com.tcoded.folialib.impl.PlatformScheduler;
+import io.github.bakedlibs.dough.folialib.impl.PlatformScheduler;
 import com.xzavier0722.mc.plugin.slimefun4.storage.controller.ASlimefunDataContainer;
 import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunBlockData;
 import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunUniversalData;

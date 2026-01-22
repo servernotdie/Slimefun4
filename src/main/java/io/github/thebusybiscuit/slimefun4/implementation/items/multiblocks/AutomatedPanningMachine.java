@@ -1,6 +1,6 @@
 package io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks;
 
-import com.tcoded.folialib.impl.PlatformScheduler;
+import io.github.bakedlibs.dough.folialib.impl.PlatformScheduler;
 import io.github.bakedlibs.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.api.events.MultiBlockCraftEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
