@@ -416,7 +416,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
                                         + ")");
                     }
                 }),
-                0);
+                1L);
 
         // Setting up our commands
         try {
