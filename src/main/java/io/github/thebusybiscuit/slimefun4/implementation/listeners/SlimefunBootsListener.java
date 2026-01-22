@@ -1,5 +1,6 @@
 package io.github.thebusybiscuit.slimefun4.implementation.listeners;
 
+import io.github.bakedlibs.dough.versions.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.items.armor.EnderBoots;
@@ -11,6 +12,7 @@ import javax.annotation.Nonnull;
 import org.bukkit.Material;
 import org.bukkit.SoundCategory;
 import org.bukkit.block.Block;
+import org.bukkit.damage.DamageType;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -46,7 +48,23 @@ public class SlimefunBootsListener implements Listener {
 
     @EventHandler
     public void onEnderPearlDamage(EntityDamageByEntityEvent e) {
-        if (e.getDamager() instanceof EnderPearl && e.getEntity() instanceof Player p) {
+        // Fix Slimefun Ender Boots not working on Folia
+        // Due to API, DamageType.ENDER_PEARL only being available on 1.21.3+
+        boolean isDamageFromEnderPearl = false;
+        if (Slimefun.getFoliaLib().isFolia()) {
+            try {
+                MinecraftVersion version = MinecraftVersion.get();
+                isDamageFromEnderPearl = version.isAtLeast(1, 21, 3)
+                        ? e.getDamageSource().getDamageType().equals(DamageType.ENDER_PEARL)
+                        : e.getDamager() instanceof EnderPearl;
+            } catch (Exception x) {
+                throw new RuntimeException(x);
+            }
+        } else {
+            isDamageFromEnderPearl = e.getDamager() instanceof EnderPearl;
+        }
+
+        if (isDamageFromEnderPearl && e.getEntity() instanceof Player p) {
             SlimefunItem boots = SlimefunItem.getByItem(p.getInventory().getBoots());
 
             if (boots instanceof EnderBoots && boots.canUse(p, true)) {
