@@ -2,13 +2,13 @@ package io.github.thebusybiscuit.slimefun4.implementation;
 
 import city.norain.slimefun4.SlimefunExtended;
 import city.norain.slimefun4.timings.SQLProfiler;
-import io.github.bakedlibs.dough.folialib.FoliaLib;
-import io.github.bakedlibs.dough.folialib.wrapper.task.WrappedTask;
 import com.xzavier0722.mc.plugin.slimefun4.chat.PlayerChatCatcher;
 import com.xzavier0722.mc.plugin.slimefun4.storage.migrator.BlockStorageMigrator;
 import com.xzavier0722.mc.plugin.slimefun4.storage.migrator.PlayerProfileMigrator;
 import com.xzavier0722.mc.plugin.slimefuncomplib.ICompatibleSlimefun;
 import io.github.bakedlibs.dough.config.Config;
+import io.github.bakedlibs.dough.folialib.FoliaLib;
+import io.github.bakedlibs.dough.folialib.wrapper.task.WrappedTask;
 import io.github.bakedlibs.dough.protection.ProtectionManager;
 import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;

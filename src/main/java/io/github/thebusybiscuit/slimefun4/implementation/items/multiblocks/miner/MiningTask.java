@@ -1,7 +1,7 @@
 package io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks.miner;
 
-import io.github.bakedlibs.dough.folialib.impl.PlatformScheduler;
 import io.github.bakedlibs.dough.blocks.BlockPosition;
+import io.github.bakedlibs.dough.folialib.impl.PlatformScheduler;
 import io.github.bakedlibs.dough.inventory.InvUtils;
 import io.github.bakedlibs.dough.items.ItemUtils;
 import io.github.bakedlibs.dough.protection.Interaction;
