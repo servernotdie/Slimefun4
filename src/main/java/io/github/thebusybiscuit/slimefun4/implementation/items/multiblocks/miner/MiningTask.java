@@ -1,11 +1,10 @@
 package io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks.miner;
 
 import io.github.bakedlibs.dough.blocks.BlockPosition;
-import io.github.bakedlibs.dough.folialib.impl.PlatformScheduler;
-import io.github.bakedlibs.dough.inventory.InvUtils;
 import io.github.bakedlibs.dough.items.ItemUtils;
 import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.scheduling.TaskQueue;
+import io.github.thebusybiscuit.slimefun4.api.items.virtual.VirtualItemHandler.InventoryContext;
 import io.github.thebusybiscuit.slimefun4.core.services.sounds.SoundEffect;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.utils.compatibility.VersionedParticle;
@@ -116,96 +115,25 @@ class MiningTask implements Runnable {
     /**
      * This method starts the warm-up animation for the {@link IndustrialMiner}.
      */
-    private void warmUp() {
-        /*
-         * This is our warm up animation.
-         * The pistons will push after another in decreasing intervals
-         */
-        TaskQueue queue = new TaskQueue();
-
-        queue.thenRun(4, () -> setPistonState(pistons[0], true));
-        queue.thenRun(10, () -> setPistonState(pistons[0], false));
-
-        queue.thenRun(8, () -> setPistonState(pistons[1], true));
-        queue.thenRun(10, () -> setPistonState(pistons[1], false));
-
-        /*
-         * Fixes #3336
-         * Trigger each piston once, so that the structure is validated.
-         * Then consume fuel.
-         */
-        queue.thenRun(() -> {
-            consumeFuel();
-
-            if (fuelLevel <= 0) {
-                // This Miner has not got enough fuel to run.
-                stop(MinerStoppingReason.NO_FUEL);
-                return;
-            }
-        });
-
-        queue.thenRun(6, () -> setPistonState(pistons[0], true));
-        queue.thenRun(9, () -> setPistonState(pistons[0], false));
-
-        queue.thenRun(4, () -> setPistonState(pistons[1], true));
-        queue.thenRun(7, () -> setPistonState(pistons[1], false));
-
-        queue.thenRun(3, () -> setPistonState(pistons[0], true));
-        queue.thenRun(5, () -> setPistonState(pistons[0], false));
-
-        queue.thenRun(2, () -> setPistonState(pistons[1], true));
-        queue.thenRun(4, () -> setPistonState(pistons[1], false));
-
-        queue.thenRun(1, () -> setPistonState(pistons[0], true));
-        queue.thenRun(3, () -> setPistonState(pistons[0], false));
-
-        queue.thenRun(1, () -> setPistonState(pistons[1], true));
-        queue.thenRun(2, () -> setPistonState(pistons[1], false));
-
-        queue.thenRun(1, this);
-        queue.execute(Slimefun.instance());
-    }
-
     private void warmUp(Block b) {
-        PlatformScheduler sc = Slimefun.getFoliaLib().getScheduler();
         /*
          * This is our warm up animation.
          * The pistons will push after another in decreasing intervals
          */
         TaskQueue queue = new TaskQueue();
 
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[0], true);
-                },
-                4);
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[0], false);
-                },
-                10);
+        queue.thenRun(pistons[0].getLocation(), 4, () -> setPistonState(pistons[0], true));
+        queue.thenRun(pistons[0].getLocation(), 10, () -> setPistonState(pistons[0], false));
 
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[1], true);
-                },
-                8);
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[1], false);
-                },
-                10);
+        queue.thenRun(pistons[1].getLocation(), 8, () -> setPistonState(pistons[1], true));
+        queue.thenRun(pistons[1].getLocation(), 10, () -> setPistonState(pistons[1], false));
 
         /*
          * Fixes #3336
          * Trigger each piston once, so that the structure is validated.
          * Then consume fuel.
          */
-        sc.runAtLocation(b.getLocation(), wrappedTask -> {
+        queue.thenRun(b.getLocation(), () -> {
             consumeFuel();
 
             if (fuelLevel <= 0) {
@@ -215,85 +143,26 @@ class MiningTask implements Runnable {
             }
         });
 
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[0], true);
-                },
-                6);
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[0], false);
-                },
-                9);
+        queue.thenRun(pistons[0].getLocation(), 6, () -> setPistonState(pistons[0], true));
+        queue.thenRun(pistons[0].getLocation(), 9, () -> setPistonState(pistons[0], false));
 
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[1], true);
-                },
-                4);
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[1], false);
-                },
-                7);
+        queue.thenRun(pistons[1].getLocation(), 4, () -> setPistonState(pistons[1], true));
+        queue.thenRun(pistons[1].getLocation(), 7, () -> setPistonState(pistons[1], false));
 
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[0], true);
-                },
-                3);
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[0], false);
-                },
-                5);
+        queue.thenRun(pistons[0].getLocation(), 3, () -> setPistonState(pistons[0], true));
+        queue.thenRun(pistons[0].getLocation(), 5, () -> setPistonState(pistons[0], false));
 
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[1], true);
-                },
-                2);
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[1], false);
-                },
-                4);
+        queue.thenRun(pistons[1].getLocation(), 2, () -> setPistonState(pistons[1], true));
+        queue.thenRun(pistons[1].getLocation(), 4, () -> setPistonState(pistons[1], false));
 
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[0], true);
-                },
-                1);
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[0], false);
-                },
-                3);
+        queue.thenRun(pistons[0].getLocation(), 1, () -> setPistonState(pistons[0], true));
+        queue.thenRun(pistons[0].getLocation(), 3, () -> setPistonState(pistons[0], false));
 
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[1], true);
-                },
-                1);
-        sc.runAtLocationLater(
-                b.getLocation(),
-                () -> {
-                    setPistonState(pistons[1], false);
-                },
-                2);
+        queue.thenRun(pistons[1].getLocation(), 1, () -> setPistonState(pistons[1], true));
+        queue.thenRun(pistons[1].getLocation(), 2, () -> setPistonState(pistons[1], false));
 
-        sc.runAtLocationLater(b.getLocation(), this, 1);
+        queue.thenRun(b.getLocation(), 1, this);
+        queue.execute(Slimefun.instance());
     }
 
     @Override
@@ -304,36 +173,14 @@ class MiningTask implements Runnable {
         }
 
         TaskQueue queue = new TaskQueue();
-        PlatformScheduler sc = Slimefun.getFoliaLib().getScheduler();
-        Location l = chest.getLocation();
 
-        sc.runAtLocationLater(
-                l,
-                () -> {
-                    setPistonState(pistons[0], true);
-                },
-                1);
-        sc.runAtLocationLater(
-                l,
-                () -> {
-                    setPistonState(pistons[0], false);
-                },
-                3);
+        queue.thenRun(pistons[0].getLocation(), 1, () -> setPistonState(pistons[0], true));
+        queue.thenRun(pistons[0].getLocation(), 3, () -> setPistonState(pistons[0], false));
 
-        sc.runAtLocationLater(
-                l,
-                () -> {
-                    setPistonState(pistons[1], true);
-                },
-                1);
-        sc.runAtLocationLater(
-                l,
-                () -> {
-                    setPistonState(pistons[1], false);
-                },
-                3);
+        queue.thenRun(pistons[1].getLocation(), 1, () -> setPistonState(pistons[1], true));
+        queue.thenRun(pistons[1].getLocation(), 3, () -> setPistonState(pistons[1], false));
 
-        sc.runAtLocation(l, wrappedTask -> {
+        queue.thenRun(chest.getLocation(), () -> {
             try {
                 Block furnace = chest.getRelative(BlockFace.DOWN);
                 furnace.getWorld().playEffect(furnace.getLocation(), Effect.STEP_SOUND, Material.STONE);
@@ -375,6 +222,8 @@ class MiningTask implements Runnable {
                 stop();
             }
         });
+
+        queue.execute(Slimefun.instance());
     }
 
     /**
@@ -430,8 +279,8 @@ class MiningTask implements Runnable {
                 if (state instanceof Chest chestState) {
                     Inventory inv = chestState.getBlockInventory();
 
-                    if (InvUtils.fits(inv, item)) {
-                        inv.addItem(item);
+                    if (Slimefun.getItemStackService().fits(inv, item, InventoryContext.OUTPUT_CHEST)) {
+                        Slimefun.getItemStackService().addItem(inv, item, InventoryContext.OUTPUT_CHEST);
                         return true;
                     } else {
                         stop(MinerStoppingReason.CHEST_FULL);

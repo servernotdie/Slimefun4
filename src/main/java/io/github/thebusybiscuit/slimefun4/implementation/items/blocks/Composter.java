@@ -87,12 +87,12 @@ public class Composter extends SimpleSlimefunItem<BlockUseHandler> implements Re
                     if (output != null) {
                         TaskQueue tasks = new TaskQueue();
 
-                        tasks.thenRepeatEvery(30, 10, () -> {
+                        tasks.thenRepeatEvery(b.getLocation(), 30, 10, () -> {
                             Material material = input.getType().isBlock() ? input.getType() : Material.HAY_BLOCK;
                             b.getWorld().playEffect(b.getLocation(), Effect.STEP_SOUND, material);
                         });
 
-                        tasks.thenRun(20, () -> {
+                        tasks.thenRun(b.getLocation(), 20, () -> {
                             SoundEffect.COMPOSTER_COMPOST_SOUND.playFor(p);
                             pushItem(b, output.clone());
                         });
