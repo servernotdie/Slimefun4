@@ -28,6 +28,7 @@ tasks.compileJava {
 }
 
 repositories {
+    maven("https://repo.neokoni.ink/snapshots/")
     mavenCentral()
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
     maven("https://repo.papermc.io/repository/maven-public/")
@@ -161,9 +162,9 @@ publishing {
     repositories {
         maven {
             url = if (project.version.toString().contains("SNAPSHOT")) {
-                uri("https://maven.norain.city/snapshots")
+                uri("https://repo.neokoni.ink/snapshots")
             } else {
-                uri("https://maven.norain.city/releases")
+                uri("https://repo.neokoni.ink/releases")
             }
             credentials {
                 username = System.getenv("MAVEN_ACCOUNT")
