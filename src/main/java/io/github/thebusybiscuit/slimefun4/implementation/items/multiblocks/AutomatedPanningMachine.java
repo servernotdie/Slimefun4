@@ -110,7 +110,7 @@ public class AutomatedPanningMachine extends MultiBlockMachine {
         TaskQueue queue = new TaskQueue();
 
         queue.thenRepeatEvery(
-            b.getLocation(),
+                b.getLocation(),
                 20,
                 5,
                 () -> b.getWorld()

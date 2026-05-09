@@ -116,15 +116,17 @@ public class DebugFishListener implements Listener {
                 if (data == null) {
                     Slimefun.getFoliaLib()
                             .getScheduler()
-                            .runAtLocation(b.getLocation(), wrappedTask -> Slimefun.getBlockDataService()
-                                    .getUniversalDataUUID(b)
-                                    .ifPresentOrElse(
-                                            (uuid) -> {
-                                                p.sendMessage(ChatColors.color(
-                                                        "&c检测到损坏的通用数据物品, UUID: " + uuid + ", 请检查数据库对应数据是否存在!"));
-                                                sendVanillaInfo(p, b);
-                                            },
-                                            () -> sendVanillaInfo(p, b)));
+                            .runAtLocation(
+                                    b.getLocation(),
+                                    wrappedTask -> Slimefun.getBlockDataService()
+                                            .getUniversalDataUUID(b)
+                                            .ifPresentOrElse(
+                                                    (uuid) -> {
+                                                        p.sendMessage(ChatColors.color(
+                                                                "&c检测到损坏的通用数据物品, UUID: " + uuid + ", 请检查数据库对应数据是否存在!"));
+                                                        sendVanillaInfo(p, b);
+                                                    },
+                                                    () -> sendVanillaInfo(p, b)));
 
                     return;
                 }
