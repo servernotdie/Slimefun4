@@ -34,7 +34,8 @@ class ItemIdCommand extends SubCommand {
                         idMsg.setUnderlined(true);
                         idMsg.setItalic(true);
                         idMsg.setColor(ChatColor.GRAY);
-                        idMsg.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Nhấp để sao chép vào clipboard")));
+                        idMsg.setHoverEvent(new HoverEvent(
+                                HoverEvent.Action.SHOW_TEXT, new Text("Nhấp để sao chép vào clipboard")));
                         idMsg.setClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, sfId));
                         sender.spigot().sendMessage(msg, idMsg);
                     } else {

@@ -63,7 +63,8 @@ abstract class AbstractEnchantmentMachine extends AContainer {
 
     protected void showEnchantmentLevelWarning(@Nonnull BlockMenu menu) {
         if (!useLevelLimit.getValue()) {
-            throw new IllegalStateException("Giới hạn cấp độ của máy phù phép/gỡ phép tự động chưa được bật, không thể hiển thị cảnh báo.");
+            throw new IllegalStateException(
+                    "Giới hạn cấp độ của máy phù phép/gỡ phép tự động chưa được bật, không thể hiển thị cảnh báo.");
         }
 
         String notice = ChatColors.color(Slimefun.getLocalization().getMessage("messages.above-limit-level"));
@@ -74,7 +75,8 @@ abstract class AbstractEnchantmentMachine extends AContainer {
 
     protected void showEnchantmentLimitWarning(@Nonnull BlockMenu menu) {
         if (!useEnchantLimit.getValue()) {
-            throw new IllegalStateException("Giới hạn số lượng phù phép của máy phù phép/gỡ phép tự động chưa được bật, không thể hiển thị cảnh báo.");
+            throw new IllegalStateException(
+                    "Giới hạn số lượng phù phép của máy phù phép/gỡ phép tự động chưa được bật, không thể hiển thị cảnh báo.");
         }
 
         String notice = ChatColors.color(Slimefun.getLocalization().getMessage("messages.above-enchant-limit"));

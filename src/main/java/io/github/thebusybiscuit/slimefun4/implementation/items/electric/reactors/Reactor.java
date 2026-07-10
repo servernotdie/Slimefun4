@@ -198,7 +198,14 @@ public abstract class Reactor extends AbstractEnergyProvider
 
         if (port != null) {
             menu.replaceExistingItem(
-                    INFO_SLOT, new CustomItemStack(Material.GREEN_WOOL, "&7Cổng truy cập", "", "&6Đã kết nối", "", "&7> Nhấp để xem cổng truy cập"));
+                    INFO_SLOT,
+                    new CustomItemStack(
+                            Material.GREEN_WOOL,
+                            "&7Cổng truy cập",
+                            "",
+                            "&6Đã kết nối",
+                            "",
+                            "&7> Nhấp để xem cổng truy cập"));
             menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                 port.open(p);
                 updateInventory(menu, b);
@@ -208,7 +215,14 @@ public abstract class Reactor extends AbstractEnergyProvider
         } else {
             menu.replaceExistingItem(
                     INFO_SLOT,
-                    new CustomItemStack(Material.RED_WOOL, "&7Cổng truy cập", "", "&cChưa kết nối", "", "&7Cổng phải được đặt ở", "&7ô thứ ba phía trên lò phản ứng!"));
+                    new CustomItemStack(
+                            Material.RED_WOOL,
+                            "&7Cổng truy cập",
+                            "",
+                            "&cChưa kết nối",
+                            "",
+                            "&7Cổng phải được đặt ở",
+                            "&7ô thứ ba phía trên lò phản ứng!"));
             menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                 updateInventory(menu, b);
                 menu.open(p);
@@ -242,17 +256,28 @@ public abstract class Reactor extends AbstractEnergyProvider
         if (this instanceof NuclearReactor) {
             preset.addItem(
                     1,
-                    new CustomItemStack(getFuelIcon(), "&7Nhiên liệu", "", "&fCó thể đặt nhiên liệu phóng xạ:", "&2Uranium &fhoặc &aNeptunium"),
+                    new CustomItemStack(
+                            getFuelIcon(),
+                            "&7Nhiên liệu",
+                            "",
+                            "&fCó thể đặt nhiên liệu phóng xạ:",
+                            "&2Uranium &fhoặc &aNeptunium"),
                     ChestMenuUtils.getEmptyClickHandler());
         } else if (this instanceof NetherStarReactor) {
             preset.addItem(
                     1,
-                    new CustomItemStack(getFuelIcon(), "&7Nhiên liệu", "", "&fCó thể đặt nhiên liệu:", "&bNgôi sao Nether"),
+                    new CustomItemStack(
+                            getFuelIcon(), "&7Nhiên liệu", "", "&fCó thể đặt nhiên liệu:", "&bNgôi sao Nether"),
                     ChestMenuUtils.getEmptyClickHandler());
         } else {
             preset.addItem(
                     1,
-                    new CustomItemStack(getFuelIcon(), "&7Nhiên liệu", "", "&fCó thể đặt nhiên liệu phóng xạ:", "&2Uranium &fhoặc &aNeptunium"),
+                    new CustomItemStack(
+                            getFuelIcon(),
+                            "&7Nhiên liệu",
+                            "",
+                            "&fCó thể đặt nhiên liệu phóng xạ:",
+                            "&2Uranium &fhoặc &aNeptunium"),
                     ChestMenuUtils.getEmptyClickHandler());
         }
 
@@ -265,13 +290,23 @@ public abstract class Reactor extends AbstractEnergyProvider
 
         if (needsCooling()) {
             preset.addItem(
-                    7, new CustomItemStack(getCoolant(), "&bChất làm mát", "", "&fĐặt chất làm mát vào đây", "&4Không có chất làm mát, lò phản ứng", "&4của bạn sẽ phát nổ ngay lập tức"));
+                    7,
+                    new CustomItemStack(
+                            getCoolant(),
+                            "&bChất làm mát",
+                            "",
+                            "&fĐặt chất làm mát vào đây",
+                            "&4Không có chất làm mát, lò phản ứng",
+                            "&4của bạn sẽ phát nổ ngay lập tức"));
         } else {
-            preset.addItem(7, new CustomItemStack(Material.BARRIER, "&bChất làm mát", "", "&fĐặt chất làm mát vào đây"));
+            preset.addItem(
+                    7, new CustomItemStack(Material.BARRIER, "&bChất làm mát", "", "&fĐặt chất làm mát vào đây"));
 
             for (int i : border_4) {
                 preset.addItem(
-                        i, new CustomItemStack(Material.BARRIER, "&cKhông cần chất làm mát"), ChestMenuUtils.getEmptyClickHandler());
+                        i,
+                        new CustomItemStack(Material.BARRIER, "&cKhông cần chất làm mát"),
+                        ChestMenuUtils.getEmptyClickHandler());
             }
         }
     }

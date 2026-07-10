@@ -127,7 +127,8 @@ public class ProgrammableAndroid extends SlimefunItem
                 var uniData = StorageCacheUtils.getUniversalBlock(menu.getUuid());
 
                 menu.replaceExistingItem(
-                        15, new CustomItemStack(HeadTexture.SCRIPT_START.getAsItemStack(), "&aKhởi động/Tiếp tục chạy"));
+                        15,
+                        new CustomItemStack(HeadTexture.SCRIPT_START.getAsItemStack(), "&aKhởi động/Tiếp tục chạy"));
                 menu.addMenuClickHandler(15, (p, slot, item, action) -> {
                     Slimefun.getLocalization().sendMessage(p, "android.started", true);
                     uniData.setData("paused", "false");
@@ -135,7 +136,8 @@ public class ProgrammableAndroid extends SlimefunItem
                     return false;
                 });
 
-                menu.replaceExistingItem(17, new CustomItemStack(HeadTexture.SCRIPT_PAUSE.getAsItemStack(), "&4Tạm dừng chạy"));
+                menu.replaceExistingItem(
+                        17, new CustomItemStack(HeadTexture.SCRIPT_PAUSE.getAsItemStack(), "&4Tạm dừng chạy"));
                 menu.addMenuClickHandler(17, (p, slot, item, action) -> {
                     uniData.setData("paused", "true");
                     Slimefun.getLocalization().sendMessage(p, "android.stopped", true);
@@ -145,7 +147,10 @@ public class ProgrammableAndroid extends SlimefunItem
                 menu.replaceExistingItem(
                         16,
                         new CustomItemStack(
-                                HeadTexture.ENERGY_REGULATOR.getAsItemStack(), "&bLõi bộ nhớ", "", "&8\u21E8 &7Nhấp để mở trình chỉnh sửa script"));
+                                HeadTexture.ENERGY_REGULATOR.getAsItemStack(),
+                                "&bLõi bộ nhớ",
+                                "",
+                                "&8\u21E8 &7Nhấp để mở trình chỉnh sửa script"));
                 menu.addMenuClickHandler(16, (p, slot, item, action) -> {
                     uniData.setData("paused", "true");
                     Slimefun.getLocalization().sendMessage(p, "android.stopped", true);
@@ -474,7 +479,11 @@ public class ProgrammableAndroid extends SlimefunItem
         menu.addItem(
                 48,
                 new CustomItemStack(
-                        HeadTexture.SCRIPT_UP.getAsItemStack(), "&eTải lên script", "", "&6Nhấp &7để tải lên script", "&7đang sử dụng lên máy chủ"));
+                        HeadTexture.SCRIPT_UP.getAsItemStack(),
+                        "&eTải lên script",
+                        "",
+                        "&6Nhấp &7để tải lên script",
+                        "&7đang sử dụng lên máy chủ"));
         menu.addMenuClickHandler(48, (pl, slot, item, action) -> {
             uploadScript(pl, uniData, page);
             return false;
@@ -492,7 +501,13 @@ public class ProgrammableAndroid extends SlimefunItem
             return false;
         });
 
-        menu.addItem(53, new CustomItemStack(HeadTexture.SCRIPT_LEFT.getAsItemStack(), "&6> Quay lại", "", "&7Quay lại bảng điều khiển robot"));
+        menu.addItem(
+                53,
+                new CustomItemStack(
+                        HeadTexture.SCRIPT_LEFT.getAsItemStack(),
+                        "&6> Quay lại",
+                        "",
+                        "&7Quay lại bảng điều khiển robot"));
         menu.addMenuClickHandler(53, (pl, slot, item, action) -> {
             openScriptEditor(pl, uniData);
             return false;
@@ -574,7 +589,13 @@ public class ProgrammableAndroid extends SlimefunItem
                 new ChestMenu(ChatColor.DARK_AQUA + Slimefun.getLocalization().getMessage(p, "android.scripts.editor"));
         menu.setEmptySlotsClickable(false);
 
-        menu.addItem(1, new CustomItemStack(HeadTexture.SCRIPT_FORWARD.getAsItemStack(), "&2> Chỉnh sửa script", "", "&aSửa đổi script hiện có của bạn"));
+        menu.addItem(
+                1,
+                new CustomItemStack(
+                        HeadTexture.SCRIPT_FORWARD.getAsItemStack(),
+                        "&2> Chỉnh sửa script",
+                        "",
+                        "&aSửa đổi script hiện có của bạn"));
         menu.addMenuClickHandler(1, (pl, slot, item, action) -> {
             String script = getScript(uniData);
             if (CommonPatterns.DASH.split(script).length <= MAX_SCRIPT_LENGTH) {
@@ -589,7 +610,11 @@ public class ProgrammableAndroid extends SlimefunItem
         menu.addItem(
                 3,
                 new CustomItemStack(
-                        HeadTexture.SCRIPT_NEW.getAsItemStack(), "&4> Tạo script mới", "", "&cXóa script đang sử dụng", "&cvà tạo một script trống hoàn toàn mới"));
+                        HeadTexture.SCRIPT_NEW.getAsItemStack(),
+                        "&4> Tạo script mới",
+                        "",
+                        "&cXóa script đang sử dụng",
+                        "&cvà tạo một script trống hoàn toàn mới"));
         menu.addMenuClickHandler(3, (pl, slot, item, action) -> {
             openScript(pl, uniData, DEFAULT_SCRIPT);
             return false;
@@ -608,7 +633,13 @@ public class ProgrammableAndroid extends SlimefunItem
             return false;
         });
 
-        menu.addItem(8, new CustomItemStack(HeadTexture.SCRIPT_LEFT.getAsItemStack(), "&6> Quay lại", "", "&7Quay lại bảng điều khiển robot"));
+        menu.addItem(
+                8,
+                new CustomItemStack(
+                        HeadTexture.SCRIPT_LEFT.getAsItemStack(),
+                        "&6> Quay lại",
+                        "",
+                        "&7Quay lại bảng điều khiển robot"));
         menu.addMenuClickHandler(8, (pl, slot, item, action) -> {
             UniversalMenu inv = uniData.getMenu();
             // Fixes #2937

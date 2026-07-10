@@ -98,7 +98,8 @@ class BlockDataCommand extends SubCommand {
                 }
 
                 blockData.removeData(key);
-                ChatUtils.sendMessage(player, "&aĐã xóa giá trị &b%key% &acủa khối này", msg -> msg.replace("%key%", key));
+                ChatUtils.sendMessage(
+                        player, "&aĐã xóa giá trị &b%key% &acủa khối này", msg -> msg.replace("%key%", key));
             }
             default -> {
                 Slimefun.getLocalization()

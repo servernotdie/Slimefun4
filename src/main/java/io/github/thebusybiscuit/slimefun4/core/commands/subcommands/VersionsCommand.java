@@ -94,10 +94,12 @@ class VersionsCommand extends SubCommand {
             // Declare that we are NOT OFFICIAL build so no support from upstream
             builder.append(Component.text("\nBản dịch bởi StarWishsama", Style.style(NamedTextColor.WHITE)))
                     .append(Component.text(
-                            "\nVui lòng không chụp ảnh thông tin phiên bản này lên Discord/Github để báo cáo lỗi\nƯu tiên báo cáo tại trang bản dịch\n", Style.style(NamedTextColor.RED)));
+                            "\nVui lòng không chụp ảnh thông tin phiên bản này lên Discord/Github để báo cáo lỗi\nƯu tiên báo cáo tại trang bản dịch\n",
+                            Style.style(NamedTextColor.RED)));
 
             if (Slimefun.getConfigManager().isBypassEnvironmentCheck()) {
-                builder.append(Component.text("\n\nĐã tắt kiểm tra tương thích môi trường", Style.style(NamedTextColor.RED)));
+                builder.append(
+                        Component.text("\n\nĐã tắt kiểm tra tương thích môi trường", Style.style(NamedTextColor.RED)));
             }
 
             if (Slimefun.getConfigManager().isBypassItemLengthCheck()) {
@@ -136,7 +138,8 @@ class VersionsCommand extends SubCommand {
         Collection<Plugin> addons = Slimefun.getInstalledAddons();
 
         if (addons.isEmpty()) {
-            builder.append(Component.text("Không cài đặt addon nào", NamedTextColor.GRAY).decorate(TextDecoration.ITALIC));
+            builder.append(Component.text("Không cài đặt addon nào", NamedTextColor.GRAY)
+                    .decorate(TextDecoration.ITALIC));
             return;
         }
 
@@ -175,7 +178,8 @@ class VersionsCommand extends SubCommand {
                         Component hoverComp = Component.text()
                                 .append(Component.text("Tác giả: ", NamedTextColor.YELLOW))
                                 .append(Component.text(authors, NamedTextColor.YELLOW))
-                                .append(Component.text("\n> Link báo cáo addon cung cấp không hợp lệ!", NamedTextColor.RED))
+                                .append(Component.text(
+                                        "\n> Link báo cáo addon cung cấp không hợp lệ!", NamedTextColor.RED))
                                 .build();
 
                         hoverEvent = HoverEvent.showText(hoverComp);
@@ -201,21 +205,27 @@ class VersionsCommand extends SubCommand {
                             clickEvent = ClickEvent.openUrl(uri.toString());
                         }
                         Component hoverComp = Component.text()
-                                .append(Component.text("Plugin này đã bị vô hiệu hóa.\nVui lòng kiểm tra console xem có lỗi không.", NamedTextColor.RED))
+                                .append(Component.text(
+                                        "Plugin này đã bị vô hiệu hóa.\nVui lòng kiểm tra console xem có lỗi không.",
+                                        NamedTextColor.RED))
                                 .append(Component.text("\n> Nhấp để mở trang báo cáo", NamedTextColor.DARK_RED))
                                 .build();
 
                         hoverEvent = HoverEvent.showText(hoverComp);
                     } catch (IllegalArgumentException e) {
                         Component hoverComp = Component.text()
-                                .append(Component.text("Plugin này đã bị vô hiệu hóa.\nVui lòng kiểm tra console xem có lỗi không.", NamedTextColor.RED))
-                                .append(Component.text("\n> Link báo cáo plugin cung cấp không hợp lệ", NamedTextColor.DARK_RED))
+                                .append(Component.text(
+                                        "Plugin này đã bị vô hiệu hóa.\nVui lòng kiểm tra console xem có lỗi không.",
+                                        NamedTextColor.RED))
+                                .append(Component.text(
+                                        "\n> Link báo cáo plugin cung cấp không hợp lệ", NamedTextColor.DARK_RED))
                                 .build();
 
                         hoverEvent = HoverEvent.showText(hoverComp);
                     }
                 } else {
-                    Component hoverComp = Component.text("Plugin đã bị vô hiệu hóa, vui lòng kiểm tra console xem có lỗi không.");
+                    Component hoverComp =
+                            Component.text("Plugin đã bị vô hiệu hóa, vui lòng kiểm tra console xem có lỗi không.");
                     hoverEvent = HoverEvent.showText(hoverComp);
                 }
             }

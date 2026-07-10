@@ -72,7 +72,10 @@ public class DataUtils {
             Debug.log(TestCase.BACKPACK, "Deserialized itemstack: " + result);
 
             if (result.getType().isAir()) {
-                Slimefun.logger().log(Level.SEVERE, "Giải mã vật phẩm từ cơ sở dữ liệu thất bại! Vật phẩm tương ứng không thể hiển thị.");
+                Slimefun.logger()
+                        .log(
+                                Level.SEVERE,
+                                "Giải mã vật phẩm từ cơ sở dữ liệu thất bại! Vật phẩm tương ứng không thể hiển thị.");
             }
 
             return result;

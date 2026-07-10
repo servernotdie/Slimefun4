@@ -51,8 +51,8 @@ class PerformanceSummary {
     public void send(@Nonnull PerformanceInspector sender) {
         sender.sendMessage("");
         sender.sendMessage(ChatColor.GREEN + "===== Trình Phân Tích Hiệu Suất Slimefun =====");
-        sender.sendMessage(
-                ChatColor.GOLD + "Tổng thời gian Tick: " + ChatColor.YELLOW + NumberUtils.getAsMillis(totalElapsedTime));
+        sender.sendMessage(ChatColor.GOLD + "Tổng thời gian Tick: " + ChatColor.YELLOW
+                + NumberUtils.getAsMillis(totalElapsedTime));
         sender.sendMessage(ChatColor.GOLD
                 + "Chu kỳ chạy Ticker: "
                 + ChatColor.YELLOW

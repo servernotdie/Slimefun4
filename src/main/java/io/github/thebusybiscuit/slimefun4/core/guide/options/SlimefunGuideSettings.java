@@ -194,7 +194,8 @@ public final class SlimefunGuideSettings {
                         "&7mới thực sự làm cho Slimefun tỏa sáng",
                         "&7Hãy xem chúng, có thể addon bạn đang tìm kiếm ở đó!",
                         "",
-                        "&7Máy chủ đã cài đặt addon: &b" + Slimefun.getInstalledAddons().size(),
+                        "&7Máy chủ đã cài đặt addon: &b"
+                                + Slimefun.getInstalledAddons().size(),
                         "",
                         "&7\u21E8 &eNhấp để xem các addon có sẵn cho Slimefun4"));
         // @formatter:on

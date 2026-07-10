@@ -52,11 +52,14 @@ class GuideModeOption implements SlimefunGuideOption<SlimefunGuideMode> {
             }
 
             ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(ChatColor.GRAY + "Kiểu sách hướng dẫn Slimefun: " + ChatColor.YELLOW + selectedMode.getDisplayName());
+            meta.setDisplayName(ChatColor.GRAY + "Kiểu sách hướng dẫn Slimefun: " + ChatColor.YELLOW
+                    + selectedMode.getDisplayName());
             List<String> lore = new ArrayList<>();
             lore.add("");
-            lore.add((selectedMode == SlimefunGuideMode.SURVIVAL_MODE ? ChatColor.GREEN : ChatColor.GRAY) + "Chế độ thường");
-            lore.add((selectedMode == SlimefunGuideMode.CHEAT_MODE ? ChatColor.GREEN : ChatColor.GRAY) + "Chế độ gian lận");
+            lore.add((selectedMode == SlimefunGuideMode.SURVIVAL_MODE ? ChatColor.GREEN : ChatColor.GRAY)
+                    + "Chế độ thường");
+            lore.add((selectedMode == SlimefunGuideMode.CHEAT_MODE ? ChatColor.GREEN : ChatColor.GRAY)
+                    + "Chế độ gian lận");
 
             lore.add("");
             lore.add(ChatColor.GRAY + "\u21E8 " + ChatColor.YELLOW + "Nhấp để thay đổi kiểu sách hướng dẫn");

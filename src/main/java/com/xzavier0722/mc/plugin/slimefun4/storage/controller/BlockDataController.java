@@ -873,8 +873,9 @@ public class BlockDataController extends ADataController {
         getData(key, true).forEach(data -> chunkKeys.add(data.get(FieldKey.CHUNK)));
 
         chunkKeys.forEach(cKey -> loadChunk(LocationUtils.toChunk(world, cKey), false, true));
-        logger.log(
-                Level.INFO, "Thế giới {0} tải dữ liệu hoàn tất, mất {1}ms", new Object[] {worldName, (System.currentTimeMillis() - start)});
+        logger.log(Level.INFO, "Thế giới {0} tải dữ liệu hoàn tất, mất {1}ms", new Object[] {
+            worldName, (System.currentTimeMillis() - start)
+        });
     }
 
     public void loadUniversalRecord() {
@@ -1113,7 +1114,11 @@ public class BlockDataController extends ADataController {
                         } catch (Exception ex) {
                             inv[slot] = null;
                             Slimefun.logger()
-                                    .log(Level.SEVERE, "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế [" + uniData.getKey() + ":" + slot + "]", ex);
+                                    .log(
+                                            Level.SEVERE,
+                                            "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế ["
+                                                    + uniData.getKey() + ":" + slot + "]",
+                                            ex);
                         }
                     }
 
@@ -1701,7 +1706,8 @@ public class BlockDataController extends ADataController {
                         Slimefun.logger()
                                 .log(
                                         Level.SEVERE,
-                                        "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế [" + universalData.getKey() + ":" + slot + "]",
+                                        "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế ["
+                                                + universalData.getKey() + ":" + slot + "]",
                                         ex);
                     }
                 }

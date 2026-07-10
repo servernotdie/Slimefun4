@@ -3264,8 +3264,8 @@ public final class SlimefunItems {
             "&8\u21E8 &e\u26A1 &74096 J có thể lưu trữ",
             "&8\u21E8 &e\u26A1 &74096 J/Wither");
 
-    public static final SlimefunItemStack TRASH_CAN =
-            new SlimefunItemStack("TRASH_CAN_BLOCK", HeadTexture.TRASH_CAN, "&3Thùng Rác", "", "&rCó thể bỏ vật phẩm không cần vào đây");
+    public static final SlimefunItemStack TRASH_CAN = new SlimefunItemStack(
+            "TRASH_CAN_BLOCK", HeadTexture.TRASH_CAN, "&3Thùng Rác", "", "&rCó thể bỏ vật phẩm không cần vào đây");
 
     public static final SlimefunItemStack ELYTRA_SCALE =
             new SlimefunItemStack("ELYTRA_SCALE", Material.FEATHER, "&bVảy Cánh Elytra");
@@ -3274,8 +3274,12 @@ public final class SlimefunItems {
     public static final SlimefunItemStack SOULBOUND_ELYTRA =
             new SlimefunItemStack("SOULBOUND_ELYTRA", Material.ELYTRA, "&cCánh Elytra (Ràng buộc linh hồn)");
 
-    public static final SlimefunItemStack MAGNESIUM_SALT =
-            new SlimefunItemStack("MAGNESIUM_SALT", Material.SUGAR, "&cMuối Magie", "", "&7Là loại nhiên liệu đặc biệt có thể sử dụng trong máy phát điện magie");
+    public static final SlimefunItemStack MAGNESIUM_SALT = new SlimefunItemStack(
+            "MAGNESIUM_SALT",
+            Material.SUGAR,
+            "&cMuối Magie",
+            "",
+            "&7Là loại nhiên liệu đặc biệt có thể sử dụng trong máy phát điện magie");
     public static final SlimefunItemStack MAGNESIUM_GENERATOR = new SlimefunItemStack(
             "MAGNESIUM_GENERATOR",
             HeadTexture.GENERATOR,
