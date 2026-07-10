@@ -145,7 +145,11 @@ public abstract class SqlCommonAdapter<T extends ISqlCommonConfig> implements ID
         }
 
         try (var conn = ds.getConnection()) {
-            Slimefun.logger().log(Level.INFO, "Đang cập nhật cơ sở dữ liệu lên phiên bản " + patch.getVersion() + ", có thể mất một chút thời gian...");
+            Slimefun.logger()
+                    .log(
+                            Level.INFO,
+                            "Đang cập nhật cơ sở dữ liệu lên phiên bản " + patch.getVersion()
+                                    + ", có thể mất một chút thời gian...");
             var stmt = conn.createStatement();
             patch.updateVersion(stmt, config);
             patch.patch(stmt, config);

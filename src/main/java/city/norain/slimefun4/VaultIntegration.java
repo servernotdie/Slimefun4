@@ -22,10 +22,16 @@ public class VaultIntegration {
                 econ = rsp.getProvider();
                 plugin.getLogger().log(Level.INFO, "Kết nối Vault thành công");
             } else {
-                plugin.getLogger().log(Level.WARNING, "Không thể kết nối Vault. Nếu bạn là người dùng CMI, vui lòng bật hệ thống kinh tế trong file cấu hình");
+                plugin.getLogger()
+                        .log(
+                                Level.WARNING,
+                                "Không thể kết nối Vault. Nếu bạn là người dùng CMI, vui lòng bật hệ thống kinh tế trong file cấu hình");
             }
         } else {
-            plugin.getLogger().log(Level.WARNING, "Server chưa cài đặt Vault, tính năng mở khóa nghiên cứu bằng tiền tệ sẽ không khả dụng");
+            plugin.getLogger()
+                    .log(
+                            Level.WARNING,
+                            "Server chưa cài đặt Vault, tính năng mở khóa nghiên cứu bằng tiền tệ sẽ không khả dụng");
         }
     }
 

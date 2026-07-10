@@ -144,13 +144,19 @@ public abstract class ADataController {
 
             while (pendingTask > 0) {
                 var doneTaskPercent = String.format("%.1f", (totalTask - pendingTask) / totalTask * 100);
-                logger.log(Level.INFO, "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)", new Object[] {pendingTask, doneTaskPercent});
+                logger.log(
+                        Level.INFO,
+                        "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)",
+                        new Object[] {pendingTask, doneTaskPercent});
                 TimeUnit.SECONDS.sleep(1);
                 var currentTask = scheduledWriteTasks.size();
 
                 if (pendingTask == currentTask) {
                     if (timer.peek() / 1000 > 10) {
-                        Slimefun.logger().log(Level.WARNING, "Phát hiện tác vụ lưu mất nhiều thời gian, vui lòng gửi stack trace thread bên dưới HOÀN CHỈNH cho nhà phát triển để xác định vấn đề: ");
+                        Slimefun.logger()
+                                .log(
+                                        Level.WARNING,
+                                        "Phát hiện tác vụ lưu mất nhiều thời gian, vui lòng gửi stack trace thread bên dưới HOÀN CHỈNH cho nhà phát triển để xác định vấn đề: ");
                         Slimefun.logger()
                                 .log(Level.WARNING, Slimefun.getProfiler().snapshotThreads());
                     }

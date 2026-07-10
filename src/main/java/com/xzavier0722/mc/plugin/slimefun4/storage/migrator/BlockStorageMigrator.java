@@ -116,7 +116,8 @@ public class BlockStorageMigrator implements IMigrator {
             Slimefun.logger().log(Level.INFO, "Đang di chuyển dữ liệu khối: " + id + "(" + ++count + "/" + total + ")");
 
             if (SlimefunItem.getById(id) == null) {
-                Slimefun.logger().log(Level.WARNING, "Phát hiện ID khối không tồn tại (" + id + "), đã bỏ qua di chuyển.");
+                Slimefun.logger()
+                        .log(Level.WARNING, "Phát hiện ID khối không tồn tại (" + id + "), đã bỏ qua di chuyển.");
                 continue;
             }
 

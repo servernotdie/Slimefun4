@@ -79,7 +79,10 @@ class EnvironmentChecker {
                 .runLater(
                         () -> {
                             if (Bukkit.getPluginManager().getPlugin("SlimeGlue") == null) {
-                                sf.getLogger().log(Level.WARNING, "Phát hiện chưa cài đặt SlimeGlue (keo nhầy), bạn sẽ thiếu các kiểm tra bảo vệ bổ sung cho một số plugin!");
+                                sf.getLogger()
+                                        .log(
+                                                Level.WARNING,
+                                                "Phát hiện chưa cài đặt SlimeGlue (keo nhầy), bạn sẽ thiếu các kiểm tra bảo vệ bổ sung cho một số plugin!");
                                 sf.getLogger().log(Level.WARNING, "Tải về: https://github.com/Xzavier0722/SlimeGlue");
                             }
                         },

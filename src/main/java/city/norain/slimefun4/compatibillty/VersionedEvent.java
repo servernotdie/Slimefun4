@@ -37,7 +37,11 @@ public class VersionedEvent {
                 GET_CLICKED_INVENTORY.setAccessible(true);
 
             } catch (NoSuchMethodException | ClassNotFoundException e) {
-                Slimefun.logger().log(Level.WARNING, "Không thể khởi tạo module tương thích phiên bản event, một số tính năng có thể không hoạt động bình thường", e);
+                Slimefun.logger()
+                        .log(
+                                Level.WARNING,
+                                "Không thể khởi tạo module tương thích phiên bản event, một số tính năng có thể không hoạt động bình thường",
+                                e);
             }
         }
     }

@@ -68,7 +68,11 @@ public class PlayerProfileMigrator implements IMigrator {
                 var p = Bukkit.getOfflinePlayer(uuid);
 
                 if (!p.hasPlayedBefore()) {
-                    Slimefun.logger().log(Level.INFO, "Phát hiện dữ liệu của người chơi chưa từng tham gia server, đã tự động bỏ qua: " + uuid);
+                    Slimefun.logger()
+                            .log(
+                                    Level.INFO,
+                                    "Phát hiện dữ liệu của người chơi chưa từng tham gia server, đã tự động bỏ qua: "
+                                            + uuid);
                     total--;
                     continue;
                 }
@@ -76,21 +80,30 @@ public class PlayerProfileMigrator implements IMigrator {
                 migratePlayerProfile(p);
 
                 migratedCount++;
-                Slimefun.logger().log(Level.INFO, "Di chuyển dữ liệu người chơi thành công: " + p.getName() + "(" + migratedCount + "/" + total + ")");
+                Slimefun.logger()
+                        .log(
+                                Level.INFO,
+                                "Di chuyển dữ liệu người chơi thành công: " + p.getName() + "(" + migratedCount + "/"
+                                        + total + ")");
             } catch (IllegalArgumentException ignored) {
                 result = MigrateStatus.FAILED;
-                Slimefun.logger().log(Level.WARNING, "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
+                Slimefun.logger()
+                        .log(Level.WARNING, "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
             }
         }
 
         if (MigratorUtil.createDirBackup(playerFolder)) {
             Slimefun.logger()
-                    .log(Level.INFO, "Di chuyển thành công {0} dữ liệu người chơi! Dữ liệu trước khi di chuyển đã được lưu trong ./data-storage/Slimefun/old_data", migratedCount);
+                    .log(
+                            Level.INFO,
+                            "Di chuyển thành công {0} dữ liệu người chơi! Dữ liệu trước khi di chuyển đã được lưu trong ./data-storage/Slimefun/old_data",
+                            migratedCount);
             try {
                 Files.deleteIfExists(playerFolder.toPath());
             } catch (IOException e) {
                 result = MigrateStatus.FAILED;
-                Slimefun.logger().log(Level.WARNING, "Xóa thư mục dữ liệu người chơi cũ thất bại, vui lòng xóa thủ công", e);
+                Slimefun.logger()
+                        .log(Level.WARNING, "Xóa thư mục dữ liệu người chơi cũ thất bại, vui lòng xóa thủ công", e);
             }
         }
 
