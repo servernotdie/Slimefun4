@@ -144,10 +144,9 @@ public abstract class ADataController {
 
             while (pendingTask > 0) {
                 var doneTaskPercent = String.format("%.1f", (totalTask - pendingTask) / totalTask * 100);
-                logger.log(
-                        Level.INFO,
-                        "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)",
-                        new Object[] {pendingTask, doneTaskPercent});
+                logger.log(Level.INFO, "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)", new Object[] {
+                    pendingTask, doneTaskPercent
+                });
                 TimeUnit.SECONDS.sleep(1);
                 var currentTask = scheduledWriteTasks.size();
 

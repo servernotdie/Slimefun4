@@ -88,7 +88,9 @@ public class PlayerProfileMigrator implements IMigrator {
             } catch (IllegalArgumentException ignored) {
                 result = MigrateStatus.FAILED;
                 Slimefun.logger()
-                        .log(Level.WARNING, "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
+                        .log(
+                                Level.WARNING,
+                                "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
             }
         }
 
