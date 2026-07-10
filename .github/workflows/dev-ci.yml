@@ -23,14 +23,14 @@ jobs:
           java-package: jdk
           architecture: x64
           cache: gradle
-      - name: Publish snapshots
-        run: |
-          echo "::add-mask::$MAVEN_ACCOUNT"
-          echo "::add-mask::$MAVEN_PASSWORD"
-          ./gradlew publish -Pversioning.disable --no-daemon
-        env:
-          MAVEN_ACCOUNT: '${{ secrets.MAVEN_ACCOUNT }}'
-          MAVEN_PASSWORD: '${{ secrets.MAVEN_PASSWORD }}'
+      # - name: Publish snapshots
+      #   run: |
+      #     echo "::add-mask::$MAVEN_ACCOUNT"
+      #     echo "::add-mask::$MAVEN_PASSWORD"
+      #     ./gradlew publish -Pversioning.disable --no-daemon
+      #   env:
+      #     MAVEN_ACCOUNT: '${{ secrets.MAVEN_ACCOUNT }}'
+      #     MAVEN_PASSWORD: '${{ secrets.MAVEN_PASSWORD }}'
       - name: Environment Setup
         id: env-setup
         run: |

@@ -1,8 +1,8 @@
-<!-- 在做出贡献前, 请你先阅读我们的 [代码与 commit 规范](https://github.com/SlimefunGuguProject/Slimefun4/blob/master/CONTRIBUTING.md) -->
+<!-- Trước khi đóng góp, vui lòng đọc [quy chuẩn code và commit](https://github.com/SlimefunGuguProject/Slimefun4/blob/master/CONTRIBUTING.md) của chúng tôi -->
 
-## 简介
-<!-- 大致解释一下这个提交更改修复/优化/新增了什么 -->
+## Giới thiệu
+<!-- Giải thích tóm tắt về commit này sửa/tối ưu/thêm mới điều gì -->
 
-## 相关的 Issues (没有可不填)
-<!-- 如果这个提交更改解决了 Issue 中的问题, 请手动标记对应的 Issues -->
-<!-- 例如: "Fixes #000" -->
+## Issues liên quan (không có có thể bỏ qua)
+<!-- Nếu commit này giải quyết vấn đề trong Issue, vui lòng đánh dấu Issues tương ứng -->
+<!-- Ví dụ: "Fixes #000" -->
