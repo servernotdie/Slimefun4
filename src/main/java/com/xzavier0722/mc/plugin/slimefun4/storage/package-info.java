@@ -1,4 +1,4 @@
 /**
- * Slimefun 的数据库存储系统实现与 API
+ * Triển khai hệ thống lưu trữ cơ sở dữ liệu và API của Slimefun
  */
 package com.xzavier0722.mc.plugin.slimefun4.storage;

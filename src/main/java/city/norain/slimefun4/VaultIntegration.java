@@ -8,7 +8,7 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.OfflinePlayer;
 
 /**
- * Vault 集成类, 用于处理游戏币相关的操作.
+ * Lớp tích hợp Vault, dùng để xử lý các thao tác liên quan đến tiền tệ trong game.
  *
  * @author StarWishsama
  */
@@ -20,12 +20,12 @@ public class VaultIntegration {
             var rsp = plugin.getServer().getServicesManager().getRegistration(Economy.class);
             if (rsp != null) {
                 econ = rsp.getProvider();
-                plugin.getLogger().log(Level.INFO, "成功接入 Vault");
+                plugin.getLogger().log(Level.INFO, "Kết nối Vault thành công");
             } else {
-                plugin.getLogger().log(Level.WARNING, "无法接入 Vault. 如果你是 CMI 用户, 请至配置文件启用经济系统");
+                plugin.getLogger().log(Level.WARNING, "Không thể kết nối Vault. Nếu bạn là người dùng CMI, vui lòng bật hệ thống kinh tế trong file cấu hình");
             }
         } else {
-            plugin.getLogger().log(Level.WARNING, "服务端未安装 Vault, 游戏币解锁研究特性将无法使用");
+            plugin.getLogger().log(Level.WARNING, "Server chưa cài đặt Vault, tính năng mở khóa nghiên cứu bằng tiền tệ sẽ không khả dụng");
         }
     }
 

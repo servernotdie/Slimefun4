@@ -48,9 +48,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 /**
- * 方块数据控制器
+ * Bộ điều khiển dữ liệu khối
  * <p>
- * 用于管理区块中的 Slimefun 方块数据
+ * Dùng để quản lý dữ liệu khối Slimefun trong chunk
  * <p>
  * {@link SlimefunBlockData}
  * {@link SlimefunUniversalData}
@@ -60,42 +60,42 @@ import org.bukkit.plugin.Plugin;
  */
 public class BlockDataController extends ADataController {
     /**
-     * 延迟写数据任务队列
+     * Hàng đợi tác vụ ghi dữ liệu trì hoãn
      */
     private final Map<LinkedKey, DelayedTask> delayedWriteTasks;
     /**
-     * 区块数据缓存
+     * Cache dữ liệu chunk
      */
     private final Map<String, SlimefunChunkData> loadedChunk;
     /**
-     * 通用数据缓存
+     * Cache dữ liệu chung
      */
     private final Map<UUID, SlimefunUniversalData> loadedUniversalData;
     /**
-     * 方块物品栏快照
+     * Snapshot kho đồ khối
      */
     private final Map<String, InvSnapshot> invSnapshots;
     /**
-     * 全局控制器加载数据锁
+     * Lock tải dữ liệu controller toàn cục
      *
      * {@link ScopedLock}
      */
     private final ScopedLock lock;
     /**
-     * 延时加载模式标志
+     * Cờ chế độ lưu trì hoãn
      */
     private boolean enableDelayedSaving = false;
 
     private int delayedSecond = 0;
     private WrappedTask looperTask;
     /**
-     * 区块数据加载模式
+     * Chế độ tải dữ liệu chunk
      * {@link ChunkDataLoadMode}
      */
     private ChunkDataLoadMode chunkDataLoadMode;
 
     /**
-     * 初始化加载中标志
+     * Cờ đang tải khởi tạo
      */
     BlockDataController() {
         super(DataType.BLOCK_STORAGE);

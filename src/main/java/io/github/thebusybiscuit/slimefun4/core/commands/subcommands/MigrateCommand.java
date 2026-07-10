@@ -31,20 +31,20 @@ public class MigrateCommand extends SubCommand {
                 Slimefun.getFoliaLib().getScheduler().runAsync(wrappedTask -> {
                     try {
                         var status = PlayerProfileMigrator.getInstance().migrateData();
-                        sendMigrateStatus("玩家数据", sender, status);
+                        sendMigrateStatus("Dữ liệu người chơi", sender, status);
                     } catch (Exception e) {
                         Slimefun.getLocalization().sendMessage(sender, "commands.migrate.failed", true);
-                        plugin.getLogger().log(Level.WARNING, "迁移数据时出现意外", e);
+                        plugin.getLogger().log(Level.WARNING, "Gặp lỗi bất ngờ khi di chuyển dữ liệu", e);
                     }
                 });
 
                 Slimefun.getFoliaLib().getScheduler().runAsync(wrappedTask -> {
                     try {
                         var status = BlockStorageMigrator.getInstance().migrateData();
-                        sendMigrateStatus("方块数据", sender, status);
+                        sendMigrateStatus("Dữ liệu khối", sender, status);
                     } catch (Exception e) {
                         Slimefun.getLocalization().sendMessage(sender, "commands.migrate.failed", true);
-                        plugin.getLogger().log(Level.WARNING, "迁移数据时出现意外", e);
+                        plugin.getLogger().log(Level.WARNING, "Gặp lỗi bất ngờ khi di chuyển dữ liệu", e);
                     }
                 });
             } else {

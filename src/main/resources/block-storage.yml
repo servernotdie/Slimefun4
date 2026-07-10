@@ -1,89 +1,89 @@
 #########################################################################
-# 数据库类型, 可选的有 SQLITE, MYSQL, POSTGRESQL
-# 注意: 在切换数据库类型时, 我们并不会自动帮你迁移数据 :)
+# Loại cơ sở dữ liệu, có thể chọn SQLITE, MYSQL, POSTGRESQL
+# Lưu ý: Khi chuyển loại cơ sở dữ liệu, chúng tôi sẽ không tự động di chuyển dữ liệu cho bạn :)
 storageType: SQLITE
 
-# 使用Base64编码数据字段
+# Mã hóa Base64 cho trường dữ liệu
 base64EncodeVal: true
 
-# 区块数据加载模式
-# 可选的有:
-# - LOAD_WITH_CHUNK: 当本次开服期间内区块首次加载时加载粘液区块数据
-# - LOAD_ON_STARTUP: 当开服时一次性加载全部区块数据，可能会导致开服时间较长
-# 默认情况下推荐使用 LOAD_WITH_CHUNK 以节省不必要的内存开销
-# 如发现加载区块时发生明显卡顿，请更改为 LOAD_ON_STARTUP
+# Chế độ tải dữ liệu chunk
+# Có thể chọn:
+# - LOAD_WITH_CHUNK: Tải dữ liệu chunk Slimefun khi chunk được tải lần đầu trong phiên server này
+# - LOAD_ON_STARTUP: Tải tất cả dữ liệu chunk một lần khi khởi động server, có thể làm tăng thời gian khởi động
+# Mặc định khuyên dùng LOAD_WITH_CHUNK để tiết kiệm bộ nhớ không cần thiết
+# Nếu phát hiện lag rõ rệt khi tải chunk, hãy đổi sang LOAD_ON_STARTUP
 dataLoadMode: LOAD_WITH_CHUNK
 #########################################################################
 
 #########################################################################
-# 数据库读写线程数
-# 当使用 MySQL 时，建议将最大连接数设置为 读取 + 写入线程数，且读取线程数量应当大于写入线程。
-# 注意: 线程数并非越多越好，过多反而会导致性能下降。请分配合适的数量。
+# Số luồng đọc ghi cơ sở dữ liệu
+# Khi dùng MySQL, nên đặt số kết nối tối đa = số luồng đọc + ghi, và số luồng đọc nên lớn hơn luồng ghi.
+# Lưu ý: Số luồng không phải càng nhiều càng tốt, quá nhiều có thể làm giảm hiệu suất. Hãy phân bổ số lượng phù hợp.
 
-# 读取线程数
+# Số luồng đọc
 readExecutorThread: 10
-# 写入线程数
+# Số luồng ghi
 writeExecutorThread: 5
 #########################################################################
 
 #########################################################################
-# 延迟写入功能
-# 本功能用于防止某些数据被频繁写入导致队列中存在大量无意义的写入请求。
-# 启用本功能后，当数据发生更改后会等待 (delayedSecond) 秒，如无其它改动再写入数据库。
-# 强制保存时会将等待中的数据直接加入写入队列。
+# Tính năng ghi trì hoãn
+# Tính năng này ngăn dữ liệu bị ghi liên tục gây ra nhiều yêu cầu ghi vô nghĩa trong hàng đợi.
+# Khi bật, sau khi dữ liệu thay đổi sẽ đợi (delayedSecond) giây, nếu không có thay đổi khác mới ghi vào cơ sở dữ liệu.
+# Khi lưu cưỡng chế sẽ đưa dữ liệu đang đợi trực tiếp vào hàng đợi ghi.
 delayedWriting:
-  # 是否启用延迟写入
+  # Có bật ghi trì hoãn không
   enable: true
-  # 延迟写入秒数
+  # Số giây trì hoãn ghi
   delayedSecond: 5
-  # 强制保存间隔（单位：秒）
+  # Khoảng thời gian lưu cưỡng chế (đơn vị: giây)
   forceSavePeriod: 300
 #########################################################################
 
 #########################################################################
-# Sqlite 配置
+# Cấu hình Sqlite
 sqlite:
   maxConnection: 5
 #########################################################################
 
 #########################################################################
-# MySQL 配置
+# Cấu hình MySQL
 mysql:
-  # 数据库连接地址
+  # Địa chỉ kết nối cơ sở dữ liệu
   host: "127.0.0.1"
-  # 数据库连接端口
+  # Cổng kết nối cơ sở dữ liệu
   port: 3306
-  # 数据库名
+  # Tên cơ sở dữ liệu
   database: ""
-  # 表前缀
+  # Tiền tố bảng
   tablePrefix: ""
-  # 连接用户名
+  # Tên người dùng kết nối
   user: ""
-  # 连接用户密码
+  # Mật khẩu người dùng kết nối
   password: ""
-  # 是否使用加密连接
+  # Có sử dụng kết nối mã hóa không
   useSSL: false
-  # 最大连接数
+  # Số kết nối tối đa
   maxConnection: 15
 #########################################################################
 
 #########################################################################
-# PostgreSQL 配置
+# Cấu hình PostgreSQL
 postgresql:
-  # 数据库连接地址
+  # Địa chỉ kết nối cơ sở dữ liệu
   host: "127.0.0.1"
-  # 数据库连接端口
+  # Cổng kết nối cơ sở dữ liệu
   port: 3306
-  # 数据库名
+  # Tên cơ sở dữ liệu
   database: ""
-  # 表前缀
+  # Tiền tố bảng
   tablePrefix: ""
-  # 连接用户名
+  # Tên người dùng kết nối
   user: ""
-  # 连接用户密码
+  # Mật khẩu người dùng kết nối
   password: ""
-  # 是否使用加密连接
+  # Có sử dụng kết nối mã hóa không
   useSSL: false
-  # 最大连接数
+  # Số kết nối tối đa
   maxConnection: 15
 #########################################################################

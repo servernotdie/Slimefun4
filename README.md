@@ -1,20 +1,20 @@
 # Slimefun4 on Folia
-尝试让Slimefun4在Folia上运行
+Thử nghiệm chạy Slimefun4 trên Folia
 
-此项目基于[Slimefun4汉化版dev分支](https://github.com/SlimefunGuguProject/Slimefun4/tree/dev)修改，仅加入对folia平台的运行支持
+Dự án này được sửa đổi dựa trên [nhánh dev của Slimefun4 bản Hán hóa](https://github.com/SlimefunGuguProject/Slimefun4/tree/dev), chỉ thêm hỗ trợ chạy trên nền tảng Folia
 
-**提交issue请确认问题仅在此修改版存在**
+**Khi gửi issue vui lòng xác nhận vấn đề chỉ tồn tại trong phiên bản sửa đổi này**
 
-**请不要将仅在此修改版本出现的问题向[汉化版Slimefun官方](https://github.com/SlimefunGuguProject/Slimefun4)提交issue**
+**Vui lòng KHÔNG gửi issue các vấn đề chỉ xuất hiện trong phiên bản sửa đổi này đến [Slimefun chính thức bản Hán hóa](https://github.com/SlimefunGuguProject/Slimefun4)**
 
-## 获取构建
-请移步[Actions](https://github.com/Craft233MC/Slimefun4/actions)
+## Lấy bản build
+Vui lòng truy cập [Actions](https://github.com/Craft233MC/Slimefun4/actions)
 
-## 提交问题
-提交新问题任选一
+## Gửi vấn đề
+Gửi vấn đề mới tùy chọn một trong các cách sau
 - [Issues](https://github.com/Craft233MC/Slimefun4/issues)
 - [Telegram](https://t.me/neokoni)
 - [me@neokoni.ink](mailto://me@neokoni.ink)
 
-## 自行构建指南
-参考[workflows文件](https://github.com/Craft233MC/Slimefun4/blob/dev/.github/workflows/dev-ci.yml)
+## Hướng dẫn build tự xây dựng
+Tham khảo [file workflows](https://github.com/Craft233MC/Slimefun4/blob/dev/.github/workflows/dev-ci.yml)

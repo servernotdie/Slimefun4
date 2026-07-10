@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface IDataSourceAdapter<T> {
     /**
-     * 当前数据库架构版本号
-     * 在数据库结构有变动时更新
+     * Số phiên bản schema cơ sở dữ liệu hiện tại
+     * Cập nhật khi có thay đổi cấu trúc cơ sở dữ liệu
      */
     int DATABASE_VERSION = 2;
 

@@ -1,47 +1,47 @@
-# 贡献指南
+# Hướng dẫn đóng góp
 
-在对 Slimefun 汉化版进行代码前，必须先阅读此贡献指南。
+Trước khi đóng góp code cho Slimefun bản Hán hóa, bắt buộc phải đọc hướng dẫn đóng góp này.
 
-# 设置环境
+# Thiết lập môi trường
 
-我们提供了一个自动化格式检查系统，请使用 `./gradlew spotlessApply` 进行初始化。
+Chúng tôi cung cấp hệ thống kiểm tra định dạng tự động, vui lòng sử dụng `./gradlew spotlessApply` để khởi tạo.
 
-本项目已经提供 `.editorconfig` 用于控制代码样式。如果你有自己的代码样式风格，请在对本仓库进行贡献前切换为当前仓库的风格配置。
+Dự án đã cung cấp `.editorconfig` để kiểm soát phong cách code. Nếu bạn có phong cách code riêng, vui lòng chuyển sang cấu hình phong cách của repo hiện tại trước khi đóng góp.
 
-# 设置分支
+# Thiết lập nhánh
 
-在开始你的贡献之前，请确认你的代码是基于 `dev` 分支进行的。
+Trước khi bắt đầu đóng góp, vui lòng xác nhận code của bạn dựa trên nhánh `dev`.
 
-# 提交信息规范
+# Quy chuẩn thông điệp commit
 
-本项目**强制使用** [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) 的提交信息规范。
+Dự án này **bắt buộc sử dụng** quy chuẩn thông điệp commit [Conventional Commits](https://www.conventionalcommits.org/zh-hans/v1.0.0/).
 
-> 简单来说, 你的提交信息需要包含以下内容:
+> Nói đơn giản, thông điệp commit của bạn cần bao gồm nội dung sau:
 > 
-> <类型>[可选 范围]: <描述>
+> <loại>[phạm vi tùy chọn]: <mô tả>
 > 
-> 例如一个添加了新功能的提交应为 feat(item): add new item to Slimefun
+> Ví dụ một commit thêm chức năng mới nên là feat(item): add new item to Slimefun
 
-如果你提交的代码中解决或处理了 Issue 中的问题，请你在主提交消息外显式声明。
+Nếu code bạn commit giải quyết hoặc xử lý vấn đề trong Issue, vui lòng khai báo rõ ràng ngoài thông điệp commit chính.
 
-> 如 resolves #114514, fix #114514 等
+> Như resolves #114514, fix #114514, v.v.
 
-如果是修复请在主提交消息上声明，不必重复声明。
+Nếu là sửa lỗi vui lòng khai báo trong thông điệp commit chính, không cần khai báo lặp lại.
 
-我们支持的类型前缀正则如下：`(feat(ure)?|fix|docs|style|refactor|ci|chore|perf|build|test|revert|trans)`
+Chúng tôi hỗ trợ regex tiền tố loại sau: `(feat(ure)?|fix|docs|style|refactor|ci|chore|perf|build|test|revert|trans)`
 
-另外的, 如果是与翻译相关的提交，类型应为 trans。
+Ngoài ra, nếu là commit liên quan đến dịch thuật, loại nên là trans.
 
-# 代码规范
+# Quy chuẩn code
 
-**!! 本项目使用 4 空格缩进 !!**
+**!! Dự án này sử dụng thụt lề 4 khoảng trắng !!**
 
-请不要过度缩减代码长度, 空格少了 Slimefun 也不会因此跑得更快.
+Vui lòng không rút ngắn độ dài code quá mức, giảm khoảng trắng cũng không làm Slimefun chạy nhanh hơn.
 
-我们使用了 Spotless 作为代码格式化工具，在提交前你**必须**使用 `./gradlew spotlessCheck spotlessApply` 来自动格式化你的代码，否则将会被格式检查器拦截 PR。
+Chúng tôi sử dụng Spotless làm công cụ định dạng code, trước khi commit bạn **bắt buộc** sử dụng `./gradlew spotlessCheck spotlessApply` để tự động định dạng code, nếu không sẽ bị trình kiểm tra định dạng chặn PR.
 
-# 提交代码类型
+# Loại code commit
 
-你提交的代码可以是修复、新增内容和 API。
+Code bạn commit có thể là sửa lỗi, thêm nội dung mới và API.
 
-下游代码现在支持提交 API 相关代码，开发者们可以通过 jitpack 依赖汉化版的 Slimefun。
+Code downstream hiện hỗ trợ commit code liên quan API, các nhà phát triển có thể phụ thuộc Slimefun bản Hán hóa thông qua jitpack.

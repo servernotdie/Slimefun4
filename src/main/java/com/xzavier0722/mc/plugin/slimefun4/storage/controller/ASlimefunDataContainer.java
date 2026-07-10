@@ -8,9 +8,9 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import lombok.Getter;
 
 /**
- * Slimefun 数据容器的抽象类.
+ * Lớp trừu tượng của data container Slimefun.
  * <p>
- * 该类用于存储 Slimefun 特有的数据容器, 包括 Slimefun ID 和是否待删除的标志.
+ * Lớp này dùng để lưu trữ data container riêng của Slimefun, bao gồm Slimefun ID và cờ đánh dấu chờ xóa.
  *
  * @author NoRainCity
  *

@@ -38,7 +38,7 @@ public class CrafterSmartPort extends SlimefunItem {
     public CrafterSmartPort(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
 
-        new BlockMenuPreset("CRAFTER_SMART_PORT", "&a合成机智能交互接口") {
+        new BlockMenuPreset("CRAFTER_SMART_PORT", "&aGiao diện tương tác thông minh máy chế tạo") {
             @Override
             public void init() {
                 addItem(6, getCountItem(), (p, slot, item, action) -> false);
@@ -72,7 +72,6 @@ public class CrafterSmartPort extends SlimefunItem {
 
             @Override
             public void newInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
-                // Resume the ingredient count
                 String countStr = StorageCacheUtils.getData(b.getLocation(), "ingredientCount");
                 if (countStr != null) {
                     menu.getItemInSlot(6).setAmount(Math.max(1, Integer.parseInt(countStr)));
@@ -91,13 +90,12 @@ public class CrafterSmartPort extends SlimefunItem {
                 ItemStackWrapper wrapper = ItemStackWrapper.wrap(item);
                 int amountLimit = INPUT_SLOTS.length / menu.getItemInSlot(6).getAmount() * wrapper.getMaxStackSize();
 
-                // Check the current amount
+                // Kiểm tra số lượng hiện tại
                 int itemAmount = wrapper.getAmount();
                 for (int slot : INPUT_SLOTS) {
                     ItemStack itemInSlot = menu.getItemInSlot(slot);
                     if (SlimefunUtils.isItemSimilar(itemInSlot, wrapper, true, false)
                             && (itemAmount += itemInSlot.getAmount()) > amountLimit) {
-                        // Amount has reached the limited, just return.
                         return new int[0];
                     }
                 }
@@ -134,7 +132,7 @@ public class CrafterSmartPort extends SlimefunItem {
     private ItemStack getCountItem() {
         ItemStack countItem = new ItemStack(Material.CLOCK);
         ItemMeta im = countItem.getItemMeta();
-        im.setDisplayName(ChatColor.BLUE + "合成表的原料数量");
+        im.setDisplayName(ChatColor.BLUE + "Số lượng nguyên liệu trong công thức");
         countItem.setItemMeta(im);
         return countItem;
     }

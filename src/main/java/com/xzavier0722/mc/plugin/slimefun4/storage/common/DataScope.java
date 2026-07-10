@@ -3,7 +3,7 @@ package com.xzavier0722.mc.plugin.slimefun4.storage.common;
 import lombok.Getter;
 
 /**
- * {@link DataScope} 是 Slimefun 数据库表中数据的作用域定义
+ * {@link DataScope} là định nghĩa phạm vi dữ liệu trong các bảng cơ sở dữ liệu Slimefun
  */
 public enum DataScope {
     NONE,
@@ -21,7 +21,7 @@ public enum DataScope {
     TABLE_METADATA;
 
     /**
-     * 标记当前 {@link DataScope} 的主键字段
+     * Đánh dấu các trường khóa chính của {@link DataScope} hiện tại
      */
     @Getter
     private final FieldKey[] primaryKeys;

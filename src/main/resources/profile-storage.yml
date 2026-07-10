@@ -1,69 +1,69 @@
 #########################################################################
-# 数据库类型, 可选的有 SQLITE, MYSQL, POSTGRESQL
-# 注意: 在切换数据库类型时, 我们并不会自动帮你迁移数据 :)
-# 注意: 当使用MYSQL跨服时，请务必将 config.yml 中的 allow-open-when-owner-offline 设置为 false
-#      以防止玩家在不同服务器打开同一个背包刷物品。
+# Loại cơ sở dữ liệu, có thể chọn SQLITE, MYSQL, POSTGRESQL
+# Lưu ý: Khi chuyển loại cơ sở dữ liệu, chúng tôi sẽ không tự động di chuyển dữ liệu cho bạn :)
+# Lưu ý: Khi dùng MYSQL đa server, nhất định phải đặt allow-open-when-owner-offline trong config.yml thành false
+#      để tránh người chơi mở cùng một ba lô trên các server khác nhau để nhân vật phẩm.
 storageType: SQLITE
 
-# 使用Base64编码数据字段
+# Mã hóa Base64 cho trường dữ liệu
 base64EncodeVal: true
 #########################################################################
 
 #########################################################################
-# 数据库读写线程数
-# 当使用MYSQL时，建议 最大连接数 = 读取 + 写入线程数，且读取线程数量应当大于写入线程。
-# 注意: 线程数并非越多越好，过多反而会导致性能下降。请分配合适的数量。
+# Số luồng đọc ghi cơ sở dữ liệu
+# Khi dùng MYSQL, nên đặt số kết nối tối đa = số luồng đọc + ghi, và số luồng đọc nên lớn hơn luồng ghi.
+# Lưu ý: Số luồng không phải càng nhiều càng tốt, quá nhiều có thể làm giảm hiệu suất. Hãy phân bổ số lượng phù hợp.
 
-# 读取线程数
+# Số luồng đọc
 readExecutorThread: 7
-# 写入线程数
+# Số luồng ghi
 writeExecutorThread: 3
 #########################################################################
 
 #########################################################################
-# Sqlite 配置
+# Cấu hình Sqlite
 sqlite:
   maxConnection: 5
 #########################################################################
 
 #########################################################################
-# MySQL 配置
+# Cấu hình MySQL
 mysql:
-  # 数据库连接地址
+  # Địa chỉ kết nối cơ sở dữ liệu
   host: "127.0.0.1"
-  # 数据库连接端口
+  # Cổng kết nối cơ sở dữ liệu
   port: 3306
-  # 数据库名
+  # Tên cơ sở dữ liệu
   database: ""
-  # 表前缀
+  # Tiền tố bảng
   tablePrefix: ""
-  # 连接用户名
+  # Tên người dùng kết nối
   user: ""
-  # 连接用户密码
+  # Mật khẩu người dùng kết nối
   password: ""
-  # 是否使用加密连接
+  # Có sử dụng kết nối mã hóa không
   useSSL: false
-  # 最大连接数
+  # Số kết nối tối đa
   maxConnection: 10
 #########################################################################
 
 #########################################################################
-# PostgreSQL 配置
+# Cấu hình PostgreSQL
 postgresql:
-  # 数据库连接地址
+  # Địa chỉ kết nối cơ sở dữ liệu
   host: "127.0.0.1"
-  # 数据库连接端口
+  # Cổng kết nối cơ sở dữ liệu
   port: 3306
-  # 数据库名
+  # Tên cơ sở dữ liệu
   database: ""
-  # 表前缀
+  # Tiền tố bảng
   tablePrefix: ""
-  # 连接用户名
+  # Tên người dùng kết nối
   user: ""
-  # 连接用户密码
+  # Mật khẩu người dùng kết nối
   password: ""
-  # 是否使用加密连接
+  # Có sử dụng kết nối mã hóa không
   useSSL: false
-  # 最大连接数
+  # Số kết nối tối đa
   maxConnection: 10
 #########################################################################

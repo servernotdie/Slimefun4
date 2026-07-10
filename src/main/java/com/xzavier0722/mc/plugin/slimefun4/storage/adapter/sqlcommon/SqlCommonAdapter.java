@@ -133,7 +133,7 @@ public abstract class SqlCommonAdapter<T extends ISqlCommonConfig> implements ID
         DatabasePatch patch = null;
         var dbVer = getDatabaseVersion();
 
-        Slimefun.logger().log(Level.INFO, "当前数据库版本 {0}", new Object[] {dbVer});
+        Slimefun.logger().log(Level.INFO, "Phiên bản cơ sở dữ liệu hiện tại {0}", new Object[] {dbVer});
 
         switch (dbVer) {
             case 0 -> patch = new DatabasePatchV1();
@@ -145,17 +145,17 @@ public abstract class SqlCommonAdapter<T extends ISqlCommonConfig> implements ID
         }
 
         try (var conn = ds.getConnection()) {
-            Slimefun.logger().log(Level.INFO, "正在更新数据库版本至 " + patch.getVersion() + ", 可能需要一段时间...");
+            Slimefun.logger().log(Level.INFO, "Đang cập nhật cơ sở dữ liệu lên phiên bản " + patch.getVersion() + ", có thể mất một chút thời gian...");
             var stmt = conn.createStatement();
             patch.updateVersion(stmt, config);
             patch.patch(stmt, config);
-            Slimefun.logger().log(Level.INFO, "更新完成. ");
+            Slimefun.logger().log(Level.INFO, "Cập nhật hoàn tất. ");
 
             if (getDatabaseVersion() != IDataSourceAdapter.DATABASE_VERSION) {
                 patch();
             }
         } catch (SQLException e) {
-            Slimefun.logger().log(Level.SEVERE, "更新数据库时出现问题!", e);
+            Slimefun.logger().log(Level.SEVERE, "Gặp vấn đề khi cập nhật cơ sở dữ liệu!", e);
         }
     }
 }
