@@ -21,11 +21,11 @@ import javax.annotation.Nonnull;
  */
 public final class LoreBuilder {
 
-    public static final String HAZMAT_SUIT_REQUIRED = "&8\u21E8 &4需要防化服!";
-    public static final String RAINBOW = "&d轮番展现彩虹的颜色!";
-    public static final String RIGHT_CLICK_TO_USE = "&e右键&7 使用";
-    public static final String RIGHT_CLICK_TO_OPEN = "&e右键&7 打开";
-    public static final String CROUCH_TO_USE = "&e按住 &e蹲下&7 使用";
+    public static final String HAZMAT_SUIT_REQUIRED = "&8\u21E8 &4Yêu cầu bộ đồ bảo hộ hóa chất!";
+    public static final String RAINBOW = "&dLuân phiên hiển thị các màu cầu vồng!";
+    public static final String RIGHT_CLICK_TO_USE = "&eNhấp chuột phải&7 để sử dụng";
+    public static final String RIGHT_CLICK_TO_OPEN = "&eNhấp chuột phải&7 để mở";
+    public static final String CROUCH_TO_USE = "&eGiữ &eCúi xuống&7 để sử dụng";
     private static final DecimalFormat hungerFormat =
             new DecimalFormat("#.0", DecimalFormatSymbols.getInstance(Locale.ROOT));
 
@@ -40,11 +40,11 @@ public final class LoreBuilder {
     }
 
     public static @Nonnull String speed(float speed) {
-        return "&8\u21E8 &b\u26A1 &7速度: &b" + speed + 'x';
+        return "&8\u21E8 &b\u26A1 &7Tốc độ: &b" + speed + 'x';
     }
 
     public static @Nonnull String powerBuffer(int power) {
-        return power(power, " 可储存");
+        return power(power, " có thể lưu trữ");
     }
 
     public static @Nonnull String powerPerSecond(int power) {
@@ -60,18 +60,18 @@ public final class LoreBuilder {
     }
 
     public static @Nonnull String material(String material) {
-        return "&8\u21E8 &7材料: &b" + material;
+        return "&8\u21E8 &7Nguyên liệu: &b" + material;
     }
 
     public static @Nonnull String hunger(double value) {
-        return "&7&o恢复 &b&o" + hungerFormat.format(value) + " &7&o点饥饿值";
+        return "&7&oPhục hồi &b&o" + hungerFormat.format(value) + " &7&ođiểm đói";
     }
 
     public static @Nonnull String range(int blocks) {
-        return "&7范围: &c" + blocks + " 格";
+        return "&7Phạm vi: &c" + blocks + " ô";
     }
 
     public static @Nonnull String usesLeft(int usesLeft) {
-        return "&7还可以使用 &e" + usesLeft + " 次";
+        return "&7Còn lại &e" + usesLeft + " lần sử dụng";
     }
 }

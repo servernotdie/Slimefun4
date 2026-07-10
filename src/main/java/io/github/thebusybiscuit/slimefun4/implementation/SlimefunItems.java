@@ -37,200 +37,275 @@ public final class SlimefunItems {
     public static final SlimefunItemStack PORTABLE_CRAFTER = new SlimefunItemStack(
             "PORTABLE_CRAFTER",
             HeadTexture.PORTABLE_CRAFTER,
-            "&6便携工作台",
-            "&a&o一个便携式的工作台",
+            "&6Bàn Chế Tạo Di Động",
+            "&a&oMột bàn chế tạo cầm tay",
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack PORTABLE_DUSTBIN = new SlimefunItemStack(
-            "PORTABLE_DUSTBIN", HeadTexture.TRASH_CAN, "&6便携垃圾箱", "&r轻松的消除多余的物品", "", LoreBuilder.RIGHT_CLICK_TO_OPEN);
+            "PORTABLE_DUSTBIN",
+            HeadTexture.TRASH_CAN,
+            "&6Thùng Rác Di Động",
+            "&rDễ dàng loại bỏ các vật phẩm thừa",
+            "",
+            LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack ENDER_BACKPACK = new SlimefunItemStack(
-            "ENDER_BACKPACK", HeadTexture.ENDER_BACKPACK, "&6末影背包", "&a&o便携式末影箱", "", LoreBuilder.RIGHT_CLICK_TO_OPEN);
+            "ENDER_BACKPACK",
+            HeadTexture.ENDER_BACKPACK,
+            "&6Ba Lô Ender",
+            "&a&oRương Ender cầm tay",
+            "",
+            LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack MAGIC_EYE_OF_ENDER = new SlimefunItemStack(
-            "MAGIC_EYE_OF_ENDER", Material.ENDER_EYE, "&6&l魔法末影之眼", "&4&l需要全套末影护甲", "", "&7&e右键&7 以射出一颗末影珍珠");
+            "MAGIC_EYE_OF_ENDER",
+            Material.ENDER_EYE,
+            "&6&lMắt Ender Ma Thuật",
+            "&4&lYêu cầu full bộ giáp Ender",
+            "",
+            "&7&eChuột phải&7 để bắn ra một viên Ngọc Ender");
     public static final SlimefunItemStack BROKEN_SPAWNER = new SlimefunItemStack(
-            "BROKEN_SPAWNER", Material.SPAWNER, "&c已损坏的刷怪笼", "&7类型: &b<类型>", "", "&c已损坏, 需要在古代祭坛中修复");
-    public static final SlimefunItemStack REPAIRED_SPAWNER =
-            new SlimefunItemStack("REINFORCED_SPAWNER", Material.SPAWNER, "&b已修复的刷怪笼", "&7类型: &b<类型>");
-    public static final SlimefunItemStack INFERNAL_BONEMEAL =
-            new SlimefunItemStack("INFERNAL_BONEMEAL", Material.BONE_MEAL, "&4地狱骨粉", "", "&c加速地狱疣的生长速度");
+            "BROKEN_SPAWNER",
+            Material.SPAWNER,
+            "&cLồng Sinh Quái Hỏng",
+            "&7Loại: &b<type>",
+            "",
+            "&cĐã hỏng, cần sửa tại Bàn Thờ Cổ Đại");
+    public static final SlimefunItemStack REPAIRED_SPAWNER = new SlimefunItemStack(
+            "REINFORCED_SPAWNER", Material.SPAWNER, "&bLồng Sinh Quái Đã Sửa", "&7Loại: &b<type>");
+    public static final SlimefunItemStack INFERNAL_BONEMEAL = new SlimefunItemStack(
+            "INFERNAL_BONEMEAL",
+            Material.BONE_MEAL,
+            "&4Bột Xương Địa Ngục",
+            "",
+            "&cTăng tốc độ phát triển của Nether Wart");
     public static final SlimefunItemStack TAPE_MEASURE = new SlimefunItemStack(
             "TAPE_MEASURE",
             "180d5c43a6cf5bb7769fd0c8240e1e70d2ae38ef9d78a1db401aca6a2cb36f65",
-            "&6卷尺",
+            "&6Thước Cuộn",
             "",
-            "&eShift + 右键 &7设置测量起点",
-            "&e右键 &7测量距离");
+            "&eShift + Chuột phải &7đặt điểm bắt đầu đo",
+            "&eChuột phải &7đo khoảng cách");
 
     /*		 Gadgets 		*/
-    public static final SlimefunItemStack GOLD_PAN =
-            new SlimefunItemStack("GOLD_PAN", Material.BOWL, "&6淘金盘", "&a&o可以获得各种各样的矿物", "", "&7&e右键&7 从沙砾中淘金");
-    public static final SlimefunItemStack NETHER_GOLD_PAN =
-            new SlimefunItemStack("NETHER_GOLD_PAN", Material.BOWL, "&4下界淘金盘", "", "&7&e右键&7 从灵魂沙中淘金");
+    public static final SlimefunItemStack GOLD_PAN = new SlimefunItemStack(
+            "GOLD_PAN",
+            Material.BOWL,
+            "&6Chảo Lọc Vàng",
+            "&a&oCó thể thu được nhiều loại khoáng sản",
+            "",
+            "&7&eChuột phải&7 để lọc vàng từ sỏi");
+    public static final SlimefunItemStack NETHER_GOLD_PAN = new SlimefunItemStack(
+            "NETHER_GOLD_PAN",
+            Material.BOWL,
+            "&4Chảo Lọc Vàng Nether",
+            "",
+            "&7&eChuột phải&7 để lọc vàng từ cát linh hồn");
     public static final SlimefunItemStack PARACHUTE = new SlimefunItemStack(
-            "PARACHUTE", Material.LEATHER_CHESTPLATE, Color.WHITE, "&r&l降落伞", "", LoreBuilder.CROUCH_TO_USE);
+            "PARACHUTE", Material.LEATHER_CHESTPLATE, Color.WHITE, "&r&lDù Bay", "", LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack GRAPPLING_HOOK =
-            new SlimefunItemStack("GRAPPLING_HOOK", Material.LEAD, "&6抓钩", "", LoreBuilder.RIGHT_CLICK_TO_USE);
-    public static final SlimefunItemStack SOLAR_HELMET =
-            new SlimefunItemStack("SOLAR_HELMET", Material.IRON_HELMET, "&b太阳能头盔", "", "&a&o为你拿着的物品和装备充电");
-    public static final SlimefunItemStack CLOTH = new SlimefunItemStack("CLOTH", Material.PAPER, "&b布");
+            new SlimefunItemStack("GRAPPLING_HOOK", Material.LEAD, "&6Móc Trèo", "", LoreBuilder.RIGHT_CLICK_TO_USE);
+    public static final SlimefunItemStack SOLAR_HELMET = new SlimefunItemStack(
+            "SOLAR_HELMET",
+            Material.IRON_HELMET,
+            "&bMũ Năng Lượng Mặt Trời",
+            "",
+            "&a&oSạc năng lượng cho vật phẩm và trang bị bạn đang cầm");
+    public static final SlimefunItemStack CLOTH = new SlimefunItemStack("CLOTH", Material.PAPER, "&bVải");
     public static final SlimefunItemStack REINFORCED_CLOTH = new SlimefunItemStack(
-            "REINFORCED_CLOTH", Material.PAPER, "&b强化布料", "", "&f这种布在被铅强化过后", "&f可以防止放射物给你带来的负面影响");
-    public static final SlimefunItemStack TIN_CAN = new SlimefunItemStack("CAN", HeadTexture.TIN_CAN, "&r锡罐");
+            "REINFORCED_CLOTH",
+            Material.PAPER,
+            "&bVải Gia Cố",
+            "",
+            "&fLoại vải này sau khi được gia cố bằng chì",
+            "&fcó thể ngăn chặn ảnh hưởng tiêu cực từ phóng xạ");
+    public static final SlimefunItemStack TIN_CAN = new SlimefunItemStack("CAN", HeadTexture.TIN_CAN, "&rHộp Thiếc");
     public static final SlimefunItemStack NIGHT_VISION_GOGGLES = new SlimefunItemStack(
-            "NIGHT_VISION_GOGGLES", Material.LEATHER_HELMET, Color.BLACK, "&a夜视眼镜", "", "&9+ 夜视效果");
+            "NIGHT_VISION_GOGGLES",
+            Material.LEATHER_HELMET,
+            Color.BLACK,
+            "&aKính Nhìn Đêm",
+            "",
+            "&9+ Hiệu ứng nhìn ban đêm");
     public static final SlimefunItemStack ELYTRA_CAP = new SlimefunItemStack(
-            "ELYTRA_CAP", Material.LEATHER_HELMET, Color.PURPLE, "&5鞘翅帽", "", "&7能使你在用鞘翅飞行途中", "&7不会摔下来变成肉酱");
-    public static final SlimefunItemStack FARMER_SHOES =
-            new SlimefunItemStack("FARMER_SHOES", Material.LEATHER_BOOTS, Color.YELLOW, "&e农夫的靴子", "", "&6&o能够防止你踩坏农田");
+            "ELYTRA_CAP",
+            Material.LEATHER_HELMET,
+            Color.PURPLE,
+            "&5Mũ Cánh Bay",
+            "",
+            "&7Giúp bạn khi bay bằng cánh",
+            "&7không bị rơi xuống thành bã");
+    public static final SlimefunItemStack FARMER_SHOES = new SlimefunItemStack(
+            "FARMER_SHOES",
+            Material.LEATHER_BOOTS,
+            Color.YELLOW,
+            "&eGiày Nông Dân",
+            "",
+            "&6&oCó thể tránh giẫm hỏng đất trồng");
     public static final SlimefunItemStack INFUSED_MAGNET = new SlimefunItemStack(
             "INFUSED_MAGNET",
             HeadTexture.MAGNET,
-            "&a吸入磁铁",
+            "&aNam Châm Hút",
             "",
-            "&r注入了魔法的磁铁",
-            "&r能够将附近的物品",
-            "&r放入你的背包",
+            "&rNam châm được truyền phép thuật",
+            "&rCó thể hút các vật phẩm gần đó",
+            "&rvào ba lô của bạn",
             "",
-            "&7按住 &eShift&7 吸取周围的物品");
+            "&7Giữ &eShift&7 để hút vật phẩm xung quanh");
     public static final SlimefunItemStack RAG = new SlimefunItemStack(
             "RAG",
             Material.PAPER,
-            "&c破布",
+            "&cGiẻ Rách",
             "",
-            "&a1级医疗供给",
+            "&aDụng cụ y tế cấp 1",
             "",
-            "&r恢复2点血量",
-            "&r可以熄灭身上的火",
+            "&rHồi 2 máu",
+            "&rCó thể dập tắt lửa trên người",
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE);
     public static final SlimefunItemStack BANDAGE = new SlimefunItemStack(
             "BANDAGE",
             Material.PAPER,
-            "&c绷带",
+            "&cBăng",
             "",
-            "&a2级医疗供给",
+            "&aDụng cụ y tế cấp 2",
             "",
-            "&r恢复4点血量",
-            "&r可以熄灭身上的火",
+            "&rHồi 4 máu",
+            "&rCó thể dập tắt lửa trên người",
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE);
     public static final SlimefunItemStack SPLINT = new SlimefunItemStack(
-            "SPLINT", Material.STICK, "&c夹板", "", "&a1级医疗供给", "", "&r恢复2点血量", "", LoreBuilder.RIGHT_CLICK_TO_USE);
+            "SPLINT",
+            Material.STICK,
+            "&cNẹp Gỗ",
+            "",
+            "&aDụng cụ y tế cấp 1",
+            "",
+            "&rHồi 2 máu",
+            "",
+            LoreBuilder.RIGHT_CLICK_TO_USE);
     public static final SlimefunItemStack VITAMINS = new SlimefunItemStack(
             "VITAMINS",
             Material.NETHER_WART,
-            "&c维他命",
+            "&cVitamin",
             "",
-            "&a3级医疗供给",
+            "&aDụng cụ y tế cấp 3",
             "",
-            "&r恢复4点血量",
-            "&r可以熄灭身上的火",
-            "&r治愈中毒/凋零/辐射的负面效果",
+            "&rHồi 4 máu",
+            "&rCó thể dập tắt lửa trên người",
+            "&rChữa khỏi hiệu ứng tiêu cực: Độc/Wither/Phóng xạ",
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE);
     public static final SlimefunItemStack MEDICINE = new SlimefunItemStack(
             "MEDICINE",
             Material.POTION,
             Color.RED,
-            "&c药物",
+            "&cThuốc",
             "",
-            "&a3级医疗供给",
+            "&aDụng cụ y tế cấp 3",
             "",
-            "&r恢复4点血量",
-            "&r可以熄灭身上的火",
-            "&r治愈中毒/凋零/辐射的负面效果",
+            "&rHồi 4 máu",
+            "&rCó thể dập tắt lửa trên người",
+            "&rChữa khỏi hiệu ứng tiêu cực: Độc/Wither/Phóng xạ",
             "",
-            "&7&e右键&7 饮用");
-    public static final SlimefunItemStack MAGICAL_ZOMBIE_PILLS =
-            new SlimefunItemStack("MAGICAL_ZOMBIE_PILLS", Material.NETHER_WART, "&6还魂丹", "", "&e右键立即治愈 &7僵尸村民/猪灵");
+            "&7&eChuột phải&7 để uống");
+    public static final SlimefunItemStack MAGICAL_ZOMBIE_PILLS = new SlimefunItemStack(
+            "MAGICAL_ZOMBIE_PILLS",
+            Material.NETHER_WART,
+            "&6Thuốc Hoàn Hồn",
+            "",
+            "&eChuột phải để chữa ngay &7Dân làng Zombie/Piglin");
 
     public static final SlimefunItemStack FLASK_OF_KNOWLEDGE = new SlimefunItemStack(
-            "FLASK_OF_KNOWLEDGE", Material.GLASS_BOTTLE, "&c学识之瓶", "", "&r允许你将经验储存在瓶子里", "&7需要消耗 &a1 个等级");
+            "FLASK_OF_KNOWLEDGE",
+            Material.GLASS_BOTTLE,
+            "&cBình Tri Thức",
+            "",
+            "&rCho phép bạn lưu trữ kinh nghiệm vào lọ",
+            "&7Tiêu tốn &a1 cấp độ");
     public static final SlimefunItemStack FILLED_FLASK_OF_KNOWLEDGE =
-            new SlimefunItemStack("FILLED_FLASK_OF_KNOWLEDGE", Material.EXPERIENCE_BOTTLE, "&a学识之瓶");
+            new SlimefunItemStack("FILLED_FLASK_OF_KNOWLEDGE", Material.EXPERIENCE_BOTTLE, "&aBình Tri Thức");
 
     /*		Backpacks		*/
     public static final SlimefunItemStack BACKPACK_SMALL = new SlimefunItemStack(
             "SMALL_BACKPACK",
             HeadTexture.BACKPACK,
-            "&e小型背包",
+            "&eBa Lô Nhỏ",
             "",
-            "&7大小: &e9",
+            "&7Kích thước: &e9",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack BACKPACK_MEDIUM = new SlimefunItemStack(
             "MEDIUM_BACKPACK",
             HeadTexture.BACKPACK,
-            "&e普通背包",
+            "&eBa Lô Trung Bình",
             "",
-            "&7大小: &e18",
+            "&7Kích thước: &e18",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack BACKPACK_LARGE = new SlimefunItemStack(
             "LARGE_BACKPACK",
             HeadTexture.BACKPACK,
-            "&e中型背包",
+            "&eBa Lô Lớn",
             "",
-            "&7大小: &e27",
+            "&7Kích thước: &e27",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack WOVEN_BACKPACK = new SlimefunItemStack(
             "WOVEN_BACKPACK",
             HeadTexture.BACKPACK,
-            "&e编织背包",
+            "&eBa Lô Dệt",
             "",
-            "&7大小: &e36",
+            "&7Kích thước: &e36",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack GILDED_BACKPACK = new SlimefunItemStack(
             "GILDED_BACKPACK",
             HeadTexture.BACKPACK,
-            "&e镀金背包",
+            "&eBa Lô Mạ Vàng",
             "",
-            "&7大小: &e45",
+            "&7Kích thước: &e45",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack RADIANT_BACKPACK = new SlimefunItemStack(
             "RADIANT_BACKPACK",
             HeadTexture.BACKPACK,
-            "&e金光闪闪的背包",
+            "&eBa Lô Rực Rỡ",
             "",
-            "&7大小: &e54 (大箱子)",
+            "&7Kích thước: &e54 (Rương lớn)",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack BOUND_BACKPACK = new SlimefunItemStack(
             "BOUND_BACKPACK",
             HeadTexture.ENDER_BACKPACK,
-            "&c灵魂绑定背包",
+            "&cBa Lô Linh Hồn Ràng Buộc",
             "",
-            "&7大小: &e36",
+            "&7Kích thước: &e36",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack COOLER = new SlimefunItemStack(
             "COOLER",
             HeadTexture.COOLER,
-            "&b小冰柜",
-            "&r可以储存果汁和冰沙",
-            "&r当小冰柜在你的物品栏里时",
-            "&r在你饥饿时将会自动消耗里面的食物",
+            "&bTủ Lạnh Nhỏ",
+            "&rCó thể lưu trữ nước trái cây và sinh tố",
+            "&rKhi túi lạnh ở trong túi đồ của bạn",
+            "&rSẽ tự động tiêu thụ thức ăn bên trong khi bạn đói",
             "",
-            "&7大小: &e27",
+            "&7Kích thước: &e27",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack RESTORED_BACKPACK = new SlimefunItemStack(
             "RESTORED_BACKPACK",
             HeadTexture.RESTORED_BACKPACK,
-            "&e背包恢复器",
+            "&eBộ Khôi Phục Ba Lô",
             "",
-            "&7重新获取你丢失背包里的物品",
+            "&7Lấy lại các vật phẩm trong ba lô bị mất",
             PlayerBackpack.LORE_OWNER,
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
@@ -240,87 +315,87 @@ public final class SlimefunItems {
             "DURALUMIN_JETPACK",
             Material.LEATHER_CHESTPLATE,
             Color.SILVER,
-            "&9电力喷气背包 &7- &eI",
+            "&9Ba Lô Phản Lực Điện &7- &eI",
             "",
-            LoreBuilder.material("硬铝"),
+            LoreBuilder.material("Duralumin"),
             LoreBuilder.powerCharged(0, 20),
-            "&8\u21E8 &7推力: &c0.35",
+            "&8\u21E8 &7Lực đẩy: &c0.35",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack SOLDER_JETPACK = new SlimefunItemStack(
             "SOLDER_JETPACK",
             Material.LEATHER_CHESTPLATE,
             Color.SILVER,
-            "&9电力喷气背包 &7- &eII",
+            "&9Ba Lô Phản Lực Điện &7- &eII",
             "",
-            LoreBuilder.material("焊锡"),
+            LoreBuilder.material("Thiếc hàn"),
             LoreBuilder.powerCharged(0, 30),
-            "&8\u21E8 &7推力: &c0.4",
+            "&8\u21E8 &7Lực đẩy: &c0.4",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack BILLON_JETPACK = new SlimefunItemStack(
             "BILLON_JETPACK",
             Material.LEATHER_CHESTPLATE,
             Color.SILVER,
-            "&9电力喷气背包 &7- &eIII",
+            "&9Ba Lô Phản Lực Điện &7- &eIII",
             "",
-            LoreBuilder.material("银铜合金"),
+            LoreBuilder.material("Hợp kim Bạc-Đồng"),
             LoreBuilder.powerCharged(0, 45),
-            "&8\u21E8 &7推力: &c0.45",
+            "&8\u21E8 &7Lực đẩy: &c0.45",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack STEEL_JETPACK = new SlimefunItemStack(
             "STEEL_JETPACK",
             Material.LEATHER_CHESTPLATE,
             Color.SILVER,
-            "&9电力喷气背包 &7- &eIV",
+            "&9Ba Lô Phản Lực Điện &7- &eIV",
             "",
-            LoreBuilder.material("钢"),
+            LoreBuilder.material("Thép"),
             LoreBuilder.powerCharged(0, 60),
-            "&8\u21E8 &7推力: &c0.5",
+            "&8\u21E8 &7Lực đẩy: &c0.5",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack DAMASCUS_STEEL_JETPACK = new SlimefunItemStack(
             "DAMASCUS_STEEL_JETPACK",
             Material.LEATHER_CHESTPLATE,
             Color.SILVER,
-            "&9电力喷气背包 &7- &eV",
+            "&9Ba Lô Phản Lực Điện &7- &eV",
             "",
-            LoreBuilder.material("大马士革钢"),
+            LoreBuilder.material("Thép Damascus"),
             LoreBuilder.powerCharged(0, 75),
-            "&8\u21E8 &7推力: &c0.55",
+            "&8\u21E8 &7Lực đẩy: &c0.55",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack REINFORCED_ALLOY_JETPACK = new SlimefunItemStack(
             "REINFORCED_ALLOY_JETPACK",
             Material.LEATHER_CHESTPLATE,
             Color.SILVER,
-            "&9电力喷气背包 &7- &eVI",
+            "&9Ba Lô Phản Lực Điện &7- &eVI",
             "",
-            LoreBuilder.material("强化合金"),
+            LoreBuilder.material("Hợp kim gia cố"),
             LoreBuilder.powerCharged(0, 100),
-            "&8\u21E8 &7推力: &c0.6",
+            "&8\u21E8 &7Lực đẩy: &c0.6",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack CARBONADO_JETPACK = new SlimefunItemStack(
             "CARBONADO_JETPACK",
             Material.LEATHER_CHESTPLATE,
             Color.BLACK,
-            "&9电力喷气背包 &7- &eVII",
+            "&9Ba Lô Phản Lực Điện &7- &eVII",
             "",
-            LoreBuilder.material("黑金刚石"),
+            LoreBuilder.material("Kim cương đen"),
             LoreBuilder.powerCharged(0, 150),
-            "&8\u21E8 &7推力: &c0.7",
+            "&8\u21E8 &7Lực đẩy: &c0.7",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack ARMORED_JETPACK = new SlimefunItemStack(
             "ARMORED_JETPACK",
             Material.IRON_CHESTPLATE,
-            "&9装甲喷气背包",
-            LoreBuilder.material("钢"),
+            "&9Ba Lô Phản Lực Bọc Giáp",
+            LoreBuilder.material("Thép"),
             "",
             LoreBuilder.powerCharged(0, 50),
-            "&8\u21E8 &7推力: &c0.5",
+            "&8\u21E8 &7Lực đẩy: &c0.5",
             "",
             LoreBuilder.CROUCH_TO_USE);
 
@@ -329,95 +404,95 @@ public final class SlimefunItems {
             "DURALUMIN_JETBOOTS",
             Material.LEATHER_BOOTS,
             Color.SILVER,
-            "&9喷气靴 &7- &eI",
+            "&9Giày Phản Lực &7- &eI",
             "",
-            LoreBuilder.material("硬铝"),
+            LoreBuilder.material("Duralumin"),
             LoreBuilder.powerCharged(0, 20),
-            "&8\u21E8 &7速度: &a0.35",
-            "&8\u21E8 &7准确度: &c50%",
+            "&8\u21E8 &7Tốc độ: &a0.35",
+            "&8\u21E8 &7Độ chính xác: &c50%",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack SOLDER_JETBOOTS = new SlimefunItemStack(
             "SOLDER_JETBOOTS",
             Material.LEATHER_BOOTS,
             Color.SILVER,
-            "&9喷气靴 &7- &eII",
+            "&9Giày Phản Lực &7- &eII",
             "",
-            LoreBuilder.material("焊锡"),
+            LoreBuilder.material("Thiếc hàn"),
             LoreBuilder.powerCharged(0, 30),
-            "&8\u21E8 &7速度: &a0.4",
-            "&8\u21E8 &7准确度: &660%",
+            "&8\u21E8 &7Tốc độ: &a0.4",
+            "&8\u21E8 &7Độ chính xác: &660%",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack BILLON_JETBOOTS = new SlimefunItemStack(
             "BILLON_JETBOOTS",
             Material.LEATHER_BOOTS,
             Color.SILVER,
-            "&9喷气靴 &7- &eIII",
+            "&9Giày Phản Lực &7- &eIII",
             "",
-            LoreBuilder.material("银铜合金"),
+            LoreBuilder.material("Hợp kim Bạc-Đồng"),
             LoreBuilder.powerCharged(0, 40),
-            "&8\u21E8 &7速度: &a0.45",
-            "&8\u21E8 &7准确度: &665%",
+            "&8\u21E8 &7Tốc độ: &a0.45",
+            "&8\u21E8 &7Độ chính xác: &665%",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack STEEL_JETBOOTS = new SlimefunItemStack(
             "STEEL_JETBOOTS",
             Material.LEATHER_BOOTS,
             Color.SILVER,
-            "&9喷气靴 &7- &eIV",
+            "&9Giày Phản Lực &7- &eIV",
             "",
-            LoreBuilder.material("钢"),
+            LoreBuilder.material("Thép"),
             LoreBuilder.powerCharged(0, 50),
-            "&8\u21E8 &7速度: &a0.5",
-            "&8\u21E8 &7准确度: &e70%",
+            "&8\u21E8 &7Tốc độ: &a0.5",
+            "&8\u21E8 &7Độ chính xác: &e70%",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack DAMASCUS_STEEL_JETBOOTS = new SlimefunItemStack(
             "DAMASCUS_STEEL_JETBOOTS",
             Material.LEATHER_BOOTS,
             Color.SILVER,
-            "&9喷气靴 &7- &eV",
+            "&9Giày Phản Lực &7- &eV",
             "",
-            LoreBuilder.material("大马士革钢"),
+            LoreBuilder.material("Thép Damascus"),
             LoreBuilder.powerCharged(0, 75),
-            "&8\u21E8 &7速度: &a0.55",
-            "&8\u21E8 &7准确度: &a75%",
+            "&8\u21E8 &7Tốc độ: &a0.55",
+            "&8\u21E8 &7Độ chính xác: &a75%",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack REINFORCED_ALLOY_JETBOOTS = new SlimefunItemStack(
             "REINFORCED_ALLOY_JETBOOTS",
             Material.LEATHER_BOOTS,
             Color.SILVER,
-            "&9喷气靴 &7- &eVI",
+            "&9Giày Phản Lực &7- &eVI",
             "",
-            LoreBuilder.material("强化合金"),
+            LoreBuilder.material("Hợp kim gia cố"),
             LoreBuilder.powerCharged(0, 100),
-            "&8\u21E8 &7速度: &a0.6",
-            "&8\u21E8 &7准确度: &c80%",
+            "&8\u21E8 &7Tốc độ: &a0.6",
+            "&8\u21E8 &7Độ chính xác: &c80%",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack CARBONADO_JETBOOTS = new SlimefunItemStack(
             "CARBONADO_JETBOOTS",
             Material.LEATHER_BOOTS,
             Color.BLACK,
-            "&9喷气靴 &7- &eVII",
+            "&9Giày Phản Lực &7- &eVII",
             "",
-            LoreBuilder.material("黑金刚石"),
+            LoreBuilder.material("Kim cương đen"),
             LoreBuilder.powerCharged(0, 125),
-            "&8\u21E8 &7速度: &a0.7",
-            "&8\u21E8 &7准确度: &c99.9%",
+            "&8\u21E8 &7Tốc độ: &a0.7",
+            "&8\u21E8 &7Độ chính xác: &c99.9%",
             "",
             LoreBuilder.CROUCH_TO_USE);
     public static final SlimefunItemStack ARMORED_JETBOOTS = new SlimefunItemStack(
             "ARMORED_JETBOOTS",
             Material.IRON_BOOTS,
-            "&9装甲喷气靴",
+            "&9Giày Phản Lực Bọc Giáp",
             "",
-            LoreBuilder.material("钢"),
+            LoreBuilder.material("Thép"),
             LoreBuilder.powerCharged(0, 50),
-            "&8\u21E8 &7速度: &a0.45",
-            "&8\u21E8 &7准确度: &e70%",
+            "&8\u21E8 &7Tốc độ: &a0.45",
+            "&8\u21E8 &7Độ chính xác: &e70%",
             "",
             LoreBuilder.CROUCH_TO_USE);
 
@@ -425,73 +500,73 @@ public final class SlimefunItems {
     public static final SlimefunItemStack DURALUMIN_MULTI_TOOL = new SlimefunItemStack(
             "DURALUMIN_MULTI_TOOL",
             Material.SHEARS,
-            "&9多功能工具 &7- &eI",
+            "&9Dụng Cụ Đa Năng &7- &eI",
             "",
-            LoreBuilder.material("硬铝"),
+            LoreBuilder.material("Duralumin"),
             LoreBuilder.powerCharged(0, 20),
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE,
-            "&7按住 &eShift + 右键&7 以更改模式");
+            "&7Giữ &eShift + Chuột phải&7 để đổi chế độ");
     public static final SlimefunItemStack SOLDER_MULTI_TOOL = new SlimefunItemStack(
             "SOLDER_MULTI_TOOL",
             Material.SHEARS,
-            "&9多功能工具 &7- &eII",
+            "&9Dụng Cụ Đa Năng &7- &eII",
             "",
-            LoreBuilder.material("焊锡"),
+            LoreBuilder.material("Thiếc hàn"),
             LoreBuilder.powerCharged(0, 30),
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE,
-            "&7按住 &eShift + 右键&7 以更改模式");
+            "&7Giữ &eShift + Chuột phải&7 để đổi chế độ");
     public static final SlimefunItemStack BILLON_MULTI_TOOL = new SlimefunItemStack(
             "BILLON_MULTI_TOOL",
             Material.SHEARS,
-            "&9多功能工具 &7- &eIII",
+            "&9Dụng Cụ Đa Năng &7- &eIII",
             "",
-            LoreBuilder.material("银铜合金"),
+            LoreBuilder.material("Hợp kim Bạc-Đồng"),
             LoreBuilder.powerCharged(0, 40),
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE,
-            "&7按住 &eShift + 右键&7 以更改模式");
+            "&7Giữ &eShift + Chuột phải&7 để đổi chế độ");
     public static final SlimefunItemStack STEEL_MULTI_TOOL = new SlimefunItemStack(
             "STEEL_MULTI_TOOL",
             Material.SHEARS,
-            "&9多功能工具 &7- &eIV",
+            "&9Dụng Cụ Đa Năng &7- &eIV",
             "",
-            LoreBuilder.material("钢"),
+            LoreBuilder.material("Thép"),
             LoreBuilder.powerCharged(0, 50),
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE,
-            "&7按住 &eShift + 右键&7 以更改模式");
+            "&7Giữ &eShift + Chuột phải&7 để đổi chế độ");
     public static final SlimefunItemStack DAMASCUS_STEEL_MULTI_TOOL = new SlimefunItemStack(
             "DAMASCUS_STEEL_MULTI_TOOL",
             Material.SHEARS,
-            "&9多功能工具 &7- &eV",
+            "&9Dụng Cụ Đa Năng &7- &eV",
             "",
-            LoreBuilder.material("大马士革钢"),
+            LoreBuilder.material("Thép Damascus"),
             LoreBuilder.powerCharged(0, 60),
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE,
-            "&7按住 &eShift + 右键&7 以更改模式");
+            "&7Giữ &eShift + Chuột phải&7 để đổi chế độ");
     public static final SlimefunItemStack REINFORCED_ALLOY_MULTI_TOOL = new SlimefunItemStack(
             "REINFORCED_ALLOY_MULTI_TOOL",
             Material.SHEARS,
-            "&9多功能工具 &7- &eVI",
+            "&9Dụng Cụ Đa Năng &7- &eVI",
             "",
-            LoreBuilder.material("强化合金"),
+            LoreBuilder.material("Hợp kim gia cố"),
             LoreBuilder.powerCharged(0, 75),
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE,
-            "&7按住 &eShift + 右键&7 以更改模式");
+            "&7Giữ &eShift + Chuột phải&7 để đổi chế độ");
     public static final SlimefunItemStack CARBONADO_MULTI_TOOL = new SlimefunItemStack(
             "CARBONADO_MULTI_TOOL",
             Material.SHEARS,
-            "&9多功能工具 &7- &eVII",
+            "&9Dụng Cụ Đa Năng &7- &eVII",
             "",
-            LoreBuilder.material("黑金刚石"),
+            LoreBuilder.material("Kim cương đen"),
             LoreBuilder.powerCharged(0, 100),
             "",
             LoreBuilder.RIGHT_CLICK_TO_USE,
-            "&7按住 &eShift + 右键&7 以更改模式");
+            "&7Giữ &eShift + Chuột phải&7 để đổi chế độ");
 
     static {
         ItemMeta duralumin = DURALUMIN_MULTI_TOOL.getItemMeta();
@@ -524,151 +599,178 @@ public final class SlimefunItems {
     }
 
     /*		 Food 		*/
-    public static final SlimefunItemStack FORTUNE_COOKIE =
-            new SlimefunItemStack("FORTUNE_COOKIE", Material.COOKIE, "&6幸运饼干", "", "&a&o告诉你未来发生的事 :o");
-    public static final SlimefunItemStack DIET_COOKIE =
-            new SlimefunItemStack("DIET_COOKIE", Material.COOKIE, "&6减肥曲奇", "", "&a一个非常&o轻&r&a的曲奇");
-    public static final SlimefunItemStack MAGIC_SUGAR =
-            new SlimefunItemStack("MAGIC_SUGAR", Material.SUGAR, "&6魔法糖", "", "&a&o感受赫尔墨斯的力量!");
-    public static final SlimefunItemStack MONSTER_JERKY =
-            new SlimefunItemStack("MONSTER_JERKY", Material.ROTTEN_FLESH, "&6怪物肉干", "", "&a&o提神抗饥饿");
+    public static final SlimefunItemStack FORTUNE_COOKIE = new SlimefunItemStack(
+            "FORTUNE_COOKIE", Material.COOKIE, "&6Bánh Quy May Mắn", "", "&a&oCho bạn biết điều gì sẽ xảy ra :o");
+    public static final SlimefunItemStack DIET_COOKIE = new SlimefunItemStack(
+            "DIET_COOKIE", Material.COOKIE, "&6Bánh Quy Ăn Kiêng", "", "&aMột chiếc bánh quy rất&o nhẹ");
+    public static final SlimefunItemStack MAGIC_SUGAR = new SlimefunItemStack(
+            "MAGIC_SUGAR", Material.SUGAR, "&6Đường Ma Thuật", "", "&a&oCảm nhận sức mạnh của Hermes!");
+    public static final SlimefunItemStack MONSTER_JERKY = new SlimefunItemStack(
+            "MONSTER_JERKY", Material.ROTTEN_FLESH, "&6Thịt Quái Vật Khô", "", "&a&oTỉnh táo và chống đói");
     public static final SlimefunItemStack APPLE_JUICE = new SlimefunItemStack(
             "APPLE_JUICE",
             Color.RED,
             new PotionEffect(PotionEffectType.SATURATION, 5, 0),
-            "&c苹果汁",
+            "&cNước Táo",
             "",
             LoreBuilder.hunger(3));
     public static final SlimefunItemStack MELON_JUICE = new SlimefunItemStack(
             "MELON_JUICE",
             Color.RED,
             new PotionEffect(PotionEffectType.SATURATION, 5, 0),
-            "&c西瓜汁",
+            "&cNước Dưa Hấu",
             "",
             LoreBuilder.hunger(3));
     public static final SlimefunItemStack CARROT_JUICE = new SlimefunItemStack(
             "CARROT_JUICE",
             Color.ORANGE,
             new PotionEffect(PotionEffectType.SATURATION, 5, 0),
-            "&6胡萝卜汁",
+            "&6Nước Cà Rốt",
             "",
             LoreBuilder.hunger(3));
     public static final SlimefunItemStack PUMPKIN_JUICE = new SlimefunItemStack(
             "PUMPKIN_JUICE",
             Color.ORANGE,
             new PotionEffect(PotionEffectType.SATURATION, 5, 0),
-            "&6南瓜汁",
+            "&6Nước Bí Ngô",
             "",
             LoreBuilder.hunger(3));
     public static final SlimefunItemStack SWEET_BERRY_JUICE = new SlimefunItemStack(
             "SWEET_BERRY_JUICE",
             Color.RED,
             new PotionEffect(PotionEffectType.SATURATION, 5, 0),
-            "&c浆果汁",
+            "&cNước Quả Mọng",
             "",
             LoreBuilder.hunger(3));
     public static final SlimefunItemStack GLOW_BERRY_JUICE = new SlimefunItemStack(
             "GLOW_BERRY_JUICE",
             Color.ORANGE,
             new PotionEffect(PotionEffectType.SATURATION, 5, 0),
-            "&6发光浆果汁",
+            "&6Nước Quả Mọng Phát Sáng",
             "",
             LoreBuilder.hunger(3));
     public static final SlimefunItemStack GOLDEN_APPLE_JUICE = new SlimefunItemStack(
-            "GOLDEN_APPLE_JUICE", Color.YELLOW, new PotionEffect(PotionEffectType.ABSORPTION, 20 * 20, 0), "&b金苹果汁");
+            "GOLDEN_APPLE_JUICE",
+            Color.YELLOW,
+            new PotionEffect(PotionEffectType.ABSORPTION, 20 * 20, 0),
+            "&bNước Táo Vàng");
 
     public static final SlimefunItemStack BEEF_JERKY =
-            new SlimefunItemStack("BEEF_JERKY", Material.COOKED_BEEF, "&6牛肉干", "", "&r横扫饥饿!");
+            new SlimefunItemStack("BEEF_JERKY", Material.COOKED_BEEF, "&6Thịt Bò Khô", "", "&rQuét sạch cơn đói!");
     public static final SlimefunItemStack PORK_JERKY =
-            new SlimefunItemStack("PORK_JERKY", Material.COOKED_PORKCHOP, "&6猪肉干", "", "&r横扫饥饿!");
-    public static final SlimefunItemStack CHICKEN_JERKY =
-            new SlimefunItemStack("CHICKEN_JERKY", Material.COOKED_CHICKEN, "&6鸡肉干", "", "&r横扫饥饿!");
+            new SlimefunItemStack("PORK_JERKY", Material.COOKED_PORKCHOP, "&6Thịt Lợn Khô", "", "&rQuét sạch cơn đói!");
+    public static final SlimefunItemStack CHICKEN_JERKY = new SlimefunItemStack(
+            "CHICKEN_JERKY", Material.COOKED_CHICKEN, "&6Thịt Gà Khô", "", "&rQuét sạch cơn đói!");
     public static final SlimefunItemStack MUTTON_JERKY =
-            new SlimefunItemStack("MUTTON_JERKY", Material.COOKED_MUTTON, "&6羊肉干", "", "&r横扫饥饿!");
+            new SlimefunItemStack("MUTTON_JERKY", Material.COOKED_MUTTON, "&6Thịt Cừu Khô", "", "&rQuét sạch cơn đói!");
     public static final SlimefunItemStack RABBIT_JERKY =
-            new SlimefunItemStack("RABBIT_JERKY", Material.COOKED_RABBIT, "&6兔肉干", "", "&r横扫饥饿!");
+            new SlimefunItemStack("RABBIT_JERKY", Material.COOKED_RABBIT, "&6Thịt Thỏ Khô", "", "&rQuét sạch cơn đói!");
     public static final SlimefunItemStack FISH_JERKY =
-            new SlimefunItemStack("FISH_JERKY", Material.COOKED_COD, "&6鱼干", "", "&r横扫饥饿!");
-    public static final SlimefunItemStack KELP_COOKIE = new SlimefunItemStack("KELP_COOKIE", Material.COOKIE, "&2海带曲奇");
+            new SlimefunItemStack("FISH_JERKY", Material.COOKED_COD, "&6Cá Khô", "", "&rQuét sạch cơn đói!");
+    public static final SlimefunItemStack KELP_COOKIE =
+            new SlimefunItemStack("KELP_COOKIE", Material.COOKIE, "&2Bánh Quy Rong Biển");
 
     /*		Christmas		*/
     public static final SlimefunItemStack CHRISTMAS_MILK = new SlimefunItemStack(
             "CHRISTMAS_MILK",
             Color.WHITE,
             new PotionEffect(PotionEffectType.SATURATION, 4, 0),
-            "&6一杯牛奶",
+            "&6Một Cốc Sữa",
             "",
             LoreBuilder.hunger(2.5));
     public static final SlimefunItemStack CHRISTMAS_CHOCOLATE_MILK = new SlimefunItemStack(
             "CHRISTMAS_CHOCOLATE_MILK",
             Color.MAROON,
             new PotionEffect(PotionEffectType.SATURATION, 11, 0),
-            "&6巧克力牛奶",
+            "&6Sữa Socola",
             "",
             LoreBuilder.hunger(3.5));
     public static final SlimefunItemStack CHRISTMAS_EGG_NOG = new SlimefunItemStack(
             "CHRISTMAS_EGG_NOG",
             Color.GRAY,
             new PotionEffect(PotionEffectType.SATURATION, 6, 0),
-            "&a蛋酒",
+            "&aNước Trứng",
             "",
             LoreBuilder.hunger(7));
     public static final SlimefunItemStack CHRISTMAS_APPLE_CIDER = new SlimefunItemStack(
             "CHRISTMAS_APPLE_CIDER",
             Color.RED,
             new PotionEffect(PotionEffectType.SATURATION, 13, 0),
-            "&c苹果酒",
+            "&cRượu Táo",
             "",
             LoreBuilder.hunger(7));
     public static final SlimefunItemStack CHRISTMAS_COOKIE =
-            new SlimefunItemStack("CHRISTMAS_COOKIE", Material.COOKIE, ChatUtils.christmas("圣诞曲奇"));
+            new SlimefunItemStack("CHRISTMAS_COOKIE", Material.COOKIE, ChatUtils.christmas("Bánh Quy Giáng Sinh"));
     public static final SlimefunItemStack CHRISTMAS_FRUIT_CAKE =
-            new SlimefunItemStack("CHRISTMAS_FRUIT_CAKE", Material.PUMPKIN_PIE, ChatUtils.christmas("水果蛋糕"));
+            new SlimefunItemStack("CHRISTMAS_FRUIT_CAKE", Material.PUMPKIN_PIE, ChatUtils.christmas("Bánh Trái Cây"));
     public static final SlimefunItemStack CHRISTMAS_APPLE_PIE =
-            new SlimefunItemStack("CHRISTMAS_APPLE_PIE", Material.PUMPKIN_PIE, "&r苹果派");
+            new SlimefunItemStack("CHRISTMAS_APPLE_PIE", Material.PUMPKIN_PIE, "&rBánh Táo");
     public static final SlimefunItemStack CHRISTMAS_HOT_CHOCOLATE = new SlimefunItemStack(
             "CHRISTMAS_HOT_CHOCOLATE",
             Color.MAROON,
             new PotionEffect(PotionEffectType.SATURATION, 13, 0),
-            "&6热可可",
+            "&6Socola Nóng",
             "",
             LoreBuilder.hunger(7));
     public static final SlimefunItemStack CHRISTMAS_CAKE =
-            new SlimefunItemStack("CHRISTMAS_CAKE", Material.PUMPKIN_PIE, ChatUtils.christmas("圣诞蛋糕"));
+            new SlimefunItemStack("CHRISTMAS_CAKE", Material.PUMPKIN_PIE, ChatUtils.christmas("Bánh Giáng Sinh"));
     public static final SlimefunItemStack CHRISTMAS_CARAMEL =
-            new SlimefunItemStack("CHRISTMAS_CARAMEL", Material.BRICK, "&6焦糖");
+            new SlimefunItemStack("CHRISTMAS_CARAMEL", Material.BRICK, "&6Caramel");
     public static final SlimefunItemStack CHRISTMAS_CARAMEL_APPLE =
-            new SlimefunItemStack("CHRISTMAS_CARAMEL_APPLE", Material.APPLE, "&6焦糖苹果");
+            new SlimefunItemStack("CHRISTMAS_CARAMEL_APPLE", Material.APPLE, "&6Táo Caramel");
     public static final SlimefunItemStack CHRISTMAS_CHOCOLATE_APPLE =
-            new SlimefunItemStack("CHRISTMAS_CHOCOLATE_APPLE", Material.APPLE, "&6巧克力苹果");
+            new SlimefunItemStack("CHRISTMAS_CHOCOLATE_APPLE", Material.APPLE, "&6Táo Socola");
     public static final SlimefunItemStack CHRISTMAS_PRESENT = new SlimefunItemStack(
             "CHRISTMAS_PRESENT",
             HeadTexture.CHRISTMAS_PRESENT,
-            ChatUtils.christmas("圣诞礼物"),
-            "&7来自 &eTheBusyBiscuit &7的礼物",
-            "&7收件人: &e你",
+            ChatUtils.christmas("Quà Giáng Sinh"),
+            "&7Từ &eTheBusyBiscuit",
+            "&7Đến: &eBạn",
             "",
             LoreBuilder.RIGHT_CLICK_TO_OPEN);
 
     /*		Easter			*/
     public static final SlimefunItemStack EASTER_EGG = new SlimefunItemStack(
-            "EASTER_EGG", HeadTexture.EASTER_EGG, "&r复活节彩蛋", "&d复活节快乐! 拆开礼物看看吧.", "", LoreBuilder.RIGHT_CLICK_TO_OPEN);
+            "EASTER_EGG",
+            HeadTexture.EASTER_EGG,
+            "&rTrứng Phục Sinh",
+            "&dPhục Sinh vui vẻ! Mở quà xem nào.",
+            "",
+            LoreBuilder.RIGHT_CLICK_TO_OPEN);
     public static final SlimefunItemStack EASTER_CARROT_PIE =
-            new SlimefunItemStack("CARROT_PIE", Material.PUMPKIN_PIE, "&6胡萝卜派");
+            new SlimefunItemStack("CARROT_PIE", Material.PUMPKIN_PIE, "&6Bánh Cà Rốt");
     public static final SlimefunItemStack EASTER_APPLE_PIE =
-            new SlimefunItemStack("EASTER_APPLE_PIE", Material.PUMPKIN_PIE, "&r苹果派");
+            new SlimefunItemStack("EASTER_APPLE_PIE", Material.PUMPKIN_PIE, "&rBánh Táo");
 
     /*		 Weapons 		*/
     public static final SlimefunItemStack GRANDMAS_WALKING_STICK =
-            new SlimefunItemStack("GRANDMAS_WALKING_STICK", Material.STICK, "&7奶奶的拐杖");
+            new SlimefunItemStack("GRANDMAS_WALKING_STICK", Material.STICK, "&7Gậy Của Bà");
     public static final SlimefunItemStack GRANDPAS_WALKING_STICK =
-            new SlimefunItemStack("GRANDPAS_WALKING_STICK", Material.STICK, "&7爷爷的拐杖");
+            new SlimefunItemStack("GRANDPAS_WALKING_STICK", Material.STICK, "&7Gậy Của Ông");
     public static final SlimefunItemStack SWORD_OF_BEHEADING = new SlimefunItemStack(
-            "SWORD_OF_BEHEADING", Material.IRON_SWORD, "&6处决之剑", "&7斩首处决 II", "", "&r有几率砍下生物的头", "&r(提高掉落凋灵骷髅头的几率)");
+            "SWORD_OF_BEHEADING",
+            Material.IRON_SWORD,
+            "&6Kiếm Chém Đầu",
+            "&7Chém Đầu II",
+            "",
+            "&rCó cơ hội chặt đầu sinh vật",
+            "&r(Tăng tỷ lệ rơi đầu Wither Skeleton)");
     public static final SlimefunItemStack BLADE_OF_VAMPIRES = new SlimefunItemStack(
-            "BLADE_OF_VAMPIRES", Material.GOLDEN_SWORD, "&c吸血鬼之刀", "&7生命窃取 I", "", "&r在攻击时有 45% 的几率", "使自己恢复 2 点血量");
+            "BLADE_OF_VAMPIRES",
+            Material.GOLDEN_SWORD,
+            "&cLưỡi Kiếm Ma Cà Rồng",
+            "&7Hút Máu I",
+            "",
+            "&rKhi tấn công có 45% cơ hội",
+            "hồi 2 máu cho bản thân");
     public static final SlimefunItemStack SEISMIC_AXE = new SlimefunItemStack(
-            "SEISMIC_AXE", Material.IRON_AXE, "&a地震斧", "", "&7&o制造一场地震...", "", LoreBuilder.RIGHT_CLICK_TO_USE);
+            "SEISMIC_AXE",
+            Material.IRON_AXE,
+            "&aRìu Động Đất",
+            "",
+            "&7&oGây ra một trận động đất...",
+            "",
+            LoreBuilder.RIGHT_CLICK_TO_USE);
 
     static {
         GRANDMAS_WALKING_STICK.addUnsafeEnchantment(Enchantment.KNOCKBACK, 2);
@@ -680,36 +782,66 @@ public final class SlimefunItems {
     }
 
     /*		Bows		*/
-    public static final SlimefunItemStack EXPLOSIVE_BOW =
-            new SlimefunItemStack("EXPLOSIVE_BOW", Material.BOW, "&c爆裂之弓", "&r被爆裂之弓射出的箭击中将会飞上天");
-    public static final SlimefunItemStack ICY_BOW =
-            new SlimefunItemStack("ICY_BOW", Material.BOW, "&b冰封之弓", "&r被此弓射出的箭击中", "&r将会因寒冷而无法移动 (2秒内)");
+    public static final SlimefunItemStack EXPLOSIVE_BOW = new SlimefunItemStack(
+            "EXPLOSIVE_BOW", Material.BOW, "&cCung Nổ", "&rBị trúng mũi tên từ cung nổ sẽ bay lên trời");
+    public static final SlimefunItemStack ICY_BOW = new SlimefunItemStack(
+            "ICY_BOW",
+            Material.BOW,
+            "&bCung Băng",
+            "&rBị trúng mũi tên từ cung này",
+            "&rsẽ bị đóng băng không di chuyển được (2 giây)");
 
     /*		 Tools		*/
-    public static final SlimefunItemStack SMELTERS_PICKAXE =
-            new SlimefunItemStack("SMELTERS_PICKAXE", Material.DIAMOND_PICKAXE, "&6熔炉镐", "&c&l自动熔炼", "", "&9在挖矿时有时运效果");
+    public static final SlimefunItemStack SMELTERS_PICKAXE = new SlimefunItemStack(
+            "SMELTERS_PICKAXE",
+            Material.DIAMOND_PICKAXE,
+            "&6Cuốc Nấu Luyện",
+            "&c&lTự động nấu chảy",
+            "",
+            "&9Khi đào có hiệu ứng may mắn");
     public static final SlimefunItemStack LUMBER_AXE =
-            new SlimefunItemStack("LUMBER_AXE", Material.DIAMOND_AXE, "&6伐木斧", "&a&o砍倒整棵树木...");
-    public static final SlimefunItemStack PICKAXE_OF_CONTAINMENT =
-            new SlimefunItemStack("PICKAXE_OF_CONTAINMENT", Material.IRON_PICKAXE, "&c刷怪笼之镐", "", "&9可以获取刷怪笼");
+            new SlimefunItemStack("LUMBER_AXE", Material.DIAMOND_AXE, "&6Rìu Đốn Cây", "&a&oChặt cả cây...");
+    public static final SlimefunItemStack PICKAXE_OF_CONTAINMENT = new SlimefunItemStack(
+            "PICKAXE_OF_CONTAINMENT",
+            Material.IRON_PICKAXE,
+            "&cCuốc Lồng Sinh Quái",
+            "",
+            "&9Có thể lấy được lồng sinh quái");
     public static final SlimefunItemStack EXPLOSIVE_PICKAXE = new SlimefunItemStack(
-            "EXPLOSIVE_PICKAXE", Material.DIAMOND_PICKAXE, "&e爆炸镐", "", "&r用爆炸快速开采矿物", "", "&9支持时运附魔");
-    public static final SlimefunItemStack EXPLOSIVE_SHOVEL =
-            new SlimefunItemStack("EXPLOSIVE_SHOVEL", Material.DIAMOND_SHOVEL, "&e爆炸铲", "", "&r让你一下子就能挖掉很多方块");
+            "EXPLOSIVE_PICKAXE",
+            Material.DIAMOND_PICKAXE,
+            "&eCuốc Nổ",
+            "",
+            "&rDùng vụ nổ để đào khoáng sản nhanh",
+            "",
+            "&9Hỗ trợ phù phép may mắn");
+    public static final SlimefunItemStack EXPLOSIVE_SHOVEL = new SlimefunItemStack(
+            "EXPLOSIVE_SHOVEL", Material.DIAMOND_SHOVEL, "&eCái Xẻng Nổ", "", "&rGiúp bạn đào nhiều khối cùng lúc");
     public static final SlimefunItemStack PICKAXE_OF_THE_SEEKER = new SlimefunItemStack(
             "PICKAXE_OF_THE_SEEKER",
             Material.DIAMOND_PICKAXE,
-            "&a寻矿镐",
-            "&r使用时将会指出你附近的矿物",
-            "&r但可能它会受到损伤",
+            "&aCuốc Tìm Khoáng",
+            "&rKhi dùng sẽ chỉ ra khoáng sản gần bạn",
+            "&rnhưng có thể bị hư hại",
             "",
-            "&7&e右键&7 以寻找四周的矿物");
+            "&7&eChuột phải&7 để tìm khoáng sản xung quanh");
     public static final SlimefunItemStack COBALT_PICKAXE =
-            new SlimefunItemStack("COBALT_PICKAXE", Material.IRON_PICKAXE, "&9钴镐");
+            new SlimefunItemStack("COBALT_PICKAXE", Material.IRON_PICKAXE, "&9Cuốc Coban");
     public static final SlimefunItemStack PICKAXE_OF_VEIN_MINING = new SlimefunItemStack(
-            "PICKAXE_OF_VEIN_MINING", Material.DIAMOND_PICKAXE, "&e矿脉镐", "", "&r这个镐子将会挖出", "&r整个矿脉的矿物...");
+            "PICKAXE_OF_VEIN_MINING",
+            Material.DIAMOND_PICKAXE,
+            "&eCuốc Đào Mạch",
+            "",
+            "&rCuốc này sẽ đào",
+            "&rtoàn bộ mạch khoáng...");
     public static final SlimefunItemStack CLIMBING_PICK = new SlimefunItemStack(
-            "CLIMBING_PICK", Material.IRON_PICKAXE, "&b攀岩镐", "", "&f让你能够在右键后", "&f攀爬到指定平面上.", "&f附魔效率之后攀爬速度将会提升");
+            "CLIMBING_PICK",
+            Material.IRON_PICKAXE,
+            "&bCuốc Leo Núi",
+            "",
+            "&fGiúp bạn có thể chuột phải",
+            "&fđể leo lên bề mặt chỉ định.",
+            "&fPhù phép hiệu quả sẽ tăng tốc độ leo");
 
     static {
         COBALT_PICKAXE.addUnsafeEnchantment(VersionedEnchantment.UNBREAKING, 10);
@@ -718,114 +850,178 @@ public final class SlimefunItems {
 
     /*		 Armor 		*/
     public static final SlimefunItemStack GLOWSTONE_HELMET = new SlimefunItemStack(
-            "GLOWSTONE_HELMET", Material.LEATHER_HELMET, Color.YELLOW, "&e&l萤石头盔", "", "&a&o像太阳一样闪耀!", "", "&9+ 夜视效果");
+            "GLOWSTONE_HELMET",
+            Material.LEATHER_HELMET,
+            Color.YELLOW,
+            "&e&lMũ Đá Phát Sáng",
+            "",
+            "&a&oSáng như mặt trời!",
+            "",
+            "&9+ Hiệu ứng nhìn ban đêm");
     public static final SlimefunItemStack GLOWSTONE_CHESTPLATE = new SlimefunItemStack(
             "GLOWSTONE_CHESTPLATE",
             Material.LEATHER_CHESTPLATE,
             Color.YELLOW,
-            "&e&l萤石胸甲",
+            "&e&lÁo Giáp Đá Phát Sáng",
             "",
-            "&a&o像太阳一样闪耀!",
+            "&a&oSáng như mặt trời!",
             "",
-            "&9+ 夜视效果");
+            "&9+ Hiệu ứng nhìn ban đêm");
     public static final SlimefunItemStack GLOWSTONE_LEGGINGS = new SlimefunItemStack(
             "GLOWSTONE_LEGGINGS",
             Material.LEATHER_LEGGINGS,
             Color.YELLOW,
-            "&e&l萤石护腿",
+            "&e&lQuần Đá Phát Sáng",
             "",
-            "&a&o像太阳一样闪耀!",
+            "&a&oSáng như mặt trời!",
             "",
-            "&9+ 夜视效果");
+            "&9+ Hiệu ứng nhìn ban đêm");
     public static final SlimefunItemStack GLOWSTONE_BOOTS = new SlimefunItemStack(
-            "GLOWSTONE_BOOTS", Material.LEATHER_BOOTS, Color.YELLOW, "&e&l萤石靴子", "", "&a&o像太阳一样闪耀!", "", "&9+ 夜视效果");
-    public static final SlimefunItemStack RAINBOW_LEATHER =
-            new SlimefunItemStack("RAINBOW_LEATHER", Material.RABBIT_HIDE, Color.FUCHSIA, "&d彩虹皮革", "", "&f用于合成彩虹装备");
+            "GLOWSTONE_BOOTS",
+            Material.LEATHER_BOOTS,
+            Color.YELLOW,
+            "&e&lGiày Đá Phát Sáng",
+            "",
+            "&a&oSáng như mặt trời!",
+            "",
+            "&9+ Hiệu ứng nhìn ban đêm");
+    public static final SlimefunItemStack RAINBOW_LEATHER = new SlimefunItemStack(
+            "RAINBOW_LEATHER",
+            Material.RABBIT_HIDE,
+            Color.FUCHSIA,
+            "&dDa Cầu Vồng",
+            "",
+            "&fDùng để chế tạo trang bị cầu vồng");
     public static final SlimefunItemStack RAINBOW_HELMET = new SlimefunItemStack(
-            "RAINBOW_HELMET", Material.LEATHER_HELMET, Color.FUCHSIA, "&d&l彩虹头盔", "", LoreBuilder.RAINBOW);
+            "RAINBOW_HELMET", Material.LEATHER_HELMET, Color.FUCHSIA, "&d&lMũ Cầu Vồng", "", LoreBuilder.RAINBOW);
     public static final SlimefunItemStack RAINBOW_CHESTPLATE = new SlimefunItemStack(
-            "RAINBOW_CHESTPLATE", Material.LEATHER_CHESTPLATE, Color.FUCHSIA, "&d&l彩虹胸甲", "", LoreBuilder.RAINBOW);
+            "RAINBOW_CHESTPLATE",
+            Material.LEATHER_CHESTPLATE,
+            Color.FUCHSIA,
+            "&d&lÁo Giáp Cầu Vồng",
+            "",
+            LoreBuilder.RAINBOW);
     public static final SlimefunItemStack RAINBOW_LEGGINGS = new SlimefunItemStack(
-            "RAINBOW_LEGGINGS", Material.LEATHER_LEGGINGS, Color.FUCHSIA, "&d&l彩虹护腿", "", LoreBuilder.RAINBOW);
+            "RAINBOW_LEGGINGS", Material.LEATHER_LEGGINGS, Color.FUCHSIA, "&d&lQuần Cầu Vồng", "", LoreBuilder.RAINBOW);
     public static final SlimefunItemStack RAINBOW_BOOTS = new SlimefunItemStack(
-            "RAINBOW_BOOTS", Material.LEATHER_BOOTS, Color.FUCHSIA, "&d&l彩虹靴子", "", LoreBuilder.RAINBOW);
+            "RAINBOW_BOOTS", Material.LEATHER_BOOTS, Color.FUCHSIA, "&d&lGiày Cầu Vồng", "", LoreBuilder.RAINBOW);
     public static final SlimefunItemStack ENDER_HELMET = new SlimefunItemStack(
-            "ENDER_HELMET", Material.LEATHER_HELMET, Color.fromRGB(28, 25, 112), "&5&l末影头盔", "", "&a&o任意移动");
+            "ENDER_HELMET",
+            Material.LEATHER_HELMET,
+            Color.fromRGB(28, 25, 112),
+            "&5&lMũ Ender",
+            "",
+            "&a&oDịch chuyển tùy ý");
     public static final SlimefunItemStack ENDER_CHESTPLATE = new SlimefunItemStack(
-            "ENDER_CHESTPLATE", Material.LEATHER_CHESTPLATE, Color.fromRGB(28, 25, 112), "&5&l末影胸甲", "", "&a&o任意移动");
+            "ENDER_CHESTPLATE",
+            Material.LEATHER_CHESTPLATE,
+            Color.fromRGB(28, 25, 112),
+            "&5&lÁo Giáp Ender",
+            "",
+            "&a&oDịch chuyển tùy ý");
     public static final SlimefunItemStack ENDER_LEGGINGS = new SlimefunItemStack(
-            "ENDER_LEGGINGS", Material.LEATHER_LEGGINGS, Color.fromRGB(28, 25, 112), "&5&l末影护腿", "", "&a&o任意移动");
+            "ENDER_LEGGINGS",
+            Material.LEATHER_LEGGINGS,
+            Color.fromRGB(28, 25, 112),
+            "&5&lQuần Ender",
+            "",
+            "&a&oDịch chuyển tùy ý");
     public static final SlimefunItemStack ENDER_BOOTS = new SlimefunItemStack(
             "ENDER_BOOTS",
             Material.LEATHER_BOOTS,
             Color.fromRGB(28, 25, 112),
-            "&5&l末影靴子",
+            "&5&lGiày Ender",
             "",
-            "&a&o任意移动",
+            "&a&oDịch chuyển tùy ý",
             "",
-            "&9+ 使用末影珍珠时无伤害");
+            "&9+ Không nhận sát thương khi dùng Ngọc Ender");
 
-    public static final SlimefunItemStack SLIME_HELMET =
-            new SlimefunItemStack("SLIME_HELMET", Material.LEATHER_HELMET, Color.LIME, "&a&l史莱姆头盔", "", "&a&o有弹性的感觉");
+    public static final SlimefunItemStack SLIME_HELMET = new SlimefunItemStack(
+            "SLIME_HELMET", Material.LEATHER_HELMET, Color.LIME, "&a&lMũ Slime", "", "&a&oCảm giác đàn hồi");
     public static final SlimefunItemStack SLIME_CHESTPLATE = new SlimefunItemStack(
-            "SLIME_CHESTPLATE", Material.LEATHER_CHESTPLATE, Color.LIME, "&a&l史莱姆胸甲", "", "&a&o有弹性的感觉");
+            "SLIME_CHESTPLATE",
+            Material.LEATHER_CHESTPLATE,
+            Color.LIME,
+            "&a&lÁo Giáp Slime",
+            "",
+            "&a&oCảm giác đàn hồi");
     public static final SlimefunItemStack SLIME_LEGGINGS = new SlimefunItemStack(
-            "SLIME_LEGGINGS", Material.LEATHER_LEGGINGS, Color.LIME, "&a&l史莱姆护腿", "", "&a&o有弹性的感觉", "", "&9+ 速度");
+            "SLIME_LEGGINGS",
+            Material.LEATHER_LEGGINGS,
+            Color.LIME,
+            "&a&lQuần Slime",
+            "",
+            "&a&oCảm giác đàn hồi",
+            "",
+            "&9+ Tốc độ");
     public static final SlimefunItemStack SLIME_BOOTS = new SlimefunItemStack(
             "SLIME_BOOTS",
             Material.LEATHER_BOOTS,
             Color.LIME,
-            "&a&l史莱姆靴子",
+            "&a&lGiày Slime",
             "",
-            "&a&o有弹性的感觉",
+            "&a&oCảm giác đàn hồi",
             "",
-            "&9+ 跳跃提升",
-            "&9+ 减免摔落伤害");
+            "&9+ Tăng nhảy",
+            "&9+ Giảm sát thương rơi");
 
     public static final SlimefunItemStack CACTUS_HELMET =
-            new SlimefunItemStack("CACTUS_HELMET", Material.LEATHER_HELMET, Color.GREEN, "&2仙人掌头盔");
-    public static final SlimefunItemStack CACTUS_CHESTPLATE =
-            new SlimefunItemStack("CACTUS_CHESTPLATE", Material.LEATHER_CHESTPLATE, Color.GREEN, "&2仙人掌胸甲");
+            new SlimefunItemStack("CACTUS_HELMET", Material.LEATHER_HELMET, Color.GREEN, "&2Mũ Xương Rồng");
+    public static final SlimefunItemStack CACTUS_CHESTPLATE = new SlimefunItemStack(
+            "CACTUS_CHESTPLATE", Material.LEATHER_CHESTPLATE, Color.GREEN, "&2Áo Giáp Xương Rồng");
     public static final SlimefunItemStack CACTUS_LEGGINGS =
-            new SlimefunItemStack("CACTUS_LEGGINGS", Material.LEATHER_LEGGINGS, Color.GREEN, "&2仙人掌护腿");
+            new SlimefunItemStack("CACTUS_LEGGINGS", Material.LEATHER_LEGGINGS, Color.GREEN, "&2Quần Xương Rồng");
     public static final SlimefunItemStack CACTUS_BOOTS =
-            new SlimefunItemStack("CACTUS_BOOTS", Material.LEATHER_BOOTS, Color.GREEN, "&2仙人掌靴子");
+            new SlimefunItemStack("CACTUS_BOOTS", Material.LEATHER_BOOTS, Color.GREEN, "&2Giày Xương Rồng");
 
     public static final SlimefunItemStack DAMASCUS_STEEL_HELMET =
-            new SlimefunItemStack("DAMASCUS_STEEL_HELMET", Material.IRON_HELMET, "&7大马士革钢头盔");
+            new SlimefunItemStack("DAMASCUS_STEEL_HELMET", Material.IRON_HELMET, "&7Mũ Thép Damascus");
     public static final SlimefunItemStack DAMASCUS_STEEL_CHESTPLATE =
-            new SlimefunItemStack("DAMASCUS_STEEL_CHESTPLATE", Material.IRON_CHESTPLATE, "&7大马士革钢胸甲");
+            new SlimefunItemStack("DAMASCUS_STEEL_CHESTPLATE", Material.IRON_CHESTPLATE, "&7Áo Giáp Thép Damascus");
     public static final SlimefunItemStack DAMASCUS_STEEL_LEGGINGS =
-            new SlimefunItemStack("DAMASCUS_STEEL_LEGGINGS", Material.IRON_LEGGINGS, "&7大马士革钢护腿");
+            new SlimefunItemStack("DAMASCUS_STEEL_LEGGINGS", Material.IRON_LEGGINGS, "&7Quần Thép Damascus");
     public static final SlimefunItemStack DAMASCUS_STEEL_BOOTS =
-            new SlimefunItemStack("DAMASCUS_STEEL_BOOTS", Material.IRON_BOOTS, "&7大马士革钢靴子");
+            new SlimefunItemStack("DAMASCUS_STEEL_BOOTS", Material.IRON_BOOTS, "&7Giày Thép Damascus");
 
     public static final SlimefunItemStack REINFORCED_ALLOY_HELMET =
-            new SlimefunItemStack("REINFORCED_ALLOY_HELMET", Material.IRON_HELMET, "&b强化合金头盔");
+            new SlimefunItemStack("REINFORCED_ALLOY_HELMET", Material.IRON_HELMET, "&bMũ Hợp Kim Gia Cố");
     public static final SlimefunItemStack REINFORCED_ALLOY_CHESTPLATE =
-            new SlimefunItemStack("REINFORCED_ALLOY_CHESTPLATE", Material.IRON_CHESTPLATE, "&b强化合金胸甲");
+            new SlimefunItemStack("REINFORCED_ALLOY_CHESTPLATE", Material.IRON_CHESTPLATE, "&bÁo Giáp Hợp Kim Gia Cố");
     public static final SlimefunItemStack REINFORCED_ALLOY_LEGGINGS =
-            new SlimefunItemStack("REINFORCED_ALLOY_LEGGINGS", Material.IRON_LEGGINGS, "&b强化合金护腿");
+            new SlimefunItemStack("REINFORCED_ALLOY_LEGGINGS", Material.IRON_LEGGINGS, "&bQuần Hợp Kim Gia Cố");
     public static final SlimefunItemStack REINFORCED_ALLOY_BOOTS =
-            new SlimefunItemStack("REINFORCED_ALLOY_BOOTS", Material.IRON_BOOTS, "&b强化合金靴子");
+            new SlimefunItemStack("REINFORCED_ALLOY_BOOTS", Material.IRON_BOOTS, "&bGiày Hợp Kim Gia Cố");
 
     private static final List<String> hazmatLore = new ArrayList<>();
 
     static {
         hazmatLore.add("");
-        hazmatLore.add(ChatColor.GOLD + "装备全套效果:");
-        hazmatLore.add(ChatColor.YELLOW + "- 免疫辐射伤害");
-        hazmatLore.add(ChatColor.YELLOW + "- 免疫蜜蜂蛰咬伤害");
+        hazmatLore.add(ChatColor.GOLD + "Hiệu ứng bộ đồ đầy đủ:");
+        hazmatLore.add(ChatColor.YELLOW + "- Miễn nhiễm sát thương phóng xạ");
+        hazmatLore.add(ChatColor.YELLOW + "- Miễn nhiễm ong đốt");
     }
 
-    public static final SlimefunItemStack SCUBA_HELMET =
-            new SlimefunItemStack("SCUBA_HELMET", Material.LEATHER_HELMET, Color.ORANGE, "&c潜水头盔", "", "&7让你能够在水下呼吸");
+    public static final SlimefunItemStack SCUBA_HELMET = new SlimefunItemStack(
+            "SCUBA_HELMET", Material.LEATHER_HELMET, Color.ORANGE, "&cMũ Lặn", "", "&7Cho phép bạn thở dưới nước");
     public static final SlimefunItemStack HAZMAT_CHESTPLATE = new SlimefunItemStack(
-            "HAZMAT_CHESTPLATE", Material.LEATHER_CHESTPLATE, Color.ORANGE, "&c防化服", "", "&7让你能在火焰和岩浆里行走");
+            "HAZMAT_CHESTPLATE",
+            Material.LEATHER_CHESTPLATE,
+            Color.ORANGE,
+            "&cÁo Chống Hóa Chất",
+            "",
+            "&7Cho phép bạn đi trong lửa và nham thạch");
     public static final SlimefunItemStack HAZMAT_LEGGINGS = new SlimefunItemStack(
-            "HAZMAT_LEGGINGS", Material.LEATHER_LEGGINGS, Color.ORANGE, "&c防化护腿", hazmatLore.toArray(new String[0]));
+            "HAZMAT_LEGGINGS",
+            Material.LEATHER_LEGGINGS,
+            Color.ORANGE,
+            "&cQuần Chống Hóa Chất",
+            hazmatLore.toArray(new String[0]));
     public static final SlimefunItemStack HAZMAT_BOOTS = new SlimefunItemStack(
-            "RUBBER_BOOTS", Material.LEATHER_BOOTS, Color.BLACK, "&c防化靴", hazmatLore.toArray(new String[0]));
+            "RUBBER_BOOTS",
+            Material.LEATHER_BOOTS,
+            Color.BLACK,
+            "&cGiày Chống Hóa Chất",
+            hazmatLore.toArray(new String[0]));
 
     static {
         ItemMeta helmetMeta = SCUBA_HELMET.getItemMeta();
@@ -842,67 +1038,87 @@ public final class SlimefunItems {
     }
 
     public static final SlimefunItemStack GILDED_IRON_HELMET =
-            new SlimefunItemStack("GILDED_IRON_HELMET", Material.GOLDEN_HELMET, "&6镀金铁头盔");
+            new SlimefunItemStack("GILDED_IRON_HELMET", Material.GOLDEN_HELMET, "&6Mũ Sắt Mạ Vàng");
     public static final SlimefunItemStack GILDED_IRON_CHESTPLATE =
-            new SlimefunItemStack("GILDED_IRON_CHESTPLATE", Material.GOLDEN_CHESTPLATE, "&6镀金铁胸甲");
+            new SlimefunItemStack("GILDED_IRON_CHESTPLATE", Material.GOLDEN_CHESTPLATE, "&6Áo Giáp Sắt Mạ Vàng");
     public static final SlimefunItemStack GILDED_IRON_LEGGINGS =
-            new SlimefunItemStack("GILDED_IRON_LEGGINGS", Material.GOLDEN_LEGGINGS, "&6镀金铁护腿");
+            new SlimefunItemStack("GILDED_IRON_LEGGINGS", Material.GOLDEN_LEGGINGS, "&6Quần Sắt Mạ Vàng");
     public static final SlimefunItemStack GILDED_IRON_BOOTS =
-            new SlimefunItemStack("GILDED_IRON_BOOTS", Material.GOLDEN_BOOTS, "&6镀金铁靴子");
+            new SlimefunItemStack("GILDED_IRON_BOOTS", Material.GOLDEN_BOOTS, "&6Giày Sắt Mạ Vàng");
 
     public static final SlimefunItemStack GOLDEN_HELMET_12K =
-            new SlimefunItemStack("GOLD_12K_HELMET", Material.GOLDEN_HELMET, "&6金头盔", "&912克拉");
+            new SlimefunItemStack("GOLD_12K_HELMET", Material.GOLDEN_HELMET, "&6Mũ Vàng", "&912 carat");
     public static final SlimefunItemStack GOLDEN_CHESTPLATE_12K =
-            new SlimefunItemStack("GOLD_12K_CHESTPLATE", Material.GOLDEN_CHESTPLATE, "&6金胸甲", "&912克拉");
+            new SlimefunItemStack("GOLD_12K_CHESTPLATE", Material.GOLDEN_CHESTPLATE, "&6Áo Giáp Vàng", "&912 carat");
     public static final SlimefunItemStack GOLDEN_LEGGINGS_12K =
-            new SlimefunItemStack("GOLD_12K_LEGGINGS", Material.GOLDEN_LEGGINGS, "&6金护腿", "&912克拉");
+            new SlimefunItemStack("GOLD_12K_LEGGINGS", Material.GOLDEN_LEGGINGS, "&6Quần Vàng", "&912 carat");
     public static final SlimefunItemStack GOLDEN_BOOTS_12K =
-            new SlimefunItemStack("GOLD_12K_BOOTS", Material.GOLDEN_BOOTS, "&6金靴子", "&912克拉");
+            new SlimefunItemStack("GOLD_12K_BOOTS", Material.GOLDEN_BOOTS, "&6Giày Vàng", "&912 carat");
 
-    public static final SlimefunItemStack SLIME_HELMET_STEEL =
-            new SlimefunItemStack("SLIME_STEEL_HELMET", Material.IRON_HELMET, "&a&l史莱姆头盔", "&7&o已强化", "", "&a&o有弹性的感觉");
+    public static final SlimefunItemStack SLIME_HELMET_STEEL = new SlimefunItemStack(
+            "SLIME_STEEL_HELMET", Material.IRON_HELMET, "&a&lMũ Slime", "&7&oĐã gia cố", "", "&a&oCảm giác đàn hồi");
     public static final SlimefunItemStack SLIME_CHESTPLATE_STEEL = new SlimefunItemStack(
-            "SLIME_STEEL_CHESTPLATE", Material.IRON_CHESTPLATE, "&a&l史莱姆胸甲", "&7&o已强化", "", "&a&o有弹性的感觉");
+            "SLIME_STEEL_CHESTPLATE",
+            Material.IRON_CHESTPLATE,
+            "&a&lÁo Giáp Slime",
+            "&7&oĐã gia cố",
+            "",
+            "&a&oCảm giác đàn hồi");
     public static final SlimefunItemStack SLIME_LEGGINGS_STEEL = new SlimefunItemStack(
-            "SLIME_STEEL_LEGGINGS", Material.IRON_LEGGINGS, "&a&l史莱姆护腿", "&7&o已强化", "", "&a&o有弹性的感觉", "", "&9+ 速度");
+            "SLIME_STEEL_LEGGINGS",
+            Material.IRON_LEGGINGS,
+            "&a&lQuần Slime",
+            "&7&oĐã gia cố",
+            "",
+            "&a&oCảm giác đàn hồi",
+            "",
+            "&9+ Tốc độ");
     public static final SlimefunItemStack SLIME_BOOTS_STEEL = new SlimefunItemStack(
             "SLIME_STEEL_BOOTS",
             Material.IRON_BOOTS,
-            "&a&l史莱姆靴子",
-            "&7&o已强化",
+            "&a&lGiày Slime",
+            "&7&oĐã gia cố",
             "",
-            "&a&o有弹性的感觉",
+            "&a&oCảm giác đàn hồi",
             "",
-            "&9+ 跳跃提升",
-            "&9+ 减免摔落伤害");
+            "&9+ Tăng nhảy",
+            "&9+ Giảm sát thương rơi");
 
     public static final SlimefunItemStack BOOTS_OF_THE_STOMPER = new SlimefunItemStack(
             "BOOTS_OF_THE_STOMPER",
             Material.LEATHER_BOOTS,
             Color.AQUA,
-            "&b践踏者之靴",
+            "&bGiày Giẫm Đạp",
             "",
-            "&9你受到的所有摔落伤害",
-            "&9将转给附近的生物/玩家",
+            "&9Tất cả sát thương rơi bạn nhận",
+            "&9sẽ chuyển cho sinh vật/người chơi gần đó",
             "",
-            "&9+ 减免摔落伤害");
+            "&9+ Giảm sát thương rơi");
 
     public static final SlimefunItemStack BEE_HELMET =
-            new SlimefunItemStack("BEE_HELMET", Material.GOLDEN_HELMET, "&e&l蜜蜂头盔", " ", "&f嗡嗡嗡");
+            new SlimefunItemStack("BEE_HELMET", Material.GOLDEN_HELMET, "&e&lMũ Ong", " ", "&fVzzz vzzz");
     public static final SlimefunItemStack BEE_WINGS = new SlimefunItemStack(
-            "BEE_WINGS", Material.ELYTRA, "&e&l蜂翅", " ", "&f嗡嗡嗡", " ", "&9在接近地面时", "&9会启用缓降模式", " ");
+            "BEE_WINGS",
+            Material.ELYTRA,
+            "&e&lCánh Ong",
+            " ",
+            "&fVzzz vzzz",
+            " ",
+            "&9Khi gần mặt đất",
+            "&9sẽ kích hoạt chế độ rơi chậm",
+            " ");
     public static final SlimefunItemStack BEE_LEGGINGS =
-            new SlimefunItemStack("BEE_LEGGINGS", Material.GOLDEN_LEGGINGS, "&e&l蜜蜂护腿", " ", "&f嗡嗡嗡");
+            new SlimefunItemStack("BEE_LEGGINGS", Material.GOLDEN_LEGGINGS, "&e&lQuần Ong", " ", "&fVzzz vzzz");
     public static final SlimefunItemStack BEE_BOOTS = new SlimefunItemStack(
             "BEE_BOOTS",
             Material.GOLDEN_BOOTS,
-            "&e&l蜜蜂护靴",
-            "&f嗡嗡嗡",
+            "&e&lGiày Ong",
+            "&fVzzz vzzz",
             "",
-            "&e&o再次起飞时绝对没问题",
+            "&e&oChắc chắn bay lại được",
             "",
-            "&9+ 跳跃提升",
-            "&9+ 减免摔落伤害");
+            "&9+ Tăng nhảy",
+            "&9+ Giảm sát thương rơi");
 
     static {
         Map<Enchantment, Integer> cactusEnchs = new HashMap<>();
@@ -966,439 +1182,615 @@ public final class SlimefunItems {
     }
 
     /*		 Misc 		*/
-    public static final SlimefunItemStack MAGIC_LUMP_1 =
-            new SlimefunItemStack("MAGIC_LUMP_1", Material.GOLD_NUGGET, "&6魔法结晶 &7- &eI", "", "&c&o等级: I");
-    public static final SlimefunItemStack MAGIC_LUMP_2 =
-            new SlimefunItemStack("MAGIC_LUMP_2", Material.GOLD_NUGGET, "&6魔法结晶 &7- &eII", "", "&c&o等级: II");
-    public static final SlimefunItemStack MAGIC_LUMP_3 =
-            new SlimefunItemStack("MAGIC_LUMP_3", Material.GOLD_NUGGET, "&6魔法结晶 &7- &eIII", "", "&c&o等级: III");
-    public static final SlimefunItemStack ENDER_LUMP_1 =
-            new SlimefunItemStack("ENDER_LUMP_1", Material.GOLD_NUGGET, "&5末影结晶 &7- &eI", "", "&c&o等级: I");
-    public static final SlimefunItemStack ENDER_LUMP_2 =
-            new SlimefunItemStack("ENDER_LUMP_2", Material.GOLD_NUGGET, "&5末影结晶 &7- &eII", "", "&c&o等级: II");
-    public static final SlimefunItemStack ENDER_LUMP_3 =
-            new SlimefunItemStack("ENDER_LUMP_3", Material.GOLD_NUGGET, "&5末影结晶 &7- &eIII", "", "&c&o等级: III");
-    public static final SlimefunItemStack MAGICAL_BOOK_COVER =
-            new SlimefunItemStack("MAGICAL_BOOK_COVER", Material.PAPER, "&6魔法书皮", "", "&a&o用于各种魔法书");
-    public static final SlimefunItemStack MAGICAL_GLASS =
-            new SlimefunItemStack("MAGICAL_GLASS", Material.GLASS_PANE, "&6魔法玻璃", "", "&a&o被多种魔法道具使用");
+    public static final SlimefunItemStack MAGIC_LUMP_1 = new SlimefunItemStack(
+            "MAGIC_LUMP_1", Material.GOLD_NUGGET, "&6Tinh Thể Ma Thuật &7- &eI", "", "&c&oCấp độ: I");
+    public static final SlimefunItemStack MAGIC_LUMP_2 = new SlimefunItemStack(
+            "MAGIC_LUMP_2", Material.GOLD_NUGGET, "&6Tinh Thể Ma Thuật &7- &eII", "", "&c&oCấp độ: II");
+    public static final SlimefunItemStack MAGIC_LUMP_3 = new SlimefunItemStack(
+            "MAGIC_LUMP_3", Material.GOLD_NUGGET, "&6Tinh Thể Ma Thuật &7- &eIII", "", "&c&oCấp độ: III");
+    public static final SlimefunItemStack ENDER_LUMP_1 = new SlimefunItemStack(
+            "ENDER_LUMP_1", Material.GOLD_NUGGET, "&5Tinh Thể Ender &7- &eI", "", "&c&oCấp độ: I");
+    public static final SlimefunItemStack ENDER_LUMP_2 = new SlimefunItemStack(
+            "ENDER_LUMP_2", Material.GOLD_NUGGET, "&5Tinh Thể Ender &7- &eII", "", "&c&oCấp độ: II");
+    public static final SlimefunItemStack ENDER_LUMP_3 = new SlimefunItemStack(
+            "ENDER_LUMP_3", Material.GOLD_NUGGET, "&5Tinh Thể Ender &7- &eIII", "", "&c&oCấp độ: III");
+    public static final SlimefunItemStack MAGICAL_BOOK_COVER = new SlimefunItemStack(
+            "MAGICAL_BOOK_COVER", Material.PAPER, "&6Bìa Sách Ma Thuật", "", "&a&oDùng cho nhiều loại sách ma thuật");
+    public static final SlimefunItemStack MAGICAL_GLASS = new SlimefunItemStack(
+            "MAGICAL_GLASS",
+            Material.GLASS_PANE,
+            "&6Kính Ma Thuật",
+            "",
+            "&a&oĐược sử dụng bởi nhiều vật phẩm ma thuật");
     public static final SlimefunItemStack SYNTHETIC_SHULKER_SHELL = new SlimefunItemStack(
-            "SYNTHETIC_SHULKER_SHELL", Material.SHULKER_SHELL, "&d人造潜影壳", "", "&f可以用于工作台合成", "&f就像普通的潜影壳一样");
+            "SYNTHETIC_SHULKER_SHELL",
+            Material.SHULKER_SHELL,
+            "&dVỏ Shulker Nhân Tạo",
+            "",
+            "&fCó thể dùng để chế tạo",
+            "&fgiống như vỏ shulker thường");
     public static final SlimefunItemStack BASIC_CIRCUIT_BOARD =
-            new SlimefunItemStack("BASIC_CIRCUIT_BOARD", Material.ACTIVATOR_RAIL, "&b基础电路板");
+            new SlimefunItemStack("BASIC_CIRCUIT_BOARD", Material.ACTIVATOR_RAIL, "&bMạch Điện Cơ Bản");
     public static final SlimefunItemStack ADVANCED_CIRCUIT_BOARD =
-            new SlimefunItemStack("ADVANCED_CIRCUIT_BOARD", Material.POWERED_RAIL, "&b高级电路板");
-    public static final SlimefunItemStack WHEAT_FLOUR = new SlimefunItemStack("WHEAT_FLOUR", Material.SUGAR, "&r小麦粉");
-    public static final SlimefunItemStack STEEL_PLATE = new SlimefunItemStack("STEEL_PLATE", Material.PAPER, "&7&l钢板");
-    public static final SlimefunItemStack BATTERY = new SlimefunItemStack("BATTERY", HeadTexture.BATTERY, "&6电池");
-    public static final SlimefunItemStack CARBON = new SlimefunItemStack("CARBON", HeadTexture.CARBON, "&e碳");
+            new SlimefunItemStack("ADVANCED_CIRCUIT_BOARD", Material.POWERED_RAIL, "&bMạch Điện Nâng Cao");
+    public static final SlimefunItemStack WHEAT_FLOUR =
+            new SlimefunItemStack("WHEAT_FLOUR", Material.SUGAR, "&rBột Mì");
+    public static final SlimefunItemStack STEEL_PLATE =
+            new SlimefunItemStack("STEEL_PLATE", Material.PAPER, "&7&lTấm Thép");
+    public static final SlimefunItemStack BATTERY = new SlimefunItemStack("BATTERY", HeadTexture.BATTERY, "&6Pin");
+    public static final SlimefunItemStack CARBON = new SlimefunItemStack("CARBON", HeadTexture.CARBON, "&eCarbon");
     public static final SlimefunItemStack COMPRESSED_CARBON =
-            new SlimefunItemStack("COMPRESSED_CARBON", HeadTexture.COMPRESSED_CARBON, "&c压缩碳");
+            new SlimefunItemStack("COMPRESSED_CARBON", HeadTexture.COMPRESSED_CARBON, "&cCarbon Nén");
     public static final SlimefunItemStack CARBON_CHUNK =
-            new SlimefunItemStack("CARBON_CHUNK", HeadTexture.CARBON, "&4碳块");
+            new SlimefunItemStack("CARBON_CHUNK", HeadTexture.CARBON, "&4Khối Carbon");
     public static final SlimefunItemStack STEEL_THRUSTER =
-            new SlimefunItemStack("STEEL_THRUSTER", Material.BUCKET, "&7&l钢推进器");
+            new SlimefunItemStack("STEEL_THRUSTER", Material.BUCKET, "&7&lĐộng Cơ Đẩy Thép");
     public static final SlimefunItemStack POWER_CRYSTAL =
-            new SlimefunItemStack("POWER_CRYSTAL", HeadTexture.POWER_CRYSTAL, "&c&l能量水晶");
-    public static final SlimefunItemStack CHAIN = new SlimefunItemStack("CHAIN", Material.STRING, "&b锁链");
-    public static final SlimefunItemStack HOOK = new SlimefunItemStack("HOOK", Material.FLINT, "&b钩子");
-    public static final SlimefunItemStack SIFTED_ORE = new SlimefunItemStack("SIFTED_ORE", Material.GUNPOWDER, "&6筛矿");
+            new SlimefunItemStack("POWER_CRYSTAL", HeadTexture.POWER_CRYSTAL, "&c&lKhối Năng Lượng");
+    public static final SlimefunItemStack CHAIN = new SlimefunItemStack("CHAIN", Material.STRING, "&bXích");
+    public static final SlimefunItemStack HOOK = new SlimefunItemStack("HOOK", Material.FLINT, "&bMóc");
+    public static final SlimefunItemStack SIFTED_ORE =
+            new SlimefunItemStack("SIFTED_ORE", Material.GUNPOWDER, "&6Quặng Đã Sàng");
     public static final SlimefunItemStack STONE_CHUNK =
-            new SlimefunItemStack("STONE_CHUNK", HeadTexture.STONE_CHUNK, "&6石块");
+            new SlimefunItemStack("STONE_CHUNK", HeadTexture.STONE_CHUNK, "&6Mảnh Đá");
     public static final SlimefunItemStack LAVA_CRYSTAL =
-            new SlimefunItemStack("LAVA_CRYSTAL", HeadTexture.LAVA_CRYSTAL, "&4岩浆水晶");
-    public static final SlimefunItemStack SALT = new SlimefunItemStack("SALT", Material.SUGAR, "&r盐");
-    public static final SlimefunItemStack CHEESE = new SlimefunItemStack("CHEESE", HeadTexture.CHEESE, "&r奶酪");
-    public static final SlimefunItemStack BUTTER = new SlimefunItemStack("BUTTER", HeadTexture.BUTTER, "&r黄油");
-    public static final SlimefunItemStack DUCT_TAPE =
-            new SlimefunItemStack("DUCT_TAPE", HeadTexture.DUCT_TAPE, "&8强力胶布", "", "&r可以用这个在自动铁砧里", "&r修复物品");
+            new SlimefunItemStack("LAVA_CRYSTAL", HeadTexture.LAVA_CRYSTAL, "&4Tinh Thể Nham Thạch");
+    public static final SlimefunItemStack SALT = new SlimefunItemStack("SALT", Material.SUGAR, "&rMuối");
+    public static final SlimefunItemStack CHEESE = new SlimefunItemStack("CHEESE", HeadTexture.CHEESE, "&rPhô Mai");
+    public static final SlimefunItemStack BUTTER = new SlimefunItemStack("BUTTER", HeadTexture.BUTTER, "&rBơ");
+    public static final SlimefunItemStack DUCT_TAPE = new SlimefunItemStack(
+            "DUCT_TAPE",
+            HeadTexture.DUCT_TAPE,
+            "&8Băng Keo Siêu Dính",
+            "",
+            "&rCó thể dùng để sửa vật phẩm",
+            "&rtrong Đe Tự Động");
     public static final SlimefunItemStack HEAVY_CREAM =
-            new SlimefunItemStack("HEAVY_CREAM", Material.SNOWBALL, "&r浓奶油");
+            new SlimefunItemStack("HEAVY_CREAM", Material.SNOWBALL, "&rKem Đặc");
     public static final SlimefunItemStack CRUSHED_ORE =
-            new SlimefunItemStack("CRUSHED_ORE", Material.GUNPOWDER, "&6已粉碎的矿石");
+            new SlimefunItemStack("CRUSHED_ORE", Material.GUNPOWDER, "&6Quặng Đã Nghiền");
     public static final SlimefunItemStack PULVERIZED_ORE =
-            new SlimefunItemStack("PULVERIZED_ORE", Material.GUNPOWDER, "&6粉末状的矿石");
+            new SlimefunItemStack("PULVERIZED_ORE", Material.GUNPOWDER, "&6Quặng Dạng Bột");
     public static final SlimefunItemStack PURE_ORE_CLUSTER =
-            new SlimefunItemStack("PURE_ORE_CLUSTER", Material.GUNPOWDER, "&6纯矿簇");
+            new SlimefunItemStack("PURE_ORE_CLUSTER", Material.GUNPOWDER, "&6Cụm Quặng Tinh Khiết");
     public static final SlimefunItemStack SMALL_URANIUM = new SlimefunItemStack(
             "SMALL_URANIUM",
             HeadTexture.URANIUM,
-            "&c一小块铀",
+            "&cMột Khối Urani Nhỏ",
             "",
             LoreBuilder.radioactive(Radioactivity.MODERATE),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
     public static final SlimefunItemStack TINY_URANIUM = new SlimefunItemStack(
-            "TINY_URANIUM", HeadTexture.URANIUM, "&c一小撮铀", "", LoreBuilder.radioactive(Radioactivity.LOW));
+            "TINY_URANIUM", HeadTexture.URANIUM, "&cMột Chút Urani", "", LoreBuilder.radioactive(Radioactivity.LOW));
 
-    public static final SlimefunItemStack MAGNET = new SlimefunItemStack("MAGNET", HeadTexture.MAGNET, "&c磁铁");
+    public static final SlimefunItemStack MAGNET = new SlimefunItemStack("MAGNET", HeadTexture.MAGNET, "&cNam Châm");
     public static final SlimefunItemStack NECROTIC_SKULL =
-            new SlimefunItemStack("NECROTIC_SKULL", HeadTexture.NECROTIC_SKULL, "&c坏死颅骨");
+            new SlimefunItemStack("NECROTIC_SKULL", HeadTexture.NECROTIC_SKULL, "&cHộp Sọ Hoại Tử");
     public static final SlimefunItemStack ESSENCE_OF_AFTERLIFE =
-            new SlimefunItemStack("ESSENCE_OF_AFTERLIFE", Material.GUNPOWDER, "&4来世精华");
+            new SlimefunItemStack("ESSENCE_OF_AFTERLIFE", Material.GUNPOWDER, "&4Tinh Hoa Thế Giới Bên Kia");
     public static final SlimefunItemStack STRANGE_NETHER_GOO = new SlimefunItemStack(
-            "STRANGE_NETHER_GOO", Material.PURPLE_DYE, "&5奇怪的下界粘液", "", "&f一种奇怪的物质", "&f可以和猪灵以物换物获得");
+            "STRANGE_NETHER_GOO",
+            Material.PURPLE_DYE,
+            "&5Chất Nhầy Nether Kỳ Lạ",
+            "",
+            "&fMột chất liệu kỳ lạ",
+            "&fcó thể đổi với Piglin");
     public static final SlimefunItemStack ELECTRO_MAGNET =
-            new SlimefunItemStack("ELECTRO_MAGNET", HeadTexture.MAGNET, "&c电磁铁");
+            new SlimefunItemStack("ELECTRO_MAGNET", HeadTexture.MAGNET, "&cNam Châm Điện");
     public static final SlimefunItemStack HEATING_COIL =
-            new SlimefunItemStack("HEATING_COIL", HeadTexture.HEATING_COIL, "&c加热线圈");
+            new SlimefunItemStack("HEATING_COIL", HeadTexture.HEATING_COIL, "&cDây Nung");
     public static final SlimefunItemStack COOLING_UNIT =
-            new SlimefunItemStack("COOLING_UNIT", HeadTexture.COOLING_UNIT, "&b冷却装置");
+            new SlimefunItemStack("COOLING_UNIT", HeadTexture.COOLING_UNIT, "&bBộ Làm Mát");
     public static final SlimefunItemStack ELECTRIC_MOTOR =
-            new SlimefunItemStack("ELECTRIC_MOTOR", HeadTexture.MOTOR, "&c电动马达");
-    public static final SlimefunItemStack CARGO_MOTOR =
-            new SlimefunItemStack("CARGO_MOTOR", HeadTexture.CARGO_MOTOR, "&3货运马达", "", "&7货运网络相关机器重要的零件");
+            new SlimefunItemStack("ELECTRIC_MOTOR", HeadTexture.MOTOR, "&cĐộng Cơ Điện");
+    public static final SlimefunItemStack CARGO_MOTOR = new SlimefunItemStack(
+            "CARGO_MOTOR",
+            HeadTexture.CARGO_MOTOR,
+            "&3Động Cơ Vận Chuyển",
+            "",
+            "&7Linh kiện quan trọng của máy vận chuyển hàng");
     public static final SlimefunItemStack SCROLL_OF_DIMENSIONAL_TELEPOSITION = new SlimefunItemStack(
             "SCROLL_OF_DIMENSIONAL_TELEPOSITION",
             Material.PAPER,
-            "&6维度传送卷轴",
+            "&6Cuộn Giấy Dịch Chuyển Chiều Không Gian",
             "",
-            "&c这个卷轴可以便携地创建",
-            "&c一个临时的黑洞",
-            "&c将附近的实体都传送至",
-            "&c另一个维度上",
-            "&c所有东西都反转了",
+            "&cCuộn giấy này có thể tạo ra",
+            "&cmột lỗ đen tạm thời di động",
+            "&cdịch chuyển các thực thể gần đó",
+            "&cđến một chiều không gian khác",
+            "&cmọi thứ đều bị đảo ngược",
             "",
-            "&r就是说: 让实体转180°");
+            "&rTức là: làm thực thể quay 180°");
     public static final SlimefunItemStack TOME_OF_KNOWLEDGE_SHARING = new SlimefunItemStack(
             "TOME_OF_KNOWLEDGE_SHARING",
             Material.ENCHANTED_BOOK,
-            "&6学识巨著",
-            "&7主人: &bNone",
+            "&6Sách Chia Sẻ Tri Thức",
+            "&7Chủ nhân: &bChưa có",
             "",
-            "&e右键&7 以绑定你的所有研究",
+            "&eChuột phải&7 để ràng buộc toàn bộ nghiên cứu của bạn",
             "",
             "",
-            "&e右键&7 以获得前任主人的所有研究");
-    public static final SlimefunItemStack HARDENED_GLASS =
-            new SlimefunItemStack("HARDENED_GLASS", Material.LIGHT_GRAY_STAINED_GLASS, "&7钢化玻璃", "", "&r可以抵抗爆炸");
-    public static final SlimefunItemStack WITHER_PROOF_OBSIDIAN =
-            new SlimefunItemStack("WITHER_PROOF_OBSIDIAN", Material.OBSIDIAN, "&5防凋灵黑曜石", "", "&r可以抵抗爆炸和", "&r凋灵的攻击");
+            "&eChuột phải&7 để nhận toàn bộ nghiên cứu của chủ nhân trước");
+    public static final SlimefunItemStack HARDENED_GLASS = new SlimefunItemStack(
+            "HARDENED_GLASS", Material.LIGHT_GRAY_STAINED_GLASS, "&7Kính Cường Lực", "", "&rCó thể chống vụ nổ");
+    public static final SlimefunItemStack WITHER_PROOF_OBSIDIAN = new SlimefunItemStack(
+            "WITHER_PROOF_OBSIDIAN",
+            Material.OBSIDIAN,
+            "&5Hắc Diện Thạch Chống Wither",
+            "",
+            "&rCó thể chống vụ nổ và",
+            "&rcuộc tấn công của Wither");
     public static final SlimefunItemStack WITHER_PROOF_GLASS = new SlimefunItemStack(
-            "WITHER_PROOF_GLASS", Material.PURPLE_STAINED_GLASS, "&5防凋灵玻璃", "", "&r可以抵抗爆炸和", "&r凋灵的攻击");
+            "WITHER_PROOF_GLASS",
+            Material.PURPLE_STAINED_GLASS,
+            "&5Kính Chống Wither",
+            "",
+            "&rCó thể chống vụ nổ và",
+            "&rcuộc tấn công của Wither");
     public static final SlimefunItemStack REINFORCED_PLATE =
-            new SlimefunItemStack("REINFORCED_PLATE", Material.PAPER, "&7钢筋板");
-    public static final SlimefunItemStack ANCIENT_PEDESTAL =
-            new SlimefunItemStack("ANCIENT_PEDESTAL", Material.DISPENSER, "&d古代基座", "", "&5古代祭坛的一部分");
+            new SlimefunItemStack("REINFORCED_PLATE", Material.PAPER, "&7Tấm Thép Gia Cố");
+    public static final SlimefunItemStack ANCIENT_PEDESTAL = new SlimefunItemStack(
+            "ANCIENT_PEDESTAL", Material.DISPENSER, "&dBệ Cổ Đại", "", "&5Một phần của Bàn Thờ Cổ Đại");
     public static final SlimefunItemStack ANCIENT_ALTAR = new SlimefunItemStack(
-            "ANCIENT_ALTAR", Material.ENCHANTING_TABLE, "&d古代祭坛", "", "&5在世界里建造祭坛", "&5并用古老的仪式合成物品");
-    public static final SlimefunItemStack COPPER_WIRE =
-            new SlimefunItemStack("COPPER_WIRE", Material.STRING, "&6铜线", "", "&6电子配件中的重要组成部分");
-    public static final SlimefunItemStack CRAFTING_MOTOR =
-            new SlimefunItemStack("CRAFTING_MOTOR", HeadTexture.CRAFTING_MOTOR, "&6合成机马达", "", "&7自动合成机重要的零件");
+            "ANCIENT_ALTAR",
+            Material.ENCHANTING_TABLE,
+            "&dBàn Thờ Cổ Đại",
+            "",
+            "&5Xây dựng bàn thờ trong thế giới",
+            "&5và chế tạo vật phẩm bằng nghi lễ cổ xưa");
+    public static final SlimefunItemStack COPPER_WIRE = new SlimefunItemStack(
+            "COPPER_WIRE", Material.STRING, "&6Dây Đồng", "", "&6Linh kiện quan trọng của thiết bị điện tử");
+    public static final SlimefunItemStack CRAFTING_MOTOR = new SlimefunItemStack(
+            "CRAFTING_MOTOR",
+            HeadTexture.CRAFTING_MOTOR,
+            "&6Động Cơ Chế Tạo",
+            "",
+            "&7Linh kiện quan trọng của máy chế tạo tự động");
 
     public static final SlimefunItemStack RAINBOW_WOOL =
-            new SlimefunItemStack("RAINBOW_WOOL", Material.WHITE_WOOL, "&5彩虹羊毛", "", LoreBuilder.RAINBOW);
-    public static final SlimefunItemStack RAINBOW_GLASS =
-            new SlimefunItemStack("RAINBOW_GLASS", Material.WHITE_STAINED_GLASS, "&5彩虹玻璃", "", LoreBuilder.RAINBOW);
-    public static final SlimefunItemStack RAINBOW_CLAY =
-            new SlimefunItemStack("RAINBOW_CLAY", Material.WHITE_TERRACOTTA, "&5彩虹粘土块", "", LoreBuilder.RAINBOW);
+            new SlimefunItemStack("RAINBOW_WOOL", Material.WHITE_WOOL, "&5Len Cầu Vồng", "", LoreBuilder.RAINBOW);
+    public static final SlimefunItemStack RAINBOW_GLASS = new SlimefunItemStack(
+            "RAINBOW_GLASS", Material.WHITE_STAINED_GLASS, "&5Kính Cầu Vồng", "", LoreBuilder.RAINBOW);
+    public static final SlimefunItemStack RAINBOW_CLAY = new SlimefunItemStack(
+            "RAINBOW_CLAY", Material.WHITE_TERRACOTTA, "&5Đất Sét Cầu Vồng", "", LoreBuilder.RAINBOW);
     public static final SlimefunItemStack RAINBOW_GLASS_PANE = new SlimefunItemStack(
-            "RAINBOW_GLASS_PANE", Material.WHITE_STAINED_GLASS_PANE, "&5彩虹玻璃板", "", LoreBuilder.RAINBOW);
-    public static final SlimefunItemStack RAINBOW_CONCRETE =
-            new SlimefunItemStack("RAINBOW_CONCRETE", Material.WHITE_CONCRETE, "&5彩虹混凝土", "", LoreBuilder.RAINBOW);
+            "RAINBOW_GLASS_PANE", Material.WHITE_STAINED_GLASS_PANE, "&5Tấm Kính Cầu Vồng", "", LoreBuilder.RAINBOW);
+    public static final SlimefunItemStack RAINBOW_CONCRETE = new SlimefunItemStack(
+            "RAINBOW_CONCRETE", Material.WHITE_CONCRETE, "&5Bê Tông Cầu Vồng", "", LoreBuilder.RAINBOW);
     public static final SlimefunItemStack RAINBOW_GLAZED_TERRACOTTA = new SlimefunItemStack(
-            "RAINBOW_GLAZED_TERRACOTTA", Material.WHITE_GLAZED_TERRACOTTA, "&5彩虹带釉陶瓦", "", LoreBuilder.RAINBOW);
+            "RAINBOW_GLAZED_TERRACOTTA",
+            Material.WHITE_GLAZED_TERRACOTTA,
+            "&5Gốm Tráng Men Cầu Vồng",
+            "",
+            LoreBuilder.RAINBOW);
 
-    private static final String CHRISTMAS = ChatUtils.christmas("< 圣诞节版 >");
+    private static final String CHRISTMAS = ChatUtils.christmas("< Phiên Bản Giáng Sinh >");
 
-    public static final SlimefunItemStack RAINBOW_WOOL_XMAS =
-            new SlimefunItemStack("RAINBOW_WOOL_XMAS", Material.WHITE_WOOL, "&5彩虹羊毛 &7(圣诞节版)", "", CHRISTMAS);
-    public static final SlimefunItemStack RAINBOW_GLASS_XMAS =
-            new SlimefunItemStack("RAINBOW_GLASS_XMAS", Material.WHITE_STAINED_GLASS, "&5彩虹玻璃 &7(圣诞节版)", "", CHRISTMAS);
-    public static final SlimefunItemStack RAINBOW_CLAY_XMAS =
-            new SlimefunItemStack("RAINBOW_CLAY_XMAS", Material.WHITE_TERRACOTTA, "&5彩虹粘土块 &7(圣诞节版)", "", CHRISTMAS);
+    public static final SlimefunItemStack RAINBOW_WOOL_XMAS = new SlimefunItemStack(
+            "RAINBOW_WOOL_XMAS", Material.WHITE_WOOL, "&5Len Cầu Vồng &7(Giáng Sinh)", "", CHRISTMAS);
+    public static final SlimefunItemStack RAINBOW_GLASS_XMAS = new SlimefunItemStack(
+            "RAINBOW_GLASS_XMAS", Material.WHITE_STAINED_GLASS, "&5Kính Cầu Vồng &7(Giáng Sinh)", "", CHRISTMAS);
+    public static final SlimefunItemStack RAINBOW_CLAY_XMAS = new SlimefunItemStack(
+            "RAINBOW_CLAY_XMAS", Material.WHITE_TERRACOTTA, "&5Đất Sét Cầu Vồng &7(Giáng Sinh)", "", CHRISTMAS);
     public static final SlimefunItemStack RAINBOW_GLASS_PANE_XMAS = new SlimefunItemStack(
-            "RAINBOW_GLASS_PANE_XMAS", Material.WHITE_STAINED_GLASS_PANE, "&5彩虹玻璃板 &7(圣诞节版)", "", CHRISTMAS);
-    public static final SlimefunItemStack RAINBOW_CONCRETE_XMAS =
-            new SlimefunItemStack("RAINBOW_CONCRETE_XMAS", Material.WHITE_CONCRETE, "&5彩虹混凝土 &7(圣诞节版)", "", CHRISTMAS);
+            "RAINBOW_GLASS_PANE_XMAS",
+            Material.WHITE_STAINED_GLASS_PANE,
+            "&5Tấm Kính Cầu Vồng &7(Giáng Sinh)",
+            "",
+            CHRISTMAS);
+    public static final SlimefunItemStack RAINBOW_CONCRETE_XMAS = new SlimefunItemStack(
+            "RAINBOW_CONCRETE_XMAS", Material.WHITE_CONCRETE, "&5Bê Tông Cầu Vồng &7(Giáng Sinh)", "", CHRISTMAS);
     public static final SlimefunItemStack RAINBOW_GLAZED_TERRACOTTA_XMAS = new SlimefunItemStack(
-            "RAINBOW_GLAZED_TERRACOTTA_XMAS", Material.WHITE_GLAZED_TERRACOTTA, "&5彩虹带釉陶瓦 &7(圣诞节版)", "", CHRISTMAS);
+            "RAINBOW_GLAZED_TERRACOTTA_XMAS",
+            Material.WHITE_GLAZED_TERRACOTTA,
+            "&5Gốm Tráng Men Cầu Vồng &7(Giáng Sinh)",
+            "",
+            CHRISTMAS);
 
-    private static final String VALENTINES_DAY = "&d< 情人节版 >";
+    private static final String VALENTINES_DAY = "&d< Phiên Bản Lễ Tình Nhân >";
 
-    public static final SlimefunItemStack RAINBOW_WOOL_VALENTINE =
-            new SlimefunItemStack("RAINBOW_WOOL_VALENTINE", Material.PINK_WOOL, "&5彩虹羊毛 &7(情人节版)", "", VALENTINES_DAY);
+    public static final SlimefunItemStack RAINBOW_WOOL_VALENTINE = new SlimefunItemStack(
+            "RAINBOW_WOOL_VALENTINE", Material.PINK_WOOL, "&5Len Cầu Vồng &7(Lễ Tình Nhân)", "", VALENTINES_DAY);
     public static final SlimefunItemStack RAINBOW_GLASS_VALENTINE = new SlimefunItemStack(
-            "RAINBOW_GLASS_VALENTINE", Material.PINK_STAINED_GLASS, "&5彩虹玻璃 &7(情人节版)", "", VALENTINES_DAY);
+            "RAINBOW_GLASS_VALENTINE",
+            Material.PINK_STAINED_GLASS,
+            "&5Kính Cầu Vồng &7(Lễ Tình Nhân)",
+            "",
+            VALENTINES_DAY);
     public static final SlimefunItemStack RAINBOW_CLAY_VALENTINE = new SlimefunItemStack(
-            "RAINBOW_CLAY_VALENTINE", Material.PINK_TERRACOTTA, "&5彩虹粘土块 &7(情人节版)", "", VALENTINES_DAY);
+            "RAINBOW_CLAY_VALENTINE",
+            Material.PINK_TERRACOTTA,
+            "&5Đất Sét Cầu Vồng &7(Lễ Tình Nhân)",
+            "",
+            VALENTINES_DAY);
     public static final SlimefunItemStack RAINBOW_GLASS_PANE_VALENTINE = new SlimefunItemStack(
-            "RAINBOW_GLASS_PANE_VALENTINE", Material.PINK_STAINED_GLASS_PANE, "&5彩虹玻璃板 &7(情人节版)", "", VALENTINES_DAY);
+            "RAINBOW_GLASS_PANE_VALENTINE",
+            Material.PINK_STAINED_GLASS_PANE,
+            "&5Tấm Kính Cầu Vồng &7(Lễ Tình Nhân)",
+            "",
+            VALENTINES_DAY);
     public static final SlimefunItemStack RAINBOW_CONCRETE_VALENTINE = new SlimefunItemStack(
-            "RAINBOW_CONCRETE_VALENTINE", Material.PINK_CONCRETE, "&5彩虹混凝土 &7(情人节版)", "", VALENTINES_DAY);
+            "RAINBOW_CONCRETE_VALENTINE",
+            Material.PINK_CONCRETE,
+            "&5Bê Tông Cầu Vồng &7(Lễ Tình Nhân)",
+            "",
+            VALENTINES_DAY);
     public static final SlimefunItemStack RAINBOW_GLAZED_TERRACOTTA_VALENTINE = new SlimefunItemStack(
             "RAINBOW_GLAZED_TERRACOTTA_VALENTINE",
             Material.PINK_GLAZED_TERRACOTTA,
-            "&5彩虹带釉陶瓦 &7(情人节版)",
+            "&5Gốm Tráng Men Cầu Vồng &7(Lễ Tình Nhân)",
             "",
             VALENTINES_DAY);
 
-    private static final String HALLOWEEN = "&6< 万圣节版 >";
+    private static final String HALLOWEEN = "&6< Phiên Bản Halloween >";
 
-    public static final SlimefunItemStack RAINBOW_WOOL_HALLOWEEN =
-            new SlimefunItemStack("RAINBOW_WOOL_HALLOWEEN", Material.ORANGE_WOOL, "&5彩虹羊毛 &7(万圣节版)", "", HALLOWEEN);
+    public static final SlimefunItemStack RAINBOW_WOOL_HALLOWEEN = new SlimefunItemStack(
+            "RAINBOW_WOOL_HALLOWEEN", Material.ORANGE_WOOL, "&5Len Cầu Vồng &7(Halloween)", "", HALLOWEEN);
     public static final SlimefunItemStack RAINBOW_GLASS_HALLOWEEN = new SlimefunItemStack(
-            "RAINBOW_GLASS_HALLOWEEN", Material.ORANGE_STAINED_GLASS, "&5彩虹玻璃 &7(万圣节版)", "", HALLOWEEN);
+            "RAINBOW_GLASS_HALLOWEEN", Material.ORANGE_STAINED_GLASS, "&5Kính Cầu Vồng &7(Halloween)", "", HALLOWEEN);
     public static final SlimefunItemStack RAINBOW_CLAY_HALLOWEEN = new SlimefunItemStack(
-            "RAINBOW_CLAY_HALLOWEEN", Material.ORANGE_TERRACOTTA, "&5彩虹粘土块 &7(万圣节版)", "", HALLOWEEN);
+            "RAINBOW_CLAY_HALLOWEEN", Material.ORANGE_TERRACOTTA, "&5Đất Sét Cầu Vồng &7(Halloween)", "", HALLOWEEN);
     public static final SlimefunItemStack RAINBOW_GLASS_PANE_HALLOWEEN = new SlimefunItemStack(
-            "RAINBOW_GLASS_PANE_HALLOWEEN", Material.ORANGE_STAINED_GLASS_PANE, "&5彩虹玻璃板 &7(万圣节版)", "", HALLOWEEN);
+            "RAINBOW_GLASS_PANE_HALLOWEEN",
+            Material.ORANGE_STAINED_GLASS_PANE,
+            "&5Tấm Kính Cầu Vồng &7(Halloween)",
+            "",
+            HALLOWEEN);
     public static final SlimefunItemStack RAINBOW_CONCRETE_HALLOWEEN = new SlimefunItemStack(
-            "RAINBOW_CONCRETE_HALLOWEEN", Material.ORANGE_CONCRETE, "&5彩虹混凝土 &7(万圣节版)", "", HALLOWEEN);
+            "RAINBOW_CONCRETE_HALLOWEEN", Material.ORANGE_CONCRETE, "&5Bê Tông Cầu Vồng &7(Halloween)", "", HALLOWEEN);
     public static final SlimefunItemStack RAINBOW_GLAZED_TERRACOTTA_HALLOWEEN = new SlimefunItemStack(
             "RAINBOW_GLAZED_TERRACOTTA_HALLOWEEN",
             Material.ORANGE_GLAZED_TERRACOTTA,
-            "&5彩虹带釉陶瓦 &7(万圣节版)",
+            "&5Gốm Tráng Men Cầu Vồng &7(Halloween)",
             "",
             HALLOWEEN);
 
-    /*		锭 		*/
-    public static final SlimefunItemStack COPPER_INGOT = new SlimefunItemStack("COPPER_INGOT", Material.BRICK, "&b铜锭");
-    public static final SlimefunItemStack TIN_INGOT = new SlimefunItemStack("TIN_INGOT", Material.IRON_INGOT, "&b锡锭");
+    /*		Thỏi 		*/
+    public static final SlimefunItemStack COPPER_INGOT =
+            new SlimefunItemStack("COPPER_INGOT", Material.BRICK, "&bThỏi Đồng");
+    public static final SlimefunItemStack TIN_INGOT =
+            new SlimefunItemStack("TIN_INGOT", Material.IRON_INGOT, "&bThỏi Thiếc");
     public static final SlimefunItemStack SILVER_INGOT =
-            new SlimefunItemStack("SILVER_INGOT", Material.IRON_INGOT, "&b银锭");
+            new SlimefunItemStack("SILVER_INGOT", Material.IRON_INGOT, "&bThỏi Bạc");
     public static final SlimefunItemStack ALUMINUM_INGOT =
-            new SlimefunItemStack("ALUMINUM_INGOT", Material.IRON_INGOT, "&b铝锭");
-    public static final SlimefunItemStack LEAD_INGOT = new SlimefunItemStack("LEAD_INGOT", Material.IRON_INGOT, "&b铅锭");
-    public static final SlimefunItemStack ZINC_INGOT = new SlimefunItemStack("ZINC_INGOT", Material.IRON_INGOT, "&b锌锭");
+            new SlimefunItemStack("ALUMINUM_INGOT", Material.IRON_INGOT, "&bThỏi Nhôm");
+    public static final SlimefunItemStack LEAD_INGOT =
+            new SlimefunItemStack("LEAD_INGOT", Material.IRON_INGOT, "&bThỏi Chì");
+    public static final SlimefunItemStack ZINC_INGOT =
+            new SlimefunItemStack("ZINC_INGOT", Material.IRON_INGOT, "&bThỏi Kẽm");
     public static final SlimefunItemStack MAGNESIUM_INGOT =
-            new SlimefunItemStack("MAGNESIUM_INGOT", Material.IRON_INGOT, "&b镁锭");
+            new SlimefunItemStack("MAGNESIUM_INGOT", Material.IRON_INGOT, "&bThỏi Magiê");
 
     /*		Alloy (Carbon + Iron)	*/
     public static final SlimefunItemStack STEEL_INGOT =
-            new SlimefunItemStack("STEEL_INGOT", Material.IRON_INGOT, "&b钢锭");
+            new SlimefunItemStack("STEEL_INGOT", Material.IRON_INGOT, "&bThỏi Thép");
     /*		Alloy (Copper + Tin)	*/
-    public static final SlimefunItemStack BRONZE_INGOT = new SlimefunItemStack("BRONZE_INGOT", Material.BRICK, "&b青铜锭");
+    public static final SlimefunItemStack BRONZE_INGOT =
+            new SlimefunItemStack("BRONZE_INGOT", Material.BRICK, "&bThỏi Đồng Thanh");
     /*		Alloy (Copper + Aluminum)	*/
     public static final SlimefunItemStack DURALUMIN_INGOT =
-            new SlimefunItemStack("DURALUMIN_INGOT", Material.IRON_INGOT, "&b硬铝锭");
+            new SlimefunItemStack("DURALUMIN_INGOT", Material.IRON_INGOT, "&bThỏi Duralumin");
     /*		Alloy (Copper + Silver)	*/
     public static final SlimefunItemStack BILLON_INGOT =
-            new SlimefunItemStack("BILLON_INGOT", Material.IRON_INGOT, "&b银铜合金锭");
+            new SlimefunItemStack("BILLON_INGOT", Material.IRON_INGOT, "&bThỏi Hợp Kim Bạc-Đồng");
     /*		Alloy (Copper + Zinc)	*/
     public static final SlimefunItemStack BRASS_INGOT =
-            new SlimefunItemStack("BRASS_INGOT", Material.GOLD_INGOT, "&b黄铜锭");
+            new SlimefunItemStack("BRASS_INGOT", Material.GOLD_INGOT, "&bThỏi Đồng Thau");
     /*		Alloy (Aluminum + Brass)	*/
     public static final SlimefunItemStack ALUMINUM_BRASS_INGOT =
-            new SlimefunItemStack("ALUMINUM_BRASS_INGOT", Material.GOLD_INGOT, "&b铝黄铜锭");
+            new SlimefunItemStack("ALUMINUM_BRASS_INGOT", Material.GOLD_INGOT, "&bThỏi Nhôm Thau");
     /*		Alloy (Aluminum + Bronze)	*/
     public static final SlimefunItemStack ALUMINUM_BRONZE_INGOT =
-            new SlimefunItemStack("ALUMINUM_BRONZE_INGOT", Material.GOLD_INGOT, "&b铝青铜锭");
+            new SlimefunItemStack("ALUMINUM_BRONZE_INGOT", Material.GOLD_INGOT, "&bThỏi Nhôm Đồng");
     /*		Alloy (Gold + Silver + Copper)	*/
     public static final SlimefunItemStack CORINTHIAN_BRONZE_INGOT =
-            new SlimefunItemStack("CORINTHIAN_BRONZE_INGOT", Material.GOLD_INGOT, "&b科林斯青铜锭");
+            new SlimefunItemStack("CORINTHIAN_BRONZE_INGOT", Material.GOLD_INGOT, "&bThỏi Đồng Corinth");
     /*		Alloy (Lead + Tin)	*/
     public static final SlimefunItemStack SOLDER_INGOT =
-            new SlimefunItemStack("SOLDER_INGOT", Material.IRON_INGOT, "&b焊锡锭");
+            new SlimefunItemStack("SOLDER_INGOT", Material.IRON_INGOT, "&bThỏi Thiếc Hàn");
     /*		Alloy (Steel + Iron + Carbon)	*/
     public static final SlimefunItemStack DAMASCUS_STEEL_INGOT =
-            new SlimefunItemStack("DAMASCUS_STEEL_INGOT", Material.IRON_INGOT, "&b大马士革钢锭");
-    /*		Alloy (大马士革钢 + 硬铝 + Compressed Carbon + Aluminium Bronze)	*/
+            new SlimefunItemStack("DAMASCUS_STEEL_INGOT", Material.IRON_INGOT, "&bThỏi Thép Damascus");
+    /*		Alloy (Damascus Steel + Duralumin + Compressed Carbon + Aluminium Bronze)	*/
     public static final SlimefunItemStack HARDENED_METAL_INGOT =
-            new SlimefunItemStack("HARDENED_METAL_INGOT", Material.IRON_INGOT, "&b&l硬化金属");
-    /*		Alloy (Hardened Metal + Corinthian Bronze + Solder + Billon + 大马士革钢)	*/
+            new SlimefunItemStack("HARDENED_METAL_INGOT", Material.IRON_INGOT, "&b&lKim Loại Cứng Hóa");
+    /*		Alloy (Hardened Metal + Corinthian Bronze + Solder + Billon + Damascus Steel)	*/
     public static final SlimefunItemStack REINFORCED_ALLOY_INGOT =
-            new SlimefunItemStack("REINFORCED_ALLOY_INGOT", Material.IRON_INGOT, "&b&l强化合金锭");
+            new SlimefunItemStack("REINFORCED_ALLOY_INGOT", Material.IRON_INGOT, "&b&lThỏi Hợp Kim Gia Cố");
     /*		Alloy (Iron + Silicon)		*/
     public static final SlimefunItemStack FERROSILICON =
-            new SlimefunItemStack("FERROSILICON", Material.IRON_INGOT, "&b硅铁");
+            new SlimefunItemStack("FERROSILICON", Material.IRON_INGOT, "&bSắt Silicon");
     /*		Alloy (Iron + Gold)			*/
     public static final SlimefunItemStack GILDED_IRON =
-            new SlimefunItemStack("GILDED_IRON", Material.GOLD_INGOT, "&6&l镀金铁锭");
+            new SlimefunItemStack("GILDED_IRON", Material.GOLD_INGOT, "&6&lThỏi Sắt Mạ Vàng");
     /*		Alloy (Redstone + Ferrosilicon)	*/
     public static final SlimefunItemStack REDSTONE_ALLOY =
-            new SlimefunItemStack("REDSTONE_ALLOY", Material.BRICK, "&c红石合金锭");
+            new SlimefunItemStack("REDSTONE_ALLOY", Material.BRICK, "&cThỏi Hợp Kim Redstone");
     /*		Alloy (Iron + Copper)		*/
     public static final SlimefunItemStack NICKEL_INGOT =
-            new SlimefunItemStack("NICKEL_INGOT", Material.IRON_INGOT, "&b镍锭");
+            new SlimefunItemStack("NICKEL_INGOT", Material.IRON_INGOT, "&bThỏi Niken");
     /*		Alloy (Nickel + Iron + Copper)		*/
     public static final SlimefunItemStack COBALT_INGOT =
-            new SlimefunItemStack("COBALT_INGOT", Material.IRON_INGOT, "&9钴锭");
+            new SlimefunItemStack("COBALT_INGOT", Material.IRON_INGOT, "&9Thỏi Coban");
 
     /*		Gold		*/
     public static final SlimefunItemStack GOLD_4K =
-            new SlimefunItemStack("GOLD_4K", Material.GOLD_INGOT, "&r金锭 &7(4克拉)");
+            new SlimefunItemStack("GOLD_4K", Material.GOLD_INGOT, "&rThỏi Vàng &7(4 carat)");
     public static final SlimefunItemStack GOLD_6K =
-            new SlimefunItemStack("GOLD_6K", Material.GOLD_INGOT, "&r金锭 &7(6克拉)");
+            new SlimefunItemStack("GOLD_6K", Material.GOLD_INGOT, "&rThỏi Vàng &7(6 carat)");
     public static final SlimefunItemStack GOLD_8K =
-            new SlimefunItemStack("GOLD_8K", Material.GOLD_INGOT, "&r金锭 &7(8克拉)");
+            new SlimefunItemStack("GOLD_8K", Material.GOLD_INGOT, "&rThỏi Vàng &7(8 carat)");
     public static final SlimefunItemStack GOLD_10K =
-            new SlimefunItemStack("GOLD_10K", Material.GOLD_INGOT, "&r金锭 &7(10克拉)");
+            new SlimefunItemStack("GOLD_10K", Material.GOLD_INGOT, "&rThỏi Vàng &7(10 carat)");
     public static final SlimefunItemStack GOLD_12K =
-            new SlimefunItemStack("GOLD_12K", Material.GOLD_INGOT, "&r金锭 &7(12克拉)");
+            new SlimefunItemStack("GOLD_12K", Material.GOLD_INGOT, "&rThỏi Vàng &7(12 carat)");
     public static final SlimefunItemStack GOLD_14K =
-            new SlimefunItemStack("GOLD_14K", Material.GOLD_INGOT, "&r金锭 &7(14克拉)");
+            new SlimefunItemStack("GOLD_14K", Material.GOLD_INGOT, "&rThỏi Vàng &7(14 carat)");
     public static final SlimefunItemStack GOLD_16K =
-            new SlimefunItemStack("GOLD_16K", Material.GOLD_INGOT, "&r金锭 &7(16克拉)");
+            new SlimefunItemStack("GOLD_16K", Material.GOLD_INGOT, "&rThỏi Vàng &7(16 carat)");
     public static final SlimefunItemStack GOLD_18K =
-            new SlimefunItemStack("GOLD_18K", Material.GOLD_INGOT, "&r金锭 &7(18克拉)");
+            new SlimefunItemStack("GOLD_18K", Material.GOLD_INGOT, "&rThỏi Vàng &7(18 carat)");
     public static final SlimefunItemStack GOLD_20K =
-            new SlimefunItemStack("GOLD_20K", Material.GOLD_INGOT, "&r金锭 &7(20克拉)");
+            new SlimefunItemStack("GOLD_20K", Material.GOLD_INGOT, "&rThỏi Vàng &7(20 carat)");
     public static final SlimefunItemStack GOLD_22K =
-            new SlimefunItemStack("GOLD_22K", Material.GOLD_INGOT, "&r金锭 &7(22克拉)");
+            new SlimefunItemStack("GOLD_22K", Material.GOLD_INGOT, "&rThỏi Vàng &7(22 carat)");
     public static final SlimefunItemStack GOLD_24K =
-            new SlimefunItemStack("GOLD_24K", Material.GOLD_INGOT, "&r金锭 &7(24克拉)");
+            new SlimefunItemStack("GOLD_24K", Material.GOLD_INGOT, "&rThỏi Vàng &7(24 carat)");
 
     /*		 Dusts 		*/
-    public static final SlimefunItemStack IRON_DUST = new SlimefunItemStack("IRON_DUST", Material.GUNPOWDER, "&6铁粉");
+    public static final SlimefunItemStack IRON_DUST =
+            new SlimefunItemStack("IRON_DUST", Material.GUNPOWDER, "&6Bột Sắt");
     public static final SlimefunItemStack GOLD_DUST =
-            new SlimefunItemStack("GOLD_DUST", Material.GLOWSTONE_DUST, "&6金粉");
-    public static final SlimefunItemStack TIN_DUST = new SlimefunItemStack("TIN_DUST", Material.SUGAR, "&6锡粉");
+            new SlimefunItemStack("GOLD_DUST", Material.GLOWSTONE_DUST, "&6Bột Vàng");
+    public static final SlimefunItemStack TIN_DUST = new SlimefunItemStack("TIN_DUST", Material.SUGAR, "&6Bột Thiếc");
     public static final SlimefunItemStack COPPER_DUST =
-            new SlimefunItemStack("COPPER_DUST", Material.GLOWSTONE_DUST, "&6铜粉");
-    public static final SlimefunItemStack SILVER_DUST = new SlimefunItemStack("SILVER_DUST", Material.SUGAR, "&6银粉");
+            new SlimefunItemStack("COPPER_DUST", Material.GLOWSTONE_DUST, "&6Bột Đồng");
+    public static final SlimefunItemStack SILVER_DUST =
+            new SlimefunItemStack("SILVER_DUST", Material.SUGAR, "&6Bột Bạc");
     public static final SlimefunItemStack ALUMINUM_DUST =
-            new SlimefunItemStack("ALUMINUM_DUST", Material.SUGAR, "&6铝粉");
-    public static final SlimefunItemStack LEAD_DUST = new SlimefunItemStack("LEAD_DUST", Material.GUNPOWDER, "&6铅粉");
-    public static final SlimefunItemStack SULFATE = new SlimefunItemStack("SULFATE", Material.GLOWSTONE_DUST, "&6硫酸盐");
-    public static final SlimefunItemStack ZINC_DUST = new SlimefunItemStack("ZINC_DUST", Material.SUGAR, "&6锌粉");
+            new SlimefunItemStack("ALUMINUM_DUST", Material.SUGAR, "&6Bột Nhôm");
+    public static final SlimefunItemStack LEAD_DUST =
+            new SlimefunItemStack("LEAD_DUST", Material.GUNPOWDER, "&6Bột Chì");
+    public static final SlimefunItemStack SULFATE =
+            new SlimefunItemStack("SULFATE", Material.GLOWSTONE_DUST, "&6Muối Sunfat");
+    public static final SlimefunItemStack ZINC_DUST = new SlimefunItemStack("ZINC_DUST", Material.SUGAR, "&6Bột Kẽm");
     public static final SlimefunItemStack MAGNESIUM_DUST =
-            new SlimefunItemStack("MAGNESIUM_DUST", Material.SUGAR, "&6镁粉");
-    public static final SlimefunItemStack SILICON = new SlimefunItemStack("SILICON", Material.FIREWORK_STAR, "&6硅");
+            new SlimefunItemStack("MAGNESIUM_DUST", Material.SUGAR, "&6Bột Magiê");
+    public static final SlimefunItemStack SILICON =
+            new SlimefunItemStack("SILICON", Material.FIREWORK_STAR, "&6Silicon");
     public static final SlimefunItemStack GOLD_24K_BLOCK =
-            new SlimefunItemStack("GOLD_24K_BLOCK", Material.GOLD_BLOCK, "&r&r金块 &7(24克拉)");
+            new SlimefunItemStack("GOLD_24K_BLOCK", Material.GOLD_BLOCK, "&r&rKhối Vàng &7(24 carat)");
 
     /*		 Gems 		*/
-    public static final SlimefunItemStack SYNTHETIC_DIAMOND =
-            new SlimefunItemStack("SYNTHETIC_DIAMOND", Material.DIAMOND, "&b人造钻石", "", "&r可以在工作台中作为钻石使用");
-    public static final SlimefunItemStack SYNTHETIC_EMERALD =
-            new SlimefunItemStack("SYNTHETIC_EMERALD", Material.EMERALD, "&b人造绿宝石", "", "&r可以用来和村民交易");
-    public static final SlimefunItemStack SYNTHETIC_SAPPHIRE =
-            new SlimefunItemStack("SYNTHETIC_SAPPHIRE", HeadTexture.SAPPHIRE, "&b人造蓝宝石", "", "&r可以在工作台中作为青金石使用");
+    public static final SlimefunItemStack SYNTHETIC_DIAMOND = new SlimefunItemStack(
+            "SYNTHETIC_DIAMOND",
+            Material.DIAMOND,
+            "&bKim Cương Nhân Tạo",
+            "",
+            "&rCó thể dùng trong bàn chế tạo như kim cương thường");
+    public static final SlimefunItemStack SYNTHETIC_EMERALD = new SlimefunItemStack(
+            "SYNTHETIC_EMERALD",
+            Material.EMERALD,
+            "&bNgọc Lục Bảo Nhân Tạo",
+            "",
+            "&rCó thể dùng để giao dịch với dân làng");
+    public static final SlimefunItemStack SYNTHETIC_SAPPHIRE = new SlimefunItemStack(
+            "SYNTHETIC_SAPPHIRE",
+            HeadTexture.SAPPHIRE,
+            "&bNgọc Xanh Lam Nhân Tạo",
+            "",
+            "&rCó thể dùng trong bàn chế tạo như lapis lazuli");
     public static final SlimefunItemStack CARBONADO =
-            new SlimefunItemStack("CARBONADO", HeadTexture.CARBONADO, "&b&l黑金刚石", "", "&7&o\"黑色钻石\"");
+            new SlimefunItemStack("CARBONADO", HeadTexture.CARBONADO, "&b&lKim Cương Đen", "", "&7&o\"Kim cương đen\"");
     public static final SlimefunItemStack RAW_CARBONADO =
-            new SlimefunItemStack("RAW_CARBONADO", HeadTexture.RAW_CARBONADO, "&b黑金刚石原矿");
+            new SlimefunItemStack("RAW_CARBONADO", HeadTexture.RAW_CARBONADO, "&bQuặng Kim Cương Đen Thô");
 
     public static final SlimefunItemStack URANIUM = new SlimefunItemStack(
             "URANIUM",
             HeadTexture.URANIUM,
-            "&4铀",
+            "&4Urani",
             "",
             LoreBuilder.radioactive(Radioactivity.HIGH),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
     public static final SlimefunItemStack NEPTUNIUM = new SlimefunItemStack(
             "NEPTUNIUM",
             HeadTexture.NEPTUNIUM,
-            "&a镎",
+            "&aNeptuni",
             "",
             LoreBuilder.radioactive(Radioactivity.HIGH),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
     public static final SlimefunItemStack PLUTONIUM = new SlimefunItemStack(
             "PLUTONIUM",
             HeadTexture.PLUTONIUM,
-            "&7钚",
+            "&7Plutoni",
             "",
             LoreBuilder.radioactive(Radioactivity.VERY_HIGH),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
     public static final SlimefunItemStack BOOSTED_URANIUM = new SlimefunItemStack(
             "BOOSTED_URANIUM",
             HeadTexture.BOOSTED_URANIUM,
-            "&2钚铀混合氧化物核燃料",
+            "&2Nhiên Liệu Hạt Nhân MOX Plutoni-Urani",
             "",
             LoreBuilder.radioactive(Radioactivity.VERY_HIGH),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
 
     /*		Talisman		*/
     public static final SlimefunItemStack COMMON_TALISMAN =
-            new SlimefunItemStack("COMMON_TALISMAN", Material.EMERALD, "&6普通护身符");
+            new SlimefunItemStack("COMMON_TALISMAN", Material.EMERALD, "&6Bùa Hộ Mệnh Thường");
     public static final SlimefunItemStack ENDER_TALISMAN =
-            new SlimefunItemStack("ENDER_TALISMAN", Material.EMERALD, "&5末影护身符");
+            new SlimefunItemStack("ENDER_TALISMAN", Material.EMERALD, "&5Bùa Hộ Mệnh Ender");
 
     public static final SlimefunItemStack TALISMAN_ANVIL = new SlimefunItemStack(
             "ANVIL_TALISMAN",
             Material.EMERALD,
-            "&a铁砧护身符",
+            "&aBùa Hộ Mệnh Đe",
             "",
-            "&f每个护身符可以防止",
-            "&f一个工具因耐久不足而损坏",
-            "&f然后就会被消耗",
+            "&fMỗi bùa có thể ngăn chặn",
+            "&fmột công cụ bị hỏng do hết độ bền",
+            "&fsau đó sẽ bị tiêu hao",
             "",
-            "&4&l警告:",
-            "&4由于过于强大的工具的复杂性",
-            "&4此护身符不能修复过于强大的工具");
+            "&4&lCảnh báo:",
+            "&4Do độ phức tạp của công cụ quá mạnh",
+            "&4bùa này không thể sửa công cụ quá mạnh");
     public static final SlimefunItemStack TALISMAN_MINER = new SlimefunItemStack(
-            "MINER_TALISMAN", Material.EMERALD, "&a矿工护身符", "", "&f当这个护身符在你的背包里时", "&f将有 20% 的几率双倍掉落", "&f你挖出的矿物");
+            "MINER_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Thợ Mỏ",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fsẽ có 20% cơ hội nhân đôi",
+            "&fkhoáng sản bạn đào được");
     public static final SlimefunItemStack TALISMAN_FARMER = new SlimefunItemStack(
-            "FARMER_TALISMAN", Material.EMERALD, "&a农夫护身符", "", "&f当这个护身符在你的背包里时", "&f将有 20% 的几率双倍掉落", "&f你收割的农作物");
+            "FARMER_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Nông Dân",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fsẽ có 20% cơ hội nhân đôi",
+            "&fvật phẩm bạn thu hoạch được");
     public static final SlimefunItemStack TALISMAN_HUNTER = new SlimefunItemStack(
-            "HUNTER_TALISMAN", Material.EMERALD, "&a猎人护身符", "", "&f当这个护身符在你的背包里时", "&f将有 20% 的几率双倍掉落", "&f你杀死的生物的掉落物");
+            "HUNTER_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Thợ Săn",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fsẽ có 20% cơ hội nhân đôi",
+            "&fvật phẩm rơi từ sinh vật bạn giết");
     public static final SlimefunItemStack TALISMAN_LAVA = new SlimefunItemStack(
             "LAVA_TALISMAN",
             Material.EMERALD,
-            "&a岩浆行者护身符",
+            "&aBùa Hộ Mệnh Người Đi Trên Nham",
             "",
-            "&f当这个护身符在你的背包里时",
-            "&f获得火焰保护效果",
-            "&f仅在你行走在岩浆上时可用",
-            "&f然后就会被消耗");
+            "&fKhi bùa này ở trong ba lô",
+            "&fnhận hiệu ứng kháng lửa",
+            "&fchỉ khi bạn đi trên nham thạch",
+            "&fsau đó sẽ bị tiêu hao");
     public static final SlimefunItemStack TALISMAN_WATER = new SlimefunItemStack(
             "WATER_TALISMAN",
             Material.EMERALD,
-            "&a潜水者护身符",
+            "&aBùa Hộ Mệnh Thợ Lặn",
             "",
-            "&f当这个护身符在你的背包里时",
-            "&f一旦你即将溺水而死",
-            "&f护身符将会给予你水下呼吸",
-            "&f然后就会被消耗");
+            "&fKhi bùa này ở trong ba lô",
+            "&fkhi sắp chết đuối",
+            "&fbùa sẽ cho bạn hô hấp dưới nước",
+            "&fsau đó sẽ bị tiêu hao");
     public static final SlimefunItemStack TALISMAN_ANGEL = new SlimefunItemStack(
-            "ANGEL_TALISMAN", Material.EMERALD, "&a天使护身符", "", "&f当这个护身符在你的背包里时", "&f有 75% 的几率减免你的摔落伤害");
+            "ANGEL_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Thiên Thần",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fcó 75% cơ hội giảm sát thương rơi");
     public static final SlimefunItemStack TALISMAN_FIRE = new SlimefunItemStack(
-            "FIRE_TALISMAN", Material.EMERALD, "&a消防员护身符", "", "&f当这个护身符在你的背包里时", "&f在你着火时", "&f给予你防火效果", "&f然后就会被消耗");
+            "FIRE_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Lính Cứu Hỏa",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fkhi bạn bốc cháy",
+            "&fcho bạn hiệu ứng kháng lửa",
+            "&fsau đó sẽ bị tiêu hao");
     public static final SlimefunItemStack TALISMAN_MAGICIAN = new SlimefunItemStack(
-            "MAGICIAN_TALISMAN", Material.EMERALD, "&a魔法师护身符", "", "&f当这个护身符在你的背包里时", "&f在附魔时有 80% 的几率", "&f得到一个额外的附魔");
+            "MAGICIAN_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Pháp Sư",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fkhi phù phép có 80% cơ hội",
+            "&fnhận thêm một phù phép");
     public static final SlimefunItemStack TALISMAN_TRAVELLER = new SlimefunItemStack(
             "TRAVELLER_TALISMAN",
             Material.EMERALD,
-            "&a旅行者护身符",
+            "&aBùa Hộ Mệnh Lữ Khách",
             "",
-            "&f当这个护身符在你的背包里时",
-            "&f在你开始疾跑时有 60% 的几率",
-            "&f给予你速度效果");
+            "&fKhi bùa này ở trong ba lô",
+            "&fkhi bắt đầu chạy có 60% cơ hội",
+            "&fnhận hiệu ứng tốc độ");
     public static final SlimefunItemStack TALISMAN_WARRIOR = new SlimefunItemStack(
-            "WARRIOR_TALISMAN", Material.EMERALD, "&a战士护身符", "", "&f当这个护身符在你的背包里时", "&f你被攻击后将会获得力量3的效果", "&f然后就会被消耗");
+            "WARRIOR_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Chiến Binh",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fsau khi bị tấn công sẽ nhận Sức mạnh 3",
+            "&fsau đó sẽ bị tiêu hao");
     public static final SlimefunItemStack TALISMAN_KNIGHT = new SlimefunItemStack(
             "KNIGHT_TALISMAN",
             Material.EMERALD,
-            "&a骑士护身符",
+            "&aBùa Hộ Mệnh Hiệp Sĩ",
             "",
-            "&f当这个护身符在你的背包里时",
-            "&f在你被攻击后",
-            "&f有 30% 的几率获得五秒的生命恢复",
-            "&f然后就会被消耗");
+            "&fKhi bùa này ở trong ba lô",
+            "&fsau khi bị tấn công",
+            "&fcó 30% cơ hội nhận hồi máu trong 5 giây",
+            "&fsau đó sẽ bị tiêu hao");
     public static final SlimefunItemStack TALISMAN_WHIRLWIND = new SlimefunItemStack(
-            "WHIRLWIND_TALISMAN", Material.EMERALD, "&a旋风护身符", "", "&f当这个护身符在你的背包里时", "&f将有 60% 的几率", "&f反弹所有冲向你的弹射物");
+            "WHIRLWIND_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Lốc Xoáy",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fsẽ có 60% cơ hội",
+            "&fbật lại tất cả vật phóng bay về phía bạn");
     public static final SlimefunItemStack TALISMAN_WIZARD = new SlimefunItemStack(
             "WIZARD_TALISMAN",
             Material.EMERALD,
-            "&a巫师护身符",
+            "&aBùa Hộ Mệnh Phù Thủy",
             "",
-            "&f当这个护身符在你的背包里时",
-            "&f在你附魔时可获得时运4/5",
-            "&f但它也可能降低该物品",
-            "&f其他附魔的等级");
+            "&fKhi bùa này ở trong ba lô",
+            "&fkhi phù phép có thể nhận May mắn 4/5",
+            "&fnhưng cũng có thể giảm cấp độ",
+            "&fcác phù phép khác trên vật phẩm");
     public static final SlimefunItemStack TALISMAN_CAVEMAN = new SlimefunItemStack(
-            "CAVEMAN_TALISMAN", Material.EMERALD, "&a穴居人护身符", "", "&f当这个护身符在你的背包里时", "&f在你挖矿时有 50% 的几率", "&f获得片刻的急迫效果");
+            "CAVEMAN_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Người Hang Động",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fkhi đào có 50% cơ hội",
+            "&fnhận hiệu ứng đào nhanh tạm thời");
     public static final SlimefunItemStack TALISMAN_WISE = new SlimefunItemStack(
-            "WISE_TALISMAN", Material.EMERALD, "&a智者的护身符", "", "&f当这个护身符在你的背包里时", "&f获得的经验将有 20% 的几率变为双倍");
+            "WISE_TALISMAN",
+            Material.EMERALD,
+            "&aBùa Hộ Mệnh Người Khôn Ngoan",
+            "",
+            "&fKhi bùa này ở trong ba lô",
+            "&fkinh nghiệm nhận được có 20% cơ hội nhân đôi");
 
     /*		Staves		*/
     public static final SlimefunItemStack STAFF_ELEMENTAL =
-            new SlimefunItemStack("STAFF_ELEMENTAL", Material.STICK, "&6元素法杖");
+            new SlimefunItemStack("STAFF_ELEMENTAL", Material.STICK, "&6Gậy Nguyên Tố");
     public static final SlimefunItemStack STAFF_WIND = new SlimefunItemStack(
-            "STAFF_ELEMENTAL_WIND", Material.STICK, "&6元素法杖 &7- &b&o风", "", "&7元素: &b&o风", "", "&7&e右键&7 以将你吹飞");
+            "STAFF_ELEMENTAL_WIND",
+            Material.STICK,
+            "&6Gậy Nguyên Tố &7- &b&oGió",
+            "",
+            "&7Nguyên tố: &b&oGió",
+            "",
+            "&7&eChuột phải&7 để bay lên");
     public static final SlimefunItemStack STAFF_FIRE = new SlimefunItemStack(
-            "STAFF_ELEMENTAL_FIRE", Material.STICK, "&6元素法杖 &7- &c&o火", "", "&7元素: &c&o火", "", "&c让火焰净化一切!");
+            "STAFF_ELEMENTAL_FIRE",
+            Material.STICK,
+            "&6Gậy Nguyên Tố &7- &c&oLửa",
+            "",
+            "&7Nguyên tố: &c&oLửa",
+            "",
+            "&cĐể lửa thanh tẩy mọi thứ!");
     public static final SlimefunItemStack STAFF_WATER = new SlimefunItemStack(
-            "STAFF_ELEMENTAL_WATER", Material.STICK, "&6元素法杖 &7- &1&o水", "", "&7元素: &1&o水", "", "&7&e右键&7 以灭掉你身上的火");
+            "STAFF_ELEMENTAL_WATER",
+            Material.STICK,
+            "&6Gậy Nguyên Tố &7- &1&oNước",
+            "",
+            "&7Nguyên tố: &1&oNước",
+            "",
+            "&7&eChuột phải&7 để dập tắt lửa trên người");
     public static final SlimefunItemStack STAFF_STORM = new SlimefunItemStack(
             "STAFF_ELEMENTAL_STORM",
             Material.STICK,
-            "&6元素法杖 &7- &8&o雷",
+            "&6Gậy Nguyên Tố &7- &8&oSét",
             "",
-            "&7元素: &8&o雷",
+            "&7Nguyên tố: &8&oSét",
             "",
-            "&e右键&7 召唤一道闪电",
+            "&eChuột phải&7 triệu hồi một tia sét",
             LoreBuilder.usesLeft(StormStaff.MAX_USES));
 
     static {
@@ -1409,58 +1801,87 @@ public final class SlimefunItems {
     }
 
     /*		 Machines 		*/
-    public static final SlimefunItemStack GRIND_STONE =
-            new SlimefunItemStack("GRIND_STONE", Material.DISPENSER, "&b磨石", "", "&a&o更高效的磨物品");
-    public static final SlimefunItemStack ARMOR_FORGE =
-            new SlimefunItemStack("ARMOR_FORGE", Material.ANVIL, "&6盔甲锻造台", "", "&a&o给你创造强大防具的力量");
+    public static final SlimefunItemStack GRIND_STONE = new SlimefunItemStack(
+            "GRIND_STONE", Material.DISPENSER, "&bĐá Mài", "", "&a&oNghiền vật phẩm hiệu quả hơn");
+    public static final SlimefunItemStack ARMOR_FORGE = new SlimefunItemStack(
+            "ARMOR_FORGE", Material.ANVIL, "&6Bàn Rèn Giáp", "", "&a&oTrao cho bạn sức mạnh tạo ra giáp mạnh");
     public static final SlimefunItemStack MAKESHIFT_SMELTERY = new SlimefunItemStack(
-            "MAKESHIFT_SMELTERY", Material.BLAST_FURNACE, "&e简易冶炼炉", "", "&r简易版的冶炼炉", "&r只能将矿物粉末熔炼成锭");
-    public static final SlimefunItemStack SMELTERY =
-            new SlimefunItemStack("SMELTERY", Material.FURNACE, "&6冶炼炉", "", "&a能够冶炼金属的高温炉");
+            "MAKESHIFT_SMELTERY",
+            Material.BLAST_FURNACE,
+            "&eLò Luyện Tạm",
+            "",
+            "&rPhiên bản đơn giản của lò luyện",
+            "&rChỉ có thể nấu chảy bột quặng thành thỏi");
+    public static final SlimefunItemStack SMELTERY = new SlimefunItemStack(
+            "SMELTERY", Material.FURNACE, "&6Lò Luyện", "", "&aLò nhiệt độ cao có thể nấu chảy kim loại");
     public static final SlimefunItemStack IGNITION_CHAMBER = new SlimefunItemStack(
-            "IGNITION_CHAMBER", Material.DROPPER, "&4自动点火机", "&r以防你的冶炼炉失去火焰", "&r把打火石放入后", "&r放置于冶炼炉的发射器旁边");
-    public static final SlimefunItemStack ORE_CRUSHER =
-            new SlimefunItemStack("ORE_CRUSHER", Material.DISPENSER, "&b矿石粉碎机", "", "&a&o粉碎矿石并且得到双倍的矿粉");
+            "IGNITION_CHAMBER",
+            Material.DROPPER,
+            "&4Máy Đánh Lửa Tự Động",
+            "&rPhòng khi lò luyện mất lửa",
+            "&rBỏ đá lửa vào",
+            "&rĐặt bên cạnh bộ phát của lò luyện");
+    public static final SlimefunItemStack ORE_CRUSHER = new SlimefunItemStack(
+            "ORE_CRUSHER", Material.DISPENSER, "&bMáy Nghiền Quặng", "", "&a&oNghiền quặng và nhận gấp đôi bột quặng");
     public static final SlimefunItemStack COMPRESSOR =
-            new SlimefunItemStack("COMPRESSOR", Material.PISTON, "&b压缩机", "", "&a压缩物品");
-    public static final SlimefunItemStack PRESSURE_CHAMBER =
-            new SlimefunItemStack("PRESSURE_CHAMBER", Material.GLASS, "&b压力机", "", "&a压缩更多的物品");
-    public static final SlimefunItemStack MAGIC_WORKBENCH =
-            new SlimefunItemStack("MAGIC_WORKBENCH", Material.CRAFTING_TABLE, "&6魔法工作台", "", "&d给物品注入魔法能量");
-    public static final SlimefunItemStack ORE_WASHER =
-            new SlimefunItemStack("ORE_WASHER", Material.CAULDRON, "&6洗矿机", "", "&a&o清洗筛矿变成过滤矿石", "&a&o并且给你一些小石块");
-    public static final SlimefunItemStack TABLE_SAW =
-            new SlimefunItemStack("TABLE_SAW", Material.STONECUTTER, "&6台锯", "", "&a&o从1个木头里获得8个木板", "&a&o(支持所有的原木)");
+            new SlimefunItemStack("COMPRESSOR", Material.PISTON, "&bMáy Nén", "", "&aNén vật phẩm");
+    public static final SlimefunItemStack PRESSURE_CHAMBER = new SlimefunItemStack(
+            "PRESSURE_CHAMBER", Material.GLASS, "&bBuồng Áp Suất", "", "&aNén thêm nhiều vật phẩm");
+    public static final SlimefunItemStack MAGIC_WORKBENCH = new SlimefunItemStack(
+            "MAGIC_WORKBENCH",
+            Material.CRAFTING_TABLE,
+            "&6Bàn Chế Tạo Ma Thuật",
+            "",
+            "&dTruyền năng lượng ma thuật vào vật phẩm");
+    public static final SlimefunItemStack ORE_WASHER = new SlimefunItemStack(
+            "ORE_WASHER",
+            Material.CAULDRON,
+            "&6Máy Rửa Quặng",
+            "",
+            "&a&oRửa quặng đã sàng thành quặng lọc",
+            "&a&ovà cho bạn một ít mảnh đá nhỏ");
+    public static final SlimefunItemStack TABLE_SAW = new SlimefunItemStack(
+            "TABLE_SAW",
+            Material.STONECUTTER,
+            "&6Máy Cưa Bàn",
+            "",
+            "&a&oNhận 8 tấm gỗ từ 1 khúc gỗ",
+            "&a&o(Hỗ trợ tất cả loại gỗ)");
     ;
-    public static final SlimefunItemStack COMPOSTER =
-            new SlimefunItemStack("COMPOSTER", Material.CAULDRON, "&a搅拌机", "", "&a&o随着时间的推移可以转换各种材料...");
+    public static final SlimefunItemStack COMPOSTER = new SlimefunItemStack(
+            "COMPOSTER", Material.CAULDRON, "&aMáy Trộn", "", "&a&oCó thể chuyển đổi nhiều vật liệu theo thời gian...");
     public static final SlimefunItemStack ENHANCED_CRAFTING_TABLE = new SlimefunItemStack(
-            "ENHANCED_CRAFTING_TABLE", Material.CRAFTING_TABLE, "&e增强型工作台", "", "&a&o一个原始的工作台", "&a&o无法承受强大的力量...");
-    public static final SlimefunItemStack CRUCIBLE =
-            new SlimefunItemStack("CRUCIBLE", Material.CAULDRON, "&c坩埚", "", "&a&o用来把物品变为液体");
-    public static final SlimefunItemStack JUICER =
-            new SlimefunItemStack("JUICER", Material.GLASS_BOTTLE, "&a榨汁机", "", "&a让你创造美味的果汁");
+            "ENHANCED_CRAFTING_TABLE",
+            Material.CRAFTING_TABLE,
+            "&eBàn Chế Tạo Nâng Cao",
+            "",
+            "&a&oBàn chế tạo nguyên thủy",
+            "&a&okhông thể chịu được sức mạnh lớn...");
+    public static final SlimefunItemStack CRUCIBLE = new SlimefunItemStack(
+            "CRUCIBLE", Material.CAULDRON, "&cNồi Luyện", "", "&a&oDùng để biến vật phẩm thành chất lỏng");
+    public static final SlimefunItemStack JUICER = new SlimefunItemStack(
+            "JUICER", Material.GLASS_BOTTLE, "&aMáy Ép Nước", "", "&aGiúp bạn tạo ra nước trái cây ngon");
 
     public static final SlimefunItemStack INDUSTRIAL_MINER = new SlimefunItemStack(
             "INDUSTRIAL_MINER",
             Material.GOLDEN_PICKAXE,
-            "&b工业矿机",
+            "&bMáy Đào Công Nghiệp",
             "",
-            "&r工业矿机能够开采其下方 7x7",
-            "&r的范围内的所有矿物.",
-            "&r将煤炭或其他燃料放入",
-            "&r机器的箱子中为它添加燃料.");
+            "&rMáy đào công nghiệp có thể khai thác tất cả khoáng sản",
+            "&rtrong phạm vi 7x7 bên dưới nó.",
+            "&rBỏ than hoặc nhiên liệu khác vào",
+            "&rrương của máy để thêm nhiên liệu.");
     public static final SlimefunItemStack ADVANCED_INDUSTRIAL_MINER = new SlimefunItemStack(
             "ADVANCED_INDUSTRIAL_MINER",
             Material.DIAMOND_PICKAXE,
-            "&c进阶工业矿机",
+            "&cMáy Đào Công Nghiệp Nâng Cao",
             "",
-            "&r进阶工业矿机能够开采其下方 11x11",
-            "&r的范围中的所有矿物.",
-            "&r将燃油或岩浆放入机器的箱子中",
-            "&r为它添加燃料.",
+            "&rMáy đào công nghiệp nâng cao có thể khai thác tất cả khoáng sản",
+            "&rtrong phạm vi 11x11 bên dưới.",
+            "&rBỏ dầu hoặc nham thạch vào rương của máy",
+            "&rđể thêm nhiên liệu.",
             "",
-            "&a+ 精准采集");
+            "&a+ Chạm tơ");
 
     static {
         ItemMeta meta = INDUSTRIAL_MINER.getItemMeta();
@@ -1472,192 +1893,224 @@ public final class SlimefunItems {
         ADVANCED_INDUSTRIAL_MINER.setItemMeta(meta2);
     }
 
-    public static final SlimefunItemStack SOLAR_PANEL =
-            new SlimefunItemStack("SOLAR_PANEL", Material.DAYLIGHT_DETECTOR, "&b光伏电池", "", "&7用于合成 &b太阳能发电机 &7的重要零件");
+    public static final SlimefunItemStack SOLAR_PANEL = new SlimefunItemStack(
+            "SOLAR_PANEL",
+            Material.DAYLIGHT_DETECTOR,
+            "&bTấm Pin Quang Điện",
+            "",
+            "&7Linh kiện quan trọng để chế tạo &bMáy Phát Điện Mặt Trời");
 
-    public static final SlimefunItemStack AUTOMATED_PANNING_MACHINE =
-            new SlimefunItemStack("AUTOMATED_PANNING_MACHINE", Material.BOWL, "&a自动淘金机", "", "&a&o升级版淘金筛");
+    public static final SlimefunItemStack AUTOMATED_PANNING_MACHINE = new SlimefunItemStack(
+            "AUTOMATED_PANNING_MACHINE", Material.BOWL, "&aMáy Lọc Tự Động", "", "&a&oPhiên bản nâng cấp của chảo lọc");
     public static final SlimefunItemStack OUTPUT_CHEST = new SlimefunItemStack(
-            "OUTPUT_CHEST", Material.CHEST, "&4物品输出箱", "", "&c&o将它放在基础机械的发射器旁边", "&c&o做出的物品会放入箱子里面");
-    public static final SlimefunItemStack HOLOGRAM_PROJECTOR =
-            new SlimefunItemStack("HOLOGRAM_PROJECTOR", Material.QUARTZ_SLAB, "&b全息投影仪", "", "&r投影出可编辑的全息文字");
+            "OUTPUT_CHEST",
+            Material.CHEST,
+            "&4Rương Xuất Vật Phẩm",
+            "",
+            "&c&oĐặt bên cạnh bộ phát của máy cơ bản",
+            "&c&ovật phẩm được tạo sẽ được đưa vào rương");
+    public static final SlimefunItemStack HOLOGRAM_PROJECTOR = new SlimefunItemStack(
+            "HOLOGRAM_PROJECTOR",
+            Material.QUARTZ_SLAB,
+            "&bMáy Chiếu Ảnh Ba Chiều",
+            "",
+            "&rChiếu ra văn bản ba chiều có thể chỉnh sửa");
 
     /*		 Enhanced Furnaces 		*/
     public static final SlimefunItemStack ENHANCED_FURNACE = new SlimefunItemStack(
-            "ENHANCED_FURNACE", Material.FURNACE, "&7强化熔炉 - &eI", "", "&7燃烧速度: &e1x", "&7燃料效率: &e1x", "&7产物翻倍倍数: &e1x");
+            "ENHANCED_FURNACE",
+            Material.FURNACE,
+            "&7Lò Nâng Cấp - &eI",
+            "",
+            "&7Tốc độ đốt: &e1x",
+            "&7Hiệu suất nhiên liệu: &e1x",
+            "&7Hệ số nhân đôi sản phẩm: &e1x");
     public static final SlimefunItemStack ENHANCED_FURNACE_2 = new SlimefunItemStack(
             "ENHANCED_FURNACE_2",
             Material.FURNACE,
-            "&7强化熔炉 - &eII",
+            "&7Lò Nâng Cấp - &eII",
             "",
-            "&7燃烧速度: &e2x",
-            "&7燃料效率: &e1x",
-            "&7产物翻倍倍数: &e1x");
+            "&7Tốc độ đốt: &e2x",
+            "&7Hiệu suất nhiên liệu: &e1x",
+            "&7Hệ số nhân đôi sản phẩm: &e1x");
     public static final SlimefunItemStack ENHANCED_FURNACE_3 = new SlimefunItemStack(
             "ENHANCED_FURNACE_3",
             Material.FURNACE,
-            "&7强化熔炉 - &eIII",
+            "&7Lò Nâng Cấp - &eIII",
             "",
-            "&7燃烧速度: &e2x",
-            "&7燃料效率: &e2x",
-            "&7产物翻倍倍数: &e1x");
+            "&7Tốc độ đốt: &e2x",
+            "&7Hiệu suất nhiên liệu: &e2x",
+            "&7Hệ số nhân đôi sản phẩm: &e1x");
     public static final SlimefunItemStack ENHANCED_FURNACE_4 = new SlimefunItemStack(
             "ENHANCED_FURNACE_4",
             Material.FURNACE,
-            "&7强化熔炉 - &eIV",
+            "&7Lò Nâng Cấp - &eIV",
             "",
-            "&7燃烧速度: &e3x",
-            "&7燃料效率: &e2x",
-            "&7产物翻倍倍数: &e1x");
+            "&7Tốc độ đốt: &e3x",
+            "&7Hiệu suất nhiên liệu: &e2x",
+            "&7Hệ số nhân đôi sản phẩm: &e1x");
     public static final SlimefunItemStack ENHANCED_FURNACE_5 = new SlimefunItemStack(
             "ENHANCED_FURNACE_5",
             Material.FURNACE,
-            "&7强化熔炉 - &eV",
+            "&7Lò Nâng Cấp - &eV",
             "",
-            "&7燃烧速度: &e3x",
-            "&7燃料效率: &e2x",
-            "&7产物翻倍倍数: &e2x");
+            "&7Tốc độ đốt: &e3x",
+            "&7Hiệu suất nhiên liệu: &e2x",
+            "&7Hệ số nhân đôi sản phẩm: &e2x");
     public static final SlimefunItemStack ENHANCED_FURNACE_6 = new SlimefunItemStack(
             "ENHANCED_FURNACE_6",
             Material.FURNACE,
-            "&7强化熔炉 - &eVI",
+            "&7Lò Nâng Cấp - &eVI",
             "",
-            "&7燃烧速度: &e3x",
-            "&7燃料效率: &e3x",
-            "&7产物翻倍倍数: &e2x");
+            "&7Tốc độ đốt: &e3x",
+            "&7Hiệu suất nhiên liệu: &e3x",
+            "&7Hệ số nhân đôi sản phẩm: &e2x");
     public static final SlimefunItemStack ENHANCED_FURNACE_7 = new SlimefunItemStack(
             "ENHANCED_FURNACE_7",
             Material.FURNACE,
-            "&7强化熔炉 - &eVII",
+            "&7Lò Nâng Cấp - &eVII",
             "",
-            "&7燃烧速度: &e4x",
-            "&7燃料效率: &e3x",
-            "&7产物翻倍倍数: &e2x");
+            "&7Tốc độ đốt: &e4x",
+            "&7Hiệu suất nhiên liệu: &e3x",
+            "&7Hệ số nhân đôi sản phẩm: &e2x");
     public static final SlimefunItemStack ENHANCED_FURNACE_8 = new SlimefunItemStack(
             "ENHANCED_FURNACE_8",
             Material.FURNACE,
-            "&7强化熔炉 - &eVIII",
+            "&7Lò Nâng Cấp - &eVIII",
             "",
-            "&7燃烧速度: &e4x",
-            "&7燃料效率: &e4x",
-            "&7产物翻倍倍数: &e2x");
+            "&7Tốc độ đốt: &e4x",
+            "&7Hiệu suất nhiên liệu: &e4x",
+            "&7Hệ số nhân đôi sản phẩm: &e2x");
     public static final SlimefunItemStack ENHANCED_FURNACE_9 = new SlimefunItemStack(
             "ENHANCED_FURNACE_9",
             Material.FURNACE,
-            "&7强化熔炉 - &eIX",
+            "&7Lò Nâng Cấp - &eIX",
             "",
-            "&7燃烧速度: &e5x",
-            "&7燃料效率: &e4x",
-            "&7产物翻倍倍数: &e2x");
+            "&7Tốc độ đốt: &e5x",
+            "&7Hiệu suất nhiên liệu: &e4x",
+            "&7Hệ số nhân đôi sản phẩm: &e2x");
     public static final SlimefunItemStack ENHANCED_FURNACE_10 = new SlimefunItemStack(
             "ENHANCED_FURNACE_10",
             Material.FURNACE,
-            "&7强化熔炉 - &eX",
+            "&7Lò Nâng Cấp - &eX",
             "",
-            "&7燃烧速度: &e5x",
-            "&7燃料效率: &e5x",
-            "&7产物翻倍倍数: &e2x");
+            "&7Tốc độ đốt: &e5x",
+            "&7Hiệu suất nhiên liệu: &e5x",
+            "&7Hệ số nhân đôi sản phẩm: &e2x");
     public static final SlimefunItemStack ENHANCED_FURNACE_11 = new SlimefunItemStack(
             "ENHANCED_FURNACE_11",
             Material.FURNACE,
-            "&7强化熔炉 - &eXI",
+            "&7Lò Nâng Cấp - &eXI",
             "",
-            "&7燃烧速度: &e5x",
-            "&7燃料效率: &e5x",
-            "&7产物翻倍倍数: &e3x");
+            "&7Tốc độ đốt: &e5x",
+            "&7Hiệu suất nhiên liệu: &e5x",
+            "&7Hệ số nhân đôi sản phẩm: &e3x");
     public static final SlimefunItemStack REINFORCED_FURNACE = new SlimefunItemStack(
-            "REINFORCED_FURNACE", Material.FURNACE, "&7强化合金熔炉", "", "&7燃烧速度: &e10x", "&7燃料效率: &e10x", "&7产物翻倍倍数: &e3x");
+            "REINFORCED_FURNACE",
+            Material.FURNACE,
+            "&7Lò Hợp Kim Gia Cố",
+            "",
+            "&7Tốc độ đốt: &e10x",
+            "&7Hiệu suất nhiên liệu: &e10x",
+            "&7Hệ số nhân đôi sản phẩm: &e3x");
     public static final SlimefunItemStack CARBONADO_EDGED_FURNACE = new SlimefunItemStack(
             "CARBONADO_EDGED_FURNACE",
             Material.FURNACE,
-            "&7黑金刚石镶边熔炉",
+            "&7Lò Viền Kim Cương Đen",
             "",
-            "&7燃烧速度: &e20x",
-            "&7燃料效率: &e10x",
-            "&7产物翻倍倍数: &e3x");
+            "&7Tốc độ đốt: &e20x",
+            "&7Hiệu suất nhiên liệu: &e10x",
+            "&7Hệ số nhân đôi sản phẩm: &e3x");
 
-    public static final SlimefunItemStack BLOCK_PLACER =
-            new SlimefunItemStack("BLOCK_PLACER", Material.DISPENSER, "&a方块放置机", "", "&r所有在这个发射器内的方块", "&r都会被自动放置");
+    public static final SlimefunItemStack BLOCK_PLACER = new SlimefunItemStack(
+            "BLOCK_PLACER",
+            Material.DISPENSER,
+            "&aMáy Đặt Khối",
+            "",
+            "&rTất cả khối trong bộ phát này",
+            "&rsẽ được tự động đặt");
 
     /*		Soulbound Items		*/
     public static final SlimefunItemStack SOULBOUND_SWORD =
-            new SlimefunItemStack("SOULBOUND_SWORD", Material.DIAMOND_SWORD, "&c灵魂绑定剑");
+            new SlimefunItemStack("SOULBOUND_SWORD", Material.DIAMOND_SWORD, "&cKiếm Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_BOW =
-            new SlimefunItemStack("SOULBOUND_BOW", Material.BOW, "&c灵魂绑定弓");
+            new SlimefunItemStack("SOULBOUND_BOW", Material.BOW, "&cCung Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_PICKAXE =
-            new SlimefunItemStack("SOULBOUND_PICKAXE", Material.DIAMOND_PICKAXE, "&c灵魂绑定镐");
+            new SlimefunItemStack("SOULBOUND_PICKAXE", Material.DIAMOND_PICKAXE, "&cCuốc Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_AXE =
-            new SlimefunItemStack("SOULBOUND_AXE", Material.DIAMOND_AXE, "&c灵魂绑定斧");
+            new SlimefunItemStack("SOULBOUND_AXE", Material.DIAMOND_AXE, "&cRìu Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_SHOVEL =
-            new SlimefunItemStack("SOULBOUND_SHOVEL", Material.DIAMOND_SHOVEL, "&c灵魂绑定铲");
+            new SlimefunItemStack("SOULBOUND_SHOVEL", Material.DIAMOND_SHOVEL, "&cXẻng Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_HOE =
-            new SlimefunItemStack("SOULBOUND_HOE", Material.DIAMOND_HOE, "&c灵魂绑定锄");
+            new SlimefunItemStack("SOULBOUND_HOE", Material.DIAMOND_HOE, "&cCuốc Xới Ràng Buộc Linh Hồn");
 
     public static final SlimefunItemStack SOULBOUND_HELMET =
-            new SlimefunItemStack("SOULBOUND_HELMET", Material.DIAMOND_HELMET, "&c灵魂绑定头盔");
+            new SlimefunItemStack("SOULBOUND_HELMET", Material.DIAMOND_HELMET, "&cMũ Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_CHESTPLATE =
-            new SlimefunItemStack("SOULBOUND_CHESTPLATE", Material.DIAMOND_CHESTPLATE, "&c灵魂绑定胸甲");
+            new SlimefunItemStack("SOULBOUND_CHESTPLATE", Material.DIAMOND_CHESTPLATE, "&cÁo Giáp Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_LEGGINGS =
-            new SlimefunItemStack("SOULBOUND_LEGGINGS", Material.DIAMOND_LEGGINGS, "&c灵魂绑定护腿");
+            new SlimefunItemStack("SOULBOUND_LEGGINGS", Material.DIAMOND_LEGGINGS, "&cQuần Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_BOOTS =
-            new SlimefunItemStack("SOULBOUND_BOOTS", Material.DIAMOND_BOOTS, "&c灵魂绑定靴子");
+            new SlimefunItemStack("SOULBOUND_BOOTS", Material.DIAMOND_BOOTS, "&cGiày Ràng Buộc Linh Hồn");
     public static final SlimefunItemStack SOULBOUND_TRIDENT =
-            new SlimefunItemStack("SOULBOUND_TRIDENT", Material.TRIDENT, "&c灵魂绑定三叉戟");
+            new SlimefunItemStack("SOULBOUND_TRIDENT", Material.TRIDENT, "&cĐinh Ba Ràng Buộc Linh Hồn");
 
     /* Runes */
     public static final SlimefunItemStack BLANK_RUNE =
-            new SlimefunItemStack("BLANK_RUNE", new ColoredFireworkStar(Color.BLACK, "&8空白符文"));
+            new SlimefunItemStack("BLANK_RUNE", new ColoredFireworkStar(Color.BLACK, "&8Rune Trống"));
 
-    public static final SlimefunItemStack AIR_RUNE =
-            new SlimefunItemStack("ANCIENT_RUNE_AIR", new ColoredFireworkStar(Color.AQUA, "&7古代符文 &8&l[&b&l气&8&l]"));
-    public static final SlimefunItemStack WATER_RUNE =
-            new SlimefunItemStack("ANCIENT_RUNE_WATER", new ColoredFireworkStar(Color.BLUE, "&7古代符文 &8&l[&1&l水&8&l]"));
-    public static final SlimefunItemStack FIRE_RUNE =
-            new SlimefunItemStack("ANCIENT_RUNE_FIRE", new ColoredFireworkStar(Color.RED, "&7古代符文 &8&l[&4&l火&8&l]"));
+    public static final SlimefunItemStack AIR_RUNE = new SlimefunItemStack(
+            "ANCIENT_RUNE_AIR", new ColoredFireworkStar(Color.AQUA, "&7Rune Cổ Đại &8&l[&b&lKhí&8&l]"));
+    public static final SlimefunItemStack WATER_RUNE = new SlimefunItemStack(
+            "ANCIENT_RUNE_WATER", new ColoredFireworkStar(Color.BLUE, "&7Rune Cổ Đại &8&l[&1&lNước&8&l]"));
+    public static final SlimefunItemStack FIRE_RUNE = new SlimefunItemStack(
+            "ANCIENT_RUNE_FIRE", new ColoredFireworkStar(Color.RED, "&7Rune Cổ Đại &8&l[&4&lLửa&8&l]"));
     public static final SlimefunItemStack EARTH_RUNE = new SlimefunItemStack(
-            "ANCIENT_RUNE_EARTH", new ColoredFireworkStar(Color.fromRGB(112, 47, 7), "&7古代符文 &8&l[&c&l地&8&l]"));
+            "ANCIENT_RUNE_EARTH",
+            new ColoredFireworkStar(Color.fromRGB(112, 47, 7), "&7Rune Cổ Đại &8&l[&c&lĐất&8&l]"));
     public static final SlimefunItemStack ENDER_RUNE = new SlimefunItemStack(
-            "ANCIENT_RUNE_ENDER", new ColoredFireworkStar(Color.PURPLE, "&7古代符文 &8&l[&5&l末影&8&l]"));
+            "ANCIENT_RUNE_ENDER", new ColoredFireworkStar(Color.PURPLE, "&7Rune Cổ Đại &8&l[&5&lEnder&8&l]"));
 
     public static final SlimefunItemStack RAINBOW_RUNE = new SlimefunItemStack(
-            "ANCIENT_RUNE_RAINBOW", new ColoredFireworkStar(Color.FUCHSIA, "&7古代符文 &8&l[&d&l虹&8&l]"));
+            "ANCIENT_RUNE_RAINBOW", new ColoredFireworkStar(Color.FUCHSIA, "&7Rune Cổ Đại &8&l[&d&lCầu Vồng&8&l]"));
     public static final SlimefunItemStack LIGHTNING_RUNE = new SlimefunItemStack(
-            "ANCIENT_RUNE_LIGHTNING", new ColoredFireworkStar(Color.fromRGB(255, 255, 95), "&7古代符文 &8&l[&e&l雷&8&l]"));
+            "ANCIENT_RUNE_LIGHTNING",
+            new ColoredFireworkStar(Color.fromRGB(255, 255, 95), "&7Rune Cổ Đại &8&l[&e&lSét&8&l]"));
     public static final SlimefunItemStack SOULBOUND_RUNE = new SlimefunItemStack(
             "ANCIENT_RUNE_SOULBOUND",
             new ColoredFireworkStar(
                     Color.fromRGB(47, 0, 117),
-                    "&7古代符文 &8&l[&5&l灵魂绑定&8&l]",
-                    "&e先把你要绑定的物品丢到地上",
-                    "&e然后把这个符文丢向那个物品",
-                    "&5就能灵魂绑定 &e那个物品.",
+                    "&7Rune Cổ Đại &8&l[&5&lRàng Buộc Linh Hồn&8&l]",
+                    "&eĐầu tiên vứt vật phẩm bạn muốn ràng buộc xuống đất",
+                    "&esau đó vứt rune này về phía vật phẩm đó",
+                    "&5để ràng buộc linh hồn &evật phẩm đó.",
                     " ",
-                    "&e建议你在 &6重要 &e物品上使用.",
+                    "&eNên dùng cho vật phẩm &6quan trọng&e.",
                     " ",
-                    "&e绑定后的物品死亡后不会掉落."));
+                    "&eVật phẩm đã ràng buộc sẽ không rơi khi chết."));
     public static final SlimefunItemStack ENCHANTMENT_RUNE = new SlimefunItemStack(
             "ANCIENT_RUNE_ENCHANTMENT",
             new ColoredFireworkStar(
                     Color.fromRGB(255, 217, 25),
-                    "&7古代符文 &8&l[&6&l附魔&8&l]",
-                    "&e把符文丢向你已经丢出的",
-                    "&e需要被 &6附魔 &e的物品",
-                    "&e该物品会获得一个随机的附魔属性."));
+                    "&7Rune Cổ Đại &8&l[&6&lPhù Phép&8&l]",
+                    "&eVứt rune về phía vật phẩm đã vứt",
+                    "&ecần được &6phù phép",
+                    "&evật phẩm đó sẽ nhận một phù phép ngẫu nhiên."));
     public static final SlimefunItemStack VILLAGER_RUNE = new SlimefunItemStack(
             "ANCIENT_RUNE_VILLAGERS",
             new ColoredFireworkStar(
                     Color.fromRGB(160, 20, 5),
-                    "&7古代符文 &8&l[&4&l村民&8&l]",
-                    "&e右键村民清除",
-                    "&e它的职业和交易列表.",
-                    "&e村民将会在一段时间后",
-                    "&e自己寻找新的工作."));
+                    "&7Rune Cổ Đại &8&l[&4&lDân Làng&8&l]",
+                    "&eChuột phải vào dân làng để xóa",
+                    "&enghề nghiệp và danh sách giao dịch.",
+                    "&eDân làng sẽ tự tìm",
+                    "&ecông việc mới sau một thời gian."));
 
     /*		Electricity			*/
     public static final SlimefunItemStack SOLAR_GENERATOR = new SlimefunItemStack(
             "SOLAR_GENERATOR",
             Material.DAYLIGHT_DETECTOR,
-            "&b太阳能发电机",
+            "&bMáy Phát Điện Mặt Trời",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(0),
@@ -1665,7 +2118,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack SOLAR_GENERATOR_2 = new SlimefunItemStack(
             "SOLAR_GENERATOR_2",
             Material.DAYLIGHT_DETECTOR,
-            "&c高级太阳能发电机",
+            "&cMáy Phát Điện Mặt Trời Nâng Cao",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(0),
@@ -1673,7 +2126,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack SOLAR_GENERATOR_3 = new SlimefunItemStack(
             "SOLAR_GENERATOR_3",
             Material.DAYLIGHT_DETECTOR,
-            "&4黑金刚石太阳能发电机",
+            "&4Máy Phát Điện Mặt Trời Kim Cương Đen",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(0),
@@ -1681,21 +2134,21 @@ public final class SlimefunItems {
     public static final SlimefunItemStack SOLAR_GENERATOR_4 = new SlimefunItemStack(
             "SOLAR_GENERATOR_4",
             Material.DAYLIGHT_DETECTOR,
-            "&e充能太阳能发电机",
+            "&eMáy Phát Điện Mặt Trời Tích Điện",
             "",
-            "&9可以在夜间工作",
+            "&9Có thể hoạt động ban đêm",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(0),
             LoreBuilder.powerPerSecond(256),
-            " (日间)",
+            " (Ban ngày)",
             LoreBuilder.powerPerSecond(128),
-            " (夜间)");
+            " (Ban đêm)");
 
     public static final SlimefunItemStack COAL_GENERATOR = new SlimefunItemStack(
             "COAL_GENERATOR",
             HeadTexture.GENERATOR,
-            "&c煤发电机",
+            "&cMáy Phát Điện Than",
             "",
             LoreBuilder.machine(MachineTier.AVERAGE, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(64),
@@ -1703,7 +2156,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack COAL_GENERATOR_2 = new SlimefunItemStack(
             "COAL_GENERATOR_2",
             HeadTexture.GENERATOR,
-            "&c煤发电机 &7(&eII&7)",
+            "&cMáy Phát Điện Than &7(&eII&7)",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(256),
@@ -1712,7 +2165,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack LAVA_GENERATOR = new SlimefunItemStack(
             "LAVA_GENERATOR",
             HeadTexture.GENERATOR,
-            "&4岩浆发电机",
+            "&4Máy Phát Điện Nham Thạch",
             "",
             LoreBuilder.machine(MachineTier.AVERAGE, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(512),
@@ -1720,7 +2173,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack LAVA_GENERATOR_2 = new SlimefunItemStack(
             "LAVA_GENERATOR_2",
             HeadTexture.GENERATOR,
-            "&4岩浆发电机 &7(&eII&7)",
+            "&4Máy Phát Điện Nham Thạch &7(&eII&7)",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(1024),
@@ -1729,54 +2182,54 @@ public final class SlimefunItems {
     public static final SlimefunItemStack ELECTRIC_FURNACE = new SlimefunItemStack(
             "ELECTRIC_FURNACE",
             Material.FURNACE,
-            "&c电炉",
+            "&cLò Điện",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(4));
     public static final SlimefunItemStack ELECTRIC_FURNACE_2 = new SlimefunItemStack(
             "ELECTRIC_FURNACE_2",
             Material.FURNACE,
-            "&c电炉 &7- &eII",
+            "&cLò Điện &7- &eII",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 2x",
+            "&8\u21E8 &7Tốc độ: 2x",
             LoreBuilder.powerPerSecond(6));
     public static final SlimefunItemStack ELECTRIC_FURNACE_3 = new SlimefunItemStack(
             "ELECTRIC_FURNACE_3",
             Material.FURNACE,
-            "&c电炉 &7- &eIII",
+            "&cLò Điện &7- &eIII",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 4x",
+            "&8\u21E8 &7Tốc độ: 4x",
             LoreBuilder.powerPerSecond(10));
 
     public static final SlimefunItemStack ELECTRIC_ORE_GRINDER = new SlimefunItemStack(
             "ELECTRIC_ORE_GRINDER",
             Material.FURNACE,
-            "&c电力碎矿机",
+            "&cMáy Nghiền Quặng Điện",
             "",
-            "&r矿物粉碎机与磨石的完美结合",
+            "&rSự kết hợp hoàn hảo của máy nghiền quặng và đá mài",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(12));
     public static final SlimefunItemStack ELECTRIC_ORE_GRINDER_2 = new SlimefunItemStack(
             "ELECTRIC_ORE_GRINDER_2",
             Material.FURNACE,
-            "&c电力碎矿机 &7(&eII&7)",
+            "&cMáy Nghiền Quặng Điện &7(&eII&7)",
             "",
-            "&r矿物粉碎机与磨石的完美结合",
+            "&rSự kết hợp hoàn hảo của máy nghiền quặng và đá mài",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 4x",
+            "&8\u21E8 &7Tốc độ: 4x",
             LoreBuilder.powerPerSecond(30));
     public static final SlimefunItemStack ELECTRIC_ORE_GRINDER_3 = new SlimefunItemStack(
             "ELECTRIC_ORE_GRINDER_3",
             Material.FURNACE,
-            "&c电力碎矿机 &7(&eIII&7)",
+            "&cMáy Nghiền Quặng Điện &7(&eIII&7)",
             "",
-            "&f矿物粉碎机与磨石的完美结合",
+            "&fSự kết hợp hoàn hảo của máy nghiền quặng và đá mài",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.speed(10),
@@ -1784,25 +2237,25 @@ public final class SlimefunItems {
     public static final SlimefunItemStack ELECTRIC_INGOT_PULVERIZER = new SlimefunItemStack(
             "ELECTRIC_INGOT_PULVERIZER",
             Material.FURNACE,
-            "&c电力打粉机",
+            "&cMáy Nghiền Thỏi Điện",
             "",
-            "&r将锭变为粉",
+            "&rBiến thỏi thành bột",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(14));
     public static final SlimefunItemStack AUTO_DRIER = new SlimefunItemStack(
             "AUTO_DRIER",
             Material.SMOKER,
-            "&e自动烘干机",
+            "&eMáy Sấy Khô Tự Động",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(10));
     public static final SlimefunItemStack AUTO_ENCHANTER = new SlimefunItemStack(
             "AUTO_ENCHANTER",
             Material.ENCHANTING_TABLE,
-            "&5自动附魔机",
+            "&5Máy Phù Phép Tự Động",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.speed(1),
@@ -1810,7 +2263,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack AUTO_ENCHANTER_2 = new SlimefunItemStack(
             "AUTO_ENCHANTER_2",
             Material.ENCHANTING_TABLE,
-            "&5自动附魔机 &7- &eII",
+            "&5Máy Phù Phép Tự Động &7- &eII",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.speed(3),
@@ -1818,7 +2271,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack AUTO_DISENCHANTER = new SlimefunItemStack(
             "AUTO_DISENCHANTER",
             Material.ENCHANTING_TABLE,
-            "&5自动祛魔机",
+            "&5Máy Gỡ Phù Phép Tự Động",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.speed(1),
@@ -1826,7 +2279,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack AUTO_DISENCHANTER_2 = new SlimefunItemStack(
             "AUTO_DISENCHANTER_2",
             Material.ENCHANTING_TABLE,
-            "&5自动祛魔机 &7- &eII",
+            "&5Máy Gỡ Phù Phép Tự Động &7- &eII",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.speed(3),
@@ -1834,23 +2287,23 @@ public final class SlimefunItems {
     public static final SlimefunItemStack AUTO_ANVIL = new SlimefunItemStack(
             "AUTO_ANVIL",
             Material.IRON_BLOCK,
-            "&7自动铁砧",
+            "&7Đe Tự Động",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &7可修复百分比: 10%",
+            "&8\u21E8 &7Có thể sửa phần trăm: 10%",
             LoreBuilder.powerPerSecond(24));
     public static final SlimefunItemStack AUTO_ANVIL_2 = new SlimefunItemStack(
             "AUTO_ANVIL_2",
             Material.IRON_BLOCK,
-            "&7自动铁砧 Mk.II",
+            "&7Đe Tự Động Mk.II",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7可修复百分比: 25%",
+            "&8\u21E8 &7Có thể sửa phần trăm: 25%",
             LoreBuilder.powerPerSecond(32));
     public static final SlimefunItemStack AUTO_BREWER = new SlimefunItemStack(
             "AUTO_BREWER",
             Material.SMOKER,
-            "&e自动酿造机",
+            "&eMáy Pha Chế Tự Động",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.speed(1),
@@ -1859,9 +2312,9 @@ public final class SlimefunItems {
     public static final SlimefunItemStack BOOK_BINDER = new SlimefunItemStack(
             "BOOK_BINDER",
             Material.BOOKSHELF,
-            "&6附魔书整合机",
+            "&6Máy Gộp Sách Phù Phép",
             "",
-            "&f将多个附魔书全部绑定到一本上.",
+            "&fGộp nhiều sách phù phép vào một cuốn.",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.powerPerSecond(16));
@@ -1869,26 +2322,26 @@ public final class SlimefunItems {
     public static final SlimefunItemStack BIO_REACTOR = new SlimefunItemStack(
             "BIO_REACTOR",
             Material.LIME_TERRACOTTA,
-            "&2生物发电机",
+            "&2Máy Phát Điện Sinh Học",
             "",
             LoreBuilder.machine(MachineTier.AVERAGE, MachineType.GENERATOR),
-            "&8\u21E8 &e\u26A1 &7128 J 可储存",
+            "&8\u21E8 &e\u26A1 &7128 J có thể lưu trữ",
             LoreBuilder.powerPerSecond(8));
-    public static final SlimefunItemStack MULTIMETER =
-            new SlimefunItemStack("MULTIMETER", Material.CLOCK, "&e万用表", "", "&r查看机器中储存的能量");
+    public static final SlimefunItemStack MULTIMETER = new SlimefunItemStack(
+            "MULTIMETER", Material.CLOCK, "&eĐồng Hồ Vạn Năng", "", "&rXem năng lượng lưu trữ trong máy");
 
     public static final SlimefunItemStack SMALL_CAPACITOR = new SlimefunItemStack(
             "SMALL_CAPACITOR",
             HeadTexture.CAPACITOR_25,
-            "&a小型储能电容",
+            "&aTụ Điện Lưu Trữ Nhỏ",
             LoreBuilder.range(6),
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.CAPACITOR),
-            "&8\u21E8 &e\u26A1 &7128 J 可储存");
+            "&8\u21E8 &e\u26A1 &7128 J có thể lưu trữ");
     public static final SlimefunItemStack MEDIUM_CAPACITOR = new SlimefunItemStack(
             "MEDIUM_CAPACITOR",
             HeadTexture.CAPACITOR_25,
-            "&a中型储能电容",
+            "&aTụ Điện Lưu Trữ Trung Bình",
             LoreBuilder.range(6),
             "",
             LoreBuilder.machine(MachineTier.AVERAGE, MachineType.CAPACITOR),
@@ -1896,7 +2349,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack BIG_CAPACITOR = new SlimefunItemStack(
             "BIG_CAPACITOR",
             HeadTexture.CAPACITOR_25,
-            "&a大型储能电容",
+            "&aTụ Điện Lưu Trữ Lớn",
             LoreBuilder.range(6),
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.CAPACITOR),
@@ -1904,7 +2357,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack LARGE_CAPACITOR = new SlimefunItemStack(
             "LARGE_CAPACITOR",
             HeadTexture.CAPACITOR_25,
-            "&a巨型储能电容",
+            "&aTụ Điện Lưu Trữ Khổng Lồ",
             LoreBuilder.range(6),
             "",
             LoreBuilder.machine(MachineTier.GOOD, MachineType.CAPACITOR),
@@ -1912,7 +2365,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack CARBONADO_EDGED_CAPACITOR = new SlimefunItemStack(
             "CARBONADO_EDGED_CAPACITOR",
             HeadTexture.CAPACITOR_25,
-            "&a黑金刚石镶边储能电容",
+            "&aTụ Điện Lưu Trữ Viền Kim Cương Đen",
             LoreBuilder.range(6),
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.CAPACITOR),
@@ -1920,7 +2373,7 @@ public final class SlimefunItems {
     public static final SlimefunItemStack ENERGIZED_CAPACITOR = new SlimefunItemStack(
             "ENERGIZED_CAPACITOR",
             HeadTexture.CAPACITOR_25,
-            "&a终极储能电容",
+            "&aTụ Điện Lưu Trữ Cuối Cùng",
             LoreBuilder.range(6),
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.CAPACITOR),
@@ -1930,513 +2383,573 @@ public final class SlimefunItems {
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID",
             HeadTexture.PROGRAMMABLE_ANDROID,
-            "&c可编程式机器人 &7(普通)",
+            "&cRobot Lập Trình Được &7(Thường)",
             "",
-            "&8\u21E8 &7功能: 无",
-            "&8\u21E8 &7燃料效率: 1.0x");
+            "&8\u21E8 &7Chức năng: Không",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.0x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_FARMER = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_FARMER",
             HeadTexture.PROGRAMMABLE_ANDROID_FARMER,
-            "&c可编程式机器人 &7(农夫)",
+            "&cRobot Lập Trình Được &7(Nông Dân)",
             "",
-            "&8\u21E8 &7功能: 耕作",
-            "&8\u21E8 &7燃料效率: 1.0x");
+            "&8\u21E8 &7Chức năng: Trồng trọt",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.0x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_MINER = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_MINER",
             HeadTexture.PROGRAMMABLE_ANDROID_MINER,
-            "&c可编程式机器人 &7(矿工)",
+            "&cRobot Lập Trình Được &7(Thợ Mỏ)",
             "",
-            "&8\u21E8 &7功能: 挖矿",
-            "&8\u21E8 &7燃料效率: 1.0x");
+            "&8\u21E8 &7Chức năng: Đào mỏ",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.0x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_WOODCUTTER = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_WOODCUTTER",
             HeadTexture.PROGRAMMABLE_ANDROID_WOODCUTTER,
-            "&c可编程式机器人 &7(樵夫)",
+            "&cRobot Lập Trình Được &7(Tiều Phu)",
             "",
-            "&8\u21E8 &7功能: 伐木",
-            "&8\u21E8 &7燃料效率: 1.0x");
+            "&8\u21E8 &7Chức năng: Đốn cây",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.0x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_BUTCHER = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_BUTCHER",
             HeadTexture.PROGRAMMABLE_ANDROID_BUTCHER,
-            "&c可编程式机器人 &7(屠夫)",
+            "&cRobot Lập Trình Được &7(Đồ Tể)",
             "",
-            "&8\u21E8 &7功能: 屠宰",
-            "&8\u21E8 &7伤害: 4",
-            "&8\u21E8 &7燃料效率: 1.0x");
+            "&8\u21E8 &7Chức năng: Giết mổ",
+            "&8\u21E8 &7Sát thương: 4",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.0x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_FISHERMAN = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_FISHERMAN",
             HeadTexture.PROGRAMMABLE_ANDROID_FISHERMAN,
-            "&c可编程式机器人 &7(渔夫)",
+            "&cRobot Lập Trình Được &7(Ngư Dân)",
             "",
-            "&8\u21E8 &7功能: 钓鱼",
-            "&8\u21E8 &7成功几率: 10%",
-            "&8\u21E8 &7燃料效率: 1.0x");
+            "&8\u21E8 &7Chức năng: Câu cá",
+            "&8\u21E8 &7Tỷ lệ thành công: 10%",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.0x");
 
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_2 = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_2",
             HeadTexture.PROGRAMMABLE_ANDROID,
-            "&c高级可编程式机器人 &7(普通)",
+            "&cRobot Lập Trình Nâng Cao &7(Thường)",
             "",
-            "&8\u21E8 &7功能: 无",
-            "&8\u21E8 &7燃料效率: 1.5x");
+            "&8\u21E8 &7Chức năng: Không",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.5x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_2_FISHERMAN = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_2_FISHERMAN",
             HeadTexture.PROGRAMMABLE_ANDROID_FISHERMAN,
-            "&c高级可编程式机器人 &7(渔夫)",
+            "&cRobot Lập Trình Nâng Cao &7(Ngư Dân)",
             "",
-            "&8\u21E8 &7功能: 钓鱼",
-            "&8\u21E8 &7成功几率: 20%",
-            "&8\u21E8 &7燃料效率: 1.5x");
+            "&8\u21E8 &7Chức năng: Câu cá",
+            "&8\u21E8 &7Tỷ lệ thành công: 20%",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.5x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_2_FARMER = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_2_FARMER",
             HeadTexture.PROGRAMMABLE_ANDROID_FARMER,
-            "&c高级可编程式机器人 &7(农夫)",
+            "&cRobot Lập Trình Nâng Cao &7(Nông Dân)",
             "",
-            "&8\u21E8 &7功能: 耕作",
-            "&8\u21E8 &7燃料效率: 1.5x",
-            "&8\u21E8 &7可以收割异域花园内的植物");
+            "&8\u21E8 &7Chức năng: Trồng trọt",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.5x",
+            "&8\u21E8 &7Có thể thu hoạch cây trong Vườn Kỳ Lạ");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_2_BUTCHER = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_2_BUTCHER",
             HeadTexture.PROGRAMMABLE_ANDROID_BUTCHER,
-            "&c高级可编程式机器人 &7(屠夫)",
+            "&cRobot Lập Trình Nâng Cao &7(Đồ Tể)",
             "",
-            "&8\u21E8 &7功能: 屠宰",
-            "&8\u21E8 &7伤害: 8",
-            "&8\u21E8 &7燃料效率: 1.5x");
+            "&8\u21E8 &7Chức năng: Giết mổ",
+            "&8\u21E8 &7Sát thương: 8",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 1.5x");
 
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_3 = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_3",
             HeadTexture.PROGRAMMABLE_ANDROID,
-            "&e可授权式可编程式机器人 &7(普通)",
+            "&eRobot Lập Trình Có Thể Cấp Quyền &7(Thường)",
             "",
-            "&8\u21E8 &7功能: 无",
-            "&8\u21E8 &7燃料效率: 3.0x");
+            "&8\u21E8 &7Chức năng: Không",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 3.0x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_3_FISHERMAN = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_3_FISHERMAN",
             HeadTexture.PROGRAMMABLE_ANDROID_FISHERMAN,
-            "&e可授权式可编程式机器人 &7(渔夫)",
+            "&eRobot Lập Trình Có Thể Cấp Quyền &7(Ngư Dân)",
             "",
-            "&8\u21E8 &7功能: 钓鱼",
-            "&8\u21E8 &7成功几率: 30%",
-            "&8\u21E8 &7燃料效率: 8.0x");
+            "&8\u21E8 &7Chức năng: Câu cá",
+            "&8\u21E8 &7Tỷ lệ thành công: 30%",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 8.0x");
     public static final SlimefunItemStack PROGRAMMABLE_ANDROID_3_BUTCHER = new SlimefunItemStack(
             "PROGRAMMABLE_ANDROID_3_BUTCHER",
             HeadTexture.PROGRAMMABLE_ANDROID_BUTCHER,
-            "&e可授权式可编程式机器人 &7(屠夫)",
+            "&eRobot Lập Trình Có Thể Cấp Quyền &7(Đồ Tể)",
             "",
-            "&8\u21E8 &7功能: 屠宰",
-            "&8\u21E8 &7伤害: 20",
-            "&8\u21E8 &7燃料效率: 8.0x");
+            "&8\u21E8 &7Chức năng: Giết mổ",
+            "&8\u21E8 &7Sát thương: 20",
+            "&8\u21E8 &7Hiệu suất nhiên liệu: 8.0x");
 
     /*		       GPS		       */
     public static final SlimefunItemStack GPS_TRANSMITTER = new SlimefunItemStack(
             "GPS_TRANSMITTER",
             HeadTexture.GPS_TRANSMITTER,
-            "&bGPS 发射器",
+            "&bBộ Phát GPS",
             "",
             LoreBuilder.powerBuffer(16),
             LoreBuilder.powerPerSecond(2));
     public static final SlimefunItemStack GPS_TRANSMITTER_2 = new SlimefunItemStack(
             "GPS_TRANSMITTER_2",
             HeadTexture.GPS_TRANSMITTER,
-            "&c高级 GPS 发射器",
+            "&cBộ Phát GPS Nâng Cao",
             "",
             LoreBuilder.powerBuffer(64),
             LoreBuilder.powerPerSecond(6));
     public static final SlimefunItemStack GPS_TRANSMITTER_3 = new SlimefunItemStack(
             "GPS_TRANSMITTER_3",
             HeadTexture.GPS_TRANSMITTER,
-            "&4黑金刚石 GPS 发射器",
+            "&4Bộ Phát GPS Kim Cương Đen",
             "",
             LoreBuilder.powerBuffer(256),
             LoreBuilder.powerPerSecond(22));
     public static final SlimefunItemStack GPS_TRANSMITTER_4 = new SlimefunItemStack(
             "GPS_TRANSMITTER_4",
             HeadTexture.GPS_TRANSMITTER,
-            "&e充能 GPS 发射器",
+            "&eBộ Phát GPS Tích Điện",
             "",
             LoreBuilder.powerBuffer(1024),
             LoreBuilder.powerPerSecond(92));
 
     public static final SlimefunItemStack GPS_MARKER_TOOL = new SlimefunItemStack(
-            "GPS_MARKER_TOOL", Material.REDSTONE_TORCH, "&bGPS 设置路径点工具", "", "&r允许你在放置标记工具的位置", "&r设置一个传送点并命名");
+            "GPS_MARKER_TOOL",
+            Material.REDSTONE_TORCH,
+            "&bCông Cụ Đặt Điểm Đường GPS",
+            "",
+            "&rCho phép bạn đặt một điểm dịch chuyển",
+            "&rtại vị trí công cụ đánh dấu và đặt tên");
     public static final SlimefunItemStack GPS_CONTROL_PANEL = new SlimefunItemStack(
-            "GPS_CONTROL_PANEL", HeadTexture.GPS_CONTROL_PANEL, "&bGPS 控制面板", "", "&r允许你追踪你的 GPS 卫星", "&r并且管理已有的路径点");
+            "GPS_CONTROL_PANEL",
+            HeadTexture.GPS_CONTROL_PANEL,
+            "&bBảng Điều Khiển GPS",
+            "",
+            "&rCho phép bạn theo dõi vệ tinh GPS",
+            "&rvà quản lý các điểm đường đã có");
     public static final SlimefunItemStack GPS_EMERGENCY_TRANSMITTER = new SlimefunItemStack(
             "GPS_EMERGENCY_TRANSMITTER",
             HeadTexture.GPS_TRANSMITTER,
-            "&cGPS 应急发射器",
+            "&cBộ Phát GPS Khẩn Cấp",
             "",
-            "&r当你死亡的时候",
-            "&r如果应急发射器在你的背包内",
-            "&r将会自动把你的死亡位置设为路径点");
+            "&rKhi bạn chết",
+            "&rnếu bộ phát khẩn cấp trong ba lô",
+            "&rsẽ tự động đặt vị trí chết làm điểm đường");
 
     public static final SlimefunItemStack ANDROID_INTERFACE_FUEL = new SlimefunItemStack(
             "ANDROID_INTERFACE_FUEL",
             Material.DISPENSER,
-            "&7机器人交互接口 &c(燃料)",
+            "&7Giao Diện Tương Tác Robot &c(Nhiên Liệu)",
             "",
-            "&r当脚本告诉它这样做时",
-            "&r储存在交互接口的物品",
-            "&r将会被放入机器人的燃料槽");
+            "&rKhi script yêu cầu",
+            "&rvật phẩm trong giao diện tương tác",
+            "&rsẽ được đưa vào ô nhiên liệu robot");
     public static final SlimefunItemStack ANDROID_INTERFACE_ITEMS = new SlimefunItemStack(
             "ANDROID_INTERFACE_ITEMS",
             Material.DISPENSER,
-            "&7机器人交互接口 &9(物品)",
+            "&7Giao Diện Tương Tác Robot &9(Vật Phẩm)",
             "",
-            "&r当脚本告诉它该这样做时",
-            "&r储存在机器人物品栏的物品",
-            "&r将会被放入交互界面");
+            "&rKhi script yêu cầu",
+            "&rvật phẩm trong kho robot",
+            "&rsẽ được đưa vào giao diện tương tác");
 
     public static final SlimefunItemStack GPS_GEO_SCANNER = new SlimefunItemStack(
-            "GPS_GEO_SCANNER", HeadTexture.GEO_SCANNER, "&bGPS 地形扫描器", "", "&r扫描一个区块中有多少自然资源", "&r例如 &8原油");
+            "GPS_GEO_SCANNER",
+            HeadTexture.GEO_SCANNER,
+            "&bMáy Quét Địa Hình GPS",
+            "",
+            "&rQuét có bao nhiêu tài nguyên tự nhiên trong chunk",
+            "&rví dụ &8Dầu");
     public static final SlimefunItemStack PORTABLE_GEO_SCANNER = new SlimefunItemStack(
-            "PORTABLE_GEO_SCANNER", Material.CLOCK, "&b便携式资源扫描器", "", "&r扫描出区块中的自然资源", "", "&e右键&7 扫描");
+            "PORTABLE_GEO_SCANNER",
+            Material.CLOCK,
+            "&bMáy Quét Tài Nguyên Di Động",
+            "",
+            "&rQuét tài nguyên tự nhiên trong chunk",
+            "",
+            "&eChuột phải&7 để quét");
     public static final SlimefunItemStack GEO_MINER = new SlimefunItemStack(
             "GEO_MINER",
             HeadTexture.GEO_MINER,
-            "&6自然资源开采机",
+            "&6Máy Khai Thác Tài Nguyên Tự Nhiên",
             "",
-            "&e从区块中开采出资源",
-            "&e可以开采出不能被矿镐挖出的资源",
+            "&eKhai thác tài nguyên từ chunk",
+            "&eCó thể khai thác tài nguyên không thể đào bằng cuốc",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(48),
             "",
-            "&c&l! &c确保你已经进行了 GEO 地形扫描");
+            "&c&l! &cHãy chắc chắn đã quét địa hình GEO");
     public static final SlimefunItemStack OIL_PUMP = new SlimefunItemStack(
-            "OIL_PUMP", HeadTexture.OIL_PUMP, "&r原油泵", "", "&7泵出原油并把它装进桶里", "", "&c&l! &c请先对所在区块进行地形扫描");
+            "OIL_PUMP",
+            HeadTexture.OIL_PUMP,
+            "&rMáy Bơm Dầu",
+            "",
+            "&7Bơm dầu thô và đổ vào xô",
+            "",
+            "&c&l! &cVui lòng quét địa hình chunk trước");
     public static final SlimefunItemStack OIL_BUCKET =
-            new SlimefunItemStack("BUCKET_OF_OIL", HeadTexture.OIL_BUCKET, "&r原油桶");
+            new SlimefunItemStack("BUCKET_OF_OIL", HeadTexture.OIL_BUCKET, "&rXô Dầu Thô");
     public static final SlimefunItemStack FUEL_BUCKET =
-            new SlimefunItemStack("BUCKET_OF_FUEL", HeadTexture.FUEL_BUCKET, "&r燃料桶");
+            new SlimefunItemStack("BUCKET_OF_FUEL", HeadTexture.FUEL_BUCKET, "&rXô Nhiên Liệu");
 
     public static final SlimefunItemStack REFINERY =
-            new SlimefunItemStack("REFINERY", Material.PISTON, "&c炼油机", "", "&r将原油提炼为燃油");
+            new SlimefunItemStack("REFINERY", Material.PISTON, "&cMáy Lọc Dầu", "", "&rLọc dầu thô thành nhiên liệu");
     public static final SlimefunItemStack COMBUSTION_REACTOR = new SlimefunItemStack(
             "COMBUSTION_REACTOR",
             HeadTexture.GENERATOR,
-            "&c燃烧反应机",
+            "&cMáy Phản Ứng Đốt Cháy",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(256),
             LoreBuilder.powerPerSecond(24));
     public static final SlimefunItemStack ANDROID_MEMORY_CORE =
-            new SlimefunItemStack("ANDROID_MEMORY_CORE", HeadTexture.ENERGY_REGULATOR, "&b机器人内存核心");
+            new SlimefunItemStack("ANDROID_MEMORY_CORE", HeadTexture.ENERGY_REGULATOR, "&bLõi Bộ Nhớ Robot");
 
-    public static final SlimefunItemStack GPS_TELEPORTER_PYLON =
-            new SlimefunItemStack("GPS_TELEPORTER_PYLON", Material.PURPLE_STAINED_GLASS, "&5GPS 信号塔", "", "&7传送器组件");
+    public static final SlimefunItemStack GPS_TELEPORTER_PYLON = new SlimefunItemStack(
+            "GPS_TELEPORTER_PYLON",
+            Material.PURPLE_STAINED_GLASS,
+            "&5Tháp Tín Hiệu GPS",
+            "",
+            "&7Linh kiện của máy dịch chuyển");
     public static final SlimefunItemStack GPS_TELEPORTATION_MATRIX = new SlimefunItemStack(
             "GPS_TELEPORTATION_MATRIX",
             Material.IRON_BLOCK,
-            "&bGPS 传送矩阵",
+            "&bMa Trận Dịch Chuyển GPS",
             "",
-            "&r这是 GPS 传送的主要零件",
-            "&r这个矩阵允许玩家传送至",
-            "&r已设置的路径点");
+            "&rĐây là linh kiện chính của dịch chuyển GPS",
+            "&rMa trận này cho phép người chơi dịch chuyển đến",
+            "&rcác điểm đường đã đặt");
     public static final SlimefunItemStack GPS_ACTIVATION_DEVICE_SHARED = new SlimefunItemStack(
             "GPS_ACTIVATION_DEVICE_SHARED",
             Material.STONE_PRESSURE_PLATE,
-            "&rGPS 激活设备 &3(公共)",
+            "&rThiết Bị Kích Hoạt GPS &3(Công Cộng)",
             "",
-            "&r把它放在传送矩阵上",
-            "&r并且踩下这个踏板以选择",
-            "&r要传送的路径点");
+            "&rĐặt nó trên ma trận dịch chuyển",
+            "&rvà giẫm lên tấm áp lực để chọn",
+            "&rđiểm đường để dịch chuyển");
     public static final SlimefunItemStack GPS_ACTIVATION_DEVICE_PERSONAL = new SlimefunItemStack(
             "GPS_ACTIVATION_DEVICE_PERSONAL",
             Material.STONE_PRESSURE_PLATE,
-            "&rGPS 激活设备 &a(私人)",
+            "&rThiết Bị Kích Hoạt GPS &a(Cá Nhân)",
             "",
-            "&r把它放在传送矩阵上",
-            "&r并且踩下这个踏板以选择",
-            "&r要传送的路径点",
+            "&rĐặt nó trên ma trận dịch chuyển",
+            "&rvà giẫm lên tấm áp lực để chọn",
+            "&rđiểm đường để dịch chuyển",
             "",
-            "&r这种激活装置仅允许",
-            "&r放置它的人使用");
+            "&rThiết bị kích hoạt này chỉ cho phép",
+            "&rngười đặt nó sử dụng");
     public static final SlimefunItemStack PORTABLE_TELEPORTER = new SlimefunItemStack(
             "PORTABLE_TELEPORTER",
             Material.COMPASS,
-            "&b便携式传送器",
+            "&bMáy Dịch Chuyển Di Động",
             "",
-            "&f可以让你随时随地传送到",
-            "&f要传送的传送点",
+            "&fCho phép bạn dịch chuyển bất cứ lúc nào",
+            "&fđến điểm dịch chuyển",
             "",
             LoreBuilder.powerCharged(0, 50),
             "",
-            "&e右键&7 使用");
+            "&eChuột phải&7 để sử dụng");
 
     public static final SlimefunItemStack ELEVATOR_PLATE = new SlimefunItemStack(
             "ELEVATOR_PLATE",
             Material.STONE_PRESSURE_PLATE,
-            "&b电梯板",
+            "&bTấm Thang Máy",
             "",
-            "&r在每一层放置电梯板",
-            "&r你就能够在每一层之间传送.",
+            "&rĐặt tấm thang máy ở mỗi tầng",
+            "&rbạn có thể dịch chuyển giữa các tầng.",
             "",
-            "&e右键电梯板&7 以为此层命名");
+            "&eChuột phải tấm thang máy&7 để đặt tên tầng");
 
-    public static final SlimefunItemStack INFUSED_HOPPER =
-            new SlimefunItemStack("INFUSED_HOPPER", Material.HOPPER, "&5吸入漏斗", "", "&r自动吸入在漏斗附近", "&r7x7x7 范围内的所有物品");
+    public static final SlimefunItemStack INFUSED_HOPPER = new SlimefunItemStack(
+            "INFUSED_HOPPER",
+            Material.HOPPER,
+            "&5Phễu Hút",
+            "",
+            "&rTự động hút tất cả vật phẩm",
+            "&rtrong phạm vi 7x7x7 gần phễu");
 
     public static final SlimefunItemStack PLASTIC_SHEET =
-            new SlimefunItemStack("PLASTIC_SHEET", Material.PAPER, "&r塑料纸");
+            new SlimefunItemStack("PLASTIC_SHEET", Material.PAPER, "&rTấm nhựa");
 
     public static final SlimefunItemStack HEATED_PRESSURE_CHAMBER = new SlimefunItemStack(
             "HEATED_PRESSURE_CHAMBER",
             Material.LIGHT_GRAY_STAINED_GLASS,
-            "&c加热压力舱",
+            "&cBuồng Áp Suất Gia Nhiệt",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(10));
     public static final SlimefunItemStack HEATED_PRESSURE_CHAMBER_2 = new SlimefunItemStack(
             "HEATED_PRESSURE_CHAMBER_2",
             Material.LIGHT_GRAY_STAINED_GLASS,
-            "&c加热压力舱 &7- &eII",
+            "&cBuồng Áp Suất Gia Nhiệt &7- &eII",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 5x",
+            "&8\u21E8 &7Tốc độ: 5x",
             LoreBuilder.powerPerSecond(44));
 
     public static final SlimefunItemStack ELECTRIC_SMELTERY = new SlimefunItemStack(
             "ELECTRIC_SMELTERY",
             Material.FURNACE,
-            "&c电力冶炼炉",
+            "&cLò Luyện Điện",
             "",
-            "&4仅支持合金, 不能将粉冶炼成锭",
+            "&4Chỉ hỗ trợ hợp kim, không thể nấu bột thành thỏi",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(20));
     public static final SlimefunItemStack ELECTRIC_SMELTERY_2 = new SlimefunItemStack(
             "ELECTRIC_SMELTERY_2",
             Material.FURNACE,
-            "&c电力冶炼炉 &7- &eII",
+            "&cLò Luyện Điện &7- &eII",
             "",
-            "&4仅支持合金, 不能将粉冶炼成锭",
+            "&4Chỉ hỗ trợ hợp kim, không thể nấu bột thành thỏi",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 3x",
+            "&8\u21E8 &7Tốc độ: 3x",
             LoreBuilder.powerPerSecond(40));
 
     public static final SlimefunItemStack ELECTRIC_PRESS = new SlimefunItemStack(
             "ELECTRIC_PRESS",
             HeadTexture.ELECTRIC_PRESS,
-            "&e压缩机",
+            "&eMáy Ép",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(16));
     public static final SlimefunItemStack ELECTRIC_PRESS_2 = new SlimefunItemStack(
             "ELECTRIC_PRESS_2",
             HeadTexture.ELECTRIC_PRESS,
-            "&e压缩机 &7- &eII",
+            "&eMáy Ép &7- &eII",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 3x",
+            "&8\u21E8 &7Tốc độ: 3x",
             LoreBuilder.powerPerSecond(40));
 
     public static final SlimefunItemStack ELECTRIFIED_CRUCIBLE = new SlimefunItemStack(
             "ELECTRIFIED_CRUCIBLE",
             Material.RED_TERRACOTTA,
-            "&c电动坩埚",
+            "&cNồi Luyện Điện",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(48));
     public static final SlimefunItemStack ELECTRIFIED_CRUCIBLE_2 = new SlimefunItemStack(
             "ELECTRIFIED_CRUCIBLE_2",
             Material.RED_TERRACOTTA,
-            "&c电动坩埚 &7- &eII",
+            "&cNồi Luyện Điện &7- &eII",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 2x",
+            "&8\u21E8 &7Tốc độ: 2x",
             "&8\u21E8 &e\u26A1 &780 J/s");
     public static final SlimefunItemStack ELECTRIFIED_CRUCIBLE_3 = new SlimefunItemStack(
             "ELECTRIFIED_CRUCIBLE_3",
             Material.RED_TERRACOTTA,
-            "&c电动坩埚 &7- &eIII",
+            "&cNồi Luyện Điện &7- &eIII",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 4x",
+            "&8\u21E8 &7Tốc độ: 4x",
             "&8\u21E8 &e\u26A1 &7120 J/s");
 
     public static final SlimefunItemStack CARBON_PRESS = new SlimefunItemStack(
             "CARBON_PRESS",
             Material.BLACK_STAINED_GLASS,
-            "&c碳压机",
+            "&cMáy Ép Carbon",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(20));
     public static final SlimefunItemStack CARBON_PRESS_2 = new SlimefunItemStack(
             "CARBON_PRESS_2",
             Material.BLACK_STAINED_GLASS,
-            "&c碳压机 &7- &eII",
+            "&cMáy Ép Carbon &7- &eII",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 3x",
+            "&8\u21E8 &7Tốc độ: 3x",
             "&8\u21E8 &e\u26A1 &750 J/s");
     public static final SlimefunItemStack CARBON_PRESS_3 = new SlimefunItemStack(
             "CARBON_PRESS_3",
             Material.BLACK_STAINED_GLASS,
-            "&c碳压机 &7- &eIII",
+            "&cMáy Ép Carbon &7- &eIII",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 15x",
+            "&8\u21E8 &7Tốc độ: 15x",
             "&8\u21E8 &e\u26A1 &7180 J/s");
 
     public static final SlimefunItemStack BLISTERING_INGOT = new SlimefunItemStack(
             "BLISTERING_INGOT",
             Material.GOLD_INGOT,
-            "&6起泡锭 &7(33%)",
+            "&6Thỏi Nổi Bọt &7(33%)",
             "",
             LoreBuilder.radioactive(Radioactivity.HIGH),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
     public static final SlimefunItemStack BLISTERING_INGOT_2 = new SlimefunItemStack(
             "BLISTERING_INGOT_2",
             Material.GOLD_INGOT,
-            "&6起泡锭 &7(66%)",
+            "&6Thỏi Nổi Bọt &7(66%)",
             "",
             LoreBuilder.radioactive(Radioactivity.HIGH),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
     public static final SlimefunItemStack BLISTERING_INGOT_3 = new SlimefunItemStack(
             "BLISTERING_INGOT_3",
             Material.GOLD_INGOT,
-            "&6起泡锭",
+            "&6Thỏi Nổi Bọt",
             "",
             LoreBuilder.radioactive(Radioactivity.HIGH),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
 
-    public static final SlimefunItemStack ENERGY_REGULATOR =
-            new SlimefunItemStack("ENERGY_REGULATOR", HeadTexture.ENERGY_REGULATOR, "&6能源调节器", "", "&r能源网络的核心部分");
+    public static final SlimefunItemStack ENERGY_REGULATOR = new SlimefunItemStack(
+            "ENERGY_REGULATOR",
+            HeadTexture.ENERGY_REGULATOR,
+            "&6Bộ Điều Chỉnh Năng Lượng",
+            "",
+            "&rPhần cốt lõi của mạng năng lượng");
     public static final SlimefunItemStack ENERGY_CONNECTOR = new SlimefunItemStack(
             "ENERGY_CONNECTOR",
             HeadTexture.ENERGY_CONNECTOR,
-            "&c能源连接器",
+            "&cBộ Kết Nối Năng Lượng",
             LoreBuilder.range(6),
             "",
-            "&f用于连接机器和发电机",
-            "&f可以连接到附近的能源网络");
+            "&fDùng để kết nối máy móc và máy phát điện",
+            "&fCó thể kết nối với mạng năng lượng gần đó");
     public static final SlimefunItemStack DEBUG_FISH = new SlimefunItemStack(
             "DEBUG_FISH",
             Material.SALMON,
-            "&3这鱼多少钱?",
+            "&3Con cá này giá bao nhiêu?",
             "",
-            "&e右键 &r任意方块以查看它的方块数据",
-            "&e左键 &r破坏方块",
-            "&eShift + 左键 &r任意方块以清除它的方块数据",
-            "&eShift + 右键 &r放置一个占位符方块");
+            "&eChuột phải &rkhối bất kỳ để xem dữ liệu khối",
+            "&eChuột trái &rphá hủy khối",
+            "&eShift + Chuột trái &rkhối bất kỳ để xóa dữ liệu khối",
+            "&eShift + Chuột phải &rđặt khối giữ chỗ");
 
     public static final SlimefunItemStack NETHER_ICE = new SlimefunItemStack(
             "NETHER_ICE",
             HeadTexture.NETHER_ICE,
-            "&e下界冰",
+            "&eBăng Nether",
             "",
             LoreBuilder.radioactive(Radioactivity.MODERATE),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
     public static final SlimefunItemStack ENRICHED_NETHER_ICE = new SlimefunItemStack(
             "ENRICHED_NETHER_ICE",
             HeadTexture.ENRICHED_NETHER_ICE,
-            "&e浓缩下界冰",
+            "&eBăng Nether Làm Giàu",
             "",
             LoreBuilder.radioactive(Radioactivity.VERY_HIGH),
             LoreBuilder.HAZMAT_SUIT_REQUIRED);
-    public static final SlimefunItemStack NETHER_ICE_COOLANT_CELL =
-            new SlimefunItemStack("NETHER_ICE_COOLANT_CELL", HeadTexture.NETHER_ICE_COOLANT_CELL, "&6下界冰冷却剂");
+    public static final SlimefunItemStack NETHER_ICE_COOLANT_CELL = new SlimefunItemStack(
+            "NETHER_ICE_COOLANT_CELL", HeadTexture.NETHER_ICE_COOLANT_CELL, "&6Chất làm mát băng Nether");
 
     // Cargo
-    public static final SlimefunItemStack CARGO_MANAGER =
-            new SlimefunItemStack("CARGO_MANAGER", HeadTexture.CARGO_MANAGER, "&6货运管理器", "", "&r物品传输网络的核心组件");
-    public static final SlimefunItemStack CARGO_CONNECTOR_NODE =
-            new SlimefunItemStack("CARGO_NODE", HeadTexture.CARGO_CONNECTOR_NODE, "&7货运节点 &c(连接器)", "", "&r货运连接管道");
-    public static final SlimefunItemStack CARGO_INPUT_NODE =
-            new SlimefunItemStack("CARGO_NODE_INPUT", HeadTexture.CARGO_INPUT_NODE, "&7货运节点 &c(输入)", "", "&r货运输入管道");
-    public static final SlimefunItemStack CARGO_OUTPUT_NODE =
-            new SlimefunItemStack("CARGO_NODE_OUTPUT", HeadTexture.CARGO_OUTPUT_NODE, "&7货运节点 &c(输出)", "", "&r货运输出管道");
+    public static final SlimefunItemStack CARGO_MANAGER = new SlimefunItemStack(
+            "CARGO_MANAGER",
+            HeadTexture.CARGO_MANAGER,
+            "&6Bộ quản lý hàng hóa",
+            "",
+            "&rThành phần cốt lõi của mạng vận chuyển vật phẩm");
+    public static final SlimefunItemStack CARGO_CONNECTOR_NODE = new SlimefunItemStack(
+            "CARGO_NODE",
+            HeadTexture.CARGO_CONNECTOR_NODE,
+            "&7Node hàng hóa &c(Kết nối)",
+            "",
+            "&rỐng dẫn kết nối hàng hóa");
+    public static final SlimefunItemStack CARGO_INPUT_NODE = new SlimefunItemStack(
+            "CARGO_NODE_INPUT",
+            HeadTexture.CARGO_INPUT_NODE,
+            "&7Node hàng hóa &c(Đầu vào)",
+            "",
+            "&rỐng dẫn đầu vào hàng hóa");
+    public static final SlimefunItemStack CARGO_OUTPUT_NODE = new SlimefunItemStack(
+            "CARGO_NODE_OUTPUT",
+            HeadTexture.CARGO_OUTPUT_NODE,
+            "&7Node hàng hóa &c(Đầu ra)",
+            "",
+            "&rỐng dẫn đầu ra hàng hóa");
     public static final SlimefunItemStack CARGO_OUTPUT_NODE_2 = new SlimefunItemStack(
-            "CARGO_NODE_OUTPUT_ADVANCED", HeadTexture.CARGO_OUTPUT_NODE, "&6高级货运节点 &c(输出)", "", "&r货运输出管道");
+            "CARGO_NODE_OUTPUT_ADVANCED",
+            HeadTexture.CARGO_OUTPUT_NODE,
+            "&6Node hàng hóa nâng cao &c(Đầu ra)",
+            "",
+            "&rỐng dẫn đầu ra hàng hóa");
 
     // Animal farm
     public static final SlimefunItemStack AUTO_BREEDER = new SlimefunItemStack(
             "AUTO_BREEDER",
             Material.HAY_BLOCK,
-            "&e自动喂食机",
+            "&eMáy cho ăn tự động",
             "",
-            "&r需要 &a有机食物",
+            "&rCần &aThực phẩm hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.powerBuffer(1024),
-            "&8\u21E8 &e\u26A1 &760 J/个动物");
+            "&8\u21E8 &e\u26A1 &760 J/con vật");
     public static final SlimefunItemStack PRODUCE_COLLECTOR = new SlimefunItemStack(
             "PRODUCE_COLLECTOR",
             Material.HAY_BLOCK,
-            "&b全自动收集机",
+            "&bMáy thu hoạch toàn tự động",
             "",
-            "&f此机器可以自动收取",
-            "&f附近动物生产的动物产品.",
+            "&fMáy này có thể tự động thu thập",
+            "&fsản phẩm từ động vật gần đó.",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
             LoreBuilder.powerBuffer(512),
             LoreBuilder.powerPerSecond(32));
 
     public static final SlimefunItemStack ORGANIC_FOOD =
-            new SlimefunItemStack("ORGANIC_FOOD", HeadTexture.FILLED_CAN, "&a有机食物", "&7内含 &9???");
+            new SlimefunItemStack("ORGANIC_FOOD", HeadTexture.FILLED_CAN, "&aThực phẩm hữu cơ", "&7Chứa &9???");
     public static final SlimefunItemStack WHEAT_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_WHEAT", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9小麦");
+            "ORGANIC_FOOD_WHEAT", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Lúa mì");
     public static final SlimefunItemStack CARROT_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_CARROT", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9胡萝卜");
+            "ORGANIC_FOOD_CARROT", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Cà rốt");
     public static final SlimefunItemStack POTATO_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_POTATO", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9土豆");
+            "ORGANIC_FOOD_POTATO", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Khoai tây");
     public static final SlimefunItemStack SEEDS_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_SEEDS", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9小麦种子");
+            "ORGANIC_FOOD_SEEDS", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Hạt lúa mì");
     public static final SlimefunItemStack BEETROOT_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_BEETROOT", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9甜菜");
+            "ORGANIC_FOOD_BEETROOT", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Củ cải đường");
     public static final SlimefunItemStack MELON_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_MELON", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9西瓜");
+            "ORGANIC_FOOD_MELON", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Dưa hấu");
     public static final SlimefunItemStack APPLE_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_APPLE", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9苹果");
+            "ORGANIC_FOOD_APPLE", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Táo");
     public static final SlimefunItemStack SWEET_BERRIES_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_SWEET_BERRIES", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9浆果");
+            "ORGANIC_FOOD_SWEET_BERRIES", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Quả mọng");
     public static final SlimefunItemStack KELP_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_KELP", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9干海带");
+            "ORGANIC_FOOD_KELP", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Rong biển khô");
     public static final SlimefunItemStack COCOA_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_COCOA", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含 &9可可豆");
+            "ORGANIC_FOOD_COCOA", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa &9Hạt ca cao");
     public static final SlimefunItemStack SEAGRASS_ORGANIC_FOOD = new SlimefunItemStack(
-            "ORGANIC_FOOD_SEAGRASS", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7内含: &9海草");
+            "ORGANIC_FOOD_SEAGRASS", HeadTexture.FILLED_CAN, ORGANIC_FOOD.getDisplayName(), "&7Chứa: &9Cỏ biển");
 
     public static final SlimefunItemStack FERTILIZER =
-            new SlimefunItemStack("FERTILIZER", HeadTexture.FILLED_CAN, "&a有机肥料", "&7内含 &9???");
-    public static final SlimefunItemStack WHEAT_FERTILIZER =
-            new SlimefunItemStack("FERTILIZER_WHEAT", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9小麦");
+            new SlimefunItemStack("FERTILIZER", HeadTexture.FILLED_CAN, "&aPhân bón hữu cơ", "&7Chứa &9???");
+    public static final SlimefunItemStack WHEAT_FERTILIZER = new SlimefunItemStack(
+            "FERTILIZER_WHEAT", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Lúa mì");
     public static final SlimefunItemStack CARROT_FERTILIZER = new SlimefunItemStack(
-            "FERTILIZER_CARROT", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9胡萝卜");
+            "FERTILIZER_CARROT", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Cà rốt");
     public static final SlimefunItemStack POTATO_FERTILIZER = new SlimefunItemStack(
-            "FERTILIZER_POTATO", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9土豆");
+            "FERTILIZER_POTATO", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Khoai tây");
     public static final SlimefunItemStack SEEDS_FERTILIZER = new SlimefunItemStack(
-            "FERTILIZER_SEEDS", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9小麦种子");
+            "FERTILIZER_SEEDS", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Hạt lúa mì");
     public static final SlimefunItemStack BEETROOT_FERTILIZER = new SlimefunItemStack(
-            "FERTILIZER_BEETROOT", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9甜菜");
-    public static final SlimefunItemStack MELON_FERTILIZER =
-            new SlimefunItemStack("FERTILIZER_MELON", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9西瓜");
-    public static final SlimefunItemStack APPLE_FERTILIZER =
-            new SlimefunItemStack("FERTILIZER_APPLE", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9苹果");
+            "FERTILIZER_BEETROOT", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Củ cải đường");
+    public static final SlimefunItemStack MELON_FERTILIZER = new SlimefunItemStack(
+            "FERTILIZER_MELON", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Dưa hấu");
+    public static final SlimefunItemStack APPLE_FERTILIZER = new SlimefunItemStack(
+            "FERTILIZER_APPLE", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Táo");
     public static final SlimefunItemStack SWEET_BERRIES_FERTILIZER = new SlimefunItemStack(
-            "FERTILIZER_SWEET_BERRIES", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9浆果");
-    public static final SlimefunItemStack KELP_FERTILIZER =
-            new SlimefunItemStack("FERTILIZER_KELP", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9干海带");
+            "FERTILIZER_SWEET_BERRIES", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Quả mọng");
+    public static final SlimefunItemStack KELP_FERTILIZER = new SlimefunItemStack(
+            "FERTILIZER_KELP", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Rong biển khô");
     public static final SlimefunItemStack COCOA_FERTILIZER = new SlimefunItemStack(
-            "FERTILIZER_COCOA", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含 &9可可豆");
+            "FERTILIZER_COCOA", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa &9Hạt ca cao");
     public static final SlimefunItemStack SEAGRASS_FERTILIZER = new SlimefunItemStack(
-            "FERTILIZER_SEAGRASS", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7内含: &9海草");
+            "FERTILIZER_SEAGRASS", HeadTexture.FILLED_CAN, FERTILIZER.getDisplayName(), "&7Chứa: &9Cỏ biển");
 
     public static final SlimefunItemStack ANIMAL_GROWTH_ACCELERATOR = new SlimefunItemStack(
             "ANIMAL_GROWTH_ACCELERATOR",
             Material.HAY_BLOCK,
-            "&b动物生长加速器",
+            "&bMáy tăng tốc phát triển động vật",
             "",
-            "&r需要 &a有机食物",
+            "&rCần &aThực phẩm hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.powerBuffer(1024),
@@ -2444,156 +2957,156 @@ public final class SlimefunItems {
     public static final SlimefunItemStack CROP_GROWTH_ACCELERATOR = new SlimefunItemStack(
             "CROP_GROWTH_ACCELERATOR",
             Material.LIME_TERRACOTTA,
-            "&a作物生长加速器",
+            "&aMáy tăng tốc phát triển cây trồng",
             "",
-            "&r需要 &a有机肥料",
+            "&rCần &aPhân bón hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7半径: 7x7",
-            "&8\u21E8 &7速度: &a3/次",
+            "&8\u21E8 &7Bán kính: 7x7",
+            "&8\u21E8 &7Tốc độ: &a3/lần",
             LoreBuilder.powerBuffer(1024),
             "&8\u21E8 &e\u26A1 &750 J/s");
     public static final SlimefunItemStack CROP_GROWTH_ACCELERATOR_2 = new SlimefunItemStack(
             "CROP_GROWTH_ACCELERATOR_2",
             Material.LIME_TERRACOTTA,
-            "&a作物生长加速器 &7(&eII&7)",
+            "&aMáy tăng tốc phát triển cây trồng &7(&eII&7)",
             "",
-            "&r需要 &a有机肥料",
+            "&rCần &aPhân bón hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7半径: 9x9",
-            "&8\u21E8 &7速度: &a4/次",
+            "&8\u21E8 &7Bán kính: 9x9",
+            "&8\u21E8 &7Tốc độ: &a4/lần",
             LoreBuilder.powerBuffer(1024),
             "&8\u21E8 &e\u26A1 &760 J/s");
     public static final SlimefunItemStack TREE_GROWTH_ACCELERATOR = new SlimefunItemStack(
             "TREE_GROWTH_ACCELERATOR",
             Material.BROWN_TERRACOTTA,
-            "&a树木生长加速器",
+            "&aMáy tăng tốc phát triển cây",
             "",
-            "&r需要 &a有机肥料",
+            "&rCần &aPhân bón hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7半径: 9x9",
-            "&8\u21E8 &7速度: &a4/次",
+            "&8\u21E8 &7Bán kính: 9x9",
+            "&8\u21E8 &7Tốc độ: &a4/lần",
             LoreBuilder.powerBuffer(1024),
             LoreBuilder.powerPerSecond(48));
 
     public static final SlimefunItemStack FOOD_FABRICATOR = new SlimefunItemStack(
             "FOOD_FABRICATOR",
             Material.GREEN_STAINED_GLASS,
-            "&c食品加工机",
+            "&cMáy chế biến thực phẩm",
             "",
-            "&r可制造 &a有机食物",
+            "&rCó thể chế tạo &aThực phẩm hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerBuffer(256),
             LoreBuilder.powerPerSecond(14));
     public static final SlimefunItemStack FOOD_FABRICATOR_2 = new SlimefunItemStack(
             "FOOD_FABRICATOR_2",
             Material.GREEN_STAINED_GLASS,
-            "&c食品加工机 &7(&eII&7)",
+            "&cMáy Chế Biến Thực Phẩm &7(&eII&7)",
             "",
-            "&r可制造 &a有机食物",
+            "&rCó thể chế tạo &aThực phẩm hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 6x",
+            "&8\u21E8 &7Tốc độ: 6x",
             LoreBuilder.powerBuffer(512),
             LoreBuilder.powerPerSecond(48));
 
     public static final SlimefunItemStack FOOD_COMPOSTER = new SlimefunItemStack(
             "FOOD_COMPOSTER",
             Material.GREEN_TERRACOTTA,
-            "&c食品堆肥器",
+            "&cMáy Ủ Phân Thực Phẩm",
             "",
-            "&r可制造 &a有机肥料",
+            "&rCó thể chế tạo &aPhân bón hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerBuffer(256),
             LoreBuilder.powerPerSecond(16));
     public static final SlimefunItemStack FOOD_COMPOSTER_2 = new SlimefunItemStack(
             "FOOD_COMPOSTER_2",
             Material.GREEN_TERRACOTTA,
-            "&c食品堆肥器 &7(&eII&7)",
+            "&cMáy Ủ Phân Thực Phẩm &7(&eII&7)",
             "",
-            "&r可制造 &a有机肥料",
+            "&rCó thể chế tạo &aPhân bón hữu cơ",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 10x",
+            "&8\u21E8 &7Tốc độ: 10x",
             LoreBuilder.powerBuffer(512),
             "&8\u21E8 &e\u26A1 &752 J/s");
 
     public static final SlimefunItemStack EXP_COLLECTOR = new SlimefunItemStack(
             "XP_COLLECTOR",
             HeadTexture.EXP_COLLECTOR,
-            "&a经验收集器",
+            "&aMáy Thu Thập Kinh Nghiệm",
             "",
-            "&r收集附近的经验并储存它们",
+            "&rThu thập kinh nghiệm gần đó và lưu trữ chúng",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.powerBuffer(1024),
             LoreBuilder.powerPerSecond(20));
     public static final SlimefunItemStack REACTOR_COOLANT_CELL =
-            new SlimefunItemStack("REACTOR_COLLANT_CELL", HeadTexture.COOLANT_CELL, "&b反应堆冷却剂");
+            new SlimefunItemStack("REACTOR_COLLANT_CELL", HeadTexture.COOLANT_CELL, "&bChất Làm Mát Lò Phản Ứng");
 
     public static final SlimefunItemStack NUCLEAR_REACTOR = new SlimefunItemStack(
             "NUCLEAR_REACTOR",
             HeadTexture.NUCLEAR_REACTOR,
-            "&2核反应堆",
+            "&2Lò Phản Ứng Hạt Nhân",
             "",
-            "&r需要冷却剂!",
-            "&8\u21E8 &b必须被水包围",
-            "&8\u21E8 &b必须使用反应堆冷却剂工作",
+            "&rCần chất làm mát!",
+            "&8\u21E8 &bPhải được bao quanh bởi nước",
+            "&8\u21E8 &bPhải sử dụng chất làm mát lò phản ứng để hoạt động",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
-            "&8\u21E8 &e\u26A1 &716384 J 可储存",
+            "&8\u21E8 &e\u26A1 &716384 J có thể lưu trữ",
             "&8\u21E8 &e\u26A1 &7500 J/s");
     public static final SlimefunItemStack NETHER_STAR_REACTOR = new SlimefunItemStack(
             "NETHERSTAR_REACTOR",
             HeadTexture.NETHER_STAR_REACTOR,
-            "&r下界之星反应堆",
+            "&rLò Phản Ứng Ngôi Sao Nether",
             "",
-            "&r需要下界之星",
-            "&8\u21E8 &b必须被水包围",
-            "&8\u21E8 &b必须使用下界冰冷却剂工作",
+            "&rCần ngôi sao Nether",
+            "&8\u21E8 &bPhải được bao quanh bởi nước",
+            "&8\u21E8 &bPhải sử dụng chất làm mát băng Nether để hoạt động",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.GENERATOR),
-            "&8\u21E8 &e\u26A1 &732768 J 可储存",
+            "&8\u21E8 &e\u26A1 &732768 J có thể lưu trữ",
             "&8\u21E8 &e\u26A1 &71024 J/s",
-            "&8\u21E8 &4会导致附近的生物获得凋零效果");
+            "&8\u21E8 &4Sẽ gây hiệu ứng Wither cho sinh vật gần đó");
     public static final SlimefunItemStack REACTOR_ACCESS_PORT = new SlimefunItemStack(
             "REACTOR_ACCESS_PORT",
             Material.CYAN_TERRACOTTA,
-            "&2反应堆访问接口",
+            "&2Cổng Truy Cập Lò Phản Ứng",
             "",
-            "&r允许你通过货运节点来访问反应堆",
-            "&r也可以用于储存",
+            "&rCho phép bạn truy cập lò phản ứng thông qua nút vận chuyển hàng hóa",
+            "&rCũng có thể dùng để lưu trữ",
             "",
-            "&8\u21E8 &c必须 &e放置在反应堆上方的第三格处");
+            "&8\u21E8 &cPhải &eđặt ở ô thứ ba phía trên lò phản ứng");
 
     public static final SlimefunItemStack FREEZER = new SlimefunItemStack(
             "FREEZER",
             Material.LIGHT_BLUE_STAINED_GLASS,
-            "&b冰箱",
+            "&bTủ Lạnh",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerBuffer(256),
             LoreBuilder.powerPerSecond(18));
     public static final SlimefunItemStack FREEZER_2 = new SlimefunItemStack(
             "FREEZER_2",
             Material.LIGHT_BLUE_STAINED_GLASS,
-            "&b冰箱 &7(&eII&7)",
+            "&bTủ Lạnh &7(&eII&7)",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 2x",
+            "&8\u21E8 &7Tốc độ: 2x",
             LoreBuilder.powerBuffer(256),
             LoreBuilder.powerPerSecond(30));
     public static final SlimefunItemStack FREEZER_3 = new SlimefunItemStack(
             "FREEZER_3",
             Material.LIGHT_BLUE_STAINED_GLASS,
-            "&b冰箱 &7(&eIII&7)",
+            "&bTủ Lạnh &7(&eIII&7)",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
             LoreBuilder.speed(3),
@@ -2603,178 +3116,183 @@ public final class SlimefunItems {
     public static final SlimefunItemStack ELECTRIC_GOLD_PAN = new SlimefunItemStack(
             "ELECTRIC_GOLD_PAN",
             Material.BROWN_TERRACOTTA,
-            "&6电动淘金机",
+            "&6Chảo Lọc Vàng Điện",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(2));
     public static final SlimefunItemStack ELECTRIC_GOLD_PAN_2 = new SlimefunItemStack(
             "ELECTRIC_GOLD_PAN_2",
             Material.BROWN_TERRACOTTA,
-            "&6电动淘金机 &7(&eII&7)",
+            "&6Chảo Lọc Vàng Điện &7(&eII&7)",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 3x",
+            "&8\u21E8 &7Tốc độ: 3x",
             LoreBuilder.powerPerSecond(4));
     public static final SlimefunItemStack ELECTRIC_GOLD_PAN_3 = new SlimefunItemStack(
             "ELECTRIC_GOLD_PAN_3",
             Material.BROWN_TERRACOTTA,
-            "&6电动淘金机 &7(&eIII&7)",
+            "&6Chảo Lọc Vàng Điện &7(&eIII&7)",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 10x",
+            "&8\u21E8 &7Tốc độ: 10x",
             LoreBuilder.powerPerSecond(14));
 
     public static final SlimefunItemStack ELECTRIC_DUST_WASHER = new SlimefunItemStack(
             "ELECTRIC_DUST_WASHER",
             Material.BLUE_STAINED_GLASS,
-            "&3电动洗矿机",
+            "&3Máy Rửa Quặng Điện",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(6));
     public static final SlimefunItemStack ELECTRIC_DUST_WASHER_2 = new SlimefunItemStack(
             "ELECTRIC_DUST_WASHER_2",
             Material.BLUE_STAINED_GLASS,
-            "&3电动洗矿机 &7(&eII&7)",
+            "&3Máy Rửa Quặng Điện &7(&eII&7)",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 2x",
+            "&8\u21E8 &7Tốc độ: 2x",
             LoreBuilder.powerPerSecond(10));
     public static final SlimefunItemStack ELECTRIC_DUST_WASHER_3 = new SlimefunItemStack(
             "ELECTRIC_DUST_WASHER_3",
             Material.BLUE_STAINED_GLASS,
-            "&3电动洗矿机 &7(&eIII&7)",
+            "&3Máy Rửa Quặng Điện &7(&eIII&7)",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 10x",
+            "&8\u21E8 &7Tốc độ: 10x",
             LoreBuilder.powerPerSecond(30));
 
     public static final SlimefunItemStack ELECTRIC_INGOT_FACTORY = new SlimefunItemStack(
             "ELECTRIC_INGOT_FACTORY",
             Material.RED_TERRACOTTA,
-            "&c电动铸锭机",
+            "&cLò Đúc Thỏi Điện",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 1x",
+            "&8\u21E8 &7Tốc độ: 1x",
             LoreBuilder.powerPerSecond(8));
     public static final SlimefunItemStack ELECTRIC_INGOT_FACTORY_2 = new SlimefunItemStack(
             "ELECTRIC_INGOT_FACTORY_2",
             Material.RED_TERRACOTTA,
-            "&c电动铸锭机 &7(&eII&7)",
+            "&cLò Đúc Thỏi Điện &7(&eII&7)",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 2x",
+            "&8\u21E8 &7Tốc độ: 2x",
             LoreBuilder.powerPerSecond(14));
     public static final SlimefunItemStack ELECTRIC_INGOT_FACTORY_3 = new SlimefunItemStack(
             "ELECTRIC_INGOT_FACTORY_3",
             Material.RED_TERRACOTTA,
-            "&c电动铸锭机 &7(&eIII&7)",
+            "&cLò Đúc Thỏi Điện &7(&eIII&7)",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7速度: 8x",
+            "&8\u21E8 &7Tốc độ: 8x",
             LoreBuilder.powerPerSecond(40));
 
     // @Deprecated
     // public static final SlimefunItemStack AUTOMATED_CRAFTING_CHAMBER = new
-    // SlimefunItemStack("AUTOMATED_CRAFTING_CHAMBER", Material.CRAFTING_TABLE, "&6自动合成机", "",
+    // SlimefunItemStack("AUTOMATED_CRAFTING_CHAMBER", Material.CRAFTING_TABLE, "&6Máy Chế Tạo Tự Động", "",
     // LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE), "&8\u21E8 &e\u26A1 &710
-    // J/个物品");
+    // J/vật phẩm");
 
     public static final SlimefunItemStack FLUID_PUMP = new SlimefunItemStack(
             "FLUID_PUMP",
             Material.BLUE_TERRACOTTA,
-            "&9流体泵",
+            "&9Máy Bơm Chất Lỏng",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &e\u26A1 &732 J/个方块");
+            "&8\u21E8 &e\u26A1 &732 J/khối");
     public static final SlimefunItemStack CHARGING_BENCH = new SlimefunItemStack(
             "CHARGING_BENCH",
             Material.CRAFTING_TABLE,
-            "&6充电台",
+            "&6Bàn Sạc",
             "",
-            "&r能够给物品充电, 比如喷气背包",
+            "&rCó thể sạc vật phẩm, như ba lô phản lực",
             "",
             LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
-            "&8\u21E8 &e\u26A1 &7128 J 可储存",
-            "&8\u21E8 &e\u26A1 &7能源损失率: &c50%");
+            "&8\u21E8 &e\u26A1 &7128 J có thể lưu trữ",
+            "&8\u21E8 &e\u26A1 &7Tỷ lệ mất năng lượng: &c50%");
 
     public static final SlimefunItemStack VANILLA_AUTO_CRAFTER = new SlimefunItemStack(
             "VANILLA_AUTO_CRAFTER",
             HeadTexture.VANILLA_AUTO_CRAFTER,
-            "&2自动合成机 &8(原版)",
+            "&2Máy Chế Tạo Tự Động &8(Thường)",
             "",
-            "&f将机器放在任意能装物品的方块上",
-            "&f就能自动合成任何东西!",
-            "&f可以合成 &e普通工作台 &f能合成的物品",
+            "&fĐặt máy lên bất kỳ khối chứa vật phẩm nào",
+            "&fđể tự động chế tạo mọi thứ!",
+            "&fCó thể chế tạo vật phẩm mà &eBàn chế tạo thường &fcó thể làm",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &e\u26A1 &7合成物品消耗 16 J");
+            "&8\u21E8 &e\u26A1 &7Chế tạo vật phẩm tiêu tốn 16 J");
     public static final SlimefunItemStack ENHANCED_AUTO_CRAFTER = new SlimefunItemStack(
             "ENHANCED_AUTO_CRAFTER",
             HeadTexture.ENHANCED_AUTO_CRAFTER,
-            "&2自动合成机 &8(高级)",
+            "&2Máy Chế Tạo Tự Động &8(Nâng cao)",
             "",
-            "&f将机器放在任意能装物品的方块上",
-            "&f就能自动合成任何东西!",
-            "&f可以合成 &e高级工作台 &f能合成的物品",
+            "&fĐặt máy lên bất kỳ khối chứa vật phẩm nào",
+            "&fđể tự động chế tạo mọi thứ!",
+            "&fCó thể chế tạo vật phẩm mà &eBàn chế tạo nâng cao &fcó thể làm",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &e\u26A1 &7合成物品消耗 16 J");
+            "&8\u21E8 &e\u26A1 &7Chế tạo vật phẩm tiêu tốn 16 J");
     public static final SlimefunItemStack ARMOR_AUTO_CRAFTER = new SlimefunItemStack(
             "ARMOR_AUTO_CRAFTER",
             HeadTexture.ARMOR_AUTO_CRAFTER,
-            "&2自动合成机 &8(盔甲锻造)",
+            "&2Máy Chế Tạo Tự Động &8(Rèn giáp)",
             "",
-            "&f将机器放在任意能装物品的方块上",
-            "&f就能自动合成盔甲锻造台可以合成的东西",
+            "&fĐặt máy lên bất kỳ khối chứa vật phẩm nào",
+            "&fđể tự động chế tạo vật phẩm từ bàn rèn giáp",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
-            "&8\u21E8 &e\u26A1 &7合成物品消耗 32 J");
+            "&8\u21E8 &e\u26A1 &7Chế tạo vật phẩm tiêu tốn 32 J");
 
     public static final SlimefunItemStack IRON_GOLEM_ASSEMBLER = new SlimefunItemStack(
             "IRON_GOLEM_ASSEMBLER",
             Material.IRON_BLOCK,
-            "&6铁傀儡装配机",
+            "&6Máy Lắp Ráp Golem Sắt",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7冷却时间: &b30 秒",
+            "&8\u21E8 &7Thời gian hồi: &b30 giây",
             LoreBuilder.powerBuffer(4096),
-            "&8\u21E8 &e\u26A1 &72048 J/个铁傀儡");
+            "&8\u21E8 &e\u26A1 &72048 J/Golem Sắt");
     public static final SlimefunItemStack WITHER_ASSEMBLER = new SlimefunItemStack(
             "WITHER_ASSEMBLER",
             Material.OBSIDIAN,
-            "&5凋灵装配机",
+            "&5Máy Lắp Ráp Wither",
             "",
             LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
-            "&8\u21E8 &7冷却时间: &b30 秒",
-            "&8\u21E8 &e\u26A1 &74096 J 可储存",
-            "&8\u21E8 &e\u26A1 &74096 J/个凋灵");
+            "&8\u21E8 &7Thời gian hồi: &b30 giây",
+            "&8\u21E8 &e\u26A1 &74096 J có thể lưu trữ",
+            "&8\u21E8 &e\u26A1 &74096 J/Wither");
 
     public static final SlimefunItemStack TRASH_CAN =
-            new SlimefunItemStack("TRASH_CAN_BLOCK", HeadTexture.TRASH_CAN, "&3垃圾箱", "", "&r可以把不要的物品放进这里");
+            new SlimefunItemStack("TRASH_CAN_BLOCK", HeadTexture.TRASH_CAN, "&3Thùng Rác", "", "&rCó thể bỏ vật phẩm không cần vào đây");
 
     public static final SlimefunItemStack ELYTRA_SCALE =
-            new SlimefunItemStack("ELYTRA_SCALE", Material.FEATHER, "&b鞘翅鳞片");
+            new SlimefunItemStack("ELYTRA_SCALE", Material.FEATHER, "&bVảy Cánh Elytra");
     public static final SlimefunItemStack INFUSED_ELYTRA =
-            new SlimefunItemStack("INFUSED_ELYTRA", Material.ELYTRA, "&5鞘翅 (经验修补)");
+            new SlimefunItemStack("INFUSED_ELYTRA", Material.ELYTRA, "&5Cánh Elytra (Phục hồi kinh nghiệm)");
     public static final SlimefunItemStack SOULBOUND_ELYTRA =
-            new SlimefunItemStack("SOULBOUND_ELYTRA", Material.ELYTRA, "&c鞘翅 (灵魂绑定)");
+            new SlimefunItemStack("SOULBOUND_ELYTRA", Material.ELYTRA, "&cCánh Elytra (Ràng buộc linh hồn)");
 
     public static final SlimefunItemStack MAGNESIUM_SALT =
-            new SlimefunItemStack("MAGNESIUM_SALT", Material.SUGAR, "&c镁盐", "", "&7是一种能在镁发电机中使用的特殊燃料");
+            new SlimefunItemStack("MAGNESIUM_SALT", Material.SUGAR, "&cMuối Magie", "", "&7Là loại nhiên liệu đặc biệt có thể sử dụng trong máy phát điện magie");
     public static final SlimefunItemStack MAGNESIUM_GENERATOR = new SlimefunItemStack(
             "MAGNESIUM_GENERATOR",
             HeadTexture.GENERATOR,
-            "&c镁发电机",
+            "&cMáy Phát Điện Magie",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(128),
             LoreBuilder.powerPerSecond(36));
 
-    // 别删
+    // Đừng xóa
     public static final SlimefunItemStack CRAFTER_SMART_PORT = new SlimefunItemStack(
-            "CRAFTER_SMART_PORT", Material.LIME_STAINED_GLASS, "&a合成机智能交互接口", "", "&5可以根据合成表材料数量分配输入数量", "&5并拥有指定输出槽");
+            "CRAFTER_SMART_PORT",
+            Material.LIME_STAINED_GLASS,
+            "&aGiao Diện Thông Minh Máy Chế Tạo",
+            "",
+            "&5Có thể phân bổ số lượng đầu vào theo số lượng nguyên liệu công thức",
+            "&5và có chỉ định ô xuất");
 
     static {
         INFUSED_ELYTRA.addUnsafeEnchantment(Enchantment.MENDING, 1);

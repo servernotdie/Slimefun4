@@ -107,11 +107,11 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 初始化数据控制器
+     * Khởi tạo bộ điều khiển dữ liệu
      *
-     * @param dataAdapter    使用的 {@link IDataSourceAdapter}
-     * @param maxReadThread  最大数据库读线程数
-     * @param maxWriteThread 最大数据库写线程数
+     * @param dataAdapter    {@link IDataSourceAdapter} được sử dụng
+     * @param maxReadThread  Số luồng đọc cơ sở dữ liệu tối đa
+     * @param maxWriteThread Số luồng ghi cơ sở dữ liệu tối đa
      */
     @Override
     public void init(IDataSourceAdapter<?> dataAdapter, int maxReadThread, int maxWriteThread) {
@@ -121,7 +121,7 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 初始化加载数据
+     * Khởi tạo tải dữ liệu
      */
     private void initLoadData() {
         switch (chunkDataLoadMode) {
@@ -133,7 +133,7 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 加载所有服务器已加载的世界中的数据
+     * Tải dữ liệu trong tất cả các thế giới đã được tải của máy chủ
      */
     private void loadLoadedWorlds() {
         Slimefun.getFoliaLib()
@@ -148,7 +148,7 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 加载所有服务器已加载的世界区块中的数据
+     * Tải dữ liệu trong tất cả các chunk đã được tải của máy chủ
      */
     private void loadLoadedChunks() {
         Slimefun.getFoliaLib()
@@ -165,11 +165,11 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 初始化延时加载任务
+     * Khởi tạo tác vụ lưu trữ trì hoãn
      *
-     * @param p               插件实例
-     * @param delayedSecond   首次执行延时
-     * @param forceSavePeriod 强制保存周期
+     * @param p               Instance của plugin
+     * @param delayedSecond   Độ trễ thực thi lần đầu
+     * @param forceSavePeriod Chu kỳ lưu cưỡng bức
      */
     public void initDelayedSaving(Plugin p, int delayedSecond, int forceSavePeriod) {
         checkDestroy();
@@ -196,11 +196,11 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 在指定位置创建一个新的 Slimefun 方块数据
+     * Tạo dữ liệu khối Slimefun mới tại vị trí chỉ định
      *
-     * @param l    Slimefun 方块位置 {@link Location}
-     * @param sfId Slimefun 物品 ID {@link SlimefunItem#getId()}
-     * @return 方块数据, {@link SlimefunBlockData}
+     * @param l    Vị trí khối Slimefun {@link Location}
+     * @param sfId ID vật phẩm Slimefun {@link SlimefunItem#getId()}
+     * @return Dữ liệu khối, {@link SlimefunBlockData}
      */
     @Nonnull
     public SlimefunBlockData createBlock(Location l, String sfId) {
@@ -219,12 +219,12 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 创建一个新的 Slimefun 通用数据
+     * Tạo dữ liệu chung Slimefun mới
      * <br/>
-     * 提供一个可供读写的 KV 存储 Map
+     * Cung cấp một Map lưu trữ KV có thể đọc và ghi
      *
-     * @param sfId Slimefun 物品 ID {@link SlimefunItem#getId()}
-     * @return 通用数据, {@link SlimefunUniversalData}
+     * @param sfId ID vật phẩm Slimefun {@link SlimefunItem#getId()}
+     * @return Dữ liệu chung, {@link SlimefunUniversalData}
      */
     @Nonnull
     public SlimefunUniversalData createUniversalData(String sfId) {
@@ -232,12 +232,12 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 创建一个新的 Slimefun 通用数据
-     * 提供一个可供读写的 KV 存储 Map
+     * Tạo dữ liệu chung Slimefun mới
+     * Cung cấp một Map lưu trữ KV có thể đọc và ghi
      *
-     * @param uuid 通用数据的识别 UUID
-     * @param sfId Slimefun 物品 ID {@link SlimefunItem#getId()}
-     * @return 通用数据, {@link SlimefunUniversalData}
+     * @param uuid UUID nhận dạng của dữ liệu chung
+     * @param sfId ID vật phẩm Slimefun {@link SlimefunItem#getId()}
+     * @return Dữ liệu chung, {@link SlimefunUniversalData}
      */
     @Nonnull
     public SlimefunUniversalData createUniversalData(UUID uuid, String sfId) {
@@ -259,11 +259,11 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 在指定位置创建一个新的 Slimefun 通用方块数据
+     * Tạo dữ liệu khối chung Slimefun mới tại vị trí chỉ định
      *
-     * @param l    Slimefun 方块位置 {@link Location}
-     * @param sfId Slimefun 物品 ID {@link SlimefunItem#getId()}
-     * @return 通用方块数据, {@link SlimefunUniversalBlockData}
+     * @param l    Vị trí khối Slimefun {@link Location}
+     * @param sfId ID vật phẩm Slimefun {@link SlimefunItem#getId()}
+     * @return Dữ liệu khối chung, {@link SlimefunUniversalBlockData}
      */
     @Nonnull
     @ParametersAreNonnullByDefault
@@ -316,9 +316,9 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 立即计划保存一个通用数据
+     * Lên lịch lưu dữ liệu chung ngay lập tức
      *
-     * @param universalData 欲写入数据库保存的通用数据
+     * @param universalData Dữ liệu chung cần lưu vào cơ sở dữ liệu
      */
     void saveUniversalData(SlimefunUniversalData universalData) {
         var uuid = universalData.getKey();
@@ -338,9 +338,9 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 移除指定位置上的 Slimefun 数据
+     * Xóa dữ liệu Slimefun tại vị trí chỉ định
      *
-     * @param l 位置 {@link Location}
+     * @param l Vị trí {@link Location}
      */
     public void removeBlock(Location l) {
         checkDestroy();
@@ -370,9 +370,9 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 移除指定位置上的 Slimefun 方块数据
+     * Xóa dữ liệu khối Slimefun tại vị trí chỉ định
      *
-     * @param l 位置 {@link Location}
+     * @param l Vị trí {@link Location}
      */
     public void removeBlockData(Location l) {
         checkDestroy();
@@ -394,9 +394,9 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 移除指定位置对应的可能存在的 Slimefun 通用方块数据
+     * Xóa dữ liệu khối chung Slimefun có thể tồn tại tại vị trí chỉ định
      *
-     * @param l {@link Location} 位置
+     * @param l {@link Location} Vị trí
      */
     public void removeUniversalBlockData(Location l) {
         checkDestroy();
@@ -411,9 +411,9 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 移除指定 UUID 对应的 Slimefun 通用方块数据
+     * Xóa dữ liệu khối chung Slimefun tương ứng với UUID chỉ định
      *
-     * @param uuid 通用方块数据识别符
+     * @param uuid Định danh dữ liệu khối chung
      */
     public void removeUniversalBlockData(UUID uuid) {
         checkDestroy();
@@ -550,7 +550,7 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 从数据库中获取 {@link SlimefunUniversalData}
+     * Lấy {@link SlimefunUniversalData} từ cơ sở dữ liệu
      */
     @Nullable public SlimefunUniversalData getUniversalData(@Nonnull UUID uuid) {
         checkDestroy();
@@ -603,9 +603,9 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 从缓存中获取 {@link SlimefunUniversalData}
+     * Lấy {@link SlimefunUniversalData} từ bộ nhớ cache
      *
-     * @param uuid 通用数据 UUID
+     * @param uuid UUID dữ liệu chung
      * @return {@link SlimefunUniversalData}
      */
     @Nullable public SlimefunUniversalData getUniversalDataFromCache(@Nonnull UUID uuid) {
@@ -830,7 +830,7 @@ public class BlockDataController extends ADataController {
 
         loadChunkData(chunkData);
 
-        // 按区块加载方块数据
+        // Tải dữ liệu khối theo chunk
 
         var key = new RecordKey(DataScope.BLOCK_RECORD);
         key.addField(FieldKey.LOCATION);
@@ -860,7 +860,7 @@ public class BlockDataController extends ADataController {
     public void loadWorld(World world) {
         var start = System.currentTimeMillis();
         var worldName = world.getName();
-        logger.log(Level.INFO, "正在加载世界 {0} 的 Slimefun 方块数据...", worldName);
+        logger.log(Level.INFO, "Đang tải dữ liệu khối Slimefun của thế giới {0}...", worldName);
         var chunkKeys = new HashSet<String>();
         var key = new RecordKey(DataScope.CHUNK_DATA);
         key.addField(FieldKey.CHUNK);
@@ -874,7 +874,7 @@ public class BlockDataController extends ADataController {
 
         chunkKeys.forEach(cKey -> loadChunk(LocationUtils.toChunk(world, cKey), false, true));
         logger.log(
-                Level.INFO, "世界 {0} 数据加载完成, 耗时 {1}ms", new Object[] {worldName, (System.currentTimeMillis() - start)});
+                Level.INFO, "Thế giới {0} tải dữ liệu hoàn tất, mất {1}ms", new Object[] {worldName, (System.currentTimeMillis() - start)});
     }
 
     public void loadUniversalRecord() {
@@ -997,7 +997,7 @@ public class BlockDataController extends ADataController {
                             Slimefun.logger()
                                     .log(
                                             Level.SEVERE,
-                                            "加载目标物品失败, 请检查实际数据 ["
+                                            "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế ["
                                                     + LocationUtils.locationToString(blockData.getLocation()) + ":"
                                                     + slot + "]",
                                             ex);
@@ -1054,7 +1054,7 @@ public class BlockDataController extends ADataController {
             return;
         }
 
-        // 构建 通用数据 kv 存储 查询条件
+        // Xây dựng điều kiện truy vấn lưu trữ KV dữ liệu chung
         var key = new RecordKey(DataScope.UNIVERSAL_DATA);
         key.addCondition(FieldKey.UNIVERSAL_UUID, uniData.getKey());
         key.addField(FieldKey.DATA_KEY);
@@ -1079,7 +1079,7 @@ public class BlockDataController extends ADataController {
 
             if (uniData instanceof SlimefunUniversalBlockData ubd) {
                 if (ubd.hasTrait(UniversalDataTrait.BLOCK)) {
-                    // 初始化 上次出现位置
+                    // Khởi tạo vị trí xuất hiện lần cuối
                     var lStr = ubd.getData(UniversalDataTrait.BLOCK.getReservedKey());
 
                     if (lStr != null && !lStr.isBlank()) {
@@ -1096,7 +1096,7 @@ public class BlockDataController extends ADataController {
             }
 
             if (uniData.hasTrait(UniversalDataTrait.INVENTORY)) {
-                // 加载菜单
+                // Tải menu
                 var menuPreset = UniversalMenuPreset.getPreset(uniData.getSfId());
                 if (menuPreset != null) {
                     var menuKey = new RecordKey(DataScope.UNIVERSAL_INVENTORY);
@@ -1113,7 +1113,7 @@ public class BlockDataController extends ADataController {
                         } catch (Exception ex) {
                             inv[slot] = null;
                             Slimefun.logger()
-                                    .log(Level.SEVERE, "加载目标物品失败, 请检查实际数据 [" + uniData.getKey() + ":" + slot + "]", ex);
+                                    .log(Level.SEVERE, "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế [" + uniData.getKey() + ":" + slot + "]", ex);
                         }
                     }
 
@@ -1660,7 +1660,7 @@ public class BlockDataController extends ADataController {
     }
 
     /**
-     * 迁移旧 Slimefun 机器数据至通用数据
+     * Chuyển đổi dữ liệu máy móc Slimefun cũ sang dữ liệu chung
      */
     private void migrateUniversalData(
             @Nonnull Location l,
@@ -1701,7 +1701,7 @@ public class BlockDataController extends ADataController {
                         Slimefun.logger()
                                 .log(
                                         Level.SEVERE,
-                                        "加载目标物品失败, 请检查实际数据 [" + universalData.getKey() + ":" + slot + "]",
+                                        "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế [" + universalData.getKey() + ":" + slot + "]",
                                         ex);
                     }
                 }
@@ -1721,7 +1721,7 @@ public class BlockDataController extends ADataController {
                         .enableTicker(universalData.getLastPresent().toLocation(), universalData.getUUID());
             }
         } catch (Exception e) {
-            Slimefun.logger().log(Level.WARNING, "迁移机器人数据时出现错误", e);
+            Slimefun.logger().log(Level.WARNING, "Lỗi khi chuyển đổi dữ liệu robot", e);
         }
     }
 }

@@ -111,9 +111,9 @@ public class ExplosiveTool extends SimpleSlimefunItem<ToolUseHandler> implements
         Bukkit.getServer().getPluginManager().callEvent(event);
 
         /*
-         * 修复: https://github.com/SlimefunGuguProject/Slimefun4/issues/853
+         * Sửa lỗi: https://github.com/SlimefunGuguProject/Slimefun4/issues/853
          *
-         * 为了修复该问题应该对该列表进行排序，确保头颅先被处理，具体为什么可以看下方 breakBlock 方法。
+         * Để sửa lỗi này, danh sách nên được sắp xếp để đảm bảo đầu lâu được xử lý trước, xem phương thức breakBlock bên dưới để biết lý do cụ thể.
          */
         if (Bukkit.getPluginManager().isPluginEnabled("ExoticGarden")) {
             blocksToDestroy.sort((block1, block2) -> Boolean.compare(
@@ -180,13 +180,13 @@ public class ExplosiveTool extends SimpleSlimefunItem<ToolUseHandler> implements
         blockItem.ifPresentOrElse(
                 sfItem -> {
                     /*
-                     * 修复: https://github.com/SlimefunGuguProject/Slimefun4/issues/853
+                     * Sửa lỗi: https://github.com/SlimefunGuguProject/Slimefun4/issues/853
                      *
-                     * 该问题源于 ExoticGarden MagicalEssence/ExoticGardenFruit useVanillaBlockBreaking 为 true，
-                     * 将调用 breakNaturally 方法而非将其作为 SlimefunItem 进行处理。
+                     * Vấn đề này xuất phát từ ExoticGarden MagicalEssence/ExoticGardenFruit có useVanillaBlockBreaking là true,
+                     * sẽ gọi phương thức breakNaturally thay vì xử lý nó như một SlimefunItem.
                      *
-                     * 此前将 blocks 进行排序，以确保头颅为最先处理的对象，检查头颅的 Y - 1 方块是否为叶子，
-                     * 若为叶子则尝试获取该处的 SlimefunItem，若能获取得到则此处应为异域花园植物，将叶子处直接设置为 AIR 并移除该处 Slimefun 方块数据。
+                     * Trước đó đã sắp xếp blocks để đảm bảo đầu lâu được xử lý đầu tiên, kiểm tra xem khối Y - 1 của đầu lâu có phải là lá không,
+                     * nếu là lá thì thử lấy SlimefunItem ở đó, nếu lấy được thì đây nên là cây ExoticGarden, đặt lá trực tiếp thành AIR và xóa dữ liệu khối Slimefun ở đó.
                      */
                     if (Bukkit.getPluginManager().isPluginEnabled("ExoticGarden")
                             && block.getType().equals(Material.PLAYER_HEAD)) {

@@ -3,12 +3,12 @@ package io.github.thebusybiscuit.slimefun4.core.attributes;
 import javax.annotation.Nonnull;
 
 public enum MachineTier {
-    BASIC("&e基础"),
-    AVERAGE("&6普通"),
-    MEDIUM("&a中型"),
-    GOOD("&2优秀"),
-    ADVANCED("&6高级"),
-    END_GAME("&4终极");
+    BASIC("&eCơ bản"),
+    AVERAGE("&6Thường"),
+    MEDIUM("&aTrung bình"),
+    GOOD("&2Tốt"),
+    ADVANCED("&6Cao cấp"),
+    END_GAME("&4Cuối game");
 
     private final String prefix;
 

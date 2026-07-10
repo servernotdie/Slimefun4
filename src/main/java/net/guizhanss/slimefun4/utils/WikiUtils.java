@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import org.bukkit.plugin.Plugin;
 
 /**
- * 提供Wiki相关实用方法
+ * Cung cấp các phương thức tiện ích liên quan đến Wiki
  *
  * @author ybw0014
  */
@@ -26,24 +26,24 @@ public final class WikiUtils {
     }
 
     /**
-     * 读取附属的 wiki.json 并设置物品的 Wiki 按钮
+     * Đọc wiki.json của addon và thiết lập nút Wiki cho vật phẩm
      *
-     * @param addon 附属 {@link SlimefunAddon} 实例
+     * @param addon Instance {@link SlimefunAddon} của addon
      */
     public static void setupJson(Plugin addon) {
         setupJson(addon, page -> page);
     }
 
     /**
-     * 读取附属的 wiki.json 并设置物品的 Wiki 按钮
-     * 可对页面地址进行更改
+     * Đọc wiki.json của addon và thiết lập nút Wiki cho vật phẩm
+     * Có thể thay đổi địa chỉ trang
      *
-     * @param plugin 附属 {@link SlimefunAddon} 实例
-     * @param formatter 对页面地址进行更改
+     * @param plugin Instance {@link SlimefunAddon} của addon
+     * @param formatter Để thay đổi địa chỉ trang
      */
     public static void setupJson(Plugin plugin, Function<String, String> formatter) {
         if (!(plugin instanceof SlimefunAddon)) {
-            throw new IllegalArgumentException("该插件不是 Slimefun 附属");
+            throw new IllegalArgumentException("Plugin này không phải là addon Slimefun");
         }
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(plugin.getClass().getResourceAsStream("/wiki.json"), StandardCharsets.UTF_8))) {
@@ -64,9 +64,13 @@ public final class WikiUtils {
             }
 
             plugin.getLogger()
-                    .log(Level.INFO, MessageFormat.format("加载了 {0} 中 {1} 个物品的 Wiki 页面", plugin.getName(), count));
+                    .log(
+                            Level.INFO,
+                            MessageFormat.format(
+                                    "Đã tải trang Wiki của {1} vật phẩm trong {0}", plugin.getName(), count));
         } catch (Exception e) {
-            plugin.getLogger().log(Level.SEVERE, MessageFormat.format("无法加载 {0} 的 wiki.json", plugin.getName()), e);
+            plugin.getLogger()
+                    .log(Level.SEVERE, MessageFormat.format("Không thể tải wiki.json của {0}", plugin.getName()), e);
         }
     }
 }

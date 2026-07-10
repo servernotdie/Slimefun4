@@ -52,7 +52,7 @@ class BackpackCommand extends SubCommand {
                                     sender,
                                     "messages.usage",
                                     true,
-                                    msg -> msg.replace("%usage%", "/sf backpack (玩家名)"));
+                                    msg -> msg.replace("%usage%", "/sf backpack (tên người chơi)"));
                     return;
                 }
 
@@ -119,7 +119,7 @@ class BackpackCommand extends SubCommand {
     }
 
     private void showBackpackMenu(OfflinePlayer owner, Player p, Set<PlayerBackpack> result, int page) {
-        var menu = new ChestMenu(owner.getName() + " 拥有的背包列表");
+        var menu = new ChestMenu(owner.getName() + " - Danh sách ba lô");
         menu.setEmptySlotsClickable(false);
 
         var pages = result.size() / 36;
@@ -142,10 +142,10 @@ class BackpackCommand extends SubCommand {
 
             var visualBackpack = SlimefunItems.RESTORED_BACKPACK.clone();
             var im = visualBackpack.getItemMeta();
-            im.setDisplayName(bp.getName().isEmpty() ? "背包 #" + bp.getId() : bp.getName());
+            im.setDisplayName(bp.getName().isEmpty() ? "Ba lô #" + bp.getId() : bp.getName());
             var lore = new ArrayList<String>();
             lore.add("");
-            lore.add(ChatColor.translateAlternateColorCodes('&', "&a左键 获取此背包"));
+            lore.add(ChatColor.translateAlternateColorCodes('&', "&aChuột trái để lấy ba lô này"));
             im.setLore(lore);
             visualBackpack.setItemMeta(im);
 

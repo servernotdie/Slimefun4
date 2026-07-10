@@ -7,7 +7,7 @@ import java.util.function.UnaryOperator;
 import org.bukkit.command.CommandSender;
 
 /**
- * 聊天相关方法
+ * Các phương thức liên quan đến chat
  * @author ybw0014
  */
 public class ChatUtils {
@@ -16,19 +16,19 @@ public class ChatUtils {
     }
 
     /**
-     * 发送带 Slimefun 前缀的消息
-     * @param sender 消息接收人
-     * @param message 消息
+     * Gửi tin nhắn có tiền tố Slimefun
+     * @param sender Người nhận tin nhắn
+     * @param message Tin nhắn
      */
     public static void sendMessage(CommandSender sender, String message) {
         sender.sendMessage(Slimefun.getLocalization().getChatPrefix() + ChatColors.color(message));
     }
 
     /**
-     * 发送带 Slimefun 前缀的消息
-     * @param sender 消息接收人
-     * @param message 消息
-     * @param function 对消息进行处理的{@link Function}
+     * Gửi tin nhắn có tiền tố Slimefun
+     * @param sender Người nhận tin nhắn
+     * @param message Tin nhắn
+     * @param function {@link Function} để xử lý tin nhắn
      */
     public static void sendMessage(CommandSender sender, String message, UnaryOperator<String> function) {
         sendMessage(sender, function.apply(message));

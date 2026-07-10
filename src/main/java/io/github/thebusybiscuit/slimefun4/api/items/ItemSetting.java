@@ -151,7 +151,8 @@ public class ItemSetting<T> {
      * @return An error message which is displayed when this {@link ItemSetting} is misconfigured.
      */
     protected @Nonnull String getErrorMessage() {
-        return "请使用在 '" + defaultValue.getClass().getSimpleName() + "' 范围内的值!";
+        return "Vui lòng sử dụng giá trị trong phạm vi '"
+                + defaultValue.getClass().getSimpleName() + "'!";
     }
 
     /**
@@ -175,15 +176,15 @@ public class ItemSetting<T> {
                 this.value = newValue;
             } else {
                 // @formatter:off
-                item.warn("发现在 Items.yml 中有无效的物品设置!"
-                        + "\n  在 \""
+                item.warn("Phát hiện cài đặt vật phẩm không hợp lệ trong Items.yml!"
+                        + "\n  Tại \""
                         + item.getId()
                         + "."
                         + getKey()
                         + "\""
                         + "\n  "
                         + configuredValue
-                        + " 不是一个有效值!"
+                        + " không phải là giá trị hợp lệ!"
                         + "\n"
                         + getErrorMessage());
                 // @formatter:on
@@ -195,16 +196,16 @@ public class ItemSetting<T> {
                     : configuredValue.getClass().getSimpleName();
 
             // @formatter:off
-            item.warn("发现在 Items.yml 中有无效的物品设置!"
-                    + "\n请只设置有效的值."
-                    + "\n  在 \""
+            item.warn("Phát hiện cài đặt vật phẩm không hợp lệ trong Items.yml!"
+                    + "\nVui lòng chỉ đặt giá trị hợp lệ."
+                    + "\n  Tại \""
                     + item.getId()
                     + "."
                     + getKey()
                     + "\""
-                    + "\n  期望值为 \""
+                    + "\n  Giá trị mong đợi là \""
                     + defaultValue.getClass().getSimpleName()
-                    + "\" 但填写了: \""
+                    + "\" nhưng lại là: \""
                     + found
                     + "\"");
             // @formatter:on

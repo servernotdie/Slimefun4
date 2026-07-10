@@ -96,9 +96,9 @@ public interface SlimefunAddon {
     }
 
     /**
-     * 获取 Wiki URL格式
+     * Lấy định dạng URL Wiki
      *
-     * @return Wiki 的 URL格式，使用{0}作为替换
+     * @return Định dạng URL của Wiki, sử dụng {0} để thay thế
      */
     default @Nullable String getWikiURL() {
         return null;

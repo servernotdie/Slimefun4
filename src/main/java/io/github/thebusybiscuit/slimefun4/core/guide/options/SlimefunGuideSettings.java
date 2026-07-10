@@ -126,11 +126,11 @@ public final class SlimefunGuideSettings {
                         ChatColor.GREEN + locale.getMessage(p, "guide.title.versions"),
                         "&7&o" + locale.getMessage(p, "guide.tooltips.versions-notice"),
                         "",
-                        "&f汉化 By StarWishsama",
-                        "&c请不要将此版本信息截图到 Discord/Github 反馈 Bug",
-                        "&c而是优先到汉化页面反馈",
+                        "&fBản dịch bởi StarWishsama",
+                        "&cVui lòng không chụp ảnh thông tin phiên bản này lên Discord/Github để báo cáo lỗi",
+                        "&cmà ưu tiên báo cáo tại trang bản dịch",
                         "",
-                        "&cTHIS BUILD IS UNOFFICIAL BUILD, DO NOT REPORT TO SLIMEFUN DEV",
+                        "&cĐÂY LÀ BẢN BUILD KHÔNG CHÍNH THỨC, ĐỪNG BÁO CÁO CHO DEV SLIMEFUN",
                         "",
                         "&fMinecraft: &a" + Bukkit.getBukkitVersion(),
                         "&fSlimefun: &a" + Slimefun.getVersion()),
@@ -144,16 +144,16 @@ public final class SlimefunGuideSettings {
                         Material.COMPARATOR,
                         "&e" + locale.getMessage(p, "guide.title.source"),
                         "",
-                        "&7最近活动于: &a" + NumberUtils.getElapsedTime(github.getLastUpdate()) + " 前",
+                        "&7Hoạt động gần nhất: &a" + NumberUtils.getElapsedTime(github.getLastUpdate()) + " trước",
                         "&7Forks: &e" + github.getForks(),
                         "&7Stars: &e" + github.getStars(),
                         "",
-                        "&7&oSlimefun 4 是一个由社区参与的项目,",
-                        "&7&o源代码可以在 GitHub 上找到",
-                        "&7&o如果你想让这个项目持续下去",
-                        "&7&o你可以考虑对项目做出贡献",
+                        "&7&oSlimefun 4 là một dự án do cộng đồng tham gia,",
+                        "&7&oMã nguồn có thể tìm thấy trên GitHub",
+                        "&7&oNếu bạn muốn dự án này tiếp tục phát triển",
+                        "&7&oBạn có thể cân nhắc đóng góp cho dự án",
                         "",
-                        "&7\u21E8 &e点击前往汉化版 GitHub 仓库"));
+                        "&7\u21E8 &eNhấp để đi đến kho GitHub bản dịch"));
         // @formatter:on
 
         menu.addMenuClickHandler(6, (pl, slot, item, action) -> {
@@ -169,12 +169,12 @@ public final class SlimefunGuideSettings {
                         Material.KNOWLEDGE_BOOK,
                         "&3" + locale.getMessage(p, "guide.title.wiki"),
                         "",
-                        "&7你需要对物品或机器方面的帮助吗?",
-                        "&7你不知道要干什么?",
-                        "&7查看我们的由社区维护的维基",
-                        "&7并考虑成为一名编辑者!",
+                        "&7Bạn cần trợ giúp về vật phẩm hoặc máy móc?",
+                        "&7Bạn không biết phải làm gì?",
+                        "&7Xem wiki do cộng đồng duy trì của chúng tôi",
+                        "&7và cân nhắc trở thành một biên tập viên!",
                         "",
-                        "&7\u21E8 &e点击前往非官方中文 Wiki"));
+                        "&7\u21E8 &eNhấp để đi đến Wiki tiếng Trung phi chính thức"));
         // @formatter:on
 
         menu.addMenuClickHandler(8, (pl, slot, item, action) -> {
@@ -190,13 +190,13 @@ public final class SlimefunGuideSettings {
                         Material.BOOKSHELF,
                         "&3" + locale.getMessage(p, "guide.title.addons"),
                         "",
-                        "&7Slimefun 是一个大型项目，但附属插件的存在",
-                        "&7能让 Slimefun 真正的发光发亮",
-                        "&7看一看它们，也许你要寻找的附属插件就在那里!",
+                        "&7Slimefun là một dự án lớn, nhưng sự tồn tại của addon",
+                        "&7mới thực sự làm cho Slimefun tỏa sáng",
+                        "&7Hãy xem chúng, có thể addon bạn đang tìm kiếm ở đó!",
                         "",
-                        "&7该服务器已安装附属插件: &b" + Slimefun.getInstalledAddons().size(),
+                        "&7Máy chủ đã cài đặt addon: &b" + Slimefun.getInstalledAddons().size(),
                         "",
-                        "&7\u21E8 &e点击查看 Slimefun4 可用的附属插件"));
+                        "&7\u21E8 &eNhấp để xem các addon có sẵn cho Slimefun4"));
         // @formatter:on
 
         menu.addMenuClickHandler(47, (pl, slot, item, action) -> {

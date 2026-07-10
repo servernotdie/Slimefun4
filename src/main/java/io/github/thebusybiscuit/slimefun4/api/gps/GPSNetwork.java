@@ -171,10 +171,10 @@ public class GPSNetwork {
                 4,
                 new CustomItemStack(
                         SlimefunItems.GPS_CONTROL_PANEL,
-                        "&7网络信息",
+                        "&7Thông tin mạng",
                         "",
-                        "&8\u21E8 &7状态: " + getStatusText(p, complexity),
-                        "&8\u21E8 &7复杂度: &f" + complexity));
+                        "&8\u21E8 &7Trạng thái: " + getStatusText(p, complexity),
+                        "&8\u21E8 &7Độ phức tạp: &f" + complexity));
         menu.addMenuClickHandler(4, ChestMenuUtils.getEmptyClickHandler());
 
         menu.addItem(
@@ -206,14 +206,14 @@ public class GPSNetwork {
                         slot,
                         new CustomItemStack(
                                 SlimefunItems.GPS_TRANSMITTER,
-                                "&bGPS 发射器",
-                                "&8\u21E8 &7世界: &f" + l.getWorld().getName(),
+                                "&bMáy phát GPS",
+                                "&8\u21E8 &7Thế giới: &f" + l.getWorld().getName(),
                                 "&8\u21E8 &7X: &f" + l.getX(),
                                 "&8\u21E8 &7Y: &f" + l.getY(),
                                 "&8\u21E8 &7Z: &f" + l.getZ(),
                                 "",
-                                "&8\u21E8 &7信号强度: &f" + transmitter.getMultiplier(l.getBlockY()),
-                                "&8\u21E8 &7延迟: &f" + NumberUtils.roundDecimalNumber(1000D / l.getY()) + "ms"));
+                                "&8\u21E8 &7Cường độ tín hiệu: &f" + transmitter.getMultiplier(l.getBlockY()),
+                                "&8\u21E8 &7Độ trễ: &f" + NumberUtils.roundDecimalNumber(1000D / l.getY()) + "ms"));
                 menu.addMenuClickHandler(slot, ChestMenuUtils.getEmptyClickHandler());
 
                 index++;
@@ -295,10 +295,10 @@ public class GPSNetwork {
                     4,
                     new CustomItemStack(
                             SlimefunItems.GPS_CONTROL_PANEL,
-                            "&7网络信息",
+                            "&7Thông tin mạng",
                             "",
-                            "&8\u21E8 &7状态: " + (complexity > 0 ? "&2&l在线" : "&4&l离线"),
-                            "&8\u21E8 &7复杂度: &f" + complexity));
+                            "&8\u21E8 &7Trạng thái: " + (complexity > 0 ? "&2&lTrực tuyến" : "&4&lNgoại tuyến"),
+                            "&8\u21E8 &7Độ phức tạp: &f" + complexity));
             menu.addMenuClickHandler(4, ChestMenuUtils.getEmptyClickHandler());
 
             menu.addItem(
@@ -325,12 +325,12 @@ public class GPSNetwork {
                         new CustomItemStack(
                                 waypoint.getIcon(),
                                 waypoint.getName().replace("player:death ", ""),
-                                "&8\u21E8 &7世界: &f" + l.getWorld().getName(),
+                                "&8\u21E8 &7Thế giới: &f" + l.getWorld().getName(),
                                 "&8\u21E8 &7X: &f" + l.getX(),
                                 "&8\u21E8 &7Y: &f" + l.getY(),
                                 "&8\u21E8 &7Z: &f" + l.getZ(),
                                 "",
-                                "&8\u21E8 &cClick to delete"));
+                                "&8\u21E8 &cNhấp để xóa"));
                 menu.addMenuClickHandler(slot, (pl, s, item, action) -> {
                     profile.removeWaypoint(waypoint);
                     SoundEffect.GPS_NETWORK_OPEN_PANEL_SOUND.playFor(p);

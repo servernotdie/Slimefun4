@@ -365,10 +365,10 @@ public class PlayerProfile {
         float progress = Math.round(((unlockedResearches * 100.0F) / allResearches) * 100.0F) / 100.0F;
 
         sender.sendMessage("");
-        sender.sendMessage(ChatColors.color("&7玩家研究统计: &b" + getPlayer()));
+        sender.sendMessage(ChatColors.color("&7Thống kê nghiên cứu người chơi: &b" + getPlayer()));
         sender.sendMessage("");
-        sender.sendMessage(ChatColors.color("&7研究等级: " + ChatColor.AQUA + getTitle()));
-        sender.sendMessage(ChatColors.color("&7研究进度: "
+        sender.sendMessage(ChatColors.color("&7Cấp độ nghiên cứu: " + ChatColor.AQUA + getTitle()));
+        sender.sendMessage(ChatColors.color("&7Tiến độ nghiên cứu: "
                 + NumberUtils.getColorFromPercentage(progress)
                 + progress
                 + " &r% "
@@ -378,7 +378,7 @@ public class PlayerProfile {
                 + " / "
                 + allResearches
                 + ')'));
-        sender.sendMessage(ChatColors.color("&7解锁总耗费经验: " + ChatColor.AQUA + levels));
+        sender.sendMessage(ChatColors.color("&7Tổng kinh nghiệm tiêu tốn để mở khóa: " + ChatColor.AQUA + levels));
     }
 
     /**
@@ -431,7 +431,7 @@ public class PlayerProfile {
         }
 
         if (processProfiles.containsKey(uuid)) {
-            // 当前玩家档案正在加载
+            // Hồ sơ người chơi hiện tại đang được tải
             return false;
         }
 
@@ -456,7 +456,7 @@ public class PlayerProfile {
 
         var profile = Slimefun.getRegistry().getPlayerProfiles().get(p.getUniqueId());
         if (profile == null || profile.markedForDeletion) {
-            // 当前玩家档案正在被加载
+            // Hồ sơ người chơi hiện tại đang được tải
             if (processProfiles.containsKey(p.getUniqueId())) {
                 return false;
             }

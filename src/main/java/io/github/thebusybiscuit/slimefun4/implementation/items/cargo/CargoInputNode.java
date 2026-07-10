@@ -59,10 +59,10 @@ public class CargoInputNode extends AbstractFilterNode {
                     24,
                     new CustomItemStack(
                             SlimefunUtils.getCustomHead(HeadTexture.ENERGY_REGULATOR.getTexture()),
-                            "&7轮循模式: &4\u2718",
+                            "&7Chế độ vòng tròn: &4\u2718",
                             "",
-                            "&e> 单击启用轮循模式",
-                            "&e(物品将会在信道中平均分配)"));
+                            "&e> Nhấp để bật chế độ vòng tròn",
+                            "&e(Vật phẩm sẽ được phân bổ đều trong kênh)"));
             menu.addMenuClickHandler(24, (p, slot, item, action) -> {
                 StorageCacheUtils.setData(b.getLocation(), ROUND_ROBIN_MODE, String.valueOf(true));
                 updateBlockMenu(menu, b);
@@ -73,10 +73,10 @@ public class CargoInputNode extends AbstractFilterNode {
                     24,
                     new CustomItemStack(
                             SlimefunUtils.getCustomHead(HeadTexture.ENERGY_REGULATOR.getTexture()),
-                            "&7轮循模式: &2\u2714",
+                            "&7Chế độ vòng tròn: &2\u2714",
                             "",
-                            "&e> 单击关闭轮循模式",
-                            "&e(物品将会在信道中平均分配)"));
+                            "&e> Nhấp để tắt chế độ vòng tròn",
+                            "&e(Vật phẩm sẽ được phân bổ đều trong kênh)"));
             menu.addMenuClickHandler(24, (p, slot, item, action) -> {
                 StorageCacheUtils.setData(b.getLocation(), ROUND_ROBIN_MODE, String.valueOf(false));
                 updateBlockMenu(menu, b);
@@ -86,21 +86,19 @@ public class CargoInputNode extends AbstractFilterNode {
 
         String smartFillNode = blockData.getData(SMART_FILL_MODE);
 
-        // FIXME 需要改进翻译
-
         if (smartFillNode == null || smartFillNode.equals(String.valueOf(false))) {
             menu.replaceExistingItem(
                     16,
                     new CustomItemStack(
                             Material.WRITABLE_BOOK,
-                            "&7\"智能填充\" 模式: &4\u2718",
+                            "&7Chế độ \"Điền thông minh\": &4\u2718",
                             "",
-                            "&e> 单击启用",
+                            "&e> Nhấp để bật",
                             "",
-                            "&f打开后, 货运节点会尝试",
-                            "&f让货运网络中的物品保持在一定数量",
-                            "&f但这个功能并不完美",
-                            "&f仍会尝试填满在一堆物品前的空位"));
+                            "&fKhi bật, node hàng hóa sẽ cố gắng",
+                            "&fgiữ số lượng vật phẩm nhất định trong mạng",
+                            "&fnhưng tính năng này không hoàn hảo",
+                            "&fvẫn sẽ cố điền đầy ô trống trước đống vật phẩm"));
             menu.addMenuClickHandler(16, (p, slot, item, action) -> {
                 StorageCacheUtils.setData(b.getLocation(), SMART_FILL_MODE, String.valueOf(true));
                 updateBlockMenu(menu, b);
@@ -111,14 +109,14 @@ public class CargoInputNode extends AbstractFilterNode {
                     16,
                     new CustomItemStack(
                             Material.WRITTEN_BOOK,
-                            "&7\"智能填充\" 模式: &2\u2714",
+                            "&7Chế độ \"Điền thông minh\": &2\u2714",
                             "",
-                            "&e> 单击禁用",
+                            "&e> Nhấp để tắt",
                             "",
-                            "&f打开后, 货运节点会尝试",
-                            "&f让货运网络中的物品保持在一定数量",
-                            "&f但这个功能并不完美",
-                            "&f仍会尝试填满在一堆物品前的空位"));
+                            "&fKhi bật, node hàng hóa sẽ cố gắng",
+                            "&fgiữ số lượng vật phẩm nhất định trong mạng",
+                            "&fnhưng tính năng này không hoàn hảo",
+                            "&fvẫn sẽ cố điền đầy ô trống trước đống vật phẩm"));
             menu.addMenuClickHandler(16, (p, slot, item, action) -> {
                 StorageCacheUtils.setData(b.getLocation(), SMART_FILL_MODE, String.valueOf(false));
                 updateBlockMenu(menu, b);

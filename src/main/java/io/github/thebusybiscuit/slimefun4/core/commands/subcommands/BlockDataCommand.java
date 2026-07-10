@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 /**
- * 该指令可直接对 Slimefun 方块数据进行设置。
+ * Lệnh này có thể thiết lập trực tiếp dữ liệu khối Slimefun.
  *
  * @author ybw0014
  */
@@ -53,7 +53,7 @@ class BlockDataCommand extends SubCommand {
         var blockData = StorageCacheUtils.getDataContainer(target.getLocation());
 
         if (target == null || target.getType().isAir() || blockData == null) {
-            ChatUtils.sendMessage(player, "&c你需要看向一个 Slimefun 方块才能执行该指令!");
+            ChatUtils.sendMessage(player, "&cBạn cần nhìn vào một khối Slimefun để thực hiện lệnh này!");
             return;
         }
 
@@ -64,7 +64,7 @@ class BlockDataCommand extends SubCommand {
                 String value = blockData.getData(key);
                 ChatUtils.sendMessage(
                         player,
-                        "&a该方块 &b%key% &a的值为: &e%value%",
+                        "&aGiá trị &b%key% &acủa khối này là: &e%value%",
                         msg -> msg.replace("%key%", key).replace("%value%", value == null ? "null" : value));
             }
             case "set" -> {
@@ -79,7 +79,7 @@ class BlockDataCommand extends SubCommand {
                 }
 
                 if (key.equalsIgnoreCase("id")) {
-                    ChatUtils.sendMessage(player, "&c你不能修改方块的 ID!");
+                    ChatUtils.sendMessage(player, "&cBạn không thể sửa đổi ID của khối!");
                     return;
                 }
 
@@ -88,17 +88,17 @@ class BlockDataCommand extends SubCommand {
                 blockData.setData(key, value);
                 ChatUtils.sendMessage(
                         player,
-                        "&a已设置该方块 &b%key% &a的值为: &e%value%",
+                        "&aĐã đặt giá trị &b%key% &acủa khối này thành: &e%value%",
                         msg -> msg.replace("%key%", key).replace("%value%", value));
             }
             case "remove" -> {
                 if (key.equalsIgnoreCase("id")) {
-                    ChatUtils.sendMessage(player, "&c你不能修改方块的 ID!");
+                    ChatUtils.sendMessage(player, "&cBạn không thể sửa đổi ID của khối!");
                     return;
                 }
 
                 blockData.removeData(key);
-                ChatUtils.sendMessage(player, "&a已移除该方块 &b%key% &a的值", msg -> msg.replace("%key%", key));
+                ChatUtils.sendMessage(player, "&aĐã xóa giá trị &b%key% &acủa khối này", msg -> msg.replace("%key%", key));
             }
             default -> {
                 Slimefun.getLocalization()

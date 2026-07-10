@@ -81,29 +81,30 @@ public class ErrorReport<T extends Throwable> {
     @ParametersAreNonnullByDefault
     public ErrorReport(T throwable, Location l, SlimefunItem item) {
         this(throwable, item.getAddon(), stream -> {
-            stream.println("方块信息:");
-            stream.println("  世界: " + l.getWorld().getName());
+            stream.println("Thông tin khối:");
+            stream.println("  Thế giới: " + l.getWorld().getName());
             stream.println("  X: " + l.getBlockX());
             stream.println("  Y: " + l.getBlockY());
             stream.println("  Z: " + l.getBlockZ());
-            stream.println("  方块类型: " + l.getBlock().getType());
-            stream.println("  方块数据: " + l.getBlock().getBlockData().getClass().getName());
-            stream.println("  状态: " + l.getBlock().getState().getClass().getName());
+            stream.println("  Loại khối: " + l.getBlock().getType());
+            stream.println(
+                    "  Dữ liệu khối: " + l.getBlock().getBlockData().getClass().getName());
+            stream.println("  Trạng thái: " + l.getBlock().getState().getClass().getName());
             stream.println();
 
             if (item.getBlockTicker() != null) {
-                stream.println("Ticker 信息:");
-                stream.println("  类型: " + (item.getBlockTicker().isSynchronized() ? "同步" : "异步"));
+                stream.println("Thông tin Ticker:");
+                stream.println("  Loại: " + (item.getBlockTicker().isSynchronized() ? "Đồng bộ" : "Không đồng bộ"));
                 stream.println();
             }
 
             if (item instanceof EnergyNetProvider) {
-                stream.println("Ticker 信息:");
-                stream.println("  类型: 间接 (由能源网络管理)");
+                stream.println("Thông tin Ticker:");
+                stream.println("  Loại: Gián tiếp (quản lý bởi mạng năng lượng)");
                 stream.println();
             }
 
-            stream.println("Slimefun 数据:");
+            stream.println("Dữ liệu Slimefun:");
             stream.println("  ID: " + item.getId());
             var blockData =
                     Slimefun.getDatabaseManager().getBlockDataController().getBlockData(l);
@@ -118,22 +119,23 @@ public class ErrorReport<T extends Throwable> {
                                                     .getBlockDataController()
                                                     .getUniversalBlockDataFromCache(uuid);
                                             if (universalData != null) {
-                                                stream.println("  数据加载状态: " + universalData.isDataLoaded());
-                                                stream.println("  物品栏: " + (universalData.getMenu() != null));
-                                                stream.println("  数据: ");
+                                                stream.println(
+                                                        "  Trạng thái tải dữ liệu: " + universalData.isDataLoaded());
+                                                stream.println("  Kho đồ: " + (universalData.getMenu() != null));
+                                                stream.println("  Dữ liệu: ");
                                                 universalData
                                                         .getAllData()
                                                         .forEach((k, v) -> stream.println("    " + k + ": " + v));
                                             } else {
-                                                stream.println("该方块没有任何数据.");
+                                                stream.println("Khối này không có dữ liệu nào.");
                                             }
                                         },
-                                        () -> stream.println("该方块没有任何数据.")),
+                                        () -> stream.println("Khối này không có dữ liệu nào.")),
                         l);
             } else {
-                stream.println("  数据加载状态: " + blockData.isDataLoaded());
-                stream.println("  物品栏: " + (blockData.getBlockMenu() != null));
-                stream.println("  数据: ");
+                stream.println("  Trạng thái tải dữ liệu: " + blockData.isDataLoaded());
+                stream.println("  Kho đồ: " + (blockData.getBlockMenu() != null));
+                stream.println("  Dữ liệu: ");
                 blockData.getAllData().forEach((k, v) -> stream.println("    " + k + ": " + v));
             }
             stream.println();

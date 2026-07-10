@@ -29,7 +29,7 @@ public final class PostSetup {
     private PostSetup() {}
 
     public static void setupWiki() {
-        Slimefun.logger().log(Level.INFO, "加载 Wiki 页面...");
+        Slimefun.logger().log(Level.INFO, "Đang tải trang Wiki...");
 
         WikiUtils.setupJson(Slimefun.instance(), (page) -> page.replace("#", "?id="));
     }
@@ -70,24 +70,24 @@ public final class PostSetup {
                 + " - #########################");
         sender.sendMessage("");
         sender.sendMessage(ChatColor.GREEN
-                + "成功加载了 "
+                + "Đã tải thành công "
                 + total
-                + " 个物品和 "
+                + " vật phẩm và "
                 + Slimefun.getRegistry().getResearches().size()
-                + " 个研究");
+                + " nghiên cứu");
         sender.sendMessage(ChatColor.GREEN
                 + "( "
                 + slimefunOnly
-                + " 物品来自本体, "
+                + " vật phẩm từ bản gốc, "
                 + (total - slimefunOnly)
-                + " 个物品来自 "
+                + " vật phẩm từ "
                 + Slimefun.getInstalledAddons().size()
-                + " 扩展 )");
+                + " addon )");
         sender.sendMessage("");
 
         sender.sendMessage("");
-        sender.sendMessage(ChatColor.GREEN + " - 源码:      https://github.com/Craft233MC/Slimefun4");
-        sender.sendMessage(ChatColor.GREEN + " - Bug 反馈:  https://github.com/Craft233MC/Slimefun4/issues");
+        sender.sendMessage(ChatColor.GREEN + " - Mã nguồn:      https://github.com/Craft233MC/Slimefun4");
+        sender.sendMessage(ChatColor.GREEN + " - Báo cáo lỗi:  https://github.com/Craft233MC/Slimefun4/issues");
 
         sender.sendMessage("");
 

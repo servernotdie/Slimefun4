@@ -51,7 +51,7 @@ public class ReactorAccessPort extends SlimefunItem {
 
         addItemHandler(onBreak());
 
-        new BlockMenuPreset(getId(), "&2反应堆交互接口") {
+        new BlockMenuPreset(getId(), "&2Cổng giao tiếp lò phản ứng") {
 
             @Override
             public void init() {
@@ -72,7 +72,13 @@ public class ReactorAccessPort extends SlimefunItem {
                 if (reactor != null) {
                     menu.replaceExistingItem(
                             INFO_SLOT,
-                            new CustomItemStack(Material.GREEN_WOOL, "&7反应堆", "", "&6已检测到反应堆", "", "&7> 点击打开反应堆界面"));
+                            new CustomItemStack(
+                                    Material.GREEN_WOOL,
+                                    "&7Lò phản ứng",
+                                    "",
+                                    "&6Đã phát hiện lò phản ứng",
+                                    "",
+                                    "&7> Nhấp để mở giao diện lò phản ứng"));
                     menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                         if (reactor != null) {
                             reactor.open(p);
@@ -87,13 +93,13 @@ public class ReactorAccessPort extends SlimefunItem {
                             INFO_SLOT,
                             new CustomItemStack(
                                     Material.RED_WOOL,
-                                    "&7反应堆",
+                                    "&7Lò phản ứng",
                                     "",
-                                    "&c未检测到反应堆",
+                                    "&cKhông phát hiện lò phản ứng",
                                     "",
-                                    "&7反应堆必须放置在",
-                                    "&7本交互接口的",
-                                    "&73个方块以下的位置"));
+                                    "&7Lò phản ứng phải được đặt",
+                                    "&7dưới cổng giao tiếp này",
+                                    "&73 khối trở xuống"));
                     menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                         newInstance(menu, b);
                         return false;
@@ -151,16 +157,31 @@ public class ReactorAccessPort extends SlimefunItem {
 
         preset.addItem(
                 1,
-                new CustomItemStack(SlimefunItems.URANIUM, "&7燃料槽", "", "&r这里可以放入放射性燃料, 例如:", "&2铀 &r或 &a镎"),
+                new CustomItemStack(
+                        SlimefunItems.URANIUM,
+                        "&7Khe nhiên liệu",
+                        "",
+                        "&rCó thể đặt nhiên liệu phóng xạ vào đây, ví dụ:",
+                        "&2Uranium &rhoặc &aNeptunium"),
                 ChestMenuUtils.getEmptyClickHandler());
         preset.addItem(
                 22,
-                new CustomItemStack(SlimefunItems.PLUTONIUM, "&7副产品槽", "", "&r这里可以获取反应堆在运行中产生的副产物", "&r例如 &a镎 &r或 &7钚"),
+                new CustomItemStack(
+                        SlimefunItems.PLUTONIUM,
+                        "&7Khe sản phẩm phụ",
+                        "",
+                        "&rCó thể lấy sản phẩm phụ do lò phản ứng tạo ra",
+                        "&rví dụ &aNeptunium &rhoặc &7Plutonium"),
                 ChestMenuUtils.getEmptyClickHandler());
         preset.addItem(
                 7,
                 new CustomItemStack(
-                        SlimefunItems.REACTOR_COOLANT_CELL, "&b冷却剂", "", "&r这里可以放入冷却剂", "&4如果没有冷却剂, 你的反应堆", "&4将会爆炸"),
+                        SlimefunItems.REACTOR_COOLANT_CELL,
+                        "&bChất làm mát",
+                        "",
+                        "&rCó thể đặt chất làm mát vào đây",
+                        "&4Nếu không có chất làm mát, lò phản ứng",
+                        "&4của bạn sẽ phát nổ"),
                 ChestMenuUtils.getEmptyClickHandler());
     }
 

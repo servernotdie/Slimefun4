@@ -17,11 +17,11 @@ import org.bukkit.util.io.BukkitObjectOutputStream;
 
 public class DataUtils {
     /**
-     * 使用 {@link BukkitObjectOutputStream} 序列化 {@link ItemStack}
-     * 为 Base64 字符串，用于数据库存储.
+     * Sử dụng {@link BukkitObjectOutputStream} để serialize {@link ItemStack}
+     * thành chuỗi Base64, dùng cho lưu trữ cơ sở dữ liệu.
      *
-     * @param itemStack 要序列化的 {@link ItemStack}
-     * @return 序列化后的 Base64 字符串
+     * @param itemStack {@link ItemStack} cần serialize
+     * @return Chuỗi Base64 sau khi serialize
      */
     public static String serializeItemStack(ItemStack itemStack) {
         Debug.log(TestCase.BACKPACK, "Serializing itemstack: " + itemStack);
@@ -39,23 +39,24 @@ public class DataUtils {
                     && Slimefun.getDatabaseManager().getBlockDataStorageType() == StorageType.MYSQL
                     && itemStr.length() > 65535) {
 
-                throw new IllegalArgumentException("检测到过大物品, 请联系物品对应插件开发者解决: " + StringUtil.itemStackToString(itemStack)
-                        + ", size = " + itemStr.length());
+                throw new IllegalArgumentException(
+                        "Phát hiện vật phẩm quá lớn, vui lòng liên hệ nhà phát triển plugin tương ứng: "
+                                + StringUtil.itemStackToString(itemStack) + ", size = " + itemStr.length());
             }
 
             return itemStr;
         } catch (Throwable e) {
-            Slimefun.logger().log(Level.SEVERE, "序列化物品时出现错误, 将存储空值", e);
+            Slimefun.logger().log(Level.SEVERE, "Xảy ra lỗi khi serialize vật phẩm, sẽ lưu giá trị rỗng", e);
             return "";
         }
     }
 
     /**
-     * 使用 {@link BukkitObjectInputStream} 反序列化 Base64 字符串
-     * 为 {@link ItemStack} 对象.
+     * Sử dụng {@link BukkitObjectInputStream} để deserialize chuỗi Base64
+     * thành đối tượng {@link ItemStack}.
      *
-     * @param base64Str 要反序列化的 Base64 字符串
-     * @return 反序列化后的 {@link ItemStack} 对象
+     * @param base64Str Chuỗi Base64 cần deserialize
+     * @return Đối tượng {@link ItemStack} sau khi deserialize
      */
     @Nullable public static ItemStack deserializeItemStack(String base64Str) {
         if (base64Str == null || base64Str.isEmpty() || base64Str.isBlank()) {
@@ -71,12 +72,12 @@ public class DataUtils {
             Debug.log(TestCase.BACKPACK, "Deserialized itemstack: " + result);
 
             if (result.getType().isAir()) {
-                Slimefun.logger().log(Level.SEVERE, "反序列化数据库中的物品失败! 对应物品无法显示.");
+                Slimefun.logger().log(Level.SEVERE, "Giải mã vật phẩm từ cơ sở dữ liệu thất bại! Vật phẩm tương ứng không thể hiển thị.");
             }
 
             return result;
         } catch (Exception ex) {
-            throw new RuntimeException("反序列化物品时出现错误, 对应物品无法显示", ex);
+            throw new RuntimeException("Lỗi khi giải mã vật phẩm, vật phẩm tương ứng không thể hiển thị", ex);
         }
     }
 
