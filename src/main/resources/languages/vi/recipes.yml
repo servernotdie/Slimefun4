@@ -1,158 +1,170 @@
 ---
-minecraft:
-  blasting:
-    lore:
-    - Nung vật phẩm này trong một lò nung phản ứng
-    - để chế tạo vật phẩm mình muốn
-    name: Công thức lò nung phản ứng
-  campfire:
-    lore:
-    - Nung vật phẩm này trên một lửa trại
-    - để chế tạo vật phẩm bạn muốn
-    name: Công thức nung trên lửa trại
-  furnace:
-    lore:
-    - Nung vật phẩm này trong lò
-    - để chế tạo vật phẩm bạn muốn
-    name: Công thức nung lò nung
-  shaped:
-    lore:
-    - Chế tạo vật phẩm
-    - trong bàn chế tạo thường.
-    - Hình dạng rất quan trọng.
-    name: Công thức chế tạo hình
-  shapeless:
-    lore:
-    - Chế tạo vật phẩm này
-    - trong bàn chế tạo thường
-    - Công thức này vô dạng.
-    name: Công thức chế tạo vô dạng
-  smoking:
-    lore:
-    - Nung vật phẩm này trong máy tạo hơi khói
-    - để chế tạo vật phẩm bạn mong muốn
-    name: Công thức máy tạo hơi khói
-  stonecutting:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng máy cắt đá
-    name: Công thức máy cắt đá
 slimefun:
-  ancient_altar:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Ancient Altar.
-    - Kiểm tra Ancient Altar biết thêm thông tin
-    name: Ancient Altar
-  armor_forge:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Armor Forge
-    name: Armor Forge
-  compressor:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Compressor
-    name: Compressor
-  enhanced_crafting_table:
-    lore:
-    - Chế tạo vật phẩm được hiển thị
-    - trong Enhanced Crafting Table.
-    - Một bàn chế tạo bình thường sẽ không đủ!
-    name: Enhanced Crafting Table
-  food_composter:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Food Composter
-    name: Food Composter
-  food_fabricator:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Food Fabricator
-    name: Food Fabricator
-  freezer:
-    lore:
-    - Chế tạo vật phẩm như đã hiển thị
-    - sử dụng Freezer
-    name: Freezer
-  geo_miner:
-    lore:
-    - Vật phẩm này có thể kiểm được
-    - bàng cách sử dụng GEO Miner
-    name: GEO Miner
-  gold_pan:
-    lore:
-    - Dùng Gold Pan để
-    - lấy vật phẩm này
-    name: Gold Pan
-  grind_stone:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Grind Stone
-    name: Grind Stone
-  heated_pressure_chamber:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Heated Pressure Chamber
-    name: Heated Pressure Chamber
-  juicer:
-    lore:
-    - Chế tạo nước ép này như đã hiển thị
-    - sử dụng Juicer
-    name: Juicer
-  magic_workbench:
-    lore:
-    - Chế tạo vật phẩm này như hình
-    - sử dụng Magic Workbench
-    name: Magic Workbench
-  mob_drop:
-    lore:
-    - Giết con vật đó để
-    - lấy vật phẩm này
-    name: Vật phẩm bị rơi ra từ con vật bị giết
   multiblock:
+    name: 'Cấu trúc đa khối'
     lore:
-    - Xây công trình đã hiển thị
-    - hiển thị. Đây không phải công thức chế tạo
-    name: Đa khối
-  nuclear_reactor:
+      - 'Xây dựng bằng các khối theo'
+      - 'cấu trúc được hiển thị. Vật phẩm này'
+      - 'không thể được chế tạo.'
+  enhanced_crafting_table:
+    name: 'Bàn chế tạo tăng cường (Enhanced Crafting Table)'
     lore:
-    - Vật phẩm này là sản phẩm phụ
-    - của Nuclear Reactor
-    name: Nuclear Reactor
-  ore_crusher:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong Bàn chế tạo tăng cường.'
+      - 'Một bàn chế tạo thường không đủ để làm được điều này!'
+  armor_forge:
+    name: 'Bàn rèn giáp (Armor Forge)'
     lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Ore Crusher
-    name: Ore Crusher
-  ore_washer:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'bằng Bàn rèn giáp'
+  grind_stone:
+    name: 'Đá mài (Grind Stone)'
     lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Ore Washer
-    name: Ore Washer
-  pressure_chamber:
-    lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Pressure Chamber
-    name: Pressure Chamber
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'bằng cách sử dụng Đá mài'
   smeltery:
+    name: 'Lò nung kim loại (Smeltery)'
     lore:
-    - Chế tạo vật phẩm này như đã hiển thị
-    - sử dụng Smeltery
-    name: Smeltery
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'bằng Lò nung kim loại'
+  ore_crusher:
+    name: 'Máy nghiền khoáng sản (Ore Crusher)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong Máy nghiền khoáng sản'
+  mob_drop:
+    name: 'Vật phẩm rơi ra từ sinh vật'
+    lore:
+      - 'Tiêu diệt sinh vật được chỉ định'
+      - 'để nhận được vật phẩm này'
+  gold_pan:
+    name: 'Chảo đãi vàng (Gold Pan)'
+    lore:
+      - 'Sử dụng Chảo đãi vàng'
+      - 'để nhận được vật phẩm này'
+  compressor:
+    name: 'Máy nén (Compressor)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong Máy nén'
+  pressure_chamber:
+    name: 'Buồng áp suất (Pressure Chamber)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong Buồng áp suất'
+  ore_washer:
+    name: 'Máy rửa khoáng sản (Ore Washer)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong Máy rửa khoáng sản'
+  juicer:
+    name: 'Máy ép trái cây (Juicer)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'để làm nước ép trong Máy ép trái cây'
+  magic_workbench:
+    name: 'Bàn chế tạo phép thuật (Magic Workbench)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong Bàn chế tạo phép thuật'
+  ancient_altar:
+    name: 'Bàn thờ cổ đại (Ancient Altar)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'bằng cách sử dụng Bàn thờ cổ đại'
+      - 'Xem trang Bàn thờ cổ đại để biết thêm thông tin'
+  heated_pressure_chamber:
+    name: 'Buồng áp suất gia nhiệt (Heated Pressure Chamber)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'bằng Buồng áp suất gia nhiệt'
+  food_fabricator:
+    name: 'Máy chế biến thực phẩm (Food Fabricator)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'bằng cách sử dụng Máy chế biến thực phẩm'
+  food_composter:
+    name: 'Máy ủ phân thực phẩm (Food Composter)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong Máy ủ phân thực phẩm'
+  freezer:
+    name: 'Tủ lạnh (Freezer)'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong Tủ lạnh'
+  geo_miner:
+    name: 'Máy khai thác tài nguyên thiên nhiên (GEO Miner)'
+    lore:
+      - 'Vật phẩm này có thể nhận được'
+      - 'thông qua Máy khai thác tài nguyên thiên nhiên'
+  nuclear_reactor:
+    name: 'Lò phản ứng hạt nhân (Nuclear Reactor)'
+    lore:
+      - 'Vật phẩm này là sản phẩm phụ'
+      - 'sinh ra trong quá trình vận hành lò phản ứng hạt nhân'
   oil_pump:
-    name: Oil Pump
+    name: 'Máy bơm dầu (Oil Pump)'
     lore:
-    - Vật phẩm này có thể kiếm được
-    - bằng cách sử dụng Oil Pump
+      - 'Vật phẩm này có thể được'
+      - 'thu thập bằng Máy bơm dầu'
   pickaxe_of_containment:
-    name: Pickaxe of Containment
+    name: 'Cuốc của lồng giam quái (Pickaxe of Containment)'
     lore:
-    - Spawner có thể thu được
-    - bằng cách đập với
-    - Pickaxe of Containment
+      - 'Khối này có thể nhận được'
+      - 'sau khi được đào bằng'
+      - 'Cuốc của lồng giam quái'
   refinery:
-    name: Refinery
+    name: 'Máy lọc dầu (Refinery)'
     lore:
-    - Chế tạo vật phẩm này như hình
-    - sử dụng Refinery
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'bằng Máy lọc dầu'
+  barter_drop:
+    name: 'Vật phẩm nhận từ trao đổi với Piglin'
+    lore:
+      - 'Trao đổi thỏi vàng với Piglin'
+      - 'để có thể nhận được vật phẩm này'
+minecraft:
+  shaped:
+    name: 'Chế tạo có thứ tự'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong bàn chế tạo thông thường'
+      - 'Thứ tự sắp xếp rất quan trọng.'
+  shapeless:
+    name: 'Chế tạo không thứ tự'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'trong bàn chế tạo thông thường.'
+      - 'Thứ tự sắp xếp không quan trọng.'
+  furnace:
+    name: 'Công thức lò nung'
+    lore:
+      - 'Nung trong lò nung'
+      - 'để chế tạo ra vật phẩm bạn muốn'
+  blasting:
+    name: 'Công thức lò cao'
+    lore:
+      - 'Nung trong lò cao'
+      - 'để chế tạo ra vật phẩm bạn muốn'
+  smoking:
+    name: 'Công thức lò hun khói'
+    lore:
+      - 'Nung trong lò hun khói'
+      - 'để chế tạo ra vật phẩm bạn muốn'
+  campfire:
+    name: 'Công thức đống lửa trại'
+    lore:
+      - 'Nung trên đống lửa trại'
+      - 'để chế tạo ra vật phẩm bạn muốn'
+  stonecutting:
+    name: 'Công thức máy cắt đá'
+    lore:
+      - 'Chế tạo theo công thức đã hiển thị'
+      - 'bằng cách sử dụng máy cắt đá'
+  smithing:
+    name: 'Bàn rèn'
+    lore:
+      - 'Theo công thức đã hiển thị'
+      - 'chế tạo trong bàn rèn'
+      
