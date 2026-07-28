@@ -1,0 +1,200 @@
+From 4f2d5e2dc9b1c8e1a0742e67370eda6b1db27821 Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Fri, 10 Jul 2026 22:46:07 +0700
+Subject: [PATCH 3/8] feat(fix)log
+
+---
+ .../norain/slimefun4/EnvironmentChecker.java  |  5 +++-
+ .../norain/slimefun4/VaultIntegration.java    | 10 ++++++--
+ .../compatibillty/VersionedEvent.java         |  6 ++++-
+ .../listener/SlimefunMigrateListener.java     |  5 +++-
+ .../adapter/sqlcommon/SqlCommonAdapter.java   |  6 ++++-
+ .../storage/controller/ADataController.java   | 10 ++++++--
+ .../migrator/BlockStorageMigrator.java        |  3 ++-
+ .../migrator/PlayerProfileMigrator.java       | 23 +++++++++++++++----
+ 8 files changed, 54 insertions(+), 14 deletions(-)
+
+diff --git a/src/main/java/city/norain/slimefun4/EnvironmentChecker.java b/src/main/java/city/norain/slimefun4/EnvironmentChecker.java
+index 1f06d6c42..edb2ce7bd 100644
+--- a/src/main/java/city/norain/slimefun4/EnvironmentChecker.java
++++ b/src/main/java/city/norain/slimefun4/EnvironmentChecker.java
+@@ -79,7 +79,10 @@ class EnvironmentChecker {
+                 .runLater(
+                         () -> {
+                             if (Bukkit.getPluginManager().getPlugin("SlimeGlue") == null) {
+-                                sf.getLogger().log(Level.WARNING, "Phát hiện chưa cài đặt SlimeGlue (keo nhầy), bạn sẽ thiếu các kiểm tra bảo vệ bổ sung cho một số plugin!");
++                                sf.getLogger()
++                                        .log(
++                                                Level.WARNING,
++                                                "Phát hiện chưa cài đặt SlimeGlue (keo nhầy), bạn sẽ thiếu các kiểm tra bảo vệ bổ sung cho một số plugin!");
+                                 sf.getLogger().log(Level.WARNING, "Tải về: https://github.com/Xzavier0722/SlimeGlue");
+                             }
+                         },
+diff --git a/src/main/java/city/norain/slimefun4/VaultIntegration.java b/src/main/java/city/norain/slimefun4/VaultIntegration.java
+index f817fe3c8..abeb7de66 100644
+--- a/src/main/java/city/norain/slimefun4/VaultIntegration.java
++++ b/src/main/java/city/norain/slimefun4/VaultIntegration.java
+@@ -22,10 +22,16 @@ public class VaultIntegration {
+                 econ = rsp.getProvider();
+                 plugin.getLogger().log(Level.INFO, "Kết nối Vault thành công");
+             } else {
+-                plugin.getLogger().log(Level.WARNING, "Không thể kết nối Vault. Nếu bạn là người dùng CMI, vui lòng bật hệ thống kinh tế trong file cấu hình");
++                plugin.getLogger()
++                        .log(
++                                Level.WARNING,
++                                "Không thể kết nối Vault. Nếu bạn là người dùng CMI, vui lòng bật hệ thống kinh tế trong file cấu hình");
+             }
+         } else {
+-            plugin.getLogger().log(Level.WARNING, "Server chưa cài đặt Vault, tính năng mở khóa nghiên cứu bằng tiền tệ sẽ không khả dụng");
++            plugin.getLogger()
++                    .log(
++                            Level.WARNING,
++                            "Server chưa cài đặt Vault, tính năng mở khóa nghiên cứu bằng tiền tệ sẽ không khả dụng");
+         }
+     }
+ 
+diff --git a/src/main/java/city/norain/slimefun4/compatibillty/VersionedEvent.java b/src/main/java/city/norain/slimefun4/compatibillty/VersionedEvent.java
+index 08b57c828..12058307d 100644
+--- a/src/main/java/city/norain/slimefun4/compatibillty/VersionedEvent.java
++++ b/src/main/java/city/norain/slimefun4/compatibillty/VersionedEvent.java
+@@ -37,7 +37,11 @@ public class VersionedEvent {
+                 GET_CLICKED_INVENTORY.setAccessible(true);
+ 
+             } catch (NoSuchMethodException | ClassNotFoundException e) {
+-                Slimefun.logger().log(Level.WARNING, "Không thể khởi tạo module tương thích phiên bản event, một số tính năng có thể không hoạt động bình thường", e);
++                Slimefun.logger()
++                        .log(
++                                Level.WARNING,
++                                "Không thể khởi tạo module tương thích phiên bản event, một số tính năng có thể không hoạt động bình thường",
++                                e);
+             }
+         }
+     }
+diff --git a/src/main/java/city/norain/slimefun4/listener/SlimefunMigrateListener.java b/src/main/java/city/norain/slimefun4/listener/SlimefunMigrateListener.java
+index 330b1af67..90c169c21 100644
+--- a/src/main/java/city/norain/slimefun4/listener/SlimefunMigrateListener.java
++++ b/src/main/java/city/norain/slimefun4/listener/SlimefunMigrateListener.java
+@@ -17,7 +17,10 @@ public class SlimefunMigrateListener implements Listener {
+         if ((PlayerProfileMigrator.getInstance().hasOldData()
+                         || BlockStorageMigrator.getInstance().hasOldData())
+                 && p.hasPermission("slimefun.command.migrate")) {
+-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cPhát hiện dữ liệu cũ được lưu bằng file, vui lòng sử dụng /sf migrate để di chuyển dữ liệu cũ sang cơ sở dữ liệu!"));
++            p.sendMessage(
++                    ChatColor.translateAlternateColorCodes(
++                            '&',
++                            "&cPhát hiện dữ liệu cũ được lưu bằng file, vui lòng sử dụng /sf migrate để di chuyển dữ liệu cũ sang cơ sở dữ liệu!"));
+         }
+     }
+ 
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlCommonAdapter.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlCommonAdapter.java
+index f66ddaa30..85a18add6 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlCommonAdapter.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlCommonAdapter.java
+@@ -145,7 +145,11 @@ public abstract class SqlCommonAdapter<T extends ISqlCommonConfig> implements ID
+         }
+ 
+         try (var conn = ds.getConnection()) {
+-            Slimefun.logger().log(Level.INFO, "Đang cập nhật cơ sở dữ liệu lên phiên bản " + patch.getVersion() + ", có thể mất một chút thời gian...");
++            Slimefun.logger()
++                    .log(
++                            Level.INFO,
++                            "Đang cập nhật cơ sở dữ liệu lên phiên bản " + patch.getVersion()
++                                    + ", có thể mất một chút thời gian...");
+             var stmt = conn.createStatement();
+             patch.updateVersion(stmt, config);
+             patch.patch(stmt, config);
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
+index 9d878f7ef..6ec84f6de 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
+@@ -144,13 +144,19 @@ public abstract class ADataController {
+ 
+             while (pendingTask > 0) {
+                 var doneTaskPercent = String.format("%.1f", (totalTask - pendingTask) / totalTask * 100);
+-                logger.log(Level.INFO, "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)", new Object[] {pendingTask, doneTaskPercent});
++                logger.log(
++                        Level.INFO,
++                        "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)",
++                        new Object[] {pendingTask, doneTaskPercent});
+                 TimeUnit.SECONDS.sleep(1);
+                 var currentTask = scheduledWriteTasks.size();
+ 
+                 if (pendingTask == currentTask) {
+                     if (timer.peek() / 1000 > 10) {
+-                        Slimefun.logger().log(Level.WARNING, "Phát hiện tác vụ lưu mất nhiều thời gian, vui lòng gửi stack trace thread bên dưới HOÀN CHỈNH cho nhà phát triển để xác định vấn đề: ");
++                        Slimefun.logger()
++                                .log(
++                                        Level.WARNING,
++                                        "Phát hiện tác vụ lưu mất nhiều thời gian, vui lòng gửi stack trace thread bên dưới HOÀN CHỈNH cho nhà phát triển để xác định vấn đề: ");
+                         Slimefun.logger()
+                                 .log(Level.WARNING, Slimefun.getProfiler().snapshotThreads());
+                     }
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/BlockStorageMigrator.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/BlockStorageMigrator.java
+index 2454316d3..d1a1f7917 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/BlockStorageMigrator.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/BlockStorageMigrator.java
+@@ -116,7 +116,8 @@ public class BlockStorageMigrator implements IMigrator {
+             Slimefun.logger().log(Level.INFO, "Đang di chuyển dữ liệu khối: " + id + "(" + ++count + "/" + total + ")");
+ 
+             if (SlimefunItem.getById(id) == null) {
+-                Slimefun.logger().log(Level.WARNING, "Phát hiện ID khối không tồn tại (" + id + "), đã bỏ qua di chuyển.");
++                Slimefun.logger()
++                        .log(Level.WARNING, "Phát hiện ID khối không tồn tại (" + id + "), đã bỏ qua di chuyển.");
+                 continue;
+             }
+ 
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
+index d072cd549..c20c6498f 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
+@@ -68,7 +68,11 @@ public class PlayerProfileMigrator implements IMigrator {
+                 var p = Bukkit.getOfflinePlayer(uuid);
+ 
+                 if (!p.hasPlayedBefore()) {
+-                    Slimefun.logger().log(Level.INFO, "Phát hiện dữ liệu của người chơi chưa từng tham gia server, đã tự động bỏ qua: " + uuid);
++                    Slimefun.logger()
++                            .log(
++                                    Level.INFO,
++                                    "Phát hiện dữ liệu của người chơi chưa từng tham gia server, đã tự động bỏ qua: "
++                                            + uuid);
+                     total--;
+                     continue;
+                 }
+@@ -76,21 +80,30 @@ public class PlayerProfileMigrator implements IMigrator {
+                 migratePlayerProfile(p);
+ 
+                 migratedCount++;
+-                Slimefun.logger().log(Level.INFO, "Di chuyển dữ liệu người chơi thành công: " + p.getName() + "(" + migratedCount + "/" + total + ")");
++                Slimefun.logger()
++                        .log(
++                                Level.INFO,
++                                "Di chuyển dữ liệu người chơi thành công: " + p.getName() + "(" + migratedCount + "/"
++                                        + total + ")");
+             } catch (IllegalArgumentException ignored) {
+                 result = MigrateStatus.FAILED;
+-                Slimefun.logger().log(Level.WARNING, "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
++                Slimefun.logger()
++                        .log(Level.WARNING, "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
+             }
+         }
+ 
+         if (MigratorUtil.createDirBackup(playerFolder)) {
+             Slimefun.logger()
+-                    .log(Level.INFO, "Di chuyển thành công {0} dữ liệu người chơi! Dữ liệu trước khi di chuyển đã được lưu trong ./data-storage/Slimefun/old_data", migratedCount);
++                    .log(
++                            Level.INFO,
++                            "Di chuyển thành công {0} dữ liệu người chơi! Dữ liệu trước khi di chuyển đã được lưu trong ./data-storage/Slimefun/old_data",
++                            migratedCount);
+             try {
+                 Files.deleteIfExists(playerFolder.toPath());
+             } catch (IOException e) {
+                 result = MigrateStatus.FAILED;
+-                Slimefun.logger().log(Level.WARNING, "Xóa thư mục dữ liệu người chơi cũ thất bại, vui lòng xóa thủ công", e);
++                Slimefun.logger()
++                        .log(Level.WARNING, "Xóa thư mục dữ liệu người chơi cũ thất bại, vui lòng xóa thủ công", e);
+             }
+         }
+ 
+-- 
+2.47.3
+

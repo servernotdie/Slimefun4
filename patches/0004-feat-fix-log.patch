@@ -1,0 +1,46 @@
+From 86d3cdc234dbbdd85a46b889caffa92670bc3cb5 Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Fri, 10 Jul 2026 22:57:44 +0700
+Subject: [PATCH 4/8] feat(fix)log
+
+---
+ .../slimefun4/storage/controller/ADataController.java      | 7 +++----
+ .../slimefun4/storage/migrator/PlayerProfileMigrator.java  | 4 +++-
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
+index 6ec84f6de..ca9bb95cc 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
+@@ -144,10 +144,9 @@ public abstract class ADataController {
+ 
+             while (pendingTask > 0) {
+                 var doneTaskPercent = String.format("%.1f", (totalTask - pendingTask) / totalTask * 100);
+-                logger.log(
+-                        Level.INFO,
+-                        "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)",
+-                        new Object[] {pendingTask, doneTaskPercent});
++                logger.log(Level.INFO, "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)", new Object[] {
++                    pendingTask, doneTaskPercent
++                });
+                 TimeUnit.SECONDS.sleep(1);
+                 var currentTask = scheduledWriteTasks.size();
+ 
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
+index c20c6498f..2e4727d7e 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
+@@ -88,7 +88,9 @@ public class PlayerProfileMigrator implements IMigrator {
+             } catch (IllegalArgumentException ignored) {
+                 result = MigrateStatus.FAILED;
+                 Slimefun.logger()
+-                        .log(Level.WARNING, "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
++                        .log(
++                                Level.WARNING,
++                                "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
+             }
+         }
+ 
+-- 
+2.47.3
+
