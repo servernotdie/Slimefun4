@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SKIP_BUILD=false
+for arg in "$@"; do
+    case "$arg" in
+        --skip-build) SKIP_BUILD=true ;;
+    esac
+done
+
 MYDIR="$(cd "$(dirname "$0")" && pwd)"
 WORKTREE="$(git rev-parse --show-toplevel)"
 
@@ -13,7 +20,7 @@ done
 echo ""
 if [ -f "$MYDIR/additional-translations.patch" ]; then
     echo "==> Applying additional-translations.patch..."
-    git apply "$MYDIR/additional-translations.patch"
+    git apply --exclude='patches/*' "$MYDIR/additional-translations.patch"
     echo "    Staging changes..."
     git add -A
     git commit -m "feat: additional translation fixes" \
@@ -21,10 +28,12 @@ if [ -f "$MYDIR/additional-translations.patch" ]; then
         --date "$(date -R)"
 fi
 
-echo ""
-echo "==> Building project..."
-cd "$WORKTREE"
-./gradlew build --no-daemon
+if [ "$SKIP_BUILD" = false ]; then
+    echo ""
+    echo "==> Building project..."
+    cd "$WORKTREE"
+    ./gradlew build --no-daemon
+fi
 
 echo ""
-echo "All patches applied and build complete."
+echo "All patches applied."
