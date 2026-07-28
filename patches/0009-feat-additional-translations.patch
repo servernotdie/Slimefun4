@@ -1,0 +1,90 @@
+From 818cdd6fb8f52b74612dd599d6d052e02fb88a62 Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Tue, 28 Jul 2026 14:32:18 +0700
+Subject: [PATCH 9/9] feat: additional translation fixes
+
+diff --git a/src/main/resources/languages/vi/messages.yml b/src/main/resources/languages/vi/messages.yml
+index 3df0611e1..cab08c04f 100644
+--- a/src/main/resources/languages/vi/messages.yml
++++ b/src/main/resources/languages/vi/messages.yml
+@@ -57,8 +57,8 @@ commands:
+     disabled: '&7Đã tắt chế độ gỡ lỗi'
+   reload:
+     description: "Tải lại tệp cấu hình Slimefun"
+-    success: "&aTải lại tệp cấu hình thành công."
+-    failed: "&cTải lại tệp cấu hình thất bại! Bạn có thể cần khởi động lại máy chủ để áp dụng thay đổi, hãy xem log console để biết thêm thông tin."
++    reload-success: "&aTải lại tệp cấu hình thành công."
++    reload-failed: "&cTải lại tệp cấu hình thất bại! Bạn có thể cần khởi động lại máy chủ để áp dụng thay đổi, hãy xem log console để biết thêm thông tin."
+   migrate:
+     description: "Di chuyển dữ liệu cũ"
+     confirm: "&cBạn có chắc chắn muốn tiến hành di chuyển dữ liệu không? Nhập /sf migrate confirm để bắt đầu di chuyển\nTrong quá trình di chuyển, vui lòng không để người chơi vào máy chủ thao tác với máy móc và vật phẩm Slimefun!"
+@@ -145,7 +145,7 @@ guide:
+     source: 'Mã nguồn'
+     versions: 'Các phiên bản đã cài đặt'
+   credits:
+-    commit: 'Commit'
++    commit: 'Lượt commit'
+     commits: 'Số lượt commit'
+     profile-link: 'Nhấp để truy cập trang cá nhân Github của họ'
+     open: 'Nhấp để xem danh sách người đóng góp'
+@@ -259,6 +259,7 @@ messages:
+   no-iron-golem-heal: '&cĐây không phải thỏi sắt. Không thể dùng để chữa trị cho Iron Golem!'
+   link-prompt: '&eNhấp vào đây:'
+   diet-cookie: '&eBạn cảm thấy nhẹ nhõm hơn...'
++  await-deletion: '&cBạn không thể đặt khối Slimefun ngay sau khi phá vỡ một khối. Hãy thử lại sau.'
+   fortune-cookie:
+     - '&7Cứu tôi với! Tôi bị mắc kẹt trong nhà máy bánh quy may mắn!'
+     - '&7Ngày mai bạn sẽ chết dưới tay...     một con Creeper'
+diff --git a/src/main/resources/languages/vi/researches.yml b/src/main/resources/languages/vi/researches.yml
+index 38d6f3295..de93e962f 100644
+--- a/src/main/resources/languages/vi/researches.yml
++++ b/src/main/resources/languages/vi/researches.yml
+@@ -250,3 +250,14 @@ slimefun:
+   bee_armor: Giáp ong
+   wise_talisman: Bùa ma thuật của sự Tinh Khôn
+   book_binder: Sách phù phép Ràng Buộc
++  medium_tier_electric_ingot_machines: Máy chế tạo phôi điện cao cấp
++  trident: Cây đinh ba
++  auto_crafting: Chế tạo tự động
++  produce_collector: Máy thu hoạch tự động
++  improved_generators: Máy phát điện cải tiến
++  ingredients_and_cheese: Ẩm thực Slimefun
++  medium_tier_auto_enchanting: Phù phép tự động cao cấp
++  portable_teleporter: Dịch chuyển từ mọi nơi
++  farmer_talisman: Bùa hộ mệnh nông dân
++  rainbow_armor: Tôi muốn thấy cầu vồng trên bầu trời cao
++
+diff --git a/src/main/resources/languages/zh-CN/messages.yml b/src/main/resources/languages/zh-CN/messages.yml
+index 157624b38..a801385fa 100644
+--- a/src/main/resources/languages/zh-CN/messages.yml
++++ b/src/main/resources/languages/zh-CN/messages.yml
+@@ -57,8 +57,8 @@ commands:
+     disabled: '&7已禁用调试模式'
+   reload:
+     description: "重载 Slimefun 配置文件"
+-    success: "&a成功重载配置文件."
+-    failed: "&c重载配置文件失败! 你可能需要重启服务器以应用更改, 查看后台输出信息了解更多."
++    reload-success: "&a成功重载配置文件."
++    reload-failed: "&c重载配置文件失败! 你可能需要重启服务器以应用更改, 查看后台输出信息了解更多."
+   migrate:
+     description: "迁移旧数据"
+     confirm: "&c你确定要进行数据迁移吗? 确认请输入 /sf migrate confirm 开始迁移\n迁移过程中请不要让玩家进入服务器操作 Slimefun 相关机器及物品!"
+@@ -259,6 +259,7 @@ messages:
+   no-iron-golem-heal: '&c这不是铁锭. 不能用来治疗铁傀儡!'
+   link-prompt: '&e单击此处:'
+   diet-cookie: '&e你感觉变轻了...'
++  await-deletion: '&c你不能在刚破坏一个粘液方块后立即放置另一个。请稍后再试。'
+   fortune-cookie:
+     - '&7救救我! 我被困在了幸运饼干工厂里!'
+     - '&7你明天将会死在...     苦力怕的手下'
+diff --git a/src/main/resources/languages/zh-CN/researches.yml b/src/main/resources/languages/zh-CN/researches.yml
+index a0c233f74..d11c52344 100644
+--- a/src/main/resources/languages/zh-CN/researches.yml
++++ b/src/main/resources/languages/zh-CN/researches.yml
+@@ -259,3 +259,4 @@ slimefun:
+   medium_tier_auto_enchanting: 高速自动附魔/祛魔
+   portable_teleporter: 从任何地方传送
+   farmer_talisman: 农夫护身符
++  rainbow_armor: 我想看见天上的彩虹
+--
+2.47.3
