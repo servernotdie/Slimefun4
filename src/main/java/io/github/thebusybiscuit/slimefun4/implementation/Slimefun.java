@@ -74,6 +74,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.listeners.MultiBlockLis
 import io.github.thebusybiscuit.slimefun4.implementation.listeners.NetworkListener;
 import io.github.thebusybiscuit.slimefun4.implementation.listeners.PlayerProfileListener;
 import io.github.thebusybiscuit.slimefun4.implementation.listeners.RadioactivityListener;
+import io.github.thebusybiscuit.slimefun4.implementation.listeners.RuneInteractionListener;
 import io.github.thebusybiscuit.slimefun4.implementation.listeners.SeismicAxeListener;
 import io.github.thebusybiscuit.slimefun4.implementation.listeners.SlimefunBootsListener;
 import io.github.thebusybiscuit.slimefun4.implementation.listeners.SlimefunBowListener;
@@ -737,6 +738,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
         new JoinListener(this);
 
         // Item-specific Listeners
+        new RuneInteractionListener(this);
         new CoolerListener(this, (Cooler) SlimefunItems.COOLER.getItem());
         new SeismicAxeListener(this, (SeismicAxe) SlimefunItems.SEISMIC_AXE.getItem());
         new RadioactivityListener(this);
