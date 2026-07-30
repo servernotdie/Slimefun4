@@ -1,0 +1,276 @@
+From 27e1f3a716440a5bd6c3994c90d4199339b10f88 Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Thu, 30 Jul 2026 11:27:59 +0700
+Subject: [PATCH] feat: add inventory drag-and-drop for runes and fix Folia
+ compatibility
+
+- Change EnchantmentRune and SoulboundRune to use runSyncAtLocation
+  instead of runSyncAtEntity to fix cross-region entity access on Folia
+- Create RuneInteractionListener to allow applying runes via inventory
+  click-and-drag (cursor rune clicked onto target item)
+- Register RuneInteractionListener in Slimefun#registerListeners
+---
+ .../slimefun4/implementation/Slimefun.java    |   2 +
+ .../items/magical/runes/EnchantmentRune.java  |   8 +-
+ .../items/magical/runes/SoulboundRune.java    |   6 +-
+ .../listeners/RuneInteractionListener.java    | 157 ++++++++++++++++++
+ 4 files changed, 166 insertions(+), 7 deletions(-)
+ create mode 100644 src/main/java/io/github/thebusybiscuit/slimefun4/implementation/listeners/RuneInteractionListener.java
+
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/Slimefun.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/Slimefun.java
+index a34e6342e..25799bedb 100644
+--- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/Slimefun.java
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/Slimefun.java
+@@ -74,6 +74,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.listeners.MultiBlockLis
+ import io.github.thebusybiscuit.slimefun4.implementation.listeners.NetworkListener;
+ import io.github.thebusybiscuit.slimefun4.implementation.listeners.PlayerProfileListener;
+ import io.github.thebusybiscuit.slimefun4.implementation.listeners.RadioactivityListener;
++import io.github.thebusybiscuit.slimefun4.implementation.listeners.RuneInteractionListener;
+ import io.github.thebusybiscuit.slimefun4.implementation.listeners.SeismicAxeListener;
+ import io.github.thebusybiscuit.slimefun4.implementation.listeners.SlimefunBootsListener;
+ import io.github.thebusybiscuit.slimefun4.implementation.listeners.SlimefunBowListener;
+@@ -742,6 +743,7 @@ public final class Slimefun extends JavaPlugin implements SlimefunAddon, ICompat
+         new JoinListener(this);
+ 
+         // Item-specific Listeners
++        new RuneInteractionListener(this);
+         new CoolerListener(this, (Cooler) SlimefunItems.COOLER.getItem());
+         new SeismicAxeListener(this, (SeismicAxe) SlimefunItems.SEISMIC_AXE.getItem());
+         new RadioactivityListener(this);
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/runes/EnchantmentRune.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/runes/EnchantmentRune.java
+index 4d9cccb9e..d3dafb6c1 100644
+--- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/runes/EnchantmentRune.java
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/runes/EnchantmentRune.java
+@@ -81,7 +81,7 @@ public class EnchantmentRune extends SimpleSlimefunItem<ItemDropHandler> {
+         return (e, p, item) -> {
+             if (isItem(item.getItemStack())) {
+                 if (canUse(p, true)) {
+-                    Slimefun.runSyncAtEntity(
++                    Slimefun.runSyncAtLocation(
+                             () -> {
+                                 try {
+                                     addRandomEnchantment(p, item);
+@@ -90,7 +90,7 @@ public class EnchantmentRune extends SimpleSlimefunItem<ItemDropHandler> {
+                                 }
+                             },
+                             20L,
+-                            p);
++                            item.getLocation());
+                 }
+ 
+                 return true;
+@@ -151,7 +151,7 @@ public class EnchantmentRune extends SimpleSlimefunItem<ItemDropHandler> {
+                 // This lightning is just an effect, it deals no damage.
+                 l.getWorld().strikeLightningEffect(l);
+ 
+-                Slimefun.runSyncAtEntity(
++                Slimefun.runSyncAtLocation(
+                         () -> {
+                             // Being sure entities are still valid and not picked up or whatsoever.
+                             if (rune.isValid() && item.isValid() && itemStack.getAmount() == 1) {
+@@ -182,7 +182,7 @@ public class EnchantmentRune extends SimpleSlimefunItem<ItemDropHandler> {
+                             }
+                         },
+                         10L,
+-                        p);
++                        l);
+             } else {
+                 Slimefun.getLocalization().sendMessage(p, "messages.enchantment-rune.fail", true);
+             }
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/runes/SoulboundRune.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/runes/SoulboundRune.java
+index 390dbdf41..beecb5df7 100644
+--- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/runes/SoulboundRune.java
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/runes/SoulboundRune.java
+@@ -52,7 +52,7 @@ public class SoulboundRune extends SimpleSlimefunItem<ItemDropHandler> {
+                     return true;
+                 }
+ 
+-                Slimefun.runSyncAtEntity(() -> activate(p, item), 20L, p);
++                Slimefun.runSyncAtLocation(() -> activate(p, item), 20L, item.getLocation());
+ 
+                 return true;
+             }
+@@ -78,7 +78,7 @@ public class SoulboundRune extends SimpleSlimefunItem<ItemDropHandler> {
+                 // This lightning is just an effect, it deals no damage.
+                 l.getWorld().strikeLightningEffect(l);
+ 
+-                Slimefun.runSyncAtEntity(
++                Slimefun.runSyncAtLocation(
+                         () -> {
+                             // Being sure entities are still valid and not picked up or whatsoever.
+                             if (rune.isValid() && item.isValid() && itemStack.getAmount() == 1) {
+@@ -98,7 +98,7 @@ public class SoulboundRune extends SimpleSlimefunItem<ItemDropHandler> {
+                             }
+                         },
+                         10L,
+-                        p);
++                        l);
+             } else {
+                 Slimefun.getLocalization().sendMessage(p, "messages.soulbound-rune.fail", true);
+             }
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/listeners/RuneInteractionListener.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/listeners/RuneInteractionListener.java
+new file mode 100644
+index 000000000..7aef654a8
+--- /dev/null
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/listeners/RuneInteractionListener.java
+@@ -0,0 +1,157 @@
++package io.github.thebusybiscuit.slimefun4.implementation.listeners;
++
++import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
++import io.github.thebusybiscuit.slimefun4.core.services.sounds.SoundEffect;
++import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
++import io.github.thebusybiscuit.slimefun4.implementation.items.magical.runes.EnchantmentRune;
++import io.github.thebusybiscuit.slimefun4.implementation.items.magical.runes.SoulboundRune;
++import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
++import java.util.ArrayList;
++import java.util.List;
++import javax.annotation.Nonnull;
++import org.bukkit.Material;
++import org.bukkit.enchantments.Enchantment;
++import org.bukkit.entity.Player;
++import org.bukkit.event.EventHandler;
++import org.bukkit.event.Listener;
++import org.bukkit.event.inventory.InventoryClickEvent;
++import org.bukkit.event.inventory.InventoryType;
++import org.bukkit.inventory.ItemStack;
++
++public class RuneInteractionListener implements Listener {
++
++    public RuneInteractionListener(@Nonnull Slimefun plugin) {
++        plugin.getServer().getPluginManager().registerEvents(this, plugin);
++    }
++
++    @EventHandler(ignoreCancelled = true)
++    public void onInventoryClick(InventoryClickEvent e) {
++        if (!(e.getWhoClicked() instanceof Player player)) {
++            return;
++        }
++
++        ItemStack cursor = e.getCursor();
++        ItemStack current = e.getCurrentItem();
++
++        if (cursor == null
++                || cursor.getType() == Material.AIR
++                || current == null
++                || current.getType() == Material.AIR) {
++            return;
++        }
++
++        if (e.getClickedInventory() == null || e.getClickedInventory().getType() != InventoryType.PLAYER) {
++            return;
++        }
++
++        if (e.getView().getTopInventory().getType() != InventoryType.CRAFTING) {
++            return;
++        }
++
++        if (e.isShiftClick()) {
++            return;
++        }
++
++        SlimefunItem runeItem = SlimefunItem.getByItem(cursor);
++        if (runeItem == null) {
++            return;
++        }
++
++        if (runeItem instanceof SoulboundRune soulboundRune) {
++            applySoulboundRune(player, cursor, current, soulboundRune);
++            e.setCancelled(true);
++        } else if (runeItem instanceof EnchantmentRune enchantmentRune) {
++            applyEnchantmentRune(player, cursor, current, enchantmentRune);
++            e.setCancelled(true);
++        }
++    }
++
++    private void applySoulboundRune(
++            @Nonnull Player player, @Nonnull ItemStack cursor, @Nonnull ItemStack target, @Nonnull SoulboundRune rune) {
++        if (!rune.canUse(player, true)) {
++            return;
++        }
++
++        if (SlimefunUtils.isSoulbound(target)) {
++            Slimefun.getLocalization().sendMessage(player, "messages.soulbound-rune.fail", true);
++            return;
++        }
++
++        if (target.getAmount() != 1) {
++            Slimefun.getLocalization().sendMessage(player, "messages.soulbound-rune.fail", true);
++            return;
++        }
++
++        SlimefunItem targetSfItem = SlimefunItem.getByItem(target);
++        if (targetSfItem != null && targetSfItem instanceof SoulboundRune) {
++            return;
++        }
++
++        SlimefunUtils.setSoulbound(target, true);
++
++        if (cursor.getAmount() > 1) {
++            cursor.setAmount(cursor.getAmount() - 1);
++        } else {
++            player.setItemOnCursor(null);
++        }
++
++        SoundEffect.SOULBOUND_RUNE_RITUAL_SOUND.playFor(player);
++
++        Slimefun.getLocalization().sendMessage(player, "messages.soulbound-rune.success", true);
++    }
++
++    private void applyEnchantmentRune(
++            @Nonnull Player player,
++            @Nonnull ItemStack cursor,
++            @Nonnull ItemStack target,
++            @Nonnull EnchantmentRune rune) {
++        if (!rune.canUse(player, true)) {
++            return;
++        }
++
++        if (target.getAmount() != 1) {
++            Slimefun.getLocalization().sendMessage(player, "messages.enchantment-rune.fail", true);
++            return;
++        }
++
++        SlimefunItem targetSfItem = SlimefunItem.getByItem(target);
++        if (targetSfItem != null && !targetSfItem.isEnchantable()) {
++            Slimefun.getLocalization().sendMessage(player, "messages.enchantment-rune.fail", true);
++            return;
++        }
++
++        List<Enchantment> potentialEnchantments = new ArrayList<>();
++        for (Enchantment enchantment : Enchantment.values()) {
++            if (enchantment.equals(Enchantment.BINDING_CURSE) || enchantment.equals(Enchantment.VANISHING_CURSE)) {
++                continue;
++            }
++            if (enchantment.canEnchantItem(target)) {
++                potentialEnchantments.add(enchantment);
++            }
++        }
++
++        for (Enchantment existing : target.getEnchantments().keySet()) {
++            potentialEnchantments.removeIf(e -> e.equals(existing) || e.conflictsWith(existing));
++        }
++
++        if (potentialEnchantments.isEmpty()) {
++            Slimefun.getLocalization().sendMessage(player, "messages.enchantment-rune.no-enchantment", true);
++            return;
++        }
++
++        Enchantment selected = potentialEnchantments.get((int) (Math.random() * potentialEnchantments.size()));
++        int level = selected.getMaxLevel() == 1 ? 1 : (int) (Math.random() * selected.getMaxLevel()) + 1;
++
++        target.addEnchantment(selected, level);
++
++        if (cursor.getAmount() > 1) {
++            cursor.setAmount(cursor.getAmount() - 1);
++        } else {
++            player.setItemOnCursor(null);
++        }
++
++        SoundEffect.ENCHANTMENT_RUNE_ADD_ENCHANT_SOUND.playFor(player);
++
++        Slimefun.getLocalization().sendMessage(player, "messages.enchantment-rune.success", true);
++    }
++}
+-- 
+2.47.3
+
