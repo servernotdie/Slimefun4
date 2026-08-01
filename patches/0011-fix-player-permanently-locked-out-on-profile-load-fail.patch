@@ -1,0 +1,177 @@
+From c07c2275b96c726409491007042091813a356cec Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Sat, 1 Aug 2026 14:47:38 +0700
+Subject: [PATCH] fix: player permanently locked out when profile load fails or
+ hangs
+
+- PlayerProfile.getOrCreate: processProfiles.remove now always runs (finally),
+  added 10s timeout for profile loading and fallback to a temporary profile
+  instead of permanently locking the player (guide shows 'opening' but never opens)
+- ProfileDataController.getProfileAsync: wrapped in try/catch, DB read errors
+  are logged at SEVERE and the callback receives null instead of failing silently
+---
+ .../controller/ProfileDataController.java     |  13 ++-
+ .../slimefun4/api/player/PlayerProfile.java   | 100 +++++++++++++-----
+ 2 files changed, 84 insertions(+), 29 deletions(-)
+
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ProfileDataController.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ProfileDataController.java
+index 35889674c..6cd766d35 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ProfileDataController.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ProfileDataController.java
+@@ -113,7 +113,18 @@ public class ProfileDataController extends ADataController {
+     }
+ 
+     public void getProfileAsync(OfflinePlayer p, IAsyncReadCallback<PlayerProfile> callback) {
+-        scheduleReadTask(() -> invokeCallback(callback, getProfile(p)));
++        scheduleReadTask(() -> {
++            try {
++                invokeCallback(callback, getProfile(p));
++            } catch (Exception e) {
++                // Không để lỗi rơi im lặng: ghi log và cho phép callback xử lý như không tìm thấy hồ sơ
++                logger.log(
++                        Level.SEVERE,
++                        "Không thể tải hồ sơ của người chơi \"" + p.getName() + "\" (" + p.getUniqueId() + ")",
++                        e);
++                invokeCallback(callback, null);
++            }
++        });
+     }
+ 
+     public CompletableFuture<PlayerBackpack> getBackpackAsync(OfflinePlayer owner, int num) {
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/api/player/PlayerProfile.java b/src/main/java/io/github/thebusybiscuit/slimefun4/api/player/PlayerProfile.java
+index b92ba2fe0..93299e933 100644
+--- a/src/main/java/io/github/thebusybiscuit/slimefun4/api/player/PlayerProfile.java
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/api/player/PlayerProfile.java
+@@ -2,7 +2,6 @@ package io.github.thebusybiscuit.slimefun4.api.player;
+ 
+ import com.google.common.collect.ImmutableList;
+ import com.google.common.collect.ImmutableSet;
+-import com.xzavier0722.mc.plugin.slimefun4.storage.callback.IAsyncReadCallback;
+ import io.github.bakedlibs.dough.common.ChatColors;
+ import io.github.bakedlibs.dough.config.Config;
+ import io.github.thebusybiscuit.slimefun4.api.events.AsyncProfileLoadEvent;
+@@ -26,6 +25,7 @@ import java.util.Set;
+ import java.util.UUID;
+ import java.util.concurrent.ConcurrentHashMap;
+ import java.util.concurrent.CopyOnWriteArrayList;
++import java.util.concurrent.TimeUnit;
+ import java.util.function.Consumer;
+ import java.util.logging.Level;
+ import javax.annotation.Nonnull;
+@@ -53,6 +53,12 @@ import org.bukkit.entity.Player;
+ public class PlayerProfile {
+     private static final Map<UUID, Boolean> processProfiles = new ConcurrentHashMap<>();
+ 
++    /**
++     * Khoảng thời gian chờ tối đa (giây) để tải hồ sơ người chơi từ cơ sở dữ liệu.
++     * Nếu vượt quá, một hồ sơ tạm thời sẽ được tạo để tránh khóa người chơi vĩnh viễn.
++     */
++    private static final long PROFILE_LOAD_TIMEOUT = 10;
++
+     private final UUID owner;
+     private int backpackNum;
+     private final Config waypointsFile;
+@@ -542,35 +548,73 @@ public class PlayerProfile {
+                 .count();
+     }
+ 
+-    private static void getOrCreate(OfflinePlayer p, Consumer<PlayerProfile> cb) {
+-        var controller = Slimefun.getDatabaseManager().getProfileDataController();
+-        controller.getProfileAsync(p, new IAsyncReadCallback<>() {
+-            @Override
+-            public void onResult(PlayerProfile result) {
+-                invokeCb(result, false);
+-                processProfiles.remove(result.getUUID());
+-            }
++    private static void invokeCb(PlayerProfile pf, boolean newlyCreated, Consumer<PlayerProfile> cb) {
++        if (newlyCreated) {
++            AsyncProfileLoadEvent event = new AsyncProfileLoadEvent(pf);
++            Bukkit.getPluginManager().callEvent(event);
++        }
+ 
+-            @Override
+-            public void onResultNotFound() {
+-                try {
+-                    var pf = controller.createProfile(p);
+-                    invokeCb(pf, true);
+-                } finally {
+-                    processProfiles.remove(p.getUniqueId());
+-                }
+-            }
++        if (cb != null) {
++            cb.accept(pf);
++        }
++    }
+ 
+-            private void invokeCb(PlayerProfile pf, boolean newlyCreated) {
+-                if (newlyCreated) {
+-                    AsyncProfileLoadEvent event = new AsyncProfileLoadEvent(pf);
+-                    Bukkit.getPluginManager().callEvent(event);
+-                }
++    private static void getOrCreate(OfflinePlayer p, Consumer<PlayerProfile> cb) {
++        var controller = Slimefun.getDatabaseManager().getProfileDataController();
+ 
+-                if (cb != null) {
+-                    cb.accept(pf);
+-                }
+-            }
+-        });
++        try {
++            controller
++                    .getProfileAsync(p)
++                    .orTimeout(PROFILE_LOAD_TIMEOUT, TimeUnit.SECONDS)
++                    .whenCompleteAsync(
++                            (result, error) -> {
++                                try {
++                                    if (error != null) {
++                                        Slimefun.logger()
++                                                .log(
++                                                        Level.SEVERE,
++                                                        error,
++                                                        () -> "Không thể tải hồ sơ của người chơi \""
++                                                                + p.getName()
++                                                                + "\" ("
++                                                                + p.getUniqueId()
++                                                                + "), đang tạo hồ sơ tạm thời để tránh khóa người chơi...");
++                                        result = null;
++                                    }
++
++                                    if (result != null) {
++                                        invokeCb(result, false, cb);
++                                    } else {
++                                        var pf = controller.createProfile(p);
++                                        invokeCb(pf, true, cb);
++                                    }
++                                } catch (Exception e) {
++                                    Slimefun.logger()
++                                            .log(
++                                                    Level.SEVERE,
++                                                    e,
++                                                    () -> "Không thể tải hoặc tạo hồ sơ của người chơi \""
++                                                            + p.getName()
++                                                            + "\" ("
++                                                            + p.getUniqueId()
++                                                            + ")");
++                                } finally {
++                                    // Luôn xóa khỏi processProfiles để người chơi không bị khóa vĩnh viễn
++                                    processProfiles.remove(p.getUniqueId());
++                                }
++                            },
++                            controller.getCallbackExecutor());
++        } catch (Exception e) {
++            Slimefun.logger()
++                    .log(
++                            Level.SEVERE,
++                            e,
++                            () -> "Không thể bắt đầu tải hồ sơ của người chơi \""
++                                    + p.getName()
++                                    + "\" ("
++                                    + p.getUniqueId()
++                                    + ")");
++            processProfiles.remove(p.getUniqueId());
++        }
+     }
+ }
+-- 
+2.47.3
+
