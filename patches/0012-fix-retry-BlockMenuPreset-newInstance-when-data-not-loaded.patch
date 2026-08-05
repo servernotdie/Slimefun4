@@ -1,0 +1,53 @@
+From a19f1e823f1891434ccf83b138f8b77f8927a3a6 Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Wed, 5 Aug 2026 22:06:06 +0700
+Subject: [PATCH] fix: retry BlockMenuPreset.newInstance when data not loaded
+
+---
+ .../api/inventory/BlockMenuPreset.java        | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/src/main/java/me/mrCookieSlime/Slimefun/api/inventory/BlockMenuPreset.java b/src/main/java/me/mrCookieSlime/Slimefun/api/inventory/BlockMenuPreset.java
+index 271e67987..8fe0ec882 100644
+--- a/src/main/java/me/mrCookieSlime/Slimefun/api/inventory/BlockMenuPreset.java
++++ b/src/main/java/me/mrCookieSlime/Slimefun/api/inventory/BlockMenuPreset.java
+@@ -1,5 +1,7 @@
+ package me.mrCookieSlime.Slimefun.api.inventory;
+ 
++import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunBlockData;
++import com.xzavier0722.mc.plugin.slimefun4.storage.util.StorageCacheUtils;
+ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+@@ -220,11 +222,28 @@ public abstract class BlockMenuPreset extends ChestMenu {
+     public void newInstance(@Nonnull BlockMenu menu, @Nonnull Location l) {
+         Validate.notNull(l, "Cannot create a new BlockMenu without a Location");
+ 
++        newInstance(menu, l, 0);
++    }
++
++    private void newInstance(@Nonnull BlockMenu menu, @Nonnull Location l, int attempts) {
+         Slimefun.runSyncAtLocation(
+                 () -> {
+                     locked = true;
+ 
+                     try {
++                        SlimefunBlockData blockData = StorageCacheUtils.getBlock(l);
++
++                        if (blockData == null || !blockData.isDataLoaded()) {
++                            // On Folia this task may run before the block data finished
++                            // loading (or after the chunk was unloaded). Wait a few ticks
++                            // for the data to become available, the menu is re-created on
++                            // the next chunk load anyway.
++                            if (blockData != null && attempts < 40) {
++                                newInstance(menu, l, attempts + 1);
++                            }
++                            return;
++                        }
++
+                         newInstance(menu, l.getBlock());
+                     } catch (Exception | LinkageError x) {
+                         getSlimefunItem().error("An Error occurred while trying to create a BlockMenu", x);
+-- 
+2.47.3
+
