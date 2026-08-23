@@ -1,7 +1,5 @@
 package me.mrCookieSlime.Slimefun.api.inventory;
 
-import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunBlockData;
-import com.xzavier0722.mc.plugin.slimefun4.storage.util.StorageCacheUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
@@ -222,28 +220,11 @@ public abstract class BlockMenuPreset extends ChestMenu {
     public void newInstance(@Nonnull BlockMenu menu, @Nonnull Location l) {
         Validate.notNull(l, "Cannot create a new BlockMenu without a Location");
 
-        newInstance(menu, l, 0);
-    }
-
-    private void newInstance(@Nonnull BlockMenu menu, @Nonnull Location l, int attempts) {
         Slimefun.runSyncAtLocation(
                 () -> {
                     locked = true;
 
                     try {
-                        SlimefunBlockData blockData = StorageCacheUtils.getBlock(l);
-
-                        if (blockData == null || !blockData.isDataLoaded()) {
-                            // On Folia this task may run before the block data finished
-                            // loading (or after the chunk was unloaded). Wait a few ticks
-                            // for the data to become available, the menu is re-created on
-                            // the next chunk load anyway.
-                            if (blockData != null && attempts < 40) {
-                                newInstance(menu, l, attempts + 1);
-                            }
-                            return;
-                        }
-
                         newInstance(menu, l.getBlock());
                     } catch (Exception | LinkageError x) {
                         getSlimefunItem().error("An Error occurred while trying to create a BlockMenu", x);
