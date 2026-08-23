@@ -1,10 +1,42 @@
-From c50f155ff38f2ce8fc294191c1d4e75dfa4fa40e Mon Sep 17 00:00:00 2001
+From 8095ede177e5f02e77bcb75ae351d06ac95a6b60 Mon Sep 17 00:00:00 2001
 From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
-Date: Sat, 11 Jul 2026 01:10:07 +0700
-Subject: [PATCH 5/8] feat(vi) translated to vietnamese all
+Date: Tue, 28 Jul 2026 18:36:00 +0700
+Subject: [PATCH] feat(vi): Vietnamese translation and localization
 
+Combined squash of former patches 0001-0009:
+- Translate plugin messages, logs, GUI strings and docs to Vietnamese
+- Translate GitHub issue/PR templates
+- Add languages/vi message, recipe and research files
+- Update translators.json and set default language to vi
+- Additional vi/zh-CN translation fixes
+- Reformat translated log/string lines
 ---
- .../controller/BlockDataController.java       |  104 +-
+ .github/ISSUE_TEMPLATE/bug-report.yml         |   66 +-
+ .github/ISSUE_TEMPLATE/config.yml             |    4 +-
+ .github/ISSUE_TEMPLATE/translation-report.yml |   34 +-
+ .github/PULL_REQUEST_TEMPLATE.md              |   12 +-
+ CONTRIBUTING.md                               |   48 +-
+ README.md                                     |   28 +-
+ .../norain/slimefun4/EnvironmentChecker.java  |   19 +-
+ .../norain/slimefun4/SlimefunExtended.java    |   28 +-
+ .../norain/slimefun4/VaultIntegration.java    |   14 +-
+ .../api/menu/UniversalMenuPreset.java         |    6 +-
+ .../compatibillty/CompatibilityUtil.java      |   16 +-
+ .../compatibillty/VersionedEvent.java         |    6 +-
+ .../listener/SlimefunMigrateListener.java     |    5 +-
+ .../norain/slimefun4/timings/SQLProfiler.java |   10 +-
+ .../slimefun4/timings/SlowSqlCheckTask.java   |    2 +-
+ .../city/norain/slimefun4/utils/EnvUtil.java  |    4 +-
+ .../norain/slimefun4/utils/StringUtil.java    |   16 +-
+ .../autocrafter/CrafterSmartPort.java         |    8 +-
+ .../storage/adapter/IDataSourceAdapter.java   |    4 +-
+ .../adapter/sqlcommon/SqlCommonAdapter.java   |   12 +-
+ .../adapter/sqlcommon/SqlConstants.java       |    4 +-
+ .../slimefun4/storage/common/DataScope.java   |    4 +-
+ .../slimefun4/storage/common/DataType.java    |    8 +-
+ .../storage/controller/ADataController.java   |   29 +-
+ .../controller/ASlimefunDataContainer.java    |    4 +-
+ .../controller/BlockDataController.java       |  132 +-
  .../controller/ProfileDataController.java     |    6 +-
  .../storage/controller/SlimefunBlockData.java |    6 +-
  .../storage/controller/SlimefunChunkData.java |    2 +-
@@ -12,8 +44,11 @@ Subject: [PATCH 5/8] feat(vi) translated to vietnamese all
  .../controller/SlimefunUniversalData.java     |    2 +-
  .../controller/attributes/UniversalBlock.java |   10 +-
  .../attributes/UniversalDataTrait.java        |   10 +-
+ .../migrator/BlockStorageMigrator.java        |   19 +-
  .../storage/migrator/MigratorUtil.java        |    9 +-
- .../slimefun4/storage/util/DataUtils.java     |   27 +-
+ .../migrator/PlayerProfileMigrator.java       |   26 +-
+ .../slimefun4/storage/package-info.java       |    2 +-
+ .../slimefun4/storage/util/DataUtils.java     |   30 +-
  .../slimefun4/storage/util/LocationUtils.java |   20 +-
  .../slimefun4/api/ErrorReport.java            |   38 +-
  .../slimefun4/api/SlimefunAddon.java          |    4 +-
@@ -25,32 +60,33 @@ Subject: [PATCH 5/8] feat(vi) translated to vietnamese all
  .../slimefun4/api/player/PlayerBackpack.java  |    6 +-
  .../slimefun4/api/player/PlayerProfile.java   |   12 +-
  .../slimefun4/api/researches/Research.java    |    2 +-
- .../core/attributes/EnergyNetComponent.java   |    2 +-
+ .../core/attributes/EnergyNetComponent.java   |    5 +-
  .../core/attributes/MachineTier.java          |   12 +-
  .../core/attributes/MachineType.java          |    6 +-
  .../core/attributes/Radioactivity.java        |   12 +-
  .../commands/subcommands/BackpackCommand.java |    8 +-
- .../subcommands/BlockDataCommand.java         |   14 +-
- .../commands/subcommands/ItemIdCommand.java   |    6 +-
- .../commands/subcommands/VersionsCommand.java |   46 +-
- .../core/config/SlimefunDatabaseManager.java  |   10 +-
+ .../subcommands/BlockDataCommand.java         |   15 +-
+ .../commands/subcommands/ItemIdCommand.java   |    7 +-
+ .../commands/subcommands/MigrateCommand.java  |    8 +-
+ .../commands/subcommands/VersionsCommand.java |   56 +-
+ .../core/config/SlimefunDatabaseManager.java  |   16 +-
  .../core/guide/SlimefunGuideMode.java         |    8 +-
  .../core/guide/options/FireworksOption.java   |   10 +-
- .../core/guide/options/GuideModeOption.java   |    8 +-
- .../guide/options/SlimefunGuideSettings.java  |   40 +-
+ .../core/guide/options/GuideModeOption.java   |   11 +-
+ .../guide/options/SlimefunGuideSettings.java  |   41 +-
  .../core/networks/cargo/CargoNet.java         |    6 +-
  .../core/networks/energy/EnergyNet.java       |    4 +-
  .../core/services/AutoSavingService.java      |    2 +-
  .../core/services/BackupService.java          |    6 +-
- .../services/profiler/PerformanceSummary.java |   14 +-
+ .../services/profiler/PerformanceSummary.java |   16 +-
  .../services/profiler/SlimefunProfiler.java   |    2 +-
  .../slimefun4/implementation/Slimefun.java    |   51 +-
- .../implementation/SlimefunItems.java         | 2516 ++++++++++-------
+ .../implementation/SlimefunItems.java         | 2524 ++++++++++-------
  .../implementation/StartupWarnings.java       |   43 +-
  .../guide/CheatSheetSlimefunGuide.java        |    2 +-
  .../guide/SurvivalSlimefunGuide.java          |   27 +-
- .../items/androids/AndroidFuelSource.java     |    8 +-
- .../items/androids/ProgrammableAndroid.java   |   42 +-
+ .../items/androids/AndroidFuelSource.java     |    9 +-
+ .../items/androids/ProgrammableAndroid.java   |   73 +-
  .../implementation/items/androids/Script.java |   14 +-
  .../autocrafters/AbstractAutoCrafter.java     |    3 +-
  .../items/blocks/AbstractMonsterSpawner.java  |   12 +-
@@ -64,17 +100,17 @@ Subject: [PATCH 5/8] feat(vi) translated to vietnamese all
  .../items/electric/EnergyConnector.java       |    4 +-
  .../items/electric/EnergyRegulator.java       |    2 +-
  .../items/electric/gadgets/MultiTool.java     |    2 +-
- .../AbstractEnchantmentMachine.java           |    6 +-
+ .../AbstractEnchantmentMachine.java           |    8 +-
  .../entities/AbstractEntityAssembler.java     |   28 +-
- .../machines/entities/IronGolemAssembler.java |    6 +-
+ .../machines/entities/IronGolemAssembler.java |   11 +-
  .../machines/entities/ProduceCollector.java   |    6 +-
- .../machines/entities/WitherAssembler.java    |    6 +-
- .../items/electric/reactors/Reactor.java      |   36 +-
+ .../machines/entities/WitherAssembler.java    |   13 +-
+ .../items/electric/reactors/Reactor.java      |   71 +-
  .../items/elevator/ElevatorPlate.java         |    4 +-
  .../implementation/items/geo/GEOMiner.java    |   12 +-
  .../items/magical/KnowledgeTome.java          |    2 +-
- .../items/magical/MagicEyeOfEnder.java        |    2 +-
- .../items/magical/talismans/Talisman.java     |    8 +-
+ .../items/magical/MagicEyeOfEnder.java        |    6 +-
+ .../items/magical/talismans/Talisman.java     |    9 +-
  .../items/misc/StrangeNetherGoo.java          |    2 +-
  .../items/multiblocks/ArmorForge.java         |    2 +-
  .../items/multiblocks/Compressor.java         |    2 +-
@@ -104,15 +140,1117 @@ Subject: [PATCH 5/8] feat(vi) translated to vietnamese all
  .../utils/compatibility/VersionedBiome.java   |   10 +-
  .../utils/compatibility/VersionedSound.java   |   28 +-
  .../utils/itemstack/SlimefunGuideItem.java    |    6 +-
+ .../general/Inventory/ChestMenu.java          |    1 -
+ .../Objects/handlers/BlockTicker.java         |    2 +-
  .../slimefun4/updater/AutoUpdateTask.java     |    2 +-
  .../guizhanss/slimefun4/utils/ChatUtils.java  |   16 +-
  .../guizhanss/slimefun4/utils/WikiUtils.java  |   24 +-
- 103 files changed, 2202 insertions(+), 1563 deletions(-)
+ src/main/resources/block-storage.yml          |   80 +-
+ src/main/resources/config.yml                 |  128 +-
+ src/main/resources/languages/translators.json |    3 +-
+ src/main/resources/languages/vi/messages.yml  |  589 ++--
+ src/main/resources/languages/vi/recipes.yml   |  264 +-
+ .../resources/languages/vi/researches.yml     |   11 +
+ .../resources/languages/zh-CN/messages.yml    |    5 +-
+ .../resources/languages/zh-CN/researches.yml  |    1 +
+ src/main/resources/profile-storage.yml        |   58 +-
+ 143 files changed, 3231 insertions(+), 2274 deletions(-)
 
+diff --git a/.github/ISSUE_TEMPLATE/bug-report.yml b/.github/ISSUE_TEMPLATE/bug-report.yml
+index a5c200344..1354221de 100644
+--- a/.github/ISSUE_TEMPLATE/bug-report.yml
++++ b/.github/ISSUE_TEMPLATE/bug-report.yml
+@@ -1,5 +1,5 @@
+-name: Bug 反馈
+-description: 反馈 Slimefun 4 使用中遇到的问题和 Bug
++name: Báo cáo Bug
++description: Báo cáo vấn đề và Bug gặp phải khi sử dụng Slimefun 4
+ labels:
+   - "🐞 Bug"
+ 
+@@ -7,54 +7,54 @@ body:
+   - type: markdown
+     attributes:
+       value: |
+-        感谢你使用 Slimefun 问题反馈系统！
++        Cảm ơn bạn đã sử dụng hệ thống báo cáo vấn đề Slimefun!
+ 
+-        在反馈前, 请确认
+-        - 你已经查看 [最新版本](https://github.com/SlimefunGuguProject/Slimefun4/releases) 是否已修复你所遇到的问题
+-        - 你已经搜索了已有的 [问题](https://github.com/SlimefunGuguProject/Slimefun4/issues) 是否发现了相似的问题
++        Trước khi báo cáo, vui lòng xác nhận
++        - Bạn đã kiểm tra [phiên bản mới nhất](https://github.com/SlimefunGuguProject/Slimefun4/releases) đã sửa vấn đề bạn gặp phải chưa
++        - Bạn đã tìm kiếm các [vấn đề](https://github.com/SlimefunGuguProject/Slimefun4/issues) hiện có để xem có vấn đề tương tự không
+         
+-        如果你的反馈含糊不清或不符合模板，将会被我们直接关闭。
++        Nếu báo cáo của bạn mơ hồ hoặc không tuân theo mẫu, chúng tôi sẽ đóng trực tiếp.
+ 
+   - type: textarea
+     id: issue-description
+     attributes:
+-      label: 问题描述
+-      description: 在此详细描述你遇到的问题
++      label: Mô tả vấn đề
++      description: Mô tả chi tiết vấn đề bạn gặp phải
+     validations:
+       required: true
+ 
+   - type: dropdown
+     id: reproducibility
+     attributes:
+-       label: 问题复现率
+-       description: 选择问题发生的概率
++       label: Tỷ lệ tái hiện vấn đề
++       description: Chọn xác suất xảy ra vấn đề
+        options:
+-         - 无法复现
+-         - 低偶发
+-         - 高偶发
+-         - 必现
++         - Không thể tái hiện
++         - Thỉnh thoảng thấp
++         - Thỉnh thoảng cao
++         - Luôn xảy ra
+     validations:
+       required: true
+ 
+   - type: textarea
+     id: reproduce
+     attributes:
+-      label: 复现步骤
+-      description: 简略说明如何让我们复现这个问题
++      label: Các bước tái hiện
++      description: Mô tả ngắn gọn cách để chúng tôi tái hiện vấn đề này
+       placeholder: |
+-        简略说明如何让我们复现这个问题
+-        可使用 1.  2.  3.  的列表格式，或其他任意恰当的格式
+-        如果这个问题不容易复现, 请尽量描述发生当时的情景
++        Mô tả ngắn gọn cách để chúng tôi tái hiện vấn đề này
++        Có thể dùng định dạng danh sách 1.  2.  3.  hoặc bất kỳ định dạng phù hợp nào khác
++        Nếu vấn đề này khó tái hiện, hãy cố gắng mô tả tình huống khi nó xảy ra
+     validations:
+       required: true
+ 
+   - type: dropdown
+     id: server-platform-type
+     attributes:
+-      label: 服务端类型
++      label: Loại server
+       description: |
+-        选择你正在使用的服务端，如 `Paper`
+-        注意：汉化版仓库不对**混合端** (例如 Arclight、CatServer 这类支持插件与 Mod 并存的服务端) 做任何支持，请自己设法解决
++        Chọn server bạn đang sử dụng, ví dụ `Paper`
++        Lưu ý: Repo bản Hán hóa không hỗ trợ **hybrid server** (như Arclight, CatServer - loại server hỗ trợ plugin và Mod cùng tồn tại), vui lòng tự giải quyết
+       options:
+         - Paper
+         - Leaves
+@@ -63,14 +63,14 @@ body:
+         - Pufferfish
+         - Leaf
+         - Mirai
+-        - 其他服务端 (请在 `问题描述` 处详细说明)
++        - Server khác (vui lòng nêu rõ trong `Mô tả vấn đề`)
+     validations:
+       required: true
+ 
+   - type: dropdown
+     id: minecraft-version
+     attributes:
+-      label: Minecraft 版本
++      label: Phiên bản Minecraft
+       options:
+         - 26.2.x
+         - 26.1.x
+@@ -90,22 +90,22 @@ body:
+     validations:
+       required: true
+     attributes:
+-      label: Slimefun 版本
++      label: Phiên bản Slimefun
+       description: |
+-        **不要填写 "最新版本"，否则你的反馈会被立即关闭**
+-        请你截图或复制执行命令 "/sf versions" 后的输出内容。
++        **Không được điền "phiên bản mới nhất", nếu không báo cáo của bạn sẽ bị đóng ngay lập tức**
++        Vui lòng chụp ảnh hoặc sao chép kết quả sau khi chạy lệnh "/sf versions".
+       placeholder: Slimefun 2025.1
+ 
+   - type: textarea
+     id: other-plugin
+     attributes:
+-      label: 服务端插件列表
+-      description: 提供你的服务器插件列表，你可以通过执行命令 /plugins 获取。
++      label: Danh sách plugin server
++      description: Cung cấp danh sách plugin của server, bạn có thể lấy bằng lệnh /plugins.
+       placeholder: |
+-        插件: 版本
++        Plugin: Phiên bản
+ 
+   - type: textarea
+     id: additional
+     attributes:
+-      label: 补充信息
+-      description: 如有必要，你可以在下文继续添加其他信息
++      label: Thông tin bổ sung
++      description: Nếu cần thiết, bạn có thể tiếp tục thêm thông tin khác bên dưới
+diff --git a/.github/ISSUE_TEMPLATE/config.yml b/.github/ISSUE_TEMPLATE/config.yml
+index 0a62151b9..1119e8b32 100644
+--- a/.github/ISSUE_TEMPLATE/config.yml
++++ b/.github/ISSUE_TEMPLATE/config.yml
+@@ -1,5 +1,5 @@
+ blank_issues_enabled: true
+ contact_links:
+-  - name: 没有 Github 账号? 不会使用 Github?
++  - name: Không có tài khoản Github? Không biết dùng Github?
+     url: https://docs.qq.com/form/page/DSlFOZmpTQ1JsZ2FD
+-    about: 单击此处使用腾讯文档填写 Bug 反馈
+\ No newline at end of file
++    about: Nhấp vào đây để điền phản hồi Bug bằng Tencent Docs
+\ No newline at end of file
+diff --git a/.github/ISSUE_TEMPLATE/translation-report.yml b/.github/ISSUE_TEMPLATE/translation-report.yml
+index f5a8e2df8..85e49369f 100644
+--- a/.github/ISSUE_TEMPLATE/translation-report.yml
++++ b/.github/ISSUE_TEMPLATE/translation-report.yml
+@@ -1,33 +1,33 @@
+-name: 汉化反馈
+-description: 反馈 Slimefun 4 汉化版的汉化问题
++name: Phản hồi bản dịch
++description: Phản hồi vấn đề bản dịch của Slimefun 4
+ labels:
+-- "📜 Translation | 汉化问题"
++- "📜 Translation | Vấn đề bản dịch"
+ 
+ body:
+ - type: markdown
+   attributes:
+     value: |
+-      感谢你使用 Slimefun 问题反馈系统！
++      Cảm ơn bạn đã sử dụng hệ thống phản hồi vấn đề Slimefun!
+       
+-      在反馈前, 请确认
+-      - 你已经查看 [最新版本](https://github.com/SlimefunGuguProject/Slimefun4/releases) 是否已修复你所遇到的问题
+-      - 你已经搜索了已有的 [问题](https://github.com/SlimefunGuguProject/Slimefun4/issues) 是否发现了相似的问题
++      Trước khi phản hồi, vui lòng xác nhận
++      - Bạn đã kiểm tra [phiên bản mới nhất](https://github.com/SlimefunGuguProject/Slimefun4/releases) đã sửa vấn đề bạn gặp phải chưa
++      - Bạn đã tìm kiếm các [vấn đề](https://github.com/SlimefunGuguProject/Slimefun4/issues) hiện có để xem có vấn đề tương tự không
+       
+-      如果你的反馈含糊不清或不符合模板，将会被我们直接关闭。
++      Nếu phản hồi của bạn mơ hồ hoặc không tuân theo mẫu, chúng tôi sẽ đóng trực tiếp.
+ 
+ - type: textarea
+   id: issue-description
+   attributes:
+-    label: 汉化问题描述
+-    description: 在此详细描述你遇到的问题
++    label: Mô tả vấn đề bản dịch
++    description: Mô tả chi tiết vấn đề bạn gặp phải
+   validations:
+     required: true
+ 
+ - type: textarea
+   id: reproduce
+   attributes:
+-    label: 汉化错误/缺失的位置
+-    description: 在这里简略说明汉化错误/缺失的位置
++    label: Vị trí bản dịch sai/thiếu
++    description: Mô tả ngắn gọn vị trí bản dịch sai/thiếu
+   validations:
+     required: true
+ 
+@@ -36,14 +36,14 @@ body:
+   validations:
+     required: true
+   attributes:
+-    label: Slimefun 版本
++    label: Phiên bản Slimefun
+     description: |
+-      **不要填写 "最新版本"，否则你的反馈会被立即关闭**
+-      请你截图或复制执行命令 "/sf versions" 后的输出内容。
++      **Không được điền "phiên bản mới nhất", nếu không phản hồi của bạn sẽ bị đóng ngay lập tức**
++      Vui lòng chụp ảnh hoặc sao chép kết quả sau khi chạy lệnh "/sf versions".
+     placeholder: Slimefun 2025.1
+ 
+ - type: textarea
+   id: additional
+   attributes:
+-    label: 补充信息
+-    description: 如有必要，你可以在下文继续添加其他信息
++    label: Thông tin bổ sung
++    description: Nếu cần thiết, bạn có thể tiếp tục thêm thông tin khác bên dưới
+diff --git a/.github/PULL_REQUEST_TEMPLATE.md b/.github/PULL_REQUEST_TEMPLATE.md
+index 0934c0841..cf5e7503b 100644
+--- a/.github/PULL_REQUEST_TEMPLATE.md
++++ b/.github/PULL_REQUEST_TEMPLATE.md
+@@ -1,8 +1,8 @@
+-<!-- 在做出贡献前, 请你先阅读我们的 [代码与 commit 规范](https://github.com/SlimefunGuguProject/Slimefun4/blob/master/CONTRIBUTING.md) -->
++<!-- Trước khi đóng góp, vui lòng đọc [quy chuẩn code và commit](https://github.com/SlimefunGuguProject/Slimefun4/blob/master/CONTRIBUTING.md) của chúng tôi -->
+ 
+-## 简介
+-<!-- 大致解释一下这个提交更改修复/优化/新增了什么 -->
++## Giới thiệu
++<!-- Giải thích tóm tắt về commit này sửa/tối ưu/thêm mới điều gì -->
+ 
+-## 相关的 Issues (没有可不填)
+-<!-- 如果这个提交更改解决了 Issue 中的问题, 请手动标记对应的 Issues -->
+-<!-- 例如: "Fixes #000" -->
++## Issues liên quan (không có có thể bỏ qua)
++<!-- Nếu commit này giải quyết vấn đề trong Issue, vui lòng đánh dấu Issues tương ứng -->
++<!-- Ví dụ: "Fixes #000" -->
+diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
+index 996c541a8..bcabd7038 100644
+--- a/CONTRIBUTING.md
++++ b/CONTRIBUTING.md
+@@ -1,47 +1,47 @@
+-# 贡献指南
++# Hướng dẫn đóng góp
+ 
+-在对 Slimefun 汉化版进行代码前，必须先阅读此贡献指南。
++Trước khi đóng góp code cho Slimefun bản Hán hóa, bắt buộc phải đọc hướng dẫn đóng góp này.
+ 
+-# 设置环境
++# Thiết lập môi trường
+ 
+-我们提供了一个自动化格式检查系统，请使用 `./gradlew spotlessApply` 进行初始化。
++Chúng tôi cung cấp hệ thống kiểm tra định dạng tự động, vui lòng sử dụng `./gradlew spotlessApply` để khởi tạo.
+ 
+-本项目已经提供 `.editorconfig` 用于控制代码样式。如果你有自己的代码样式风格，请在对本仓库进行贡献前切换为当前仓库的风格配置。
++Dự án đã cung cấp `.editorconfig` để kiểm soát phong cách code. Nếu bạn có phong cách code riêng, vui lòng chuyển sang cấu hình phong cách của repo hiện tại trước khi đóng góp.
+ 
+-# 设置分支
++# Thiết lập nhánh
+ 
+-在开始你的贡献之前，请确认你的代码是基于 `dev` 分支进行的。
++Trước khi bắt đầu đóng góp, vui lòng xác nhận code của bạn dựa trên nhánh `dev`.
+ 
+-# 提交信息规范
++# Quy chuẩn thông điệp commit
+ 
+-本项目**强制使用** [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) 的提交信息规范。
++Dự án này **bắt buộc sử dụng** quy chuẩn thông điệp commit [Conventional Commits](https://www.conventionalcommits.org/zh-hans/v1.0.0/).
+ 
+-> 简单来说, 你的提交信息需要包含以下内容:
++> Nói đơn giản, thông điệp commit của bạn cần bao gồm nội dung sau:
+ > 
+-> <类型>[可选 范围]: <描述>
++> <loại>[phạm vi tùy chọn]: <mô tả>
+ > 
+-> 例如一个添加了新功能的提交应为 feat(item): add new item to Slimefun
++> Ví dụ một commit thêm chức năng mới nên là feat(item): add new item to Slimefun
+ 
+-如果你提交的代码中解决或处理了 Issue 中的问题，请你在主提交消息外显式声明。
++Nếu code bạn commit giải quyết hoặc xử lý vấn đề trong Issue, vui lòng khai báo rõ ràng ngoài thông điệp commit chính.
+ 
+-> 如 resolves #114514, fix #114514 等
++> Như resolves #114514, fix #114514, v.v.
+ 
+-如果是修复请在主提交消息上声明，不必重复声明。
++Nếu là sửa lỗi vui lòng khai báo trong thông điệp commit chính, không cần khai báo lặp lại.
+ 
+-我们支持的类型前缀正则如下：`(feat(ure)?|fix|docs|style|refactor|ci|chore|perf|build|test|revert|trans)`
++Chúng tôi hỗ trợ regex tiền tố loại sau: `(feat(ure)?|fix|docs|style|refactor|ci|chore|perf|build|test|revert|trans)`
+ 
+-另外的, 如果是与翻译相关的提交，类型应为 trans。
++Ngoài ra, nếu là commit liên quan đến dịch thuật, loại nên là trans.
+ 
+-# 代码规范
++# Quy chuẩn code
+ 
+-**!! 本项目使用 4 空格缩进 !!**
++**!! Dự án này sử dụng thụt lề 4 khoảng trắng !!**
+ 
+-请不要过度缩减代码长度, 空格少了 Slimefun 也不会因此跑得更快.
++Vui lòng không rút ngắn độ dài code quá mức, giảm khoảng trắng cũng không làm Slimefun chạy nhanh hơn.
+ 
+-我们使用了 Spotless 作为代码格式化工具，在提交前你**必须**使用 `./gradlew spotlessCheck spotlessApply` 来自动格式化你的代码，否则将会被格式检查器拦截 PR。
++Chúng tôi sử dụng Spotless làm công cụ định dạng code, trước khi commit bạn **bắt buộc** sử dụng `./gradlew spotlessCheck spotlessApply` để tự động định dạng code, nếu không sẽ bị trình kiểm tra định dạng chặn PR.
+ 
+-# 提交代码类型
++# Loại code commit
+ 
+-你提交的代码可以是修复、新增内容和 API。
++Code bạn commit có thể là sửa lỗi, thêm nội dung mới và API.
+ 
+-下游代码现在支持提交 API 相关代码，开发者们可以通过 jitpack 依赖汉化版的 Slimefun。
++Code downstream hiện hỗ trợ commit code liên quan API, các nhà phát triển có thể phụ thuộc Slimefun bản Hán hóa thông qua jitpack.
+diff --git a/README.md b/README.md
+index 09a91f533..acfe849c6 100644
+--- a/README.md
++++ b/README.md
+@@ -1,20 +1,20 @@
+ # Slimefun4 on Folia
+-尝试让Slimefun4在Folia上运行
++Thử nghiệm chạy Slimefun4 trên Folia
+ 
+-此项目基于[Slimefun4汉化版dev分支](https://github.com/SlimefunGuguProject/Slimefun4/tree/dev)修改，仅加入对folia平台的运行支持
++Dự án này được sửa đổi dựa trên [nhánh main của Slimefun4 bản việt hóa](https://github.com/servernotdie/Slimefun4), chỉ thêm hỗ trợ chạy trên nền tảng Folia
+ 
+-**提交issue请确认问题仅在此修改版存在**
++**Khi gửi issue vui lòng xác nhận vấn đề chỉ tồn tại trong phiên bản sửa đổi này**
+ 
+-**请不要将仅在此修改版本出现的问题向[汉化版Slimefun官方](https://github.com/SlimefunGuguProject/Slimefun4)提交issue**
++## Lấy bản build
++Vui lòng truy cập [Actions](https://github.com/Craft233MC/Slimefun4/actions)
+ 
+-## 获取构建
+-请移步[Actions](https://github.com/Craft233MC/Slimefun4/actions)
++## Gửi vấn đề
++Gửi vấn đề mới tùy chọn một trong các cách sau
++- [Issues](https://github.com/servernotdie/Slimefun4/issues)
+ 
+-## 提交问题
+-提交新问题任选一
+-- [Issues](https://github.com/Craft233MC/Slimefun4/issues)
+-- [Telegram](https://t.me/neokoni)
+-- [me@neokoni.ink](mailto://me@neokoni.ink)
+-
+-## 自行构建指南
+-参考[workflows文件](https://github.com/Craft233MC/Slimefun4/blob/dev/.github/workflows/dev-ci.yml)
++## Hướng dẫn build tự xây dựng
++Tham khảo [file workflows](https://github.com/servernotdie/Slimefun4/blob/dev/.github/workflows/dev-ci.yml)
++## Này bản fork từ upstream của nhóm dev người TQ nên sẽ có 1 số phần chưa được dịch vì quá nhiều :D
++Credit: 
++---
++[Craft233MC](https://github.com/Craft233MC/Slimefun4/)
+\ No newline at end of file
+diff --git a/src/main/java/city/norain/slimefun4/EnvironmentChecker.java b/src/main/java/city/norain/slimefun4/EnvironmentChecker.java
+index 6677484a4..edb2ce7bd 100644
+--- a/src/main/java/city/norain/slimefun4/EnvironmentChecker.java
++++ b/src/main/java/city/norain/slimefun4/EnvironmentChecker.java
+@@ -23,12 +23,12 @@ class EnvironmentChecker {
+         printBorder(logger);
+         logger.log(Level.WARNING, "");
+         logger.log(Level.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+-        logger.log(Level.WARNING, "检测到不兼容的插件, 已自动禁用 Slimefun!");
+-        logger.log(Level.WARNING, "不兼容插件列表: ", String.join(", ", plugins));
+-        logger.log(Level.WARNING, "这些插件出现在这里是因为它们已不兼容现有");
+-        logger.log(Level.WARNING, "Slimefun 版本或是与 Slimefun 冲突.");
+-        logger.log(Level.WARNING, "如果你觉得这些插件能够与 Slimefun 并存,");
+-        logger.log(Level.WARNING, "请联系我们修改.");
++        logger.log(Level.WARNING, "Phát hiện plugin không tương thích, đã tự động vô hiệu hóa Slimefun!");
++        logger.log(Level.WARNING, "Danh sách plugin không tương thích: ", String.join(", ", plugins));
++        logger.log(Level.WARNING, "Các plugin này xuất hiện ở đây vì chúng đã không còn tương thích");
++        logger.log(Level.WARNING, "với phiên bản Slimefun hiện tại hoặc xung đột với Slimefun.");
++        logger.log(Level.WARNING, "Nếu bạn cho rằng các plugin này có thể hoạt động cùng Slimefun,");
++        logger.log(Level.WARNING, "vui lòng liên hệ chúng tôi để chỉnh sửa.");
+         logger.log(Level.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+         logger.log(Level.WARNING, "");
+         printBorder(logger);
+@@ -79,8 +79,11 @@ class EnvironmentChecker {
+                 .runLater(
+                         () -> {
+                             if (Bukkit.getPluginManager().getPlugin("SlimeGlue") == null) {
+-                                sf.getLogger().log(Level.WARNING, "检测到没有安装 SlimeGlue (粘液胶), 你将缺失对一些插件的额外保护检查!");
+-                                sf.getLogger().log(Level.WARNING, "下载: https://github.com/Xzavier0722/SlimeGlue");
++                                sf.getLogger()
++                                        .log(
++                                                Level.WARNING,
++                                                "Phát hiện chưa cài đặt SlimeGlue (keo nhầy), bạn sẽ thiếu các kiểm tra bảo vệ bổ sung cho một số plugin!");
++                                sf.getLogger().log(Level.WARNING, "Tải về: https://github.com/Xzavier0722/SlimeGlue");
+                             }
+                         },
+                         300); // 15s
+diff --git a/src/main/java/city/norain/slimefun4/SlimefunExtended.java b/src/main/java/city/norain/slimefun4/SlimefunExtended.java
+index bc6cabb32..90bdf0c33 100644
+--- a/src/main/java/city/norain/slimefun4/SlimefunExtended.java
++++ b/src/main/java/city/norain/slimefun4/SlimefunExtended.java
+@@ -31,10 +31,10 @@ public final class SlimefunExtended {
+     }
+ 
+     /**
+-     * 返回当前服务器的 Minecraft 版本详情，包含主版本号、次版本号和补丁版本号。
+-     * 例如：26.1.2 将返回 (26, 1, 2)，而 26.1 将返回 (26, 1, 0)。
++     * Trả về chi tiết phiên bản Minecraft của máy chủ hiện tại, bao gồm số phiên bản chính, phụ và bản vá.
++     * Ví dụ: 26.1.2 sẽ trả về (26, 1, 2), còn 26.1 sẽ trả về (26, 1, 0).
+      *
+-     * 当无法识别服务器版本时，返回 null。
++     * Trả về null khi không thể nhận diện phiên bản máy chủ.
+      *
+      * @since 2026.1
+      * @param server
+@@ -47,10 +47,10 @@ public final class SlimefunExtended {
+             return null;
+         }
+ 
+-        // 提取版本号中的数字部分
++        // Trích xuất phần số trong số phiên bản
+         String[] versionPart = mcVersion.split("\\.");
+ 
+-        // 可能是快照版本或者是预发布版?
++        // Có thể là phiên bản snapshot hoặc pre-release?
+         if (versionPart.length < 2) {
+             return null;
+         }
+@@ -58,7 +58,7 @@ public final class SlimefunExtended {
+         try {
+             int majorVersion = Integer.parseInt(versionPart[0]);
+ 
+-            // 自 26.1 开始，Minecraft 版本号格式变为以年份作为主版本号
++            // Từ 26.1 trở đi, định dạng số phiên bản Minecraft chuyển sang dùng năm làm số phiên bản chính
+             if (majorVersion != 1 && majorVersion < 26) {
+                 return null;
+             }
+@@ -67,7 +67,7 @@ public final class SlimefunExtended {
+             int patchVersion = versionPart.length > 2 ? Integer.parseInt(versionPart[2]) : 0;
+             return new ServerVersion(majorVersion, minorVersion, patchVersion);
+         } catch (NumberFormatException e) {
+-            server.getLogger().log(Level.WARNING, "无法解析当前服务器版本号: " + mcVersion, e);
++            server.getLogger().log(Level.WARNING, "Không thể phân tích số phiên bản máy chủ hiện tại: " + mcVersion, e);
+             return null;
+         }
+     }
+@@ -97,7 +97,7 @@ public final class SlimefunExtended {
+             databaseDebugMode = true;
+ 
+             Slimefun.getSQLProfiler().start();
+-            Slimefun.logger().log(Level.INFO, "已启动数据库调试模式");
++            Slimefun.logger().log(Level.INFO, "Đã khởi động chế độ debug cơ sở dữ liệu");
+         } else {
+             Configurator.setLevel(HikariConfig.class.getName(), org.apache.logging.log4j.Level.OFF);
+             Configurator.setLevel(HikariDataSource.class.getName(), org.apache.logging.log4j.Level.OFF);
+@@ -109,7 +109,7 @@ public final class SlimefunExtended {
+         try {
+             minecraftVersion = MinecraftVersion.of(sf.getServer());
+         } catch (UnknownServerVersionException ignored) {
+-            // sf.getLogger().log(Level.WARNING, "无法识别你正在使用的服务端版本 :(");
++            // sf.getLogger().log(Level.WARNING, "Không thể nhận diện phiên bản server bạn đang sử dụng :(");
+             // return false;
+         }
+ 
+@@ -117,9 +117,9 @@ public final class SlimefunExtended {
+             sf.getLogger().log(Level.WARNING, "#######################################################");
+             sf.getLogger().log(Level.WARNING, "");
+             sf.getLogger().log(Level.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+-            sf.getLogger().log(Level.WARNING, "检测到正在使用混合端, Slimefun 将会被禁用!");
+-            sf.getLogger().log(Level.WARNING, "混合端已被多个用户报告有使用问题,");
+-            sf.getLogger().log(Level.WARNING, "强制绕过检测将不受任何反馈支持.");
++            sf.getLogger().log(Level.WARNING, "Phát hiện đang sử dụng hybrid server, Slimefun sẽ bị vô hiệu hóa!");
++            sf.getLogger().log(Level.WARNING, "Hybrid server đã được nhiều người dùng báo cáo có vấn đề khi sử dụng,");
++            sf.getLogger().log(Level.WARNING, "việc cưỡng chế bỏ qua kiểm tra sẽ không được hỗ trợ phản hồi.");
+             sf.getLogger().log(Level.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+             sf.getLogger().log(Level.WARNING, "");
+             sf.getLogger().log(Level.WARNING, "#######################################################");
+@@ -130,8 +130,8 @@ public final class SlimefunExtended {
+             sf.getLogger().log(Level.WARNING, "#######################################################");
+             sf.getLogger().log(Level.WARNING, "");
+             sf.getLogger().log(Level.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+-            sf.getLogger().log(Level.WARNING, "检测到你禁用了环境兼容性检查!");
+-            sf.getLogger().log(Level.WARNING, "未通过兼容性检查将无法受到反馈支持.");
++            sf.getLogger().log(Level.WARNING, "Phát hiện bạn đã vô hiệu hóa kiểm tra tương thích môi trường!");
++            sf.getLogger().log(Level.WARNING, "Không vượt qua kiểm tra tương thích sẽ không được hỗ trợ phản hồi.");
+             sf.getLogger().log(Level.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+             sf.getLogger().log(Level.WARNING, "");
+             sf.getLogger().log(Level.WARNING, "#######################################################");
+diff --git a/src/main/java/city/norain/slimefun4/VaultIntegration.java b/src/main/java/city/norain/slimefun4/VaultIntegration.java
+index fe5e4e6a3..abeb7de66 100644
+--- a/src/main/java/city/norain/slimefun4/VaultIntegration.java
++++ b/src/main/java/city/norain/slimefun4/VaultIntegration.java
+@@ -8,7 +8,7 @@ import net.milkbowl.vault.economy.Economy;
+ import org.bukkit.OfflinePlayer;
+ 
+ /**
+- * Vault 集成类, 用于处理游戏币相关的操作.
++ * Lớp tích hợp Vault, dùng để xử lý các thao tác liên quan đến tiền tệ trong game.
+  *
+  * @author StarWishsama
+  */
+@@ -20,12 +20,18 @@ public class VaultIntegration {
+             var rsp = plugin.getServer().getServicesManager().getRegistration(Economy.class);
+             if (rsp != null) {
+                 econ = rsp.getProvider();
+-                plugin.getLogger().log(Level.INFO, "成功接入 Vault");
++                plugin.getLogger().log(Level.INFO, "Kết nối Vault thành công");
+             } else {
+-                plugin.getLogger().log(Level.WARNING, "无法接入 Vault. 如果你是 CMI 用户, 请至配置文件启用经济系统");
++                plugin.getLogger()
++                        .log(
++                                Level.WARNING,
++                                "Không thể kết nối Vault. Nếu bạn là người dùng CMI, vui lòng bật hệ thống kinh tế trong file cấu hình");
+             }
+         } else {
+-            plugin.getLogger().log(Level.WARNING, "服务端未安装 Vault, 游戏币解锁研究特性将无法使用");
++            plugin.getLogger()
++                    .log(
++                            Level.WARNING,
++                            "Server chưa cài đặt Vault, tính năng mở khóa nghiên cứu bằng tiền tệ sẽ không khả dụng");
+         }
+     }
+ 
+diff --git a/src/main/java/city/norain/slimefun4/api/menu/UniversalMenuPreset.java b/src/main/java/city/norain/slimefun4/api/menu/UniversalMenuPreset.java
+index 482db8b57..fd1af2cd3 100644
+--- a/src/main/java/city/norain/slimefun4/api/menu/UniversalMenuPreset.java
++++ b/src/main/java/city/norain/slimefun4/api/menu/UniversalMenuPreset.java
+@@ -21,10 +21,10 @@ public abstract class UniversalMenuPreset extends BlockMenuPreset {
+     }
+ 
+     /**
+-     * 创建一个新的菜单实例
++     * Tạo một instance menu mới
+      *
+-     * @param menu {@link UniversalMenu} 通用菜单
+-     * @param b 当前实例对应的方块，方块可能为空
++     * @param menu {@link UniversalMenu} menu chung
++     * @param b Khối tương ứng với instance hiện tại, khối có thể null
+      */
+     public void newInstance(@Nonnull UniversalMenu menu, @Nullable Block b) {
+         // This method can optionally be overridden by implementations
+diff --git a/src/main/java/city/norain/slimefun4/compatibillty/CompatibilityUtil.java b/src/main/java/city/norain/slimefun4/compatibillty/CompatibilityUtil.java
+index e4f9edeaa..b618bc58a 100644
+--- a/src/main/java/city/norain/slimefun4/compatibillty/CompatibilityUtil.java
++++ b/src/main/java/city/norain/slimefun4/compatibillty/CompatibilityUtil.java
+@@ -12,12 +12,12 @@ import org.bukkit.block.data.type.WallSign;
+ @UtilityClass
+ public class CompatibilityUtil {
+     /**
+-     * 获取玩家放置此方块所使用的物品材质。
+-     * 对于大多数方块，这与 getMaterial() 相同，但有些方块有不同的材质用于放置它们。
+-     * 注意：此处没有涵盖所有可能不同的方块数据类型。
++     * Lấy chất liệu vật phẩm mà người chơi sử dụng để đặt khối này.
++     * Đối với hầu hết các khối, điều này giống với getMaterial(), nhưng một số khối có chất liệu khác để đặt chúng.
++     * Lưu ý: Không bao gồm tất cả các loại block data có thể khác nhau.
+      *
+      * @param blockData
+-     * @return 放置此方块所使用的材质
++     * @return Chất liệu được sử dụng để đặt khối này
+      */
+     public Material getPlacementMaterial(BlockData blockData) {
+         if (SlimefunExtended.isAtLeast(1, 19, 4)) {
+@@ -55,11 +55,11 @@ public class CompatibilityUtil {
+     }
+ 
+     /**
+-     * 检查玩家是否处于连接状态。
+-     * 在 1.20- 中不能保证玩家是否连接，仅返回在线状态。
++     * Kiểm tra xem người chơi có đang kết nối hay không.
++     * Trong 1.20- không thể đảm bảo người chơi có kết nối hay không, chỉ trả về trạng thái online.
+      *
+-     * @param player 离线玩家
+-     * @return 玩家连接或在线
++     * @param player người chơi offline
++     * @return người chơi đã kết nối hoặc online
+      */
+     public boolean isConnected(OfflinePlayer player) {
+         if (SlimefunExtended.isAtLeast(1, 20) && Slimefun.instance().getServer().getOnlineMode()) {
+diff --git a/src/main/java/city/norain/slimefun4/compatibillty/VersionedEvent.java b/src/main/java/city/norain/slimefun4/compatibillty/VersionedEvent.java
+index 3e5657129..12058307d 100644
+--- a/src/main/java/city/norain/slimefun4/compatibillty/VersionedEvent.java
++++ b/src/main/java/city/norain/slimefun4/compatibillty/VersionedEvent.java
+@@ -37,7 +37,11 @@ public class VersionedEvent {
+                 GET_CLICKED_INVENTORY.setAccessible(true);
+ 
+             } catch (NoSuchMethodException | ClassNotFoundException e) {
+-                Slimefun.logger().log(Level.WARNING, "无法初始化事件版本兼容模块, 部分功能可能无法正常使用", e);
++                Slimefun.logger()
++                        .log(
++                                Level.WARNING,
++                                "Không thể khởi tạo module tương thích phiên bản event, một số tính năng có thể không hoạt động bình thường",
++                                e);
+             }
+         }
+     }
+diff --git a/src/main/java/city/norain/slimefun4/listener/SlimefunMigrateListener.java b/src/main/java/city/norain/slimefun4/listener/SlimefunMigrateListener.java
+index 3756299cc..90c169c21 100644
+--- a/src/main/java/city/norain/slimefun4/listener/SlimefunMigrateListener.java
++++ b/src/main/java/city/norain/slimefun4/listener/SlimefunMigrateListener.java
+@@ -17,7 +17,10 @@ public class SlimefunMigrateListener implements Listener {
+         if ((PlayerProfileMigrator.getInstance().hasOldData()
+                         || BlockStorageMigrator.getInstance().hasOldData())
+                 && p.hasPermission("slimefun.command.migrate")) {
+-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c检测到使用文件储存的旧数据, 请使用 /sf migrate 迁移旧数据至数据库!"));
++            p.sendMessage(
++                    ChatColor.translateAlternateColorCodes(
++                            '&',
++                            "&cPhát hiện dữ liệu cũ được lưu bằng file, vui lòng sử dụng /sf migrate để di chuyển dữ liệu cũ sang cơ sở dữ liệu!"));
+         }
+     }
+ 
+diff --git a/src/main/java/city/norain/slimefun4/timings/SQLProfiler.java b/src/main/java/city/norain/slimefun4/timings/SQLProfiler.java
+index 28a22cd52..f03126b2a 100644
+--- a/src/main/java/city/norain/slimefun4/timings/SQLProfiler.java
++++ b/src/main/java/city/norain/slimefun4/timings/SQLProfiler.java
+@@ -68,7 +68,7 @@ public class SQLProfiler {
+         samplingEntries.put(timingEntry, now);
+ 
+         if (SlimefunExtended.isDatabaseDebugMode()) {
+-            Slimefun.logger().log(Level.INFO, "执行 SQL: " + timingEntry.normalize());
++            Slimefun.logger().log(Level.INFO, "Thực thi SQL: " + timingEntry.normalize());
+         }
+     }
+ 
+@@ -136,7 +136,7 @@ public class SQLProfiler {
+         Duration sqlTotalTime = Duration.ZERO;
+ 
+         try (var writer = Files.newBufferedWriter(reportFile.toPath(), StandardCharsets.UTF_8)) {
+-            writer.append("Slimefun SQL Timing 报告");
++            writer.append("Báo cáo Slimefun SQL Timing");
+             writer.newLine();
+             writer.newLine();
+ 
+@@ -174,17 +174,17 @@ public class SQLProfiler {
+             }
+ 
+             var totalTime = Duration.ofNanos(System.nanoTime()).minus(Duration.ofNanos(startTime));
+-            writer.append("已运行: ")
++            writer.append("Đã chạy: ")
+                     .append(String.format(
+                             "%dh%dm%dns", totalTime.toHours(), totalTime.toMinutesPart(), totalTime.toSecondsPart()));
+             writer.newLine();
+-            writer.append("总耗时: ")
++            writer.append("Tổng thời gian: ")
+                     .append(String.format(
+                             "%dm%ds%dms",
+                             sqlTotalTime.toSeconds(), sqlTotalTime.toMillisPart(), sqlTotalTime.toNanosPart()));
+             writer.newLine();
+             var avg = sqlTotalTime.dividedBy(entryCount);
+-            writer.append("平均耗时: ")
++            writer.append("Thời gian trung bình: ")
+                     .append(String.format("%dm%ds%dms", avg.toSeconds(), avg.toMillisPart(), avg.toNanosPart()));
+         } catch (IOException e) {
+             Slimefun.logger().log(Level.WARNING, "Unable to create sql timing report!", e);
+diff --git a/src/main/java/city/norain/slimefun4/timings/SlowSqlCheckTask.java b/src/main/java/city/norain/slimefun4/timings/SlowSqlCheckTask.java
+index 378c58472..77053b655 100644
+--- a/src/main/java/city/norain/slimefun4/timings/SlowSqlCheckTask.java
++++ b/src/main/java/city/norain/slimefun4/timings/SlowSqlCheckTask.java
+@@ -22,7 +22,7 @@ public class SlowSqlCheckTask implements Runnable {
+             long elapsedTime = System.currentTimeMillis() - startTime;
+ 
+             if (elapsedTime > 5000) {
+-                Slimefun.logger().log(Level.WARNING, "检测到慢 SQL: {0}", entry.normalize());
++                Slimefun.logger().log(Level.WARNING, "Phát hiện SQL chậm: {0}", entry.normalize());
+                 break;
+             }
+         }
+diff --git a/src/main/java/city/norain/slimefun4/utils/EnvUtil.java b/src/main/java/city/norain/slimefun4/utils/EnvUtil.java
+index 90b46fe41..0bc8487ff 100644
+--- a/src/main/java/city/norain/slimefun4/utils/EnvUtil.java
++++ b/src/main/java/city/norain/slimefun4/utils/EnvUtil.java
+@@ -13,7 +13,7 @@ public class EnvUtil {
+     public void init() {
+         try (var resource = Slimefun.class.getResourceAsStream("/git.properties")) {
+             if (resource == null) {
+-                Slimefun.logger().warning("无法加载构建信息: 未找到 /git.properties");
++                Slimefun.logger().warning("Không thể tải thông tin build: không tìm thấy /git.properties");
+                 return;
+             }
+ 
+@@ -22,7 +22,7 @@ public class EnvUtil {
+ 
+             gitInfo = prop;
+         } catch (IOException e) {
+-            Slimefun.logger().log(Level.WARNING, "无法加载构建信息", e);
++            Slimefun.logger().log(Level.WARNING, "Không thể tải thông tin build", e);
+         }
+     }
+ 
+diff --git a/src/main/java/city/norain/slimefun4/utils/StringUtil.java b/src/main/java/city/norain/slimefun4/utils/StringUtil.java
+index 183ed4608..16612ea49 100644
+--- a/src/main/java/city/norain/slimefun4/utils/StringUtil.java
++++ b/src/main/java/city/norain/slimefun4/utils/StringUtil.java
+@@ -52,17 +52,17 @@ public class StringUtil {
+     }
+ 
+     /**
+-     * 格式化详细线程信息
++     * Định dạng thông tin thread chi tiết
+      */
+     public static String formatDetailedThreadInfo(ThreadInfo threadInfo) {
+         StringBuilder sb = new StringBuilder();
+ 
+-        // 线程名和基本信息
++        // Tên thread và thông tin cơ bản
+         sb.append(threadInfo.getThreadName());
+         sb.append(" #").append(threadInfo.getThreadId());
+         sb.append(" ").append(threadInfo.getThreadState());
+ 
+-        // 锁信息
++        // Thông tin lock
+         if (threadInfo.getLockName() != null) {
+             sb.append(" on ").append(threadInfo.getLockName());
+             if (threadInfo.getLockOwnerName() != null) {
+@@ -73,7 +73,7 @@ public class StringUtil {
+ 
+         sb.append("\n");
+ 
+-        // 线程状态详情
++        // Chi tiết trạng thái thread
+         sb.append("   Thread.State: ").append(threadInfo.getThreadState());
+         if (threadInfo.getBlockedTime() > 0) {
+             sb.append(" (blocked for ").append(threadInfo.getBlockedTime()).append("ms)");
+@@ -83,19 +83,19 @@ public class StringUtil {
+         }
+         sb.append("\n");
+ 
+-        // 堆栈跟踪
++        // Stack trace
+         StackTraceElement[] stackTrace = threadInfo.getStackTrace();
+         for (int i = 0; i < stackTrace.length; i++) {
+             StackTraceElement element = stackTrace[i];
+             sb.append("\tat ").append(element.toString()).append("\n");
+ 
+-            // 第一个堆栈元素的锁信息
++            // Thông tin lock của phần tử stack đầu tiên
+             if (i == 0 && threadInfo.getLockName() != null) {
+                 sb.append("\t- ").append(getThreadStateDescription(threadInfo)).append("\n");
+             }
+         }
+ 
+-        // 持有的锁
++        // Lock đang giữ
+         if (threadInfo.getLockedMonitors().length > 0) {
+             sb.append("   Locked monitors:\n");
+             Arrays.stream(threadInfo.getLockedMonitors())
+@@ -103,7 +103,7 @@ public class StringUtil {
+                             sb.append("\t- locked ").append(monitor.toString()).append("\n"));
+         }
+ 
+-        // 持有的同步器
++        // Synchronizer đang giữ
+         if (threadInfo.getLockedSynchronizers().length > 0) {
+             sb.append("   Locked synchronizers:\n");
+             Arrays.stream(threadInfo.getLockedSynchronizers())
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/autocrafter/CrafterSmartPort.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/autocrafter/CrafterSmartPort.java
+index 16131a76e..42f3c5927 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/autocrafter/CrafterSmartPort.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/autocrafter/CrafterSmartPort.java
+@@ -38,7 +38,7 @@ public class CrafterSmartPort extends SlimefunItem {
+     public CrafterSmartPort(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+         super(category, item, recipeType, recipe);
+ 
+-        new BlockMenuPreset("CRAFTER_SMART_PORT", "&a合成机智能交互接口") {
++        new BlockMenuPreset("CRAFTER_SMART_PORT", "&aGiao diện tương tác thông minh máy chế tạo") {
+             @Override
+             public void init() {
+                 addItem(6, getCountItem(), (p, slot, item, action) -> false);
+@@ -72,7 +72,6 @@ public class CrafterSmartPort extends SlimefunItem {
+ 
+             @Override
+             public void newInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
+-                // Resume the ingredient count
+                 String countStr = StorageCacheUtils.getData(b.getLocation(), "ingredientCount");
+                 if (countStr != null) {
+                     menu.getItemInSlot(6).setAmount(Math.max(1, Integer.parseInt(countStr)));
+@@ -91,13 +90,12 @@ public class CrafterSmartPort extends SlimefunItem {
+                 ItemStackWrapper wrapper = ItemStackWrapper.wrap(item);
+                 int amountLimit = INPUT_SLOTS.length / menu.getItemInSlot(6).getAmount() * wrapper.getMaxStackSize();
+ 
+-                // Check the current amount
++                // Kiểm tra số lượng hiện tại
+                 int itemAmount = wrapper.getAmount();
+                 for (int slot : INPUT_SLOTS) {
+                     ItemStack itemInSlot = menu.getItemInSlot(slot);
+                     if (SlimefunUtils.isItemSimilar(itemInSlot, wrapper, true, false)
+                             && (itemAmount += itemInSlot.getAmount()) > amountLimit) {
+-                        // Amount has reached the limited, just return.
+                         return new int[0];
+                     }
+                 }
+@@ -134,7 +132,7 @@ public class CrafterSmartPort extends SlimefunItem {
+     private ItemStack getCountItem() {
+         ItemStack countItem = new ItemStack(Material.CLOCK);
+         ItemMeta im = countItem.getItemMeta();
+-        im.setDisplayName(ChatColor.BLUE + "合成表的原料数量");
++        im.setDisplayName(ChatColor.BLUE + "Số lượng nguyên liệu trong công thức");
+         countItem.setItemMeta(im);
+         return countItem;
+     }
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/IDataSourceAdapter.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/IDataSourceAdapter.java
+index 64320ddc1..44834b2f3 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/IDataSourceAdapter.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/IDataSourceAdapter.java
+@@ -7,8 +7,8 @@ import java.util.List;
+ 
+ public interface IDataSourceAdapter<T> {
+     /**
+-     * 当前数据库架构版本号
+-     * 在数据库结构有变动时更新
++     * Số phiên bản schema cơ sở dữ liệu hiện tại
++     * Cập nhật khi có thay đổi cấu trúc cơ sở dữ liệu
+      */
+     int DATABASE_VERSION = 2;
+ 
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlCommonAdapter.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlCommonAdapter.java
+index c432a2dbf..85a18add6 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlCommonAdapter.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlCommonAdapter.java
+@@ -133,7 +133,7 @@ public abstract class SqlCommonAdapter<T extends ISqlCommonConfig> implements ID
+         DatabasePatch patch = null;
+         var dbVer = getDatabaseVersion();
+ 
+-        Slimefun.logger().log(Level.INFO, "当前数据库版本 {0}", new Object[] {dbVer});
++        Slimefun.logger().log(Level.INFO, "Phiên bản cơ sở dữ liệu hiện tại {0}", new Object[] {dbVer});
+ 
+         switch (dbVer) {
+             case 0 -> patch = new DatabasePatchV1();
+@@ -145,17 +145,21 @@ public abstract class SqlCommonAdapter<T extends ISqlCommonConfig> implements ID
+         }
+ 
+         try (var conn = ds.getConnection()) {
+-            Slimefun.logger().log(Level.INFO, "正在更新数据库版本至 " + patch.getVersion() + ", 可能需要一段时间...");
++            Slimefun.logger()
++                    .log(
++                            Level.INFO,
++                            "Đang cập nhật cơ sở dữ liệu lên phiên bản " + patch.getVersion()
++                                    + ", có thể mất một chút thời gian...");
+             var stmt = conn.createStatement();
+             patch.updateVersion(stmt, config);
+             patch.patch(stmt, config);
+-            Slimefun.logger().log(Level.INFO, "更新完成. ");
++            Slimefun.logger().log(Level.INFO, "Cập nhật hoàn tất. ");
+ 
+             if (getDatabaseVersion() != IDataSourceAdapter.DATABASE_VERSION) {
+                 patch();
+             }
+         } catch (SQLException e) {
+-            Slimefun.logger().log(Level.SEVERE, "更新数据库时出现问题!", e);
++            Slimefun.logger().log(Level.SEVERE, "Gặp vấn đề khi cập nhật cơ sở dữ liệu!", e);
+         }
+     }
+ }
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlConstants.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlConstants.java
+index 5481ee23d..43565c48e 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlConstants.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/adapter/sqlcommon/SqlConstants.java
+@@ -14,7 +14,7 @@ public interface SqlConstants {
+     String TABLE_NAME_UNIVERSAL_DATA = "universal_data";
+     /**
+      * @deprecated
+-     * 由于设计不当，该表已被弃用
++     * Do thiết kế không hợp lý, bảng này đã bị loại bỏ
+      */
+     String TABLE_NAME_TABLE_INFORMATION = "table_information";
+ 
+@@ -46,7 +46,7 @@ public interface SqlConstants {
+ 
+     /**
+      * @deprecated
+-     * 由于设计不当，该字段已被弃用
++     * Do thiết kế không hợp lý, trường này đã bị loại bỏ
+      */
+     String FIELD_TABLE_VERSION = "table_version";
+ 
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/common/DataScope.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/common/DataScope.java
+index 0e710cab6..356b950cf 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/common/DataScope.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/common/DataScope.java
+@@ -3,7 +3,7 @@ package com.xzavier0722.mc.plugin.slimefun4.storage.common;
+ import lombok.Getter;
+ 
+ /**
+- * {@link DataScope} 是 Slimefun 数据库表中数据的作用域定义
++ * {@link DataScope} là định nghĩa phạm vi dữ liệu trong các bảng cơ sở dữ liệu Slimefun
+  */
+ public enum DataScope {
+     NONE,
+@@ -21,7 +21,7 @@ public enum DataScope {
+     TABLE_METADATA;
+ 
+     /**
+-     * 标记当前 {@link DataScope} 的主键字段
++     * Đánh dấu các trường khóa chính của {@link DataScope} hiện tại
+      */
+     @Getter
+     private final FieldKey[] primaryKeys;
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/common/DataType.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/common/DataType.java
+index 22a3463a2..6aa4a3ce1 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/common/DataType.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/common/DataType.java
+@@ -1,17 +1,17 @@
+ package com.xzavier0722.mc.plugin.slimefun4.storage.common;
+ 
+ /**
+- * {@link DataType} 是 Slimefun 数据库控制器的类型，
+- * 用于区分不同的数据存储类型。
++ * {@link DataType} là loại của bộ điều khiển cơ sở dữ liệu Slimefun,
++ * dùng để phân biệt các loại lưu trữ dữ liệu khác nhau.
+  */
+ public enum DataType {
+     /**
+-     * 玩家档案，通常包含研究进度、背包等其他玩家相关数据。
++     * Hồ sơ người chơi, thường bao gồm tiến độ nghiên cứu, ba lô và dữ liệu liên quan người chơi khác.
+      */
+     PLAYER_PROFILE,
+ 
+     /**
+-     * Slimefun 方块数据
++     * Dữ liệu khối Slimefun
+      */
+     BLOCK_STORAGE
+ }
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
+index 27ebb3adf..ca9bb95cc 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ADataController.java
+@@ -24,10 +24,10 @@ import lombok.Getter;
+ import lombok.extern.slf4j.Slf4j;
+ 
+ /**
+- * {@link ADataController} 是 Slimefun 数据库控制器的抽象类，
+- * 提供了对数据源适配器的访问和数据操作的基本方法。
++ * {@link ADataController} là lớp trừu tượng của bộ điều khiển cơ sở dữ liệu Slimefun,
++ * cung cấp quyền truy cập vào data source adapter và các phương thức cơ bản cho thao tác dữ liệu.
+  * <br/>
+- * 该类提供了对数据库的增删查改操作以及异步读写的支持。
++ * Lớp này cung cấp các thao tác CRUD trên cơ sở dữ liệu cũng như hỗ trợ đọc ghi bất đồng bộ.
+  */
+ @Slf4j
+ public abstract class ADataController {
+@@ -37,23 +37,23 @@ public abstract class ADataController {
+ 
+     private volatile IDataSourceAdapter<?> dataAdapter;
+     /**
+-     * 数据库读取调度器
++     * Bộ lập lịch đọc cơ sở dữ liệu
+      */
+     protected ExecutorService readExecutor;
+     /**
+-     * 数据库写入调度器
++     * Bộ lập lịch ghi cơ sở dữ liệu
+      */
+     protected ExecutorService writeExecutor;
+ 
+     protected ExecutorService serialWriteExecutor;
+ 
+     /**
+-     * 数据库回调调度器
++     * Bộ lập lịch callback cơ sở dữ liệu
+      */
+     @Getter
+     protected ExecutorService callbackExecutor;
+     /**
+-     * 标记当前控制器是否已被关闭
++     * Đánh dấu controller hiện tại đã bị đóng hay chưa
+      */
+     private volatile boolean destroyed = false;
+ 
+@@ -75,7 +75,7 @@ public abstract class ADataController {
+     }
+ 
+     /**
+-     * 初始化 {@link ADataController}
++     * Khởi tạo {@link ADataController}
+      *
+      * @param dataAdapter   The data source adapter
+      * @param maxReadThread Maximum number of read threads
+@@ -126,7 +126,7 @@ public abstract class ADataController {
+     }
+ 
+     /**
+-     * 正常关闭 {@link ADataController}
++     * Đóng bình thường {@link ADataController}
+      */
+     @OverridingMethodsMustInvokeSuper
+     public void shutdown() {
+@@ -144,13 +144,18 @@ public abstract class ADataController {
+ 
+             while (pendingTask > 0) {
+                 var doneTaskPercent = String.format("%.1f", (totalTask - pendingTask) / totalTask * 100);
+-                logger.log(Level.INFO, "数据保存中，请稍候... 剩余 {0} 个任务 ({1}%)", new Object[] {pendingTask, doneTaskPercent});
++                logger.log(Level.INFO, "Đang lưu dữ liệu, vui lòng đợi... Còn lại {0} tác vụ ({1}%)", new Object[] {
++                    pendingTask, doneTaskPercent
++                });
+                 TimeUnit.SECONDS.sleep(1);
+                 var currentTask = scheduledWriteTasks.size();
+ 
+                 if (pendingTask == currentTask) {
+                     if (timer.peek() / 1000 > 10) {
+-                        Slimefun.logger().log(Level.WARNING, "检测到耗时保存任务, 请将下面的线程堆栈 完整 发送给开发者以便定位问题: ");
++                        Slimefun.logger()
++                                .log(
++                                        Level.WARNING,
++                                        "Phát hiện tác vụ lưu mất nhiều thời gian, vui lòng gửi stack trace thread bên dưới HOÀN CHỈNH cho nhà phát triển để xác định vấn đề: ");
+                         Slimefun.logger()
+                                 .log(Level.WARNING, Slimefun.getProfiler().snapshotThreads());
+                     }
+@@ -161,7 +166,7 @@ public abstract class ADataController {
+                 pendingTask = scheduledWriteTasks.size();
+             }
+ 
+-            logger.info("数据保存完成.");
++            logger.info("Lưu dữ liệu hoàn tất.");
+         } catch (InterruptedException e) {
+             logger.log(Level.WARNING, "Exception thrown while saving data: ", e);
+         }
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ASlimefunDataContainer.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ASlimefunDataContainer.java
+index 6fa9379ff..eb1ac1b4c 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ASlimefunDataContainer.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/ASlimefunDataContainer.java
+@@ -8,9 +8,9 @@ import javax.annotation.ParametersAreNonnullByDefault;
+ import lombok.Getter;
+ 
+ /**
+- * Slimefun 数据容器的抽象类.
++ * Lớp trừu tượng của data container Slimefun.
+  * <p>
+- * 该类用于存储 Slimefun 特有的数据容器, 包括 Slimefun ID 和是否待删除的标志.
++ * Lớp này dùng để lưu trữ data container riêng của Slimefun, bao gồm Slimefun ID và cờ đánh dấu chờ xóa.
+  *
+  * @author NoRainCity
+  *
 diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/BlockDataController.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/BlockDataController.java
-index 67d813922..928fc75c2 100644
+index 082f17aab..38576ab89 100644
 --- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/BlockDataController.java
 +++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/controller/BlockDataController.java
+@@ -48,9 +48,9 @@ import org.bukkit.inventory.ItemStack;
+ import org.bukkit.plugin.Plugin;
+ 
+ /**
+- * 方块数据控制器
++ * Bộ điều khiển dữ liệu khối
+  * <p>
+- * 用于管理区块中的 Slimefun 方块数据
++ * Dùng để quản lý dữ liệu khối Slimefun trong chunk
+  * <p>
+  * {@link SlimefunBlockData}
+  * {@link SlimefunUniversalData}
+@@ -60,42 +60,42 @@ import org.bukkit.plugin.Plugin;
+  */
+ public class BlockDataController extends ADataController {
+     /**
+-     * 延迟写数据任务队列
++     * Hàng đợi tác vụ ghi dữ liệu trì hoãn
+      */
+     private final Map<LinkedKey, DelayedTask> delayedWriteTasks;
+     /**
+-     * 区块数据缓存
++     * Cache dữ liệu chunk
+      */
+     private final Map<String, SlimefunChunkData> loadedChunk;
+     /**
+-     * 通用数据缓存
++     * Cache dữ liệu chung
+      */
+     private final Map<UUID, SlimefunUniversalData> loadedUniversalData;
+     /**
+-     * 方块物品栏快照
++     * Snapshot kho đồ khối
+      */
+     private final Map<String, InvSnapshot> invSnapshots;
+     /**
+-     * 全局控制器加载数据锁
++     * Lock tải dữ liệu controller toàn cục
+      *
+      * {@link ScopedLock}
+      */
+     private final ScopedLock lock;
+     /**
+-     * 延时加载模式标志
++     * Cờ chế độ lưu trì hoãn
+      */
+     private boolean enableDelayedSaving = false;
+ 
+     private int delayedSecond = 0;
+     private WrappedTask looperTask;
+     /**
+-     * 区块数据加载模式
++     * Chế độ tải dữ liệu chunk
+      * {@link ChunkDataLoadMode}
+      */
+     private ChunkDataLoadMode chunkDataLoadMode;
+ 
+     /**
+-     * 初始化加载中标志
++     * Cờ đang tải khởi tạo
+      */
+     BlockDataController() {
+         super(DataType.BLOCK_STORAGE);
 @@ -107,11 +107,11 @@ public class BlockDataController extends ADataController {
      }
  
@@ -338,16 +1476,19 @@ index 67d813922..928fc75c2 100644
          var chunkKeys = new HashSet<String>();
          var key = new RecordKey(DataScope.CHUNK_DATA);
          key.addField(FieldKey.CHUNK);
-@@ -874,7 +874,7 @@ public class BlockDataController extends ADataController {
+@@ -873,8 +873,9 @@ public class BlockDataController extends ADataController {
+         getData(key, true).forEach(data -> chunkKeys.add(data.get(FieldKey.CHUNK)));
  
          chunkKeys.forEach(cKey -> loadChunk(LocationUtils.toChunk(world, cKey), false, true));
-         logger.log(
+-        logger.log(
 -                Level.INFO, "世界 {0} 数据加载完成, 耗时 {1}ms", new Object[] {worldName, (System.currentTimeMillis() - start)});
-+                Level.INFO, "Thế giới {0} tải dữ liệu hoàn tất, mất {1}ms", new Object[] {worldName, (System.currentTimeMillis() - start)});
++        logger.log(Level.INFO, "Thế giới {0} tải dữ liệu hoàn tất, mất {1}ms", new Object[] {
++            worldName, (System.currentTimeMillis() - start)
++        });
      }
  
      public void loadUniversalRecord() {
-@@ -997,7 +997,7 @@ public class BlockDataController extends ADataController {
+@@ -997,7 +998,7 @@ public class BlockDataController extends ADataController {
                              Slimefun.logger()
                                      .log(
                                              Level.SEVERE,
@@ -356,7 +1497,7 @@ index 67d813922..928fc75c2 100644
                                                      + LocationUtils.locationToString(blockData.getLocation()) + ":"
                                                      + slot + "]",
                                              ex);
-@@ -1054,7 +1054,7 @@ public class BlockDataController extends ADataController {
+@@ -1054,7 +1055,7 @@ public class BlockDataController extends ADataController {
              return;
          }
  
@@ -365,7 +1506,7 @@ index 67d813922..928fc75c2 100644
          var key = new RecordKey(DataScope.UNIVERSAL_DATA);
          key.addCondition(FieldKey.UNIVERSAL_UUID, uniData.getKey());
          key.addField(FieldKey.DATA_KEY);
-@@ -1079,7 +1079,7 @@ public class BlockDataController extends ADataController {
+@@ -1079,7 +1080,7 @@ public class BlockDataController extends ADataController {
  
              if (uniData instanceof SlimefunUniversalBlockData ubd) {
                  if (ubd.hasTrait(UniversalDataTrait.BLOCK)) {
@@ -374,7 +1515,7 @@ index 67d813922..928fc75c2 100644
                      var lStr = ubd.getData(UniversalDataTrait.BLOCK.getReservedKey());
  
                      if (lStr != null && !lStr.isBlank()) {
-@@ -1096,7 +1096,7 @@ public class BlockDataController extends ADataController {
+@@ -1096,7 +1097,7 @@ public class BlockDataController extends ADataController {
              }
  
              if (uniData.hasTrait(UniversalDataTrait.INVENTORY)) {
@@ -383,16 +1524,20 @@ index 67d813922..928fc75c2 100644
                  var menuPreset = UniversalMenuPreset.getPreset(uniData.getSfId());
                  if (menuPreset != null) {
                      var menuKey = new RecordKey(DataScope.UNIVERSAL_INVENTORY);
-@@ -1113,7 +1113,7 @@ public class BlockDataController extends ADataController {
+@@ -1113,7 +1114,11 @@ public class BlockDataController extends ADataController {
                          } catch (Exception ex) {
                              inv[slot] = null;
                              Slimefun.logger()
 -                                    .log(Level.SEVERE, "加载目标物品失败, 请检查实际数据 [" + uniData.getKey() + ":" + slot + "]", ex);
-+                                    .log(Level.SEVERE, "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế [" + uniData.getKey() + ":" + slot + "]", ex);
++                                    .log(
++                                            Level.SEVERE,
++                                            "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế ["
++                                                    + uniData.getKey() + ":" + slot + "]",
++                                            ex);
                          }
                      }
  
-@@ -1660,7 +1660,7 @@ public class BlockDataController extends ADataController {
+@@ -1660,7 +1665,7 @@ public class BlockDataController extends ADataController {
      }
  
      /**
@@ -401,16 +1546,17 @@ index 67d813922..928fc75c2 100644
       */
      private void migrateUniversalData(
              @Nonnull Location l,
-@@ -1701,7 +1701,7 @@ public class BlockDataController extends ADataController {
+@@ -1701,7 +1706,8 @@ public class BlockDataController extends ADataController {
                          Slimefun.logger()
                                  .log(
                                          Level.SEVERE,
 -                                        "加载目标物品失败, 请检查实际数据 [" + universalData.getKey() + ":" + slot + "]",
-+                                        "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế [" + universalData.getKey() + ":" + slot + "]",
++                                        "Tải vật phẩm mục tiêu thất bại, vui lòng kiểm tra dữ liệu thực tế ["
++                                                + universalData.getKey() + ":" + slot + "]",
                                          ex);
                      }
                  }
-@@ -1721,7 +1721,7 @@ public class BlockDataController extends ADataController {
+@@ -1721,7 +1727,7 @@ public class BlockDataController extends ADataController {
                          .enableTicker(universalData.getLastPresent().toLocation(), universalData.getUUID());
              }
          } catch (Exception e) {
@@ -558,6 +1704,80 @@ index 4d402a411..eb7f1e3e9 100644
       */
      INVENTORY("");
  
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/BlockStorageMigrator.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/BlockStorageMigrator.java
+index aa3f5fc28..d1a1f7917 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/BlockStorageMigrator.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/BlockStorageMigrator.java
+@@ -64,11 +64,11 @@ public class BlockStorageMigrator implements IMigrator {
+                 Files.copy(chunk.toPath(), chunkBak, StandardCopyOption.REPLACE_EXISTING);
+                 Files.delete(chunk.toPath());
+             } catch (Exception e) {
+-                Slimefun.logger().log(Level.WARNING, "备份旧数据 " + chunk.getName() + " 时出现问题", e);
++                Slimefun.logger().log(Level.WARNING, "Gặp vấn đề khi sao lưu dữ liệu cũ " + chunk.getName(), e);
+                 status = MigrateStatus.FAILED;
+             }
+         } else {
+-            Slimefun.logger().log(Level.WARNING, "未检测到区块数据，跳过迁移。");
++            Slimefun.logger().log(Level.WARNING, "Không phát hiện dữ liệu chunk, bỏ qua di chuyển.");
+         }
+ 
+         Bukkit.getWorlds().forEach(this::migrateWorld);
+@@ -102,7 +102,7 @@ public class BlockStorageMigrator implements IMigrator {
+     }
+ 
+     private void migrateWorld(World w) {
+-        Slimefun.logger().log(Level.INFO, "开始迁移方块数据: " + w.getName());
++        Slimefun.logger().log(Level.INFO, "Bắt đầu di chuyển dữ liệu khối: " + w.getName());
+         var fList = new File(blockFolder, w.getName()).listFiles();
+         if (fList == null) {
+             return;
+@@ -113,10 +113,11 @@ public class BlockStorageMigrator implements IMigrator {
+         for (var f : fList) {
+             var id = f.getName();
+             id = id.substring(0, id.length() - 4);
+-            Slimefun.logger().log(Level.INFO, "正在迁移方块数据: " + id + "(" + ++count + "/" + total + ")");
++            Slimefun.logger().log(Level.INFO, "Đang di chuyển dữ liệu khối: " + id + "(" + ++count + "/" + total + ")");
+ 
+             if (SlimefunItem.getById(id) == null) {
+-                Slimefun.logger().log(Level.WARNING, "检测到不存在的方块 ID (" + id + "), 已跳过迁移.");
++                Slimefun.logger()
++                        .log(Level.WARNING, "Phát hiện ID khối không tồn tại (" + id + "), đã bỏ qua di chuyển.");
+                 continue;
+             }
+ 
+@@ -155,7 +156,7 @@ public class BlockStorageMigrator implements IMigrator {
+                 migrateInv(menu, f);
+             }
+         } catch (Throwable e) {
+-            Slimefun.logger().log(Level.SEVERE, "迁移方块时发生错误: " + locStr, e);
++            Slimefun.logger().log(Level.SEVERE, "Lỗi xảy ra khi di chuyển khối: " + locStr, e);
+         }
+     }
+ 
+@@ -193,12 +194,12 @@ public class BlockStorageMigrator implements IMigrator {
+         var total = keys.size();
+         var count = 0;
+         for (var key : keys) {
+-            Slimefun.logger().log(Level.INFO, "正在迁移区块数据: " + ++count + "/" + total);
++            Slimefun.logger().log(Level.INFO, "Đang di chuyển dữ liệu chunk: " + ++count + "/" + total);
+             var arr = key.split(";");
+             try {
+                 var w = Bukkit.getWorld(arr[0]);
+                 if (w == null) {
+-                    Slimefun.logger().log(Level.WARNING, "区块所在世界未加载，忽略: " + arr[0]);
++                    Slimefun.logger().log(Level.WARNING, "Thế giới chứa chunk chưa được tải, bỏ qua: " + arr[0]);
+                     continue;
+                 }
+ 
+@@ -209,7 +210,7 @@ public class BlockStorageMigrator implements IMigrator {
+                         Slimefun.getDatabaseManager().getBlockDataController().getChunkData(c);
+                 data.entrySet().forEach(each -> chunkData.setData(each.getKey(), each.getValue()));
+             } catch (Throwable e) {
+-                Slimefun.logger().log(Level.SEVERE, "迁移区块数据时发生错误: " + key, e);
++                Slimefun.logger().log(Level.SEVERE, "Lỗi xảy ra khi di chuyển dữ liệu chunk: " + key, e);
+             }
+         }
+     }
 diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/MigratorUtil.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/MigratorUtil.java
 index ac1e5a242..4d68a0341 100644
 --- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/MigratorUtil.java
@@ -598,8 +1818,73 @@ index ac1e5a242..4d68a0341 100644
          }
      }
  
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
+index 58ada9518..2e4727d7e 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/migrator/PlayerProfileMigrator.java
+@@ -68,7 +68,11 @@ public class PlayerProfileMigrator implements IMigrator {
+                 var p = Bukkit.getOfflinePlayer(uuid);
+ 
+                 if (!p.hasPlayedBefore()) {
+-                    Slimefun.logger().log(Level.INFO, "检测到从未加入服务器玩家的数据, 已自动跳过: " + uuid);
++                    Slimefun.logger()
++                            .log(
++                                    Level.INFO,
++                                    "Phát hiện dữ liệu của người chơi chưa từng tham gia server, đã tự động bỏ qua: "
++                                            + uuid);
+                     total--;
+                     continue;
+                 }
+@@ -76,22 +80,32 @@ public class PlayerProfileMigrator implements IMigrator {
+                 migratePlayerProfile(p);
+ 
+                 migratedCount++;
+-                Slimefun.logger().log(Level.INFO, "成功迁移玩家数据: " + p.getName() + "(" + migratedCount + "/" + total + ")");
++                Slimefun.logger()
++                        .log(
++                                Level.INFO,
++                                "Di chuyển dữ liệu người chơi thành công: " + p.getName() + "(" + migratedCount + "/"
++                                        + total + ")");
+             } catch (IllegalArgumentException ignored) {
+                 result = MigrateStatus.FAILED;
+-                Slimefun.logger().log(Level.WARNING, "检测到不合法命名的玩家数据文件: '" + file.getName() + "'");
+-                // illegal player name, skip
++                Slimefun.logger()
++                        .log(
++                                Level.WARNING,
++                                "Phát hiện file dữ liệu người chơi có tên không hợp lệ: '" + file.getName() + "'");
+             }
+         }
+ 
+         if (MigratorUtil.createDirBackup(playerFolder)) {
+             Slimefun.logger()
+-                    .log(Level.INFO, "成功迁移 {0} 个玩家数据! 迁移前的数据已储存在 ./data-storage/Slimefun/old_data 下", migratedCount);
++                    .log(
++                            Level.INFO,
++                            "Di chuyển thành công {0} dữ liệu người chơi! Dữ liệu trước khi di chuyển đã được lưu trong ./data-storage/Slimefun/old_data",
++                            migratedCount);
+             try {
+                 Files.deleteIfExists(playerFolder.toPath());
+             } catch (IOException e) {
+                 result = MigrateStatus.FAILED;
+-                Slimefun.logger().log(Level.WARNING, "删除旧玩家数据文件夹失败, 请手动删除", e);
++                Slimefun.logger()
++                        .log(Level.WARNING, "Xóa thư mục dữ liệu người chơi cũ thất bại, vui lòng xóa thủ công", e);
+             }
+         }
+ 
+diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/package-info.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/package-info.java
+index b19d8bd06..c7f154d09 100644
+--- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/package-info.java
++++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/package-info.java
+@@ -1,4 +1,4 @@
+ /**
+- * Slimefun 的数据库存储系统实现与 API
++ * Triển khai hệ thống lưu trữ cơ sở dữ liệu và API của Slimefun
+  */
+ package com.xzavier0722.mc.plugin.slimefun4.storage;
 diff --git a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/util/DataUtils.java b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/util/DataUtils.java
-index 746a69793..5a58a0c86 100644
+index 746a69793..db189ff77 100644
 --- a/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/util/DataUtils.java
 +++ b/src/main/java/com/xzavier0722/mc/plugin/slimefun4/storage/util/DataUtils.java
 @@ -17,11 +17,11 @@ import org.bukkit.util.io.BukkitObjectOutputStream;
@@ -650,12 +1935,15 @@ index 746a69793..5a58a0c86 100644
       */
      @Nullable public static ItemStack deserializeItemStack(String base64Str) {
          if (base64Str == null || base64Str.isEmpty() || base64Str.isBlank()) {
-@@ -71,12 +72,12 @@ public class DataUtils {
+@@ -71,12 +72,15 @@ public class DataUtils {
              Debug.log(TestCase.BACKPACK, "Deserialized itemstack: " + result);
  
              if (result.getType().isAir()) {
 -                Slimefun.logger().log(Level.SEVERE, "反序列化数据库中的物品失败! 对应物品无法显示.");
-+                Slimefun.logger().log(Level.SEVERE, "Giải mã vật phẩm từ cơ sở dữ liệu thất bại! Vật phẩm tương ứng không thể hiển thị.");
++                Slimefun.logger()
++                        .log(
++                                Level.SEVERE,
++                                "Giải mã vật phẩm từ cơ sở dữ liệu thất bại! Vật phẩm tương ứng không thể hiển thị.");
              }
  
              return result;
@@ -1116,15 +2404,18 @@ index 777296d8e..99908afce 100644
       * @param p The {@link Player} to check
       * @return Whether that {@link Player} can unlock this {@link Research}
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/attributes/EnergyNetComponent.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/attributes/EnergyNetComponent.java
-index 9984fe53c..e601cbcdc 100644
+index 9984fe53c..9680f01e6 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/attributes/EnergyNetComponent.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/attributes/EnergyNetComponent.java
-@@ -101,7 +101,7 @@ public interface EnergyNetComponent extends ItemAttribute {
+@@ -101,7 +101,10 @@ public interface EnergyNetComponent extends ItemAttribute {
  
      @Deprecated
      default int getCharge(@Nonnull Location l, @Nonnull Config config) {
 -        Slimefun.logger().log(Level.FINE, "正在调用旧 BlockStorage 的方法, 建议使用对应附属的新方块存储适配版.");
-+        Slimefun.logger().log(Level.FINE, "Đang gọi phương thức BlockStorage cũ, khuyến nghị sử dụng phiên bản adapter lưu trữ khối mới của addon tương ứng.");
++        Slimefun.logger()
++                .log(
++                        Level.FINE,
++                        "Đang gọi phương thức BlockStorage cũ, khuyến nghị sử dụng phiên bản adapter lưu trữ khối mới của addon tương ứng.");
  
          Validate.notNull(l, "Location was null!");
  
@@ -1255,7 +2546,7 @@ index 25ee7949a..05d800972 100644
              visualBackpack.setItemMeta(im);
  
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/BlockDataCommand.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/BlockDataCommand.java
-index 5b32e5b52..256f48051 100644
+index 5b32e5b52..4d13beb59 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/BlockDataCommand.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/BlockDataCommand.java
 @@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
@@ -1294,7 +2585,7 @@ index 5b32e5b52..256f48051 100644
                      return;
                  }
  
-@@ -88,17 +88,17 @@ class BlockDataCommand extends SubCommand {
+@@ -88,17 +88,18 @@ class BlockDataCommand extends SubCommand {
                  blockData.setData(key, value);
                  ChatUtils.sendMessage(
                          player,
@@ -1311,15 +2602,16 @@ index 5b32e5b52..256f48051 100644
  
                  blockData.removeData(key);
 -                ChatUtils.sendMessage(player, "&a已移除该方块 &b%key% &a的值", msg -> msg.replace("%key%", key));
-+                ChatUtils.sendMessage(player, "&aĐã xóa giá trị &b%key% &acủa khối này", msg -> msg.replace("%key%", key));
++                ChatUtils.sendMessage(
++                        player, "&aĐã xóa giá trị &b%key% &acủa khối này", msg -> msg.replace("%key%", key));
              }
              default -> {
                  Slimefun.getLocalization()
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/ItemIdCommand.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/ItemIdCommand.java
-index caf169661..e1ab73108 100644
+index caf169661..d43122851 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/ItemIdCommand.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/ItemIdCommand.java
-@@ -29,19 +29,19 @@ class ItemIdCommand extends SubCommand {
+@@ -29,19 +29,20 @@ class ItemIdCommand extends SubCommand {
                      var sfItem = SlimefunItem.getByItem(item);
                      if (sfItem != null) {
                          var sfId = sfItem.getId();
@@ -1330,7 +2622,8 @@ index caf169661..e1ab73108 100644
                          idMsg.setItalic(true);
                          idMsg.setColor(ChatColor.GRAY);
 -                        idMsg.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("点击复制到剪贴板")));
-+                        idMsg.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Nhấp để sao chép vào clipboard")));
++                        idMsg.setHoverEvent(new HoverEvent(
++                                HoverEvent.Action.SHOW_TEXT, new Text("Nhấp để sao chép vào clipboard")));
                          idMsg.setClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, sfId));
                          sender.spigot().sendMessage(msg, idMsg);
                      } else {
@@ -1342,8 +2635,37 @@ index caf169661..e1ab73108 100644
                  }
              } else {
                  Slimefun.getLocalization().sendMessage(sender, "messages.no-permission", true);
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/MigrateCommand.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/MigrateCommand.java
+index 8f03a6388..f284aad53 100644
+--- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/MigrateCommand.java
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/MigrateCommand.java
+@@ -31,20 +31,20 @@ public class MigrateCommand extends SubCommand {
+                 Slimefun.getFoliaLib().getScheduler().runAsync(wrappedTask -> {
+                     try {
+                         var status = PlayerProfileMigrator.getInstance().migrateData();
+-                        sendMigrateStatus("玩家数据", sender, status);
++                        sendMigrateStatus("Dữ liệu người chơi", sender, status);
+                     } catch (Exception e) {
+                         Slimefun.getLocalization().sendMessage(sender, "commands.migrate.failed", true);
+-                        plugin.getLogger().log(Level.WARNING, "迁移数据时出现意外", e);
++                        plugin.getLogger().log(Level.WARNING, "Gặp lỗi bất ngờ khi di chuyển dữ liệu", e);
+                     }
+                 });
+ 
+                 Slimefun.getFoliaLib().getScheduler().runAsync(wrappedTask -> {
+                     try {
+                         var status = BlockStorageMigrator.getInstance().migrateData();
+-                        sendMigrateStatus("方块数据", sender, status);
++                        sendMigrateStatus("Dữ liệu khối", sender, status);
+                     } catch (Exception e) {
+                         Slimefun.getLocalization().sendMessage(sender, "commands.migrate.failed", true);
+-                        plugin.getLogger().log(Level.WARNING, "迁移数据时出现意外", e);
++                        plugin.getLogger().log(Level.WARNING, "Gặp lỗi bất ngờ khi di chuyển dữ liệu", e);
+                     }
+                 });
+             } else {
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/VersionsCommand.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/VersionsCommand.java
-index a1d28d997..4f31a6d5d 100644
+index a1d28d997..8f056c210 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/VersionsCommand.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/commands/subcommands/VersionsCommand.java
 @@ -42,7 +42,7 @@ class VersionsCommand extends SubCommand {
@@ -1382,7 +2704,7 @@ index a1d28d997..4f31a6d5d 100644
                          .append(Component.text(
                                  "#" + Slimefun.getMetricsService().getVersion() + '\n',
                                  Style.style(NamedTextColor.DARK_GREEN)));
-@@ -92,16 +92,16 @@ class VersionsCommand extends SubCommand {
+@@ -92,16 +92,18 @@ class VersionsCommand extends SubCommand {
              addJavaVersion(builder);
  
              // Declare that we are NOT OFFICIAL build so no support from upstream
@@ -1390,11 +2712,13 @@ index a1d28d997..4f31a6d5d 100644
 +            builder.append(Component.text("\nBản dịch bởi StarWishsama", Style.style(NamedTextColor.WHITE)))
                      .append(Component.text(
 -                            "\n请不要将此版本信息截图到 Discord/Github 反馈 Bug\n优先到汉化页面反馈\n", Style.style(NamedTextColor.RED)));
-+                            "\nVui lòng không chụp ảnh thông tin phiên bản này lên Discord/Github để báo cáo lỗi\nƯu tiên báo cáo tại trang bản dịch\n", Style.style(NamedTextColor.RED)));
++                            "\nVui lòng không chụp ảnh thông tin phiên bản này lên Discord/Github để báo cáo lỗi\nƯu tiên báo cáo tại trang bản dịch\n",
++                            Style.style(NamedTextColor.RED)));
  
              if (Slimefun.getConfigManager().isBypassEnvironmentCheck()) {
 -                builder.append(Component.text("\n\n已禁用环境兼容性检查", Style.style(NamedTextColor.RED)));
-+                builder.append(Component.text("\n\nĐã tắt kiểm tra tương thích môi trường", Style.style(NamedTextColor.RED)));
++                builder.append(
++                        Component.text("\n\nĐã tắt kiểm tra tương thích môi trường", Style.style(NamedTextColor.RED)));
              }
  
              if (Slimefun.getConfigManager().isBypassItemLengthCheck()) {
@@ -1403,7 +2727,7 @@ index a1d28d997..4f31a6d5d 100644
              }
  
              builder.append(Component.text("\n"));
-@@ -117,10 +117,10 @@ class VersionsCommand extends SubCommand {
+@@ -117,10 +119,10 @@ class VersionsCommand extends SubCommand {
          int version = NumberUtils.getJavaVersion();
  
          if (version < RECOMMENDED_JAVA_VERSION) {
@@ -1417,12 +2741,13 @@ index a1d28d997..4f31a6d5d 100644
                      + JAVA_VERSION_NOTICE);
  
              builder.append(Component.text("Java " + version, NamedTextColor.RED).hoverEvent(HoverEvent.showText(hover)))
-@@ -136,11 +136,11 @@ class VersionsCommand extends SubCommand {
+@@ -136,11 +138,12 @@ class VersionsCommand extends SubCommand {
          Collection<Plugin> addons = Slimefun.getInstalledAddons();
  
          if (addons.isEmpty()) {
 -            builder.append(Component.text("没有安装任何附属插件", NamedTextColor.GRAY).decorate(TextDecoration.ITALIC));
-+            builder.append(Component.text("Không cài đặt addon nào", NamedTextColor.GRAY).decorate(TextDecoration.ITALIC));
++            builder.append(Component.text("Không cài đặt addon nào", NamedTextColor.GRAY)
++                    .decorate(TextDecoration.ITALIC));
              return;
          }
  
@@ -1431,7 +2756,7 @@ index a1d28d997..4f31a6d5d 100644
                  .append(Component.text("(" + addons.size() + ")", NamedTextColor.DARK_GRAY));
  
          for (Plugin plugin : addons) {
-@@ -165,17 +165,17 @@ class VersionsCommand extends SubCommand {
+@@ -165,17 +168,18 @@ class VersionsCommand extends SubCommand {
                              clickEvent = ClickEvent.openUrl(uri.toString());
                          }
                          Component hoverComp = Component.text()
@@ -1449,11 +2774,12 @@ index a1d28d997..4f31a6d5d 100644
 +                                .append(Component.text("Tác giả: ", NamedTextColor.YELLOW))
                                  .append(Component.text(authors, NamedTextColor.YELLOW))
 -                                .append(Component.text("\n> 附属提供的反馈链接无效!", NamedTextColor.RED))
-+                                .append(Component.text("\n> Link báo cáo addon cung cấp không hợp lệ!", NamedTextColor.RED))
++                                .append(Component.text(
++                                        "\n> Link báo cáo addon cung cấp không hợp lệ!", NamedTextColor.RED))
                                  .build();
  
                          hoverEvent = HoverEvent.showText(hoverComp);
-@@ -183,7 +183,7 @@ class VersionsCommand extends SubCommand {
+@@ -183,7 +187,7 @@ class VersionsCommand extends SubCommand {
  
                  } else {
                      Component hoverComp = Component.text()
@@ -1462,13 +2788,15 @@ index a1d28d997..4f31a6d5d 100644
                              .append(Component.text(authors, NamedTextColor.YELLOW))
                              .build();
  
-@@ -201,21 +201,21 @@ class VersionsCommand extends SubCommand {
+@@ -201,21 +205,27 @@ class VersionsCommand extends SubCommand {
                              clickEvent = ClickEvent.openUrl(uri.toString());
                          }
                          Component hoverComp = Component.text()
 -                                .append(Component.text("此插件已被禁用.\n请检查后台是否有报错.", NamedTextColor.RED))
 -                                .append(Component.text("\n> 单击打开反馈页面", NamedTextColor.DARK_RED))
-+                                .append(Component.text("Plugin này đã bị vô hiệu hóa.\nVui lòng kiểm tra console xem có lỗi không.", NamedTextColor.RED))
++                                .append(Component.text(
++                                        "Plugin này đã bị vô hiệu hóa.\nVui lòng kiểm tra console xem có lỗi không.",
++                                        NamedTextColor.RED))
 +                                .append(Component.text("\n> Nhấp để mở trang báo cáo", NamedTextColor.DARK_RED))
                                  .build();
  
@@ -1477,32 +2805,39 @@ index a1d28d997..4f31a6d5d 100644
                          Component hoverComp = Component.text()
 -                                .append(Component.text("此插件已被禁用.\n请检查后台是否有报错.", NamedTextColor.RED))
 -                                .append(Component.text("\n> 插件提供的反馈链接无效", NamedTextColor.DARK_RED))
-+                                .append(Component.text("Plugin này đã bị vô hiệu hóa.\nVui lòng kiểm tra console xem có lỗi không.", NamedTextColor.RED))
-+                                .append(Component.text("\n> Link báo cáo plugin cung cấp không hợp lệ", NamedTextColor.DARK_RED))
++                                .append(Component.text(
++                                        "Plugin này đã bị vô hiệu hóa.\nVui lòng kiểm tra console xem có lỗi không.",
++                                        NamedTextColor.RED))
++                                .append(Component.text(
++                                        "\n> Link báo cáo plugin cung cấp không hợp lệ", NamedTextColor.DARK_RED))
                                  .build();
  
                          hoverEvent = HoverEvent.showText(hoverComp);
                      }
                  } else {
 -                    Component hoverComp = Component.text("插件已被禁用, 请检查后台是否有报错.");
-+                    Component hoverComp = Component.text("Plugin đã bị vô hiệu hóa, vui lòng kiểm tra console xem có lỗi không.");
++                    Component hoverComp =
++                            Component.text("Plugin đã bị vô hiệu hóa, vui lòng kiểm tra console xem có lỗi không.");
                      hoverEvent = HoverEvent.showText(hoverComp);
                  }
              }
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/config/SlimefunDatabaseManager.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/config/SlimefunDatabaseManager.java
-index 40bf818e2..106ec2f97 100644
+index 40bf818e2..2881d74eb 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/config/SlimefunDatabaseManager.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/config/SlimefunDatabaseManager.java
-@@ -58,7 +58,7 @@ public class SlimefunDatabaseManager {
+@@ -58,7 +58,10 @@ public class SlimefunDatabaseManager {
              var connectionPoolSize = getConnectionPoolSize(blockDataStorageType, blockStorageConfig);
  
              if (readExecutorThread + writeExecutorThread > connectionPoolSize) {
 -                plugin.getLogger().log(Level.WARNING, "检测到 block-storage 连接池大小配置小于读写线程总和, 可能会导致性能问题");
-+                plugin.getLogger().log(Level.WARNING, "Phát hiện kích thước pool kết nối block-storage nhỏ hơn tổng số luồng đọc/ghi, có thể gây vấn đề về hiệu suất");
++                plugin.getLogger()
++                        .log(
++                                Level.WARNING,
++                                "Phát hiện kích thước pool kết nối block-storage nhỏ hơn tổng số luồng đọc/ghi, có thể gây vấn đề về hiệu suất");
              }
  
              initAdapter(blockDataStorageType, DataType.BLOCK_STORAGE, blockStorageConfig);
-@@ -68,14 +68,14 @@ public class SlimefunDatabaseManager {
+@@ -68,14 +71,14 @@ public class SlimefunDatabaseManager {
              blockDataController.init(blockStorageAdapter, readExecutorThread, writeExecutorThread);
  
              if (blockStorageConfig.getBoolean("delayedWriting.enable")) {
@@ -1519,12 +2854,15 @@ index 40bf818e2..106ec2f97 100644
              return;
          }
  
-@@ -87,14 +87,14 @@ public class SlimefunDatabaseManager {
+@@ -87,14 +90,17 @@ public class SlimefunDatabaseManager {
              var connectionPoolSize = getConnectionPoolSize(profileStorageType, profileConfig);
  
              if (readExecutorThread + writeExecutorThread > connectionPoolSize) {
 -                plugin.getLogger().log(Level.WARNING, "检测到 profile-storage 连接池大小配置小于读写线程总和, 可能会导致性能问题");
-+                plugin.getLogger().log(Level.WARNING, "Phát hiện kích thước pool kết nối profile-storage nhỏ hơn tổng số luồng đọc/ghi, có thể gây vấn đề về hiệu suất");
++                plugin.getLogger()
++                        .log(
++                                Level.WARNING,
++                                "Phát hiện kích thước pool kết nối profile-storage nhỏ hơn tổng số luồng đọc/ghi, có thể gây vấn đề về hiệu suất");
              }
  
              initAdapter(profileStorageType, DataType.PLAYER_PROFILE, profileConfig);
@@ -1592,21 +2930,24 @@ index 53fd042e4..7612f6a6b 100644
          } else {
              return Optional.empty();
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/guide/options/GuideModeOption.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/guide/options/GuideModeOption.java
-index 5ce62204d..0197d48a9 100644
+index 5ce62204d..6c62db966 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/guide/options/GuideModeOption.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/guide/options/GuideModeOption.java
-@@ -52,14 +52,14 @@ class GuideModeOption implements SlimefunGuideOption<SlimefunGuideMode> {
+@@ -52,14 +52,17 @@ class GuideModeOption implements SlimefunGuideOption<SlimefunGuideMode> {
              }
  
              ItemMeta meta = item.getItemMeta();
 -            meta.setDisplayName(ChatColor.GRAY + "Slimefun 指南样式: " + ChatColor.YELLOW + selectedMode.getDisplayName());
-+            meta.setDisplayName(ChatColor.GRAY + "Kiểu sách hướng dẫn Slimefun: " + ChatColor.YELLOW + selectedMode.getDisplayName());
++            meta.setDisplayName(ChatColor.GRAY + "Kiểu sách hướng dẫn Slimefun: " + ChatColor.YELLOW
++                    + selectedMode.getDisplayName());
              List<String> lore = new ArrayList<>();
              lore.add("");
 -            lore.add((selectedMode == SlimefunGuideMode.SURVIVAL_MODE ? ChatColor.GREEN : ChatColor.GRAY) + "普通模式");
 -            lore.add((selectedMode == SlimefunGuideMode.CHEAT_MODE ? ChatColor.GREEN : ChatColor.GRAY) + "作弊模式");
-+            lore.add((selectedMode == SlimefunGuideMode.SURVIVAL_MODE ? ChatColor.GREEN : ChatColor.GRAY) + "Chế độ thường");
-+            lore.add((selectedMode == SlimefunGuideMode.CHEAT_MODE ? ChatColor.GREEN : ChatColor.GRAY) + "Chế độ gian lận");
++            lore.add((selectedMode == SlimefunGuideMode.SURVIVAL_MODE ? ChatColor.GREEN : ChatColor.GRAY)
++                    + "Chế độ thường");
++            lore.add((selectedMode == SlimefunGuideMode.CHEAT_MODE ? ChatColor.GREEN : ChatColor.GRAY)
++                    + "Chế độ gian lận");
  
              lore.add("");
 -            lore.add(ChatColor.GRAY + "\u21E8 " + ChatColor.YELLOW + "单击修改指南样式");
@@ -1615,7 +2956,7 @@ index 5ce62204d..0197d48a9 100644
              item.setItemMeta(meta);
  
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/guide/options/SlimefunGuideSettings.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/guide/options/SlimefunGuideSettings.java
-index 0a84b6147..a8f95fc93 100644
+index 0a84b6147..44f065122 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/guide/options/SlimefunGuideSettings.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/guide/options/SlimefunGuideSettings.java
 @@ -126,11 +126,11 @@ public final class SlimefunGuideSettings {
@@ -1675,7 +3016,7 @@ index 0a84b6147..a8f95fc93 100644
          // @formatter:on
  
          menu.addMenuClickHandler(8, (pl, slot, item, action) -> {
-@@ -190,13 +190,13 @@ public final class SlimefunGuideSettings {
+@@ -190,13 +190,14 @@ public final class SlimefunGuideSettings {
                          Material.BOOKSHELF,
                          "&3" + locale.getMessage(p, "guide.title.addons"),
                          "",
@@ -1687,7 +3028,8 @@ index 0a84b6147..a8f95fc93 100644
 +                        "&7Hãy xem chúng, có thể addon bạn đang tìm kiếm ở đó!",
                          "",
 -                        "&7该服务器已安装附属插件: &b" + Slimefun.getInstalledAddons().size(),
-+                        "&7Máy chủ đã cài đặt addon: &b" + Slimefun.getInstalledAddons().size(),
++                        "&7Máy chủ đã cài đặt addon: &b"
++                                + Slimefun.getInstalledAddons().size(),
                          "",
 -                        "&7\u21E8 &e点击查看 Slimefun4 可用的附属插件"));
 +                        "&7\u21E8 &eNhấp để xem các addon có sẵn cho Slimefun4"));
@@ -1779,7 +3121,7 @@ index 42b34889a..ad992a4ae 100644
                  } catch (IOException x) {
                      Slimefun.logger()
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/core/services/profiler/PerformanceSummary.java b/src/main/java/io/github/thebusybiscuit/slimefun4/core/services/profiler/PerformanceSummary.java
-index ac1444b6d..6b03e95a6 100644
+index ac1444b6d..03b391e11 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/core/services/profiler/PerformanceSummary.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/core/services/profiler/PerformanceSummary.java
 @@ -50,17 +50,17 @@ class PerformanceSummary {
@@ -1787,10 +3129,11 @@ index ac1444b6d..6b03e95a6 100644
      public void send(@Nonnull PerformanceInspector sender) {
          sender.sendMessage("");
 -        sender.sendMessage(ChatColor.GREEN + "===== Slimefun 性能分析器 =====");
-+        sender.sendMessage(ChatColor.GREEN + "===== Trình Phân Tích Hiệu Suất Slimefun =====");
-         sender.sendMessage(
+-        sender.sendMessage(
 -                ChatColor.GOLD + "Tick 总用时: " + ChatColor.YELLOW + NumberUtils.getAsMillis(totalElapsedTime));
-+                ChatColor.GOLD + "Tổng thời gian Tick: " + ChatColor.YELLOW + NumberUtils.getAsMillis(totalElapsedTime));
++        sender.sendMessage(ChatColor.GREEN + "===== Trình Phân Tích Hiệu Suất Slimefun =====");
++        sender.sendMessage(ChatColor.GOLD + "Tổng thời gian Tick: " + ChatColor.YELLOW
++                + NumberUtils.getAsMillis(totalElapsedTime));
          sender.sendMessage(ChatColor.GOLD
 -                + "Ticker 运行周期: "
 +                + "Chu kỳ chạy Ticker: "
@@ -1980,7 +3323,7 @@ index 8762d41d5..a34e6342e 100644
  
              // We assume "unsupported" if something went wrong.
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/SlimefunItems.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/SlimefunItems.java
-index a0d87e706..508230d74 100644
+index a0d87e706..ee25890f9 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/SlimefunItems.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/SlimefunItems.java
 @@ -37,200 +37,275 @@ public final class SlimefunItems {
@@ -5894,7 +7237,7 @@ index a0d87e706..508230d74 100644
              "",
              LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
              LoreBuilder.speed(3),
-@@ -2603,178 +3116,183 @@ public final class SlimefunItems {
+@@ -2603,178 +3116,187 @@ public final class SlimefunItems {
      public static final SlimefunItemStack ELECTRIC_GOLD_PAN = new SlimefunItemStack(
              "ELECTRIC_GOLD_PAN",
              Material.BROWN_TERRACOTTA,
@@ -6093,9 +7436,10 @@ index a0d87e706..508230d74 100644
 +            "&8\u21E8 &e\u26A1 &74096 J có thể lưu trữ",
 +            "&8\u21E8 &e\u26A1 &74096 J/Wither");
  
-     public static final SlimefunItemStack TRASH_CAN =
+-    public static final SlimefunItemStack TRASH_CAN =
 -            new SlimefunItemStack("TRASH_CAN_BLOCK", HeadTexture.TRASH_CAN, "&3垃圾箱", "", "&r可以把不要的物品放进这里");
-+            new SlimefunItemStack("TRASH_CAN_BLOCK", HeadTexture.TRASH_CAN, "&3Thùng Rác", "", "&rCó thể bỏ vật phẩm không cần vào đây");
++    public static final SlimefunItemStack TRASH_CAN = new SlimefunItemStack(
++            "TRASH_CAN_BLOCK", HeadTexture.TRASH_CAN, "&3Thùng Rác", "", "&rCó thể bỏ vật phẩm không cần vào đây");
  
      public static final SlimefunItemStack ELYTRA_SCALE =
 -            new SlimefunItemStack("ELYTRA_SCALE", Material.FEATHER, "&b鞘翅鳞片");
@@ -6107,9 +7451,14 @@ index a0d87e706..508230d74 100644
 -            new SlimefunItemStack("SOULBOUND_ELYTRA", Material.ELYTRA, "&c鞘翅 (灵魂绑定)");
 +            new SlimefunItemStack("SOULBOUND_ELYTRA", Material.ELYTRA, "&cCánh Elytra (Ràng buộc linh hồn)");
  
-     public static final SlimefunItemStack MAGNESIUM_SALT =
+-    public static final SlimefunItemStack MAGNESIUM_SALT =
 -            new SlimefunItemStack("MAGNESIUM_SALT", Material.SUGAR, "&c镁盐", "", "&7是一种能在镁发电机中使用的特殊燃料");
-+            new SlimefunItemStack("MAGNESIUM_SALT", Material.SUGAR, "&cMuối Magie", "", "&7Là loại nhiên liệu đặc biệt có thể sử dụng trong máy phát điện magie");
++    public static final SlimefunItemStack MAGNESIUM_SALT = new SlimefunItemStack(
++            "MAGNESIUM_SALT",
++            Material.SUGAR,
++            "&cMuối Magie",
++            "",
++            "&7Là loại nhiên liệu đặc biệt có thể sử dụng trong máy phát điện magie");
      public static final SlimefunItemStack MAGNESIUM_GENERATOR = new SlimefunItemStack(
              "MAGNESIUM_GENERATOR",
              HeadTexture.GENERATOR,
@@ -6305,7 +7654,7 @@ index 595ff54f9..35f0cb0f9 100644
  
      @ParametersAreNonnullByDefault
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/androids/AndroidFuelSource.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/androids/AndroidFuelSource.java
-index 5c3166c73..c30c6ad0a 100644
+index 5c3166c73..493afc00d 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/androids/AndroidFuelSource.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/androids/AndroidFuelSource.java
 @@ -16,17 +16,17 @@ public enum AndroidFuelSource {
@@ -6329,16 +7678,17 @@ index 5c3166c73..c30c6ad0a 100644
  
      private final String[] lore;
  
-@@ -41,6 +41,6 @@ public enum AndroidFuelSource {
+@@ -41,6 +41,7 @@ public enum AndroidFuelSource {
       */
      @Nonnull
      public ItemStack getItem() {
 -        return new CustomItemStack(HeadTexture.GENERATOR.getAsItemStack(), "&8\u21E9 &c燃料输入槽 &8\u21E9", lore);
-+        return new CustomItemStack(HeadTexture.GENERATOR.getAsItemStack(), "&8\u21E9 &cKhe đầu vào nhiên liệu &8\u21E9", lore);
++        return new CustomItemStack(
++                HeadTexture.GENERATOR.getAsItemStack(), "&8\u21E9 &cKhe đầu vào nhiên liệu &8\u21E9", lore);
      }
  }
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/androids/ProgrammableAndroid.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/androids/ProgrammableAndroid.java
-index f7a6d8655..9d705c437 100644
+index f7a6d8655..245d9642e 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/androids/ProgrammableAndroid.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/androids/ProgrammableAndroid.java
 @@ -94,7 +94,7 @@ public class ProgrammableAndroid extends SlimefunItem
@@ -6350,34 +7700,39 @@ index f7a6d8655..9d705c437 100644
  
              @Override
              public void init() {
-@@ -127,7 +127,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -127,7 +127,8 @@ public class ProgrammableAndroid extends SlimefunItem
                  var uniData = StorageCacheUtils.getUniversalBlock(menu.getUuid());
  
                  menu.replaceExistingItem(
 -                        15, new CustomItemStack(HeadTexture.SCRIPT_START.getAsItemStack(), "&a启动/继续运行"));
-+                        15, new CustomItemStack(HeadTexture.SCRIPT_START.getAsItemStack(), "&aKhởi động/Tiếp tục chạy"));
++                        15,
++                        new CustomItemStack(HeadTexture.SCRIPT_START.getAsItemStack(), "&aKhởi động/Tiếp tục chạy"));
                  menu.addMenuClickHandler(15, (p, slot, item, action) -> {
                      Slimefun.getLocalization().sendMessage(p, "android.started", true);
                      uniData.setData("paused", "false");
-@@ -135,7 +135,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -135,7 +136,8 @@ public class ProgrammableAndroid extends SlimefunItem
                      return false;
                  });
  
 -                menu.replaceExistingItem(17, new CustomItemStack(HeadTexture.SCRIPT_PAUSE.getAsItemStack(), "&4暂停运行"));
-+                menu.replaceExistingItem(17, new CustomItemStack(HeadTexture.SCRIPT_PAUSE.getAsItemStack(), "&4Tạm dừng chạy"));
++                menu.replaceExistingItem(
++                        17, new CustomItemStack(HeadTexture.SCRIPT_PAUSE.getAsItemStack(), "&4Tạm dừng chạy"));
                  menu.addMenuClickHandler(17, (p, slot, item, action) -> {
                      uniData.setData("paused", "true");
                      Slimefun.getLocalization().sendMessage(p, "android.stopped", true);
-@@ -145,7 +145,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -145,7 +147,10 @@ public class ProgrammableAndroid extends SlimefunItem
                  menu.replaceExistingItem(
                          16,
                          new CustomItemStack(
 -                                HeadTexture.ENERGY_REGULATOR.getAsItemStack(), "&b内存核心", "", "&8\u21E8 &7单击打开脚本编辑器"));
-+                                HeadTexture.ENERGY_REGULATOR.getAsItemStack(), "&bLõi bộ nhớ", "", "&8\u21E8 &7Nhấp để mở trình chỉnh sửa script"));
++                                HeadTexture.ENERGY_REGULATOR.getAsItemStack(),
++                                "&bLõi bộ nhớ",
++                                "",
++                                "&8\u21E8 &7Nhấp để mở trình chỉnh sửa script"));
                  menu.addMenuClickHandler(16, (p, slot, item, action) -> {
                      uniData.setData("paused", "true");
                      Slimefun.getLocalization().sendMessage(p, "android.stopped", true);
-@@ -291,7 +291,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -291,7 +296,7 @@ public class ProgrammableAndroid extends SlimefunItem
                          Instruction.START.getItem(),
                          Slimefun.getLocalization().getMessage(p, "android.scripts.instructions.START"),
                          "",
@@ -6386,7 +7741,7 @@ index f7a6d8655..9d705c437 100644
          menu.addMenuClickHandler(0, (pl, slot, item, action) -> {
              UniversalMenu inv = uniData.getMenu();
              // Fixes #2937
-@@ -312,7 +312,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -312,7 +317,7 @@ public class ProgrammableAndroid extends SlimefunItem
                  boolean hasFreeSlot = script.length < 54;
  
                  if (hasFreeSlot) {
@@ -6395,7 +7750,7 @@ index f7a6d8655..9d705c437 100644
                      menu.addMenuClickHandler(i, (pl, slot, item, action) -> {
                          editInstruction(pl, uniData, script, index);
                          return false;
-@@ -326,7 +326,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -326,7 +331,7 @@ public class ProgrammableAndroid extends SlimefunItem
                                  Instruction.REPEAT.getItem(),
                                  Slimefun.getLocalization().getMessage(p, "android.scripts.instructions.REPEAT"),
                                  "",
@@ -6404,7 +7759,7 @@ index f7a6d8655..9d705c437 100644
                  menu.addMenuClickHandler(slot, (pl, s, item, action) -> {
                      UniversalMenu inv = uniData.getMenu();
                      // Fixes #2937
-@@ -362,9 +362,9 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -362,9 +367,9 @@ public class ProgrammableAndroid extends SlimefunItem
                                                          + Instruction.valueOf(script[i])
                                                                  .name()),
                                  "",
@@ -6417,7 +7772,7 @@ index f7a6d8655..9d705c437 100644
                  menu.addMenuClickHandler(i, (pl, slot, item, action) -> {
                      if (action.isRightClicked() && action.isShiftClicked()) {
                          if (script.length == 54) {
-@@ -446,7 +446,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -446,7 +451,7 @@ public class ProgrammableAndroid extends SlimefunItem
      }
  
      protected void openScriptDownloader(Player p, SlimefunUniversalBlockData uniData, int page) {
@@ -6426,43 +7781,63 @@ index f7a6d8655..9d705c437 100644
  
          menu.setEmptySlotsClickable(false);
          menu.addMenuOpeningHandler(SoundEffect.PROGRAMMABLE_ANDROID_SCRIPT_DOWNLOAD_SOUND::playFor);
-@@ -474,7 +474,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -474,7 +479,11 @@ public class ProgrammableAndroid extends SlimefunItem
          menu.addItem(
                  48,
                  new CustomItemStack(
 -                        HeadTexture.SCRIPT_UP.getAsItemStack(), "&e上传脚本", "", "&6单击 &7将你正在用的脚本", "&7上传到服务器"));
-+                        HeadTexture.SCRIPT_UP.getAsItemStack(), "&eTải lên script", "", "&6Nhấp &7để tải lên script", "&7đang sử dụng lên máy chủ"));
++                        HeadTexture.SCRIPT_UP.getAsItemStack(),
++                        "&eTải lên script",
++                        "",
++                        "&6Nhấp &7để tải lên script",
++                        "&7đang sử dụng lên máy chủ"));
          menu.addMenuClickHandler(48, (pl, slot, item, action) -> {
              uploadScript(pl, uniData, page);
              return false;
-@@ -492,7 +492,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -492,7 +501,13 @@ public class ProgrammableAndroid extends SlimefunItem
              return false;
          });
  
 -        menu.addItem(53, new CustomItemStack(HeadTexture.SCRIPT_LEFT.getAsItemStack(), "&6> 返回", "", "&7返回机器人控制面板"));
-+        menu.addItem(53, new CustomItemStack(HeadTexture.SCRIPT_LEFT.getAsItemStack(), "&6> Quay lại", "", "&7Quay lại bảng điều khiển robot"));
++        menu.addItem(
++                53,
++                new CustomItemStack(
++                        HeadTexture.SCRIPT_LEFT.getAsItemStack(),
++                        "&6> Quay lại",
++                        "",
++                        "&7Quay lại bảng điều khiển robot"));
          menu.addMenuClickHandler(53, (pl, slot, item, action) -> {
              openScriptEditor(pl, uniData);
              return false;
-@@ -574,7 +574,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -574,7 +589,13 @@ public class ProgrammableAndroid extends SlimefunItem
                  new ChestMenu(ChatColor.DARK_AQUA + Slimefun.getLocalization().getMessage(p, "android.scripts.editor"));
          menu.setEmptySlotsClickable(false);
  
 -        menu.addItem(1, new CustomItemStack(HeadTexture.SCRIPT_FORWARD.getAsItemStack(), "&2> 编辑脚本", "", "&a修改你现有的脚本"));
-+        menu.addItem(1, new CustomItemStack(HeadTexture.SCRIPT_FORWARD.getAsItemStack(), "&2> Chỉnh sửa script", "", "&aSửa đổi script hiện có của bạn"));
++        menu.addItem(
++                1,
++                new CustomItemStack(
++                        HeadTexture.SCRIPT_FORWARD.getAsItemStack(),
++                        "&2> Chỉnh sửa script",
++                        "",
++                        "&aSửa đổi script hiện có của bạn"));
          menu.addMenuClickHandler(1, (pl, slot, item, action) -> {
              String script = getScript(uniData);
              if (CommonPatterns.DASH.split(script).length <= MAX_SCRIPT_LENGTH) {
-@@ -589,7 +589,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -589,7 +610,11 @@ public class ProgrammableAndroid extends SlimefunItem
          menu.addItem(
                  3,
                  new CustomItemStack(
 -                        HeadTexture.SCRIPT_NEW.getAsItemStack(), "&4> 创建新脚本", "", "&c删除你正在使用的脚本", "&c并创建一个全新的空白脚本"));
-+                        HeadTexture.SCRIPT_NEW.getAsItemStack(), "&4> Tạo script mới", "", "&cXóa script đang sử dụng", "&cvà tạo một script trống hoàn toàn mới"));
++                        HeadTexture.SCRIPT_NEW.getAsItemStack(),
++                        "&4> Tạo script mới",
++                        "",
++                        "&cXóa script đang sử dụng",
++                        "&cvà tạo một script trống hoàn toàn mới"));
          menu.addMenuClickHandler(3, (pl, slot, item, action) -> {
              openScript(pl, uniData, DEFAULT_SCRIPT);
              return false;
-@@ -599,16 +599,16 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -599,16 +624,22 @@ public class ProgrammableAndroid extends SlimefunItem
                  5,
                  new CustomItemStack(
                          HeadTexture.SCRIPT_DOWN.getAsItemStack(),
@@ -6479,11 +7854,17 @@ index f7a6d8655..9d705c437 100644
          });
  
 -        menu.addItem(8, new CustomItemStack(HeadTexture.SCRIPT_LEFT.getAsItemStack(), "&6> 返回", "", "&7返回机器人控制面板"));
-+        menu.addItem(8, new CustomItemStack(HeadTexture.SCRIPT_LEFT.getAsItemStack(), "&6> Quay lại", "", "&7Quay lại bảng điều khiển robot"));
++        menu.addItem(
++                8,
++                new CustomItemStack(
++                        HeadTexture.SCRIPT_LEFT.getAsItemStack(),
++                        "&6> Quay lại",
++                        "",
++                        "&7Quay lại bảng điều khiển robot"));
          menu.addMenuClickHandler(8, (pl, slot, item, action) -> {
              UniversalMenu inv = uniData.getMenu();
              // Fixes #2937
-@@ -648,7 +648,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -648,7 +679,7 @@ public class ProgrammableAndroid extends SlimefunItem
          menu.setEmptySlotsClickable(false);
          menu.addItem(
                  9,
@@ -6492,7 +7873,7 @@ index f7a6d8655..9d705c437 100644
                  (pl, slot, item, action) -> {
                      String code = deleteInstruction(script, index);
                      setScript(uniData, code);
-@@ -751,7 +751,7 @@ public class ProgrammableAndroid extends SlimefunItem
+@@ -751,7 +782,7 @@ public class ProgrammableAndroid extends SlimefunItem
              ItemStack item = fuel.getInput().clone();
              ItemMeta im = item.getItemMeta();
              List<String> lore = new ArrayList<>();
@@ -6970,7 +8351,7 @@ index e2c513ce6..6e53f8b33 100644
  
                  pdc.set(multiToolMode, PersistentDataType.INTEGER, index);
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/enchanting/AbstractEnchantmentMachine.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/enchanting/AbstractEnchantmentMachine.java
-index b15f3e90d..4f2889f85 100644
+index b15f3e90d..1c267bc84 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/enchanting/AbstractEnchantmentMachine.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/enchanting/AbstractEnchantmentMachine.java
 @@ -35,7 +35,7 @@ abstract class AbstractEnchantmentMachine extends AContainer {
@@ -6982,21 +8363,23 @@ index b15f3e90d..4f2889f85 100644
      private final ItemSetting<Integer> enchantLimit =
              new IntRangeSetting(this, "enchant-limit", 0, 10, Short.MAX_VALUE);
      private final ItemSetting<Boolean> useEnchantLimit = new ItemSetting<>(this, "use-enchant-limit", false);
-@@ -63,7 +63,7 @@ abstract class AbstractEnchantmentMachine extends AContainer {
+@@ -63,7 +63,8 @@ abstract class AbstractEnchantmentMachine extends AContainer {
  
      protected void showEnchantmentLevelWarning(@Nonnull BlockMenu menu) {
          if (!useLevelLimit.getValue()) {
 -            throw new IllegalStateException("自动附/祛魔机等级限制未被启用, 无法展示警告信息.");
-+            throw new IllegalStateException("Giới hạn cấp độ của máy phù phép/gỡ phép tự động chưa được bật, không thể hiển thị cảnh báo.");
++            throw new IllegalStateException(
++                    "Giới hạn cấp độ của máy phù phép/gỡ phép tự động chưa được bật, không thể hiển thị cảnh báo.");
          }
  
          String notice = ChatColors.color(Slimefun.getLocalization().getMessage("messages.above-limit-level"));
-@@ -74,7 +74,7 @@ abstract class AbstractEnchantmentMachine extends AContainer {
+@@ -74,7 +75,8 @@ abstract class AbstractEnchantmentMachine extends AContainer {
  
      protected void showEnchantmentLimitWarning(@Nonnull BlockMenu menu) {
          if (!useEnchantLimit.getValue()) {
 -            throw new IllegalStateException("自动附/祛魔机附魔数量限制未被启用, 无法展示警告信息.");
-+            throw new IllegalStateException("Giới hạn số lượng phù phép của máy phù phép/gỡ phép tự động chưa được bật, không thể hiển thị cảnh báo.");
++            throw new IllegalStateException(
++                    "Giới hạn số lượng phù phép của máy phù phép/gỡ phép tự động chưa được bật, không thể hiển thị cảnh báo.");
          }
  
          String notice = ChatColors.color(Slimefun.getLocalization().getMessage("messages.above-enchant-limit"));
@@ -7066,10 +8449,10 @@ index 280510000..6c95eb55d 100644
      }
  
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/entities/IronGolemAssembler.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/entities/IronGolemAssembler.java
-index 0127c1187..7f086f604 100644
+index 0127c1187..ae776b244 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/entities/IronGolemAssembler.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/entities/IronGolemAssembler.java
-@@ -64,15 +64,15 @@ public class IronGolemAssembler extends AbstractEntityAssembler<IronGolem> {
+@@ -64,15 +64,20 @@ public class IronGolemAssembler extends AbstractEntityAssembler<IronGolem> {
      protected void constructMenu(BlockMenuPreset preset) {
          preset.addItem(
                  1,
@@ -7084,7 +8467,12 @@ index 0127c1187..7f086f604 100644
          preset.addItem(
                  13,
 -                new CustomItemStack(Material.CLOCK, "&7冷却时间: &b30 秒", "", "&f这个机器需要半分钟的时间装配", "&f所以耐心等等吧!"),
-+                new CustomItemStack(Material.CLOCK, "&7Thời gian hồi: &b30 giây", "", "&fMáy này cần nửa phút để lắp ráp", "&fHãy kiên nhẫn chờ đợi!"),
++                new CustomItemStack(
++                        Material.CLOCK,
++                        "&7Thời gian hồi: &b30 giây",
++                        "",
++                        "&fMáy này cần nửa phút để lắp ráp",
++                        "&fHãy kiên nhẫn chờ đợi!"),
                  ChestMenuUtils.getEmptyClickHandler());
      }
  
@@ -7112,10 +8500,10 @@ index 833c7d5eb..8ec4be9c1 100644
  
          return displayRecipes;
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/entities/WitherAssembler.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/entities/WitherAssembler.java
-index d9092e275..9c63bddc1 100644
+index d9092e275..086ba253e 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/entities/WitherAssembler.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/machines/entities/WitherAssembler.java
-@@ -62,13 +62,13 @@ public class WitherAssembler extends AbstractEntityAssembler<Wither> {
+@@ -62,13 +62,20 @@ public class WitherAssembler extends AbstractEntityAssembler<Wither> {
      protected void constructMenu(BlockMenuPreset preset) {
          preset.addItem(
                  1,
@@ -7124,16 +8512,23 @@ index d9092e275..9c63bddc1 100644
                  ChestMenuUtils.getEmptyClickHandler());
          preset.addItem(
 -                7, new CustomItemStack(getBody(), "&7灵魂沙", "", "&f在这里放入灵魂沙"), ChestMenuUtils.getEmptyClickHandler());
-+                7, new CustomItemStack(getBody(), "&7Cát linh hồn", "", "&fĐặt cát linh hồn vào đây"), ChestMenuUtils.getEmptyClickHandler());
++                7,
++                new CustomItemStack(getBody(), "&7Cát linh hồn", "", "&fĐặt cát linh hồn vào đây"),
++                ChestMenuUtils.getEmptyClickHandler());
          preset.addItem(
                  13,
 -                new CustomItemStack(Material.CLOCK, "&7冷却时间: &b30 秒", "", "&f这个机器需要半分钟的时间装配", "&f所以耐心等等吧!"),
-+                new CustomItemStack(Material.CLOCK, "&7Thời gian hồi: &b30 giây", "", "&fMáy này cần nửa phút để lắp ráp", "&fHãy kiên nhẫn chờ đợi!"),
++                new CustomItemStack(
++                        Material.CLOCK,
++                        "&7Thời gian hồi: &b30 giây",
++                        "",
++                        "&fMáy này cần nửa phút để lắp ráp",
++                        "&fHãy kiên nhẫn chờ đợi!"),
                  ChestMenuUtils.getEmptyClickHandler());
      }
  
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/reactors/Reactor.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/reactors/Reactor.java
-index 7da9274e7..d7d8bd7bf 100644
+index 7da9274e7..873aff07f 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/reactors/Reactor.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/electric/reactors/Reactor.java
 @@ -159,13 +159,13 @@ public abstract class Reactor extends AbstractEnergyProvider
@@ -7174,59 +8569,94 @@ index 7da9274e7..d7d8bd7bf 100644
                  menu.addMenuClickHandler(4, (p, slot, item, action) -> {
                      StorageCacheUtils.setData(b.getLocation(), MODE, ReactorMode.GENERATOR.toString());
                      updateInventory(menu, b);
-@@ -198,7 +198,7 @@ public abstract class Reactor extends AbstractEnergyProvider
+@@ -198,7 +198,14 @@ public abstract class Reactor extends AbstractEnergyProvider
  
          if (port != null) {
              menu.replaceExistingItem(
 -                    INFO_SLOT, new CustomItemStack(Material.GREEN_WOOL, "&7访问接口", "", "&6已连接", "", "&7> 单击查看访问接口"));
-+                    INFO_SLOT, new CustomItemStack(Material.GREEN_WOOL, "&7Cổng truy cập", "", "&6Đã kết nối", "", "&7> Nhấp để xem cổng truy cập"));
++                    INFO_SLOT,
++                    new CustomItemStack(
++                            Material.GREEN_WOOL,
++                            "&7Cổng truy cập",
++                            "",
++                            "&6Đã kết nối",
++                            "",
++                            "&7> Nhấp để xem cổng truy cập"));
              menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                  port.open(p);
                  updateInventory(menu, b);
-@@ -208,7 +208,7 @@ public abstract class Reactor extends AbstractEnergyProvider
+@@ -208,7 +215,14 @@ public abstract class Reactor extends AbstractEnergyProvider
          } else {
              menu.replaceExistingItem(
                      INFO_SLOT,
 -                    new CustomItemStack(Material.RED_WOOL, "&7访问接口", "", "&c未连接", "", "&7接口必须要放置在", "&7反应堆上面的第三格!"));
-+                    new CustomItemStack(Material.RED_WOOL, "&7Cổng truy cập", "", "&cChưa kết nối", "", "&7Cổng phải được đặt ở", "&7ô thứ ba phía trên lò phản ứng!"));
++                    new CustomItemStack(
++                            Material.RED_WOOL,
++                            "&7Cổng truy cập",
++                            "",
++                            "&cChưa kết nối",
++                            "",
++                            "&7Cổng phải được đặt ở",
++                            "&7ô thứ ba phía trên lò phản ứng!"));
              menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                  updateInventory(menu, b);
                  menu.open(p);
-@@ -242,17 +242,17 @@ public abstract class Reactor extends AbstractEnergyProvider
+@@ -242,17 +256,28 @@ public abstract class Reactor extends AbstractEnergyProvider
          if (this instanceof NuclearReactor) {
              preset.addItem(
                      1,
 -                    new CustomItemStack(getFuelIcon(), "&7燃料", "", "&f这里可以放入放射性燃料:", "&2铀 &f或 &a镎"),
-+                    new CustomItemStack(getFuelIcon(), "&7Nhiên liệu", "", "&fCó thể đặt nhiên liệu phóng xạ:", "&2Uranium &fhoặc &aNeptunium"),
++                    new CustomItemStack(
++                            getFuelIcon(),
++                            "&7Nhiên liệu",
++                            "",
++                            "&fCó thể đặt nhiên liệu phóng xạ:",
++                            "&2Uranium &fhoặc &aNeptunium"),
                      ChestMenuUtils.getEmptyClickHandler());
          } else if (this instanceof NetherStarReactor) {
              preset.addItem(
                      1,
 -                    new CustomItemStack(getFuelIcon(), "&7燃料", "", "&f这里可以放入燃料:", "&b下界之星"),
-+                    new CustomItemStack(getFuelIcon(), "&7Nhiên liệu", "", "&fCó thể đặt nhiên liệu:", "&bNgôi sao Nether"),
++                    new CustomItemStack(
++                            getFuelIcon(), "&7Nhiên liệu", "", "&fCó thể đặt nhiên liệu:", "&bNgôi sao Nether"),
                      ChestMenuUtils.getEmptyClickHandler());
          } else {
              preset.addItem(
                      1,
 -                    new CustomItemStack(getFuelIcon(), "&7燃料", "", "&f这里可以放入放射性燃料:", "&2铀 &f或 &a镎"),
-+                    new CustomItemStack(getFuelIcon(), "&7Nhiên liệu", "", "&fCó thể đặt nhiên liệu phóng xạ:", "&2Uranium &fhoặc &aNeptunium"),
++                    new CustomItemStack(
++                            getFuelIcon(),
++                            "&7Nhiên liệu",
++                            "",
++                            "&fCó thể đặt nhiên liệu phóng xạ:",
++                            "&2Uranium &fhoặc &aNeptunium"),
                      ChestMenuUtils.getEmptyClickHandler());
          }
  
-@@ -265,13 +265,13 @@ public abstract class Reactor extends AbstractEnergyProvider
+@@ -265,13 +290,23 @@ public abstract class Reactor extends AbstractEnergyProvider
  
          if (needsCooling()) {
              preset.addItem(
 -                    7, new CustomItemStack(getCoolant(), "&b冷却剂", "", "&f在此处放入冷却剂", "&4没有了冷却剂, 你的反应堆", "&4将会瞬间爆炸"));
-+                    7, new CustomItemStack(getCoolant(), "&bChất làm mát", "", "&fĐặt chất làm mát vào đây", "&4Không có chất làm mát, lò phản ứng", "&4của bạn sẽ phát nổ ngay lập tức"));
++                    7,
++                    new CustomItemStack(
++                            getCoolant(),
++                            "&bChất làm mát",
++                            "",
++                            "&fĐặt chất làm mát vào đây",
++                            "&4Không có chất làm mát, lò phản ứng",
++                            "&4của bạn sẽ phát nổ ngay lập tức"));
          } else {
 -            preset.addItem(7, new CustomItemStack(Material.BARRIER, "&b冷却剂", "", "&f在此处放入冷却剂"));
-+            preset.addItem(7, new CustomItemStack(Material.BARRIER, "&bChất làm mát", "", "&fĐặt chất làm mát vào đây"));
++            preset.addItem(
++                    7, new CustomItemStack(Material.BARRIER, "&bChất làm mát", "", "&fĐặt chất làm mát vào đây"));
  
              for (int i : border_4) {
                  preset.addItem(
 -                        i, new CustomItemStack(Material.BARRIER, "&c无需冷却剂"), ChestMenuUtils.getEmptyClickHandler());
-+                        i, new CustomItemStack(Material.BARRIER, "&cKhông cần chất làm mát"), ChestMenuUtils.getEmptyClickHandler());
++                        i,
++                        new CustomItemStack(Material.BARRIER, "&cKhông cần chất làm mát"),
++                        ChestMenuUtils.getEmptyClickHandler());
              }
          }
      }
@@ -7319,28 +8749,33 @@ index 77889c4af..925308caf 100644
                  im.setLore(lore);
                  item.setItemMeta(im);
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/MagicEyeOfEnder.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/MagicEyeOfEnder.java
-index e88fb7e50..300df5e14 100644
+index e88fb7e50..545fb3df9 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/MagicEyeOfEnder.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/MagicEyeOfEnder.java
-@@ -43,7 +43,7 @@ public class MagicEyeOfEnder extends SimpleSlimefunItem<ItemUseHandler> {
+@@ -43,7 +43,11 @@ public class MagicEyeOfEnder extends SimpleSlimefunItem<ItemUseHandler> {
              } else {
                  // add message to warn player
                  Slimefun.getLocalization()
 -                        .sendMessage(p, "messages.usage", true, msg -> msg.replace("%usage%", "穿戴全套末影护甲以发射珍珠"));
-+                        .sendMessage(p, "messages.usage", true, msg -> msg.replace("%usage%", "Mặc đầy đủ giáp Ender để bắn ngọc trai"));
++                        .sendMessage(
++                                p,
++                                "messages.usage",
++                                true,
++                                msg -> msg.replace("%usage%", "Mặc đầy đủ giáp Ender để bắn ngọc trai"));
              }
          };
      }
 diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/talismans/Talisman.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/talismans/Talisman.java
-index 8bde02a42..b194dae9b 100644
+index 8bde02a42..b7573256b 100644
 --- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/talismans/Talisman.java
 +++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/magical/talismans/Talisman.java
-@@ -103,14 +103,14 @@ public class Talisman extends SlimefunItem {
+@@ -103,14 +103,15 @@ public class Talisman extends SlimefunItem {
          this.chance = chance;
  
          if (!(this instanceof EnderTalisman)) {
 -            String name = "&5末影" + ChatColor.stripColor(getItem().getItemMeta().getDisplayName());
-+            String name = "&5Ender " + ChatColor.stripColor(getItem().getItemMeta().getDisplayName());
++            String name =
++                    "&5Ender " + ChatColor.stripColor(getItem().getItemMeta().getDisplayName());
              List<String> lore = new ArrayList<>();
 -            lore.add("&7&o注入末影精华");
 +            lore.add("&7&oNhập Bản chất Ender");
@@ -8004,6 +9439,31 @@ index 43a230854..bac02f6cc 100644
  
          meta.setLore(lore);
  
+diff --git a/src/main/java/me/mrCookieSlime/CSCoreLibPlugin/general/Inventory/ChestMenu.java b/src/main/java/me/mrCookieSlime/CSCoreLibPlugin/general/Inventory/ChestMenu.java
+index 871de1a99..4de8010fd 100644
+--- a/src/main/java/me/mrCookieSlime/CSCoreLibPlugin/general/Inventory/ChestMenu.java
++++ b/src/main/java/me/mrCookieSlime/CSCoreLibPlugin/general/Inventory/ChestMenu.java
+@@ -47,7 +47,6 @@ public class ChestMenu extends SlimefunInventoryHolder {
+     private MenuClickHandler playerclick;
+ 
+     @Deprecated(forRemoval = true)
+-    // 何意味
+     private final Set<UUID> viewers = new CopyOnWriteArraySet<>();
+ 
+     private final AtomicBoolean lock = new AtomicBoolean(false);
+diff --git a/src/main/java/me/mrCookieSlime/Slimefun/Objects/handlers/BlockTicker.java b/src/main/java/me/mrCookieSlime/Slimefun/Objects/handlers/BlockTicker.java
+index 83d0140bf..00c1b5427 100644
+--- a/src/main/java/me/mrCookieSlime/Slimefun/Objects/handlers/BlockTicker.java
++++ b/src/main/java/me/mrCookieSlime/Slimefun/Objects/handlers/BlockTicker.java
+@@ -28,7 +28,7 @@ public abstract class BlockTicker implements ItemHandler {
+     }
+ 
+     /**
+-     * 刷新当前 ticker 执行状态
++     * Làm mới trạng thái thực thi ticker hiện tại
+      */
+     public void update() {
+         if (unique) {
 diff --git a/src/main/java/net/guizhanss/slimefun4/updater/AutoUpdateTask.java b/src/main/java/net/guizhanss/slimefun4/updater/AutoUpdateTask.java
 index 569e5e584..334814a19 100644
 --- a/src/main/java/net/guizhanss/slimefun4/updater/AutoUpdateTask.java
@@ -8118,5 +9578,1480 @@ index f9ba6939e..9fc93b476 100644
          }
      }
  }
+diff --git a/src/main/resources/block-storage.yml b/src/main/resources/block-storage.yml
+index a239ee465..f67762bf7 100644
+--- a/src/main/resources/block-storage.yml
++++ b/src/main/resources/block-storage.yml
+@@ -1,89 +1,89 @@
+ #########################################################################
+-# 数据库类型, 可选的有 SQLITE, MYSQL, POSTGRESQL
+-# 注意: 在切换数据库类型时, 我们并不会自动帮你迁移数据 :)
++# Loại cơ sở dữ liệu, có thể chọn SQLITE, MYSQL, POSTGRESQL
++# Lưu ý: Khi chuyển loại cơ sở dữ liệu, chúng tôi sẽ không tự động di chuyển dữ liệu cho bạn :)
+ storageType: SQLITE
+ 
+-# 使用Base64编码数据字段
++# Mã hóa Base64 cho trường dữ liệu
+ base64EncodeVal: true
+ 
+-# 区块数据加载模式
+-# 可选的有:
+-# - LOAD_WITH_CHUNK: 当本次开服期间内区块首次加载时加载粘液区块数据
+-# - LOAD_ON_STARTUP: 当开服时一次性加载全部区块数据，可能会导致开服时间较长
+-# 默认情况下推荐使用 LOAD_WITH_CHUNK 以节省不必要的内存开销
+-# 如发现加载区块时发生明显卡顿，请更改为 LOAD_ON_STARTUP
++# Chế độ tải dữ liệu chunk
++# Có thể chọn:
++# - LOAD_WITH_CHUNK: Tải dữ liệu chunk Slimefun khi chunk được tải lần đầu trong phiên server này
++# - LOAD_ON_STARTUP: Tải tất cả dữ liệu chunk một lần khi khởi động server, có thể làm tăng thời gian khởi động
++# Mặc định khuyên dùng LOAD_WITH_CHUNK để tiết kiệm bộ nhớ không cần thiết
++# Nếu phát hiện lag rõ rệt khi tải chunk, hãy đổi sang LOAD_ON_STARTUP
+ dataLoadMode: LOAD_WITH_CHUNK
+ #########################################################################
+ 
+ #########################################################################
+-# 数据库读写线程数
+-# 当使用 MySQL 时，建议将最大连接数设置为 读取 + 写入线程数，且读取线程数量应当大于写入线程。
+-# 注意: 线程数并非越多越好，过多反而会导致性能下降。请分配合适的数量。
++# Số luồng đọc ghi cơ sở dữ liệu
++# Khi dùng MySQL, nên đặt số kết nối tối đa = số luồng đọc + ghi, và số luồng đọc nên lớn hơn luồng ghi.
++# Lưu ý: Số luồng không phải càng nhiều càng tốt, quá nhiều có thể làm giảm hiệu suất. Hãy phân bổ số lượng phù hợp.
+ 
+-# 读取线程数
++# Số luồng đọc
+ readExecutorThread: 10
+-# 写入线程数
++# Số luồng ghi
+ writeExecutorThread: 5
+ #########################################################################
+ 
+ #########################################################################
+-# 延迟写入功能
+-# 本功能用于防止某些数据被频繁写入导致队列中存在大量无意义的写入请求。
+-# 启用本功能后，当数据发生更改后会等待 (delayedSecond) 秒，如无其它改动再写入数据库。
+-# 强制保存时会将等待中的数据直接加入写入队列。
++# Tính năng ghi trì hoãn
++# Tính năng này ngăn dữ liệu bị ghi liên tục gây ra nhiều yêu cầu ghi vô nghĩa trong hàng đợi.
++# Khi bật, sau khi dữ liệu thay đổi sẽ đợi (delayedSecond) giây, nếu không có thay đổi khác mới ghi vào cơ sở dữ liệu.
++# Khi lưu cưỡng chế sẽ đưa dữ liệu đang đợi trực tiếp vào hàng đợi ghi.
+ delayedWriting:
+-  # 是否启用延迟写入
++  # Có bật ghi trì hoãn không
+   enable: true
+-  # 延迟写入秒数
++  # Số giây trì hoãn ghi
+   delayedSecond: 5
+-  # 强制保存间隔（单位：秒）
++  # Khoảng thời gian lưu cưỡng chế (đơn vị: giây)
+   forceSavePeriod: 300
+ #########################################################################
+ 
+ #########################################################################
+-# Sqlite 配置
++# Cấu hình Sqlite
+ sqlite:
+   maxConnection: 5
+ #########################################################################
+ 
+ #########################################################################
+-# MySQL 配置
++# Cấu hình MySQL
+ mysql:
+-  # 数据库连接地址
++  # Địa chỉ kết nối cơ sở dữ liệu
+   host: "127.0.0.1"
+-  # 数据库连接端口
++  # Cổng kết nối cơ sở dữ liệu
+   port: 3306
+-  # 数据库名
++  # Tên cơ sở dữ liệu
+   database: ""
+-  # 表前缀
++  # Tiền tố bảng
+   tablePrefix: ""
+-  # 连接用户名
++  # Tên người dùng kết nối
+   user: ""
+-  # 连接用户密码
++  # Mật khẩu người dùng kết nối
+   password: ""
+-  # 是否使用加密连接
++  # Có sử dụng kết nối mã hóa không
+   useSSL: false
+-  # 最大连接数
++  # Số kết nối tối đa
+   maxConnection: 15
+ #########################################################################
+ 
+ #########################################################################
+-# PostgreSQL 配置
++# Cấu hình PostgreSQL
+ postgresql:
+-  # 数据库连接地址
++  # Địa chỉ kết nối cơ sở dữ liệu
+   host: "127.0.0.1"
+-  # 数据库连接端口
++  # Cổng kết nối cơ sở dữ liệu
+   port: 3306
+-  # 数据库名
++  # Tên cơ sở dữ liệu
+   database: ""
+-  # 表前缀
++  # Tiền tố bảng
+   tablePrefix: ""
+-  # 连接用户名
++  # Tên người dùng kết nối
+   user: ""
+-  # 连接用户密码
++  # Mật khẩu người dùng kết nối
+   password: ""
+-  # 是否使用加密连接
++  # Có sử dụng kết nối mã hóa không
+   useSSL: false
+-  # 最大连接数
++  # Số kết nối tối đa
+   maxConnection: 15
+ #########################################################################
+\ No newline at end of file
+diff --git a/src/main/resources/config.yml b/src/main/resources/config.yml
+index e98a78c74..17a5d224a 100644
+--- a/src/main/resources/config.yml
++++ b/src/main/resources/config.yml
+@@ -1,21 +1,21 @@
+ # options:
+-#    auto-update - Github 新版本自动检查并更新
+-#    armor-update-interval - 粘液科技护甲效果更新周期
+-#    enable-armor-effects - 护甲效果的开关
+-#    chat-prefix - 粘液科技所有消息的前缀
+-#    auto-save-delay-in-minutes - 自动保存数据的周期, 单位为分钟
+-#    legacy-ore-washer - 是否使用旧版的洗矿机机制
+-#    legacy-dust-washer - 是否使用旧版的除尘机机制
+-#    legacy-ore-grinder - 是否使用旧版的碎矿机机制
+-#    language - 粘液科技文本语言 (不包括物品)
+-#    enable-translations - 多语言功能
+-#    backwards-compatibility - 物品向后兼容模式, 关闭后物品会使用新版物品系统
+-#                             将会提升性能
+-#    log-duplicate-block-entries - 是否输出发现重复方块的警告
+-#    burn-players-when-radioactive - 是否在当玩家暴露在辐射中时灼烧玩家
+-#    drop-excess-sf-give-items - 是否在背包已满时使用命令给予 Slimefun 物品直接掉落溢出的物品
+-#    backup-data - 自动备份数据
+-#    bypass-environment-check - 跳过兼容性检查 (注意: 打开后将不予接受问题反馈)
++#    auto-update - Tự động kiểm tra và cập nhật phiên bản mới từ Github
++#    armor-update-interval - Chu kỳ cập nhật hiệu ứng áo giáp Slimefun
++#    enable-armor-effects - Bật/tắt hiệu ứng áo giáp
++#    chat-prefix - Tiền tố cho tất cả tin nhắn của Slimefun
++#    auto-save-delay-in-minutes - Chu kỳ tự động lưu dữ liệu, đơn vị phút
++#    legacy-ore-washer - Có sử dụng cơ chế máy rửa quặng cũ không
++#    legacy-dust-washer - Có sử dụng cơ chế máy loại bỏ bụi cũ không
++#    legacy-ore-grinder - Có sử dụng cơ chế máy nghiền quặng cũ không
++#    language - Ngôn ngữ văn bản Slimefun (không bao gồm vật phẩm)
++#    enable-translations - Chức năng đa ngôn ngữ
++#    backwards-compatibility - Chế độ tương thích ngược vật phẩm, tắt để dùng hệ thống vật phẩm mới
++#                             Sẽ cải thiện hiệu suất
++#    log-duplicate-block-entries - Có xuất cảnh báo khi phát hiện khối trùng lặp không
++#    burn-players-when-radioactive - Có đốt người chơi khi họ bị phơi nhiễm phóng xạ không
++#    drop-excess-sf-give-items - Có rơi vật phẩm thừa khi dùng lệnh tặng vật phẩm Slimefun khi túi đầy không
++#    backup-data - Tự động sao lưu dữ liệu
++#    bypass-environment-check - Bỏ qua kiểm tra tương thích (Lưu ý: Bật sẽ không được hỗ trợ phản hồi vấn đề)
+ options:
+   auto-update: true
+   chat-prefix: '&a&lSlimefun 4 &7> '
+@@ -29,7 +29,7 @@ options:
+   legacy-ore-washer: false
+   legacy-dust-washer: false
+   legacy-ore-grinder: true
+-  language: zh-CN
++  language: vi
+   enable-translations: true
+   log-duplicate-block-entries: true
+   burn-players-when-radioactive: true
+@@ -41,23 +41,23 @@ options:
+   max-gps-waypoints: 21
+ 
+ guide:
+-  # 是否在指南中展示原版物品合成配方
++  # Có hiển thị công thức chế tạo vật phẩm vanilla trong hướng dẫn không
+   show-vanilla-recipes: true
+-  # 是否在玩家第一次进入服务器时自动赠送粘液科技指南
++  # Có tự động tặng sách hướng dẫn Slimefun khi người chơi vào server lần đầu không
+   receive-on-first-join: true
+-  # 是否在搜索中显示隐藏物品
++  # Có hiển thị nhóm vật phẩm ẩn trong tìm kiếm không
+   show-hidden-item-groups-in-search: false
+ 
+ researches:
+-  # 是否允许创造模式玩家免费解锁研究
++  # Có cho phép người chơi chế độ sáng tạo mở khóa nghiên cứu miễn phí không
+   free-in-creative-mode: true
+-  # 是否在解锁时燃放烟花
++  # Có bắn pháo hoa khi mở khóa không
+   enable-fireworks: true
+-  # 是否使用游戏币替代使用经验解锁
++  # Có dùng tiền tệ thay vì kinh nghiệm để mở khóa không
+   use-money-unlock: false
+-  # 经验自动转换到游戏币倍率
++  # Tỷ lệ chuyển đổi tự động từ kinh nghiệm sang tiền tệ
+   currency-cost-convert-rate: 25.0
+-  # 是否禁用解锁研究时的动画
++  # Có tắt hiệu ứng mở khóa nghiên cứu không
+   disable-learning-animation: false
+ 
+ URID:
+@@ -78,45 +78,45 @@ metrics:
+   auto-update: false
+ 
+ backpack:
+-  # 背包所有者离线时是否允许背包被打开
++  # Có cho phép mở ba lô khi chủ nhân offline không
+   allow-open-when-owner-offline: true
+ 
+ research-ranks:
+-  - 小鸡
+-  - 牛牛君
+-  - 蜘蛛
+-  - 村民
+-  - 开拓者
+-  - 童生
+-  - 实习生
+-  - 不合格生
+-  - 学生
+-  - 笨拙学徒
+-  - 学徒
+-  - 熟练学徒
+-  - 法师学徒
+-  - 杰出法师
+-  - 年轻魔术师
+-  - 笨拙魔术师
+-  - 普通魔术师
+-  - 魔术师
+-  - 熟练魔术师
+-  - 特技魔术师
+-  - 惯用魔术师
+-  - 杰出魔术师
+-  - 笨拙巫师
+-  - 巫师
+-  - 普通巫师 
+-  - 特技巫师
+-  - 杰出巫师
+-  - 卓越巫师
+-  - 年轻大师
+-  - 笨拙大师
+-  - 实习大师
+-  - 合格大师
+-  - 大师
+-  - 特技大师
+-  - 杰出大师
+-  - 卓越大师
+-  - 精通大师
++  - Gà con
++  - Bò sữa
++  - Nhện
++  - Dân làng
++  - Người tiên phong
++  - Học sinh sơ cấp
++  - Thực tập sinh
++  - Sinh viên kém
++  - Sinh viên
++  - Học việc vụng về
++  - Học việc
++  - Học việc thành thạo
++  - Học việc pháp sư
++  - Pháp sư xuất sắc
++  - Phù thủy trẻ
++  - Phù thủy vụng về
++  - Phù thủy bình thường
++  - Phù thủy
++  - Phù thủy thành thạo
++  - Phù thủy đặc kỹ
++  - Phù thủy quen thuộc
++  - Phù thủy xuất sắc
++  - Pháp sư vụng về
++  - Pháp sư
++  - Pháp sư bình thường
++  - Pháp sư đặc kỹ
++  - Pháp sư xuất sắc
++  - Pháp sư xuất chúng
++  - Đại sư trẻ
++  - Đại sư vụng về
++  - Đại sư thực tập
++  - Đại sư đạt chuẩn
++  - Đại sư
++  - Đại sư đặc kỹ
++  - Đại sư xuất sắc
++  - Đại sư xuất chúng
++  - Đại sư tinh thông
+   - 天选之子
+diff --git a/src/main/resources/languages/translators.json b/src/main/resources/languages/translators.json
+index c27eb237b..3f93731ad 100644
+--- a/src/main/resources/languages/translators.json
++++ b/src/main/resources/languages/translators.json
+@@ -48,7 +48,8 @@
+         "JustAPieOP",
+         "that4life",
+         "CactusTheGuy",
+-        "hniV"
++        "hniV",
++        "mytai20100"
+     ],
+     "sk" : [
+         "KillerXCoder",
+diff --git a/src/main/resources/languages/vi/messages.yml b/src/main/resources/languages/vi/messages.yml
+index 7fec92891..cab08c04f 100644
+--- a/src/main/resources/languages/vi/messages.yml
++++ b/src/main/resources/languages/vi/messages.yml
+@@ -1,312 +1,441 @@
+ ---
++sf-cn:
++  timings:
++    started: '&aTrình phân tích hiệu suất đã khởi động.'
++    running: '&aTrình phân tích hiệu suất đang chạy, vui lòng dừng lại để xem dữ liệu.'
++    stopped: '&aTrình phân tích hiệu suất đã dừng, xem báo cáo tại đây: &f{0}'
++    warning: '&cĐã xảy ra sự cố khi tạo báo cáo hiệu suất! Vui lòng kiểm tra log console để biết thêm chi tiết.'
+ commands:
+-  help: Hiển thị màn hình trợ giúp này
+-  cheat: Cho phép bạn gian lận vật phẩm
+-  give: Đưa cho ai đó vài món đồ Slimefun
+-  guide: Cung cấp cho bạn một cuốn hướng dẫn Slimefun
+-  teleporter: Xem các điểm dịch chuyển của người chơi khác
+-  versions: Liệt kê tất cả các tiện ích mở rộng đã cài đặt
+-  search: Tìm kiếm Hướng dẫn của bạn cho cụm từ đã cho
+-  open_guide: Mở hướng dẫn của Slimefun mà không cần sử dụng sách
+-  stats: Hiển thị một số thống kê về người chơi
++  help: Hiển thị văn bản trợ giúp
++  cheat: Nhận vật phẩm Slimefun trực tiếp qua chế độ cheat
++  give: Cấp vật phẩm Slimefun cho người chơi
++  guide: Nhận một cuốn sách hướng dẫn Slimefun
++  teleporter: Xem các điểm dịch chuyển công cộng của người chơi khác
++  versions: Hiển thị môi trường vận hành Slimefun
++  search: Tìm kiếm vật phẩm Slimefun
++  open_guide: Mở hướng dẫn Slimefun bằng lệnh
++  stats: Xem số liệu thống kê của người chơi
++  id: Lấy ID Slimefun của vật phẩm đang cầm
++  cleardata:
++    description: Dọn dẹp dữ liệu thế giới
++    success: '&aĐã xóa dữ liệu &c{1} &acủa &c{0}'
++    block: khối
++    oil: dầu mỏ
++    worldNotFound: '&cKhông tìm thấy thế giới'
++    confirm: '&eNhập lệnh /sf cleardata <World> <Type> confirm để xác nhận thao tác &cThao tác này không thể hoàn tác!'
++  banitem:
++    description: Cấm vật phẩm Slimefun
++    success: '&aCấm thành công'
++  unbanitem:
++    description: Bỏ cấm vật phẩm Slimefun
++    success: '&aBỏ cấm thành công'
+   research:
+-    description: Mở khóa / Đặt lại nghiên cứu cho người chơi
+-    reset: '&cBạn đã đặt lại Kiến thức của %player%'
+-    reset-target: '&cKiến thức của bạn đã được đặt lại'
++    description: Mở khóa/đặt lại tiến trình nghiên cứu của người chơi
++    reset: '&cBạn đã đặt lại tiến trình nghiên cứu của %player%'
++    reset-target: '&cTiến trình nghiên cứu của bạn đã bị đặt lại'
+   backpack:
+-    description: Lấy bản sao của một ba lô đã có sẵn
+-    invalid-id: '&4ID phải là số nguyên dương!'
+-    player-never-joined: '&4Không tìm thấy người chơi với tên như vậy!'
+-    backpack-does-not-exist: '&4Không tìm thấy ba lô đó!'
+-    restored-backpack-given: '&aBa lô của bạn được khôi phục và được thêm vào túi đồ của bạn!'
++    description: Lấy lại chiếc balo đã mất của bạn
++    invalid-id: '&4ID balo phải là một số không âm!'
++    player-never-joined: '&4Không tìm thấy người chơi nào có tên này!'
++    backpack-does-not-exist: '&4Người chơi này không có chiếc balo nào!'
++    searching: '&eĐang tìm kiếm...'
++    restored-backpack-given: '&aChiếc balo của bạn đã được khôi phục và đặt vào túi đồ của bạn!'
+   charge:
+-    description: Sạc vật phẩm bạn đang cầm
+-    charge-success: Vật phẩm này đã sạc xong!
+-    not-rechargeable: Vật phẩm này không thể sạc được!
++    description: Sạc điện cho vật phẩm bạn đang cầm
++    charge-success: Sạc điện hoàn tất!
++    not-rechargeable: Vật phẩm này không thể sạc điện!
+   timings:
+-    description: Độ trễ của slimefun và addon của nó
+-    please-wait: '&eVui lòng đợi một chút... Kết quả chuẩn bị đến!'
+-    verbose-player: '&4Cờ dài này không thể sử dụng bới Người chơi!'
+-    unknown-flag: '&4Không rõ cờ: &c%flag%'
++    description: Báo cáo hiệu suất của Slimefun và các plugin liên quan
++    please-wait: '&eVui lòng đợi một chút... kết quả sẽ có ngay!'
++    verbose-player: '&4Cờ này không thể sử dụng đối với người chơi!'
++    unknown-flag: '&4Cờ không xác định: &c%flag%'
+   debug:
+-    description: 'Chạy trình gỡ lỗi cho lập trình viên'
+-    disabled: '&7Vô hiệu hóa chế độ gỡ lỗi.'
++    description: 'Xuất log gỡ lỗi để dùng cho nhà phát triển'
++    current: '&7Mục kiểm tra hiện tại: &6%test_case%'
++    none-running: '&7Hiện không có mục kiểm tra nào đang chạy!'
++    running: '&7Đang chạy mục kiểm tra này ở chế độ gỡ lỗi: &6%test%'
++    disabled: '&7Đã tắt chế độ gỡ lỗi'
++  reload:
++    description: "Tải lại tệp cấu hình Slimefun"
++    reload-success: "&aTải lại tệp cấu hình thành công."
++    reload-failed: "&cTải lại tệp cấu hình thất bại! Bạn có thể cần khởi động lại máy chủ để áp dụng thay đổi, hãy xem log console để biết thêm thông tin."
++  migrate:
++    description: "Di chuyển dữ liệu cũ"
++    confirm: "&cBạn có chắc chắn muốn tiến hành di chuyển dữ liệu không? Nhập /sf migrate confirm để bắt đầu di chuyển\nTrong quá trình di chuyển, vui lòng không để người chơi vào máy chủ thao tác với máy móc và vật phẩm Slimefun!"
++    started: "&aĐang di chuyển dữ liệu cũ..."
++    success: "&aDi chuyển dữ liệu cũ (%migrate_type%) sang cơ sở dữ liệu thành công."
++    failed: "&cĐã xảy ra sự cố trong quá trình di chuyển dữ liệu, vui lòng kiểm tra log console."
++    already-migrated: "&aHiện không có dữ liệu cần di chuyển."
++    in-progress: "&aQuá trình di chuyển đang được thực hiện..."
++  blockdata:
++    description: 'Thao tác dữ liệu khối slime'
+ placeholderapi:
+   profile-loading: 'Đang tải...'
+ guide:
+-  locked: 'ĐÃ KHÓA'
+-  work-in-progress: 'Tính năng này vẫn chưa hoàn thành!'
++  locked: 'Đã khóa'
++  work-in-progress: 'Tính năng này chưa được ra mắt!'
+   locked-itemgroup:
+-    - 'Để mở khóa danh mục này, bạn'
+-    - 'cần phải mở khóa các vật phẩm trong'
+-    - 'danh mục sau'
++    - 'Để mở khóa danh mục này'
++    - 'bạn cần mở khóa trước tất cả'
++    - 'vật phẩm trong danh mục sau'
+   search:
+-    message: '&bBạn muốn tìm kiếm cái gì?'
++    message: '&bHôm nay bạn muốn tìm kiếm gì?'
+     name: '&7Tìm kiếm...'
+-    tooltip: '&bBấm để tìm vật phẩm'
+-    inventory: 'Đang tìm: %item%'
++    tooltip: '&bNhấp để tìm kiếm vật phẩm'
++    inventory: 'Đang tìm kiếm: %item%'
+   tooltips:
+-    open-itemgroup: 'Nhấn vào đây để mở'
+-    versions-notice: 'Đây là rất quan trọng khi báo cáo lỗi!'
+-    wiki: 'Xem vật phẩm này trên trang wiki chính thức của Slimefun'
++    open-itemgroup: 'Nhấp để mở'
++    versions-notice: 'Thông tin này rất quan trọng khi báo cáo lỗi!'
++    wiki: 'Xem vật phẩm này trên Wiki Slimefun tiếng Trung không chính thức'
+     recipes:
+-      machine: 'Các công thức được chế tạo ở máy này'
+-      miner: 'Tài nguyên bạn có thể kiếm được với máy đào này'
+-      generator: 'Các loại nguyên liệu có thể dùng'
+-      gold-pan: 'Tài nguyên bạn có thể kiếm được'
+-      climbing-pick: 'Những bề mặt bạn có thể leo lên'
++      machine: 'Công thức chế tạo khả dụng của máy này'
++      miner: 'Tài nguyên mà máy khoan mỏ này có thể thu được'
++      generator: 'Các loại nhiên liệu khả dụng'
++      gold-pan: 'Tài nguyên bạn có thể thu được'
++      climbing-pick: 'Các bề mặt bạn có thể leo trèo'
+   cheat:
+-    no-multiblocks: '&4Bạn không thể gian lận trong chế độ Đa khối, bạn phải xây dựng chúng!'
++    no-multiblocks: '&4Bạn không thể nhận máy có cấu trúc đa khối ở chế độ cheat, phải xây dựng theo hướng dẫn trong sách!'
+   pages:
+     previous: 'Trang trước'
+-    next: 'Trang tiếp theo'
++    next: 'Trang sau'
+   back:
+     title: 'Quay lại'
+-    guide: 'Quay trở lại Hướng dẫn Slimefun'
+-    settings: 'Quay trở lại Bảng Cài đặt'
++    guide: 'Quay lại hướng dẫn Slimefun'
++    settings: 'Quay lại bảng cài đặt'
+   languages:
+-    updated: '&aNgôn ngữ của bạn đã được đặt thành công: &b%lang%'
+-    selected-language: 'Ngôn ngữ hiện đang chọn:'
+-    select: 'Nhấn vào đây để chọn ngôn ngữ này'
+-    select-default: 'Nhấn vào đây để chọn ngôn ngữ mặc định'
+-    change: 'Nhấp để chọn ngôn ngữ mới'
++    updated: '&aĐã đổi ngôn ngữ thành công sang: &b%lang%'
++    selected-language: 'Ngôn ngữ hiện đang sử dụng:'
++    select: 'Nhấp để chọn ngôn ngữ này'
++    select-default: 'Nhấp để chọn ngôn ngữ mặc định'
++    change: 'Nhấp để chọn ngôn ngữ cần đổi'
+     description:
+-      - '&7Bạn hiện có tùy chọn để thay đổi'
+-      - '&7ngôn ngữ trong đó Slimefun'
+-      - '&7sẽ được giới thiệu cho bạn. Vật phẩm'
+-      - '&7hiện không thể dịch được.'
++      - '&7Bây giờ bạn có thể thay đổi ngôn ngữ'
++      - '&7hiển thị các thông báo văn bản của Slimefun.'
++      - '&7Lưu ý: văn bản trong vật phẩm'
++      - '&7hiện chưa thể thay đổi.'
+     translations:
+-      name: '&aThiếu một cái gì đó?'
+-      lore: 'Nhấn vào đây để thêm bản dịch của riêng bạn'
++      name: '&aThiếu điều gì đó chăng?'
++      lore: 'Nhấp để thêm bản dịch của riêng bạn'
++  options:
++    learning-animation:
++      enabled:
++        text:
++          - '&bHiệu ứng mở khóa: &aBật'
++          - ''
++          - '&7Bây giờ bạn có thể chọn có'
++          - '&7bỏ qua quá trình nghiên cứu mở khóa'
++          - '&7vật phẩm hay không.'
++        click: '&eNhấp để tắt hiệu ứng nghiên cứu mở khóa'
++      disabled:
++        text:
++          - '&bHiệu ứng mở khóa: &4Tắt'
++          - ''
++          - '&7Bây giờ bạn có thể chọn có'
++          - '&7bỏ qua quá trình nghiên cứu mở khóa'
++          - '&7vật phẩm hay không.'
++        click: '&eNhấp để bật hiệu ứng nghiên cứu mở khóa'
+   title:
+-    main: 'Hướng dẫn sử dụng Slimefun'
+-    settings: 'Cài đặt và thông tin'
+-    languages: 'Chọn ngôn ngữ ưa thích của bạn'
+-    credits: 'Người đóng góp cho Slimefun4'
+-    wiki: 'Tài liệu Slimefun4'
+-    addons: 'Các bổ sung cho Slimefun4'
++    main: 'Hướng dẫn Slimefun'
++    settings: 'Cài đặt & Chi tiết'
++    languages: 'Chọn ngôn ngữ bạn muốn thay đổi'
++    credits: 'Những người đóng góp cho Slimefun4'
++    wiki: 'Wiki Slimefun4'
++    addons: 'Các plugin mở rộng của Slimefun4'
+     bugs: 'Báo cáo lỗi'
+     source: 'Mã nguồn'
+-    versions: 'Phiên bản đã cài'
++    versions: 'Các phiên bản đã cài đặt'
+   credits:
+-    profile-link: 'Nhấp để truy cập hồ sơ của họ trên GitHub'
+-    open: 'Nhấp để xem những người đóng góp của chúng tôi'
++    commit: 'Lượt commit'
++    commits: 'Số lượt commit'
++    profile-link: 'Nhấp để truy cập trang cá nhân Github của họ'
++    open: 'Nhấp để xem danh sách người đóng góp'
+     description:
+       - '&7Slimefun là một dự án mã nguồn mở'
+-      - '&7và được duy trì bởi một cộng đồng lớn.'
+-      - '&7Hơn &e%contributors% &7người đã làm việc'
+-      - '&7Slimefun trong suốt những năm qua.'
++      - '&7và được duy trì bởi cộng đồng người chơi.'
++      - '&7Trong suốt những năm qua, đã có &e%contributors% &7người'
++      - '&7đóng góp cho Slimefun.'
+     roles:
+       developer: '&6Nhà phát triển'
+-      wiki: '&3Người chỉnh sửa Wiki'
+-      resourcepack: '&cNghệ sĩ gói tài nguyên'
+-      translator: '&9Đóng góp bản dịch'
++      wiki: '&3Biên tập viên Wiki'
++      resourcepack: '&cNgười tạo tài nguyên'
++      translator: '&9Người dịch'
++
++actionbar:
++  radiation: '&6Mức độ nhiễm xạ：&c%level%&7/&e100'
++
+ messages:
+-  not-enough-xp: '&4Bạn không có đủ kinh nghiệm để mở khóa'
+-  unlocked: '&bBạn đã mở khóa &7"%research%"'
+-  only-players: '&4Lệnh này chỉ dành cho người chơi'
+-  unknown-player: '&4Người chơi chưa biết: &c%player%'
+-  no-permission: '&4Bạn không có quyền để làm điều này'
+-  usage: '&4Cách sử dụng: &c%usage%'
+-  not-online: '&4%player% &cđang không trực tuyến!'
+-  invalid-item: '&4%item% &ckhông phải là vật phẩm hợp lệ!'
+-  invalid-amount: '&4%amount% &ckhông hợp lệ : phải lớn hơn 0!'
+-  given-item: '&bBạn đã được nhận &a%amount% &7"%item%&7"'
+-  give-item: '&bBạn đã gửi đến %player% &a%amount% &7"%item%&7"'
+-  invalid-research: '&4%research% &ckhông phải là nghiên cứu hợp lệ!'
+-  give-research: '&bBạn đã cho %player% nghiên cứu &7"%research%&7"'
+-  hungry: '&cBạn quá đói để làm vậy!'
+-  disabled-in-world: '&4&lVật phẩm này đã bị vô hiệu hóa ở thế giới này!'
+-  disabled-item: '&4&lVật phẩm này đã bị vô hiệu hóa! Sao bạn có thể lấy được vật phẩm đó?'
+-  no-tome-yourself: '&cBạn không thể sử dụng &4Bộ kiến thức &ccho chính bạn...'
+-  multimeter: '&bNăng lượng được tích trữ: &3%stored% &b/ &3%capacity%'
+-  piglin-barter: '&4Bạn không thể trao đổi với piglin bằng vật phẩm của Slimefun'
+-  bee-suit-slow-fall: '&eCánh ong của bạn sẽ giúp bạn tiếp đất an toàn và chậm'
++  android-no-permission: "&cRobot của bạn không thể hoạt động trong một vùng đất/lãnh thổ mà bạn không có quyền, robot đã tự động dừng hoạt động."
++  not-researched: '&4Kiến thức của bạn chưa đủ để hiểu vật phẩm này. &cBạn cần mở khóa &f"%item%"&f trước'
++  not-enough-xp: '&4Bạn không có đủ kinh nghiệm để mở khóa nghiên cứu này'
++  unlocked: '&bĐã mở khóa nghiên cứu thành công &7"%research%"'
++  only-players: '&4Lệnh này chỉ có thể sử dụng trong trò chơi'
++  unknown-player: '&4Người chơi không xác định: &c%player%'
++  no-permission: '&4Bạn không có đủ quyền để làm điều này'
++  usage: '&4Cách dùng: &c%usage%'
++  not-online: '&4%player% &ckhông trực tuyến'
++  invalid-item: '&4%item% &ckhông phải là tên vật phẩm hợp lệ!'
++  invalid-amount: '&4%amount% &ckhông phải là số hợp lệ: nó phải lớn hơn 0!'
++  invalid-item-in-hand: '&eVật phẩm bạn đang cầm không phải là vật phẩm công nghệ Slime!'
++  given-item: '&bBạn đã nhận được &a%amount% &7"%item%&7"'
++  give-item: '&bĐã cấp thành công cho người chơi %player% &a%amount% &7"%item%&7"'
++  invalid-research: '&4%research% &ckhông phải là tên nghiên cứu hợp lệ!'
++  give-research: '&bBạn đã mở khóa thành công nghiên cứu &7"%research%&7" cho người chơi %player%'
++  hungry: '&cBạn quá đói rồi, hãy ăn gì đó trước khi thử lại!'
++  disabled-in-world: '&4&l%item_name% đã bị vô hiệu hóa trong thế giới này'
++  disabled-item: '&4&l%item_name% đã bị vô hiệu hóa! Làm sao bạn có được nó vậy?'
++  no-tome-yourself: '&cBạn không thể tự sử dụng &4Sách Đại Trí Tuệ &clên chính mình...'
++  multimeter: '&bNăng lượng đã lưu trữ: &3%stored% &b/ &3%capacity%'
++  piglin-barter: '&4Bạn không thể dùng vật phẩm Slimefun để trao đổi với Piglin'
++  bee-suit-slow-fall: '&eĐôi cánh ong sẽ giúp bạn hạ cánh an toàn'
++  deprecated-item: '&4Vật phẩm này đã bị loại bỏ và sẽ sớm được gỡ khỏi Slimefun.'
++  researching-is-disabled: '&cMáy chủ này đã tắt tính năng nghiên cứu, tất cả vật phẩm đều đã được mở khóa!'
+   multi-tool:
+-    mode-change: '&b%device% chế độ thay đổi thành: &9%mode%'
+-    not-shears: '&cA Đa dụng cụ này không thể sử dụng như cái kéo!'
++    mode-change: '&bChế độ của %device% đã được chuyển sang: &9%mode%'
++    not-shears: '&cCông cụ đa năng (Multi Tool) không thể dùng như kéo!'
+   auto-crafting:
+-    select: 'Chọn công thức này'
++    select-a-recipe: '&7Cầm vật phẩm bạn muốn chế tạo và &eBấm chuột phải trong khi cúi người &7vào khối này.'
++    recipe-set: '&aĐã thiết lập thành công công thức chế tạo cho máy này.'
++    recipe-removed: '&eĐã xóa thành công công thức chế tạo trước đó khỏi máy này. Bạn có thể thiết lập công thức mới bất cứ lúc nào!'
++    no-recipes: '&cRất tiếc, không tìm thấy công thức chế tạo cho vật phẩm bạn đang cầm.'
++    missing-chest: '&cThiếu rương! Máy Tự Động Chế Tạo (Auto-Crafter) cần được đặt phía trên một chiếc rương.'
++    select: 'Chọn công thức chế tạo này'
++    temporarily-disabled: '&eĐã tắt thành công Máy Tự Động Chế Tạo (Auto-Crafter). Bạn có thể khởi động lại nó bất cứ lúc nào!'
++    re-enabled: '&eĐã khởi động lại thành công Máy Tự Động Chế Tạo (Auto-Crafter)!'
++    recipe-unavailable: |
++      &cVật phẩm này không thể sử dụng. Có thể do bạn chưa mở khóa nó, hoặc vật phẩm đã bị máy chủ vô hiệu hóa.
++      &7Nếu bạn chưa mở khóa vật phẩm này, hãy mở khóa trước rồi mới chế tạo.
++    tooltips:
++      enabled:
++        - '&aĐang sử dụng công thức chế tạo này'
++        - ''
++        - '&eChuột trái &7để tắt công thức chế tạo này'
++        - '&eChuột phải &7để xóa công thức chế tạo này'
++      disabled:
++        - '&cCông thức chế tạo này đã bị tắt'
++        - ''
++        - '&eChuột trái &7để sử dụng công thức này'
++        - '&eChuột phải &7để xóa công thức này'
+   talisman:
+-    anvil: '&a&oBùa hộ mệnh của bạn đã lưu công cụ của bạn khỏi bị phá vỡ'
+-    miner: '&a&oBùa hộ mệnh của bạn vừa nhân đôi vật phẩm rớt'
+-    hunter: '&a&oBùa hộ mệnh của bạn vừa nhân đôi vật phẩm rớt'
+-    lava: '&a&oBùa hộ mệnh của bạn cứu bạn khỏi bị thiêu chết'
+-    water: '&a&oBùa hộ mệnh của bạn vừa cứu bạn khỏi đuối nước'
+-    angel: '&a&oBùa hộ mệnh của bạn vừa cứu bạn khỏi bị sát thương khi rơi'
+-    fire: '&a&oBùa hộ mệnh của bạn cứu bạn khỏi bị thiêu chết'
+-    magician: '&a&oBùa hộ mệnh của bạn cho bạn một phù phép bổ sung'
+-    traveller: '&a&oBùa hộ mệnh của bạn cho bạn hiệu ứng Chạy Nhanh'
+-    warrior: '&a&oBùa hộ mệnh của bạn đã cải thiện Sức mạnh của bạn trong một thời gian'
+-    knight: '&a&oBùa hộ mệnh của bạn đã cho bạn 5 giây hiệu ứng Hồi Máu'
+-    whirlwind: '&a&oBùa hộ mệnhcủa bạn phản lại Phát Bắn'
+-    wizard: '&a&oBùa hộ mệnh của bạn đã cho bạn một Cấp độ may mắn tốt hơn nhưng cũng có thể hạ thấp một số Cấp độ phù phép khác'
+-    caveman: '&a&oBùa ma thuật của bạn cho bạn hiệu ứng Đào nhanh'
+-    wise: '&a&oBùa ma thuật đã nhân đôi số kinh nghiệm của bạn'
++    anvil: '&a&oBùa hộ mệnh của bạn đã giúp công cụ không bị hư hỏng'
++    miner: '&a&oBùa hộ mệnh của bạn đã nhân đôi khoáng sản rơi ra'
++    farmer: '&a&oBùa hộ mệnh của bạn đã nhân đôi vật phẩm rơi ra'
++    hunter: '&a&oBùa hộ mệnh của bạn đã nhân đôi vật phẩm rơi ra'
++    lava: '&a&oBùa hộ mệnh của bạn đã cứu bạn khỏi dung nham'
++    water: '&a&oBùa hộ mệnh của bạn đã giúp bạn tránh chết đuối'
++    angel: '&a&oBùa hộ mệnh của bạn đã giúp bạn không bị thương khi nhảy xuống bằng đức tin'
++    fire: '&a&oBùa hộ mệnh của bạn đã giúp bạn miễn nhiễm sát thương lửa'
++    magician: '&a&oBùa hộ mệnh của bạn đã tặng cho bạn một phù phép bổ sung'
++    traveller: '&a&oBùa hộ mệnh của bạn đã giúp bạn chạy nhanh hơn'
++    warrior: '&a&oBùa hộ mệnh của bạn đã khiến bạn mạnh mẽ hơn'
++    knight: '&a&oBùa hộ mệnh của bạn đã hồi máu cho bạn trong 5 giây'
++    whirlwind: '&a&oBùa hộ mệnh của bạn đã phản lại tất cả các vật thể bắn vào bạn'
++    wizard: '&a&oBùa hộ mệnh của bạn đã ngẫu nhiên tăng cấp một phù phép, nhưng các phù phép khác sẽ bị giảm cấp'
++    caveman: '&a&oBùa hộ mệnh của bạn đã ban cho bạn hiệu ứng Vội Vã'
++    wise: '&a&oBùa hộ mệnh của bạn đã nhân đôi lượng kinh nghiệm rơi ra'
+   soulbound-rune:
+-    fail: '&cBạn chỉ có thể liên kết một vật phẩm với linh hồn của bạn trong cùng một thời điểm.'
+-    success: '&aBạn đã liên kết thành công vật phẩm với linh hồn của bạn! Bạn sẽ giữ vật phẩm khi chết.'
++    fail: '&cLinh hồn chỉ có thể liên kết với một vật phẩm tại một thời điểm.'
++    success: '&aLiên kết vật phẩm thành công! Vật phẩm này sẽ không rơi ra sau khi bạn chết.'
+   enchantment-rune:
+     fail: '&cBạn không thể phù phép vật phẩm này.'
+-    no-enchantment: '&cKhông thể tìm được bất kì loại phù phép nào phù hợp cho vật phẩm'
+-    success: '&aBạn đã áp dụng thành công một loại phù phép ngẫu nhiên cho vật phẩm này.'
++    no-enchantment: '&cKhông thể tìm thấy thuộc tính phù phép khả dụng cho vật phẩm này.'
++    success: '&aĐã thêm thành công một thuộc tính phù phép ngẫu nhiên khả dụng cho vật phẩm này.'
+   research:
+-    start: '&7Các Linh Hồn Cổ Đại nói thì thầm những từ ngữ bí ẩn vào tai bạn! '
+-    progress: '&7Bạn bắt đầu thắc mắc về: &b%research% &e(%progress%)'
++    start: '&7Những linh hồn cổ xưa đang thì thầm với bạn về những điều bí ẩn trong đó!'
++    progress: '&7Bạn dần bắt đầu hiểu được nghiên cứu &b%research% &e(%progress%)'
+   tape-measure:
+-    no-anchor: '&cBạn cần đặt neo trước khi có thể bắt đầu đo!'
+-    wrong-world: '&cNeo của bạn dường như đang ở trong một thế giới khác!'
+-    distance: "&7Đo lường được thực hiện.\n&eKhoảng cách: %distance%"
+-    anchor-set: '&aĐặt thành công neo:&e%anchor%'
++    no-anchor: '&cVui lòng chọn điểm bắt đầu đo trước khi bắt đầu!'
++    wrong-world: '&cĐiểm bắt đầu bạn đã đặt dường như ở một thế giới khác!'
++    distance: '&7Đã đo khoảng cách, &elà: %distance%'
++    anchor-set: '&aĐã đặt điểm bắt đầu đo thành công tại &e%anchor%'
+   climbing-pick:
+-    dual-wielding: '&4Bạn cần cầm Rìu leo ở cả 2 tay để dùng nó!'
+-    wrong-material: '&cBạn không thể leo bề mặt này. Hãy xem hướng dẫn của Slimefun để biết thêm!'
+-  fire-extinguish: '&7Bạn đã tự dập tắt lửa chính bản thân'
+-  cannot-place: '&cBạn không thể đặt khối ở đó!'
+-  no-pvp: '&cBạn không thể đánh nhau ở đây!'
+-  radiation: '&4Bạn đã tiếp xúc với bức xạ chết người! &cLoại bỏ vật phẩm phóng xạ hoặc trang bị bộ đồ hazmat!'
+-  opening-guide: '&bĐang mở hướng dẫn, việc này có thể mất một vài giây...'
+-  opening-backpack: '&bĐang mở ba lô, việc này có thể mất một vài giây...'
+-  no-iron-golem-heal: '&cĐây khỏi phải là Thỏi Sắt. Bạn không thể sử dụng thứ này để hồi máu cho Người Khổng Lồ Sắt!'
+-  link-prompt: '&eẤn vào đây:'
+-  diet-cookie: '&eBạn đang bắt đầu cảm thấy rất nhẹ...'
++    dual-wielding: '&4Bạn cần cầm cuốc leo núi bằng cả hai tay để sử dụng nó!'
++    wrong-material: '&cBạn không thể leo lên bề mặt này. Xem sách hướng dẫn để biết thêm chi tiết!'
++  fire-extinguish: '&7Bạn đã dập tắt lửa trên người'
++  cannot-place: '&cBạn không thể đặt khối ở đây!'
++  no-pvp: '&cBạn không thể tấn công người chơi khác ở đây!'
++  radiation: '&4Bạn đã phơi nhiễm với bức xạ nguy hiểm! &cHãy nhanh chóng vứt bỏ vật phẩm nhiễm xạ hoặc mặc đồ bảo hộ!'
++  opening-guide: '&bĐang mở sách hướng dẫn, vui lòng đợi...'
++  opening-backpack: '&bĐang mở balo, vui lòng đợi....'
++  no-iron-golem-heal: '&cĐây không phải thỏi sắt. Không thể dùng để chữa trị cho Iron Golem!'
++  link-prompt: '&eNhấp vào đây:'
++  diet-cookie: '&eBạn cảm thấy nhẹ nhõm hơn...'
++  await-deletion: '&cBạn không thể đặt khối Slimefun ngay sau khi phá vỡ một khối. Hãy thử lại sau.'
+   fortune-cookie:
+-    - '&7Cứu tôi, tôi bị bẫy trong một Nhà Máy Bánh Quy May Mắn'
+-    - '&7Bạn sẽ chết vào ngày mai... bởi Creeper'
+-    - '&7Tại một số thời điểm trong cuộc sống của bạn một cái gì đó xấu sẽ xảy ra !!!'
+-    - '&7Tuần tới bạn sẽ nhận thấy rằng đây không phải là thế giới thực, bạn đang ở trong một trò chơi trên máy tính'
+-    - '&7Bánh quy này sẽ ngon trong vài giây'
+-    - '&7Từ cuối cùng bạn được nghe là "TÀN SÁT!!!"'
+-    - '&7Dù bạn làm gì, đừng ôm Creeper ... Tôi đã thử nó. Nó cảm thấy tốt, nhưng nó không đáng.'
++    - '&7Cứu tôi với! Tôi bị mắc kẹt trong nhà máy bánh quy may mắn!'
++    - '&7Ngày mai bạn sẽ chết dưới tay...     một con Creeper'
++    - '&7Vào một thời điểm nào đó trong đời bạn, chuyện xấu sẽ xảy ra!!!'
++    - '&7Tuần sau bạn sẽ phát hiện ra mình không sống trong thế giới thực, mà đang ở trong một trò chơi!'
++    - '&7Chiếc bánh quy này sẽ trở nên rất ngon trong vài giây nữa'
++    - '&7Bạn sắp chết và từ cuối cùng bạn nghe được sẽ là "Hủy diệt!!!"'
++    - '&7Dù bạn có làm gì đi nữa, đừng ôm một con Creeper... tôi đã thử rồi. Cảm giác cũng ổn, nhưng không đáng.'
+     - '&742. Câu trả lời là 42.'
+-    - '&7Một Walshy mỗi ngày sẽ giữ những rắc rối đi.'
+-    - '&7Không bao giờ đào thẳng xuống!'
+-    - '&7Đó chỉ là một vết thương da thịt!'
+-    - '&7Luôn nhìn theo hướng tích cực!'
+-    - '&7 Cái này là bánh giòn chứ không phải bánh phồng'
+-    - '&7Bảng đèn neon đẹp dữ!'
++    - '&7Mỗi ngày một Walshy, xin hãy tránh xa tôi ra.'
++    - '&7Đừng bao giờ đào thẳng xuống dưới!'
++    - '&7Chỉ là vết thương nhẹ thôi!'
++    - '&7Hãy luôn nhìn vào mặt tươi sáng của cuộc sống!'
++    - '&7Thực ra đây là bánh quy giòn chứ không phải bánh quy mềm'
++    - '&7Đèn neon đã sáng lên rồi!'
++  above-limit-level: '&cCấp độ phù phép/khử phù phép của vật phẩm bạn muốn thao tác đã vượt quá cấp &c%level%!'
++  pickaxe-of-the-seeker:
++    no-ores: '&cKhông tìm thấy khoáng sản nào gần đây!'
+ machines:
+-  pattern-not-found: '&eXin lỗi, tôi không thể nhận ra Công Thức này. Vui lòng đặt các vật phẩm với mẫu nhất định vào trong Máy Phân Phát.'
+-  unknown-material: '&eXin lỗi, tôi không thể nhận ra vật phẩm trong máy phân phát. Vui lòng đặt thứ gì đó trong đó mà tôi biết.'
+-  wrong-item: '&eXin lỗi, tôi không thể nhận ra vật phẩm mà bạn nhấp chuột phải vào tôi. Kiểm tra Công Thức và xem những vật phẩm nào bạn có thể sử dụng.'
+-  full-inventory: '&eXin lỗi, kho đồ của tôi đã quá đầy!'
+-  in-use: '&cKhối trong túi đồ này hiện đang được mở bởi người chơi khác.'
+-  ignition-chamber-no-flint: '&cIgnition Chamber đang thiếu Bật Lửa.'
++  pattern-not-found: '&eXin lỗi, đây không phải công thức chế tạo đúng, vui lòng kiểm tra lại thứ tự vật phẩm đặt trong máy bắn.'
++  unknown-material: '&eXin lỗi, không thể nhận dạng vật phẩm trong máy bắn. Vui lòng đặt vật phẩm theo đúng công thức chế tạo.'
++  wrong-item: '&eXin lỗi, không thể nhận dạng vật phẩm bạn vừa nhấp chuột phải. Kiểm tra sách hướng dẫn để biết vật phẩm nào có thể sử dụng.'
++  full-inventory: '&eXin lỗi, túi đồ đã đầy!'
++  in-use: '&cMáy này đang được người chơi khác sử dụng.'
++  ignition-chamber-no-flint: '&cMáy đánh lửa tự động thiếu đá lửa.'
++  inventory-empty: '&6Bạn đã chế tạo thành công một cỗ máy có cấu trúc đa khối. Hãy đặt vật phẩm vào máy bắn theo đúng công thức chế tạo, sau đó nhấp chuột phải vào tôi một lần nữa để chế tạo!'
+   ANCIENT_ALTAR:
+-    not-enough-pedestals: '&4Bàn thờ không được bao quanh bởi số lượng cần thiết của các bệ &c(%pedestals% / 8)'
+-    unknown-catalyst: '&4Không rõ Chất Xúc Tác! &cSử dụng đúng công thức thay thế!'
+-    unknown-recipe: '&4Không rõ Công Thức! &cSử dụng đúng công thức thay thế!'
++    not-enough-pedestals: '&4Không đủ bệ cổ đại. Số bệ hiện đã đặt: &c(%pedestals% / 8)'
++    unknown-catalyst: '&4Chất xúc tác không hợp lệ! &cVui lòng đặt vật phẩm đúng theo công thức chế tạo!'
++    unknown-recipe: '&4Công thức chế tạo không xác định! &cVui lòng đặt vật phẩm đúng theo công thức chế tạo!'
+   ANCIENT_PEDESTAL:
+-    obstructed: '&4Bệ bị cản trở! &cLoại bỏ bất kì thứ gì trên bệ!'
++    obstructed: '&4Bệ đã bị chắn! &cHãy dọn thứ gì đó ở phía trên bệ ra!'
++    in-use: "&4Vẫn còn thứ chưa được lấy ra khỏi bệ!"
+   HOLOGRAM_PROJECTOR:
+-    enter-text: '&7Vui lòng nhập Văn Bản Ba Chiều mong muốn của bạn vào Khung trò chuyện. &r(Mã màu được hỗ trợ!)'
+-    inventory-title: 'Trình chỉnh sửa ảnh ba chiều'
++    enter-text: '&7Vui lòng nhập nội dung bạn muốn hiển thị trên văn bản ảo. &r(hỗ trợ mã màu)'
++    inventory-title: 'Trình chỉnh sửa hình ảnh ảo'
+   ELEVATOR:
+-    no-destinations: '&4Không tìm thấy điểm đến'
+-    pick-a-floor: '&4- Chọn một tầng -'
+-    current-floor: '&eĐây là tầng mà bạn hiện đang ở:'
+-    click-to-teleport: '&eẤn &7để dịch chuyển đến tầng:'
++    no-destinations: '&4Không tìm thấy tầng trên/dưới'
++    pick-a-floor: '&3- Chọn một tầng -'
++    current-floor: '&eTầng hiện tại của bạn:'
++    click-to-teleport: '&eNhấp &7để dịch chuyển đến tầng:'
++    enter-name: '&7Hãy đặt tên cho tầng của bạn! &f(hỗ trợ mã màu)'
++    named: '&2Đã đặt tên thành công cho tầng này là: &f%floor%'
++    editor-title: 'Cài đặt thang máy'
+   TELEPORTER:
+     teleporting: '&3Đang dịch chuyển...'
+-    teleported: '&3Đã dịch chuyển!'
+-    cancelled: '&4Dịch chuyển bị hủy bỏ!'
+-    invulnerability: '&b&lBạn đã được cho 30 giây Bất Tử!'
++    teleported: '&3Dịch chuyển thành công!'
++    cancelled: '&4Đã hủy dịch chuyển!'
++    invulnerability: '&b&lBạn đã nhận được 30 giây bất tử!'
+     gui:
+-      title: 'Địa điểm của bạn'
+-      tooltip: 'Bấm để dịch chuyển'
++      title: 'Điểm dịch chuyển của bạn'
++      tooltip: 'Nhấp để dịch chuyển'
+       time: 'Thời gian dự kiến'
+   GPS_CONTROL_PANEL:
+     title: 'GPS - Bảng điều khiển'
+-    transmitters: 'Tổng quan về các máy phát tín hiệu'
+-    waypoints: 'Tổng quan về các vị trí dịch chuyển'
++    transmitters: 'Chi tiết máy phát tín hiệu'
++    waypoints: 'Danh sách điểm dịch chuyển'
+   CARGO_NODES:
+-    must-be-placed: '&4Phải được đặt trên hòm hoặc máy!'
++    must-be-placed: '&4Nút hàng hóa phải được đặt trên một chiếc rương hoặc máy móc!'
++    connected: '&2Đã kết nối！'
++    not-connected: '&4Chưa kết nối！'
+   INDUSTRIAL_MINER:
+-    no-fuel: '&cMáy đào công nghiệp của bạn hết nhiên liệu! Bỏ nhiên liệu vào rương ở trên.'
+-    piston-facing: '&cMáy đào công nghiệp của bạn cần 2 pít-tông hướng lên trên!'
+-    piston-space: '&cHai cái pít-tông cần hai khối không khí ở trên!'
+-    destroyed: '&cMáy đào công nghiệp của bạn có vẻ như bị phá hủy.'
+-    already-running: '&cMáy đào công nghiệp này đang chạy!'
+-    full-chest: '&cRương của máy đào công nghiệp đã đầy!'
+-    no-permission: '&4Có vẻ như bạn không có quyền để sử dụng máy đào ở đây!'
+-    finished: '&eMáy đào công nghiệp của bạn đã chạy xong! Nó đã đào được %ores% khoáng sản(s)!'
++    no-fuel: '&cMáy khoan mỏ công nghiệp của bạn đã hết nhiên liệu! Hãy đặt nhiên liệu vào chiếc rương phía trên nó.'
++    piston-facing: '&cMáy khoan mỏ công nghiệp của bạn cần đặt một piston hướng lên trên!'
++    piston-space: '&cKhông được có khối chặn phía trên hai piston!'
++    destroyed: '&cMáy khoan mỏ công nghiệp của bạn đã bị phá hủy.'
++    already-running: '&cMáy khoan mỏ công nghiệp này đang chạy!'
++    full-chest: '&cRương của máy khoan mỏ công nghiệp của bạn đã đầy!'
++    no-permission: '&4Bạn không có quyền vận hành máy khoan mỏ công nghiệp này!'
++    finished: '&eMáy khoan mỏ công nghiệp của bạn đã khai thác xong! Tổng cộng đã khai thác được %ores% khoáng sản!'
++  TABLE_SAW:
++    no-slimefun-item: '&cBạn không thể sử dụng vật phẩm Slimefun trên Máy Cưa Bàn (Table Saw)!'
+ anvil:
+-  not-working: '&4Bạn không thể sử dụng vật phẩm Slimefun trên cái đê!'
+-  mcmmo-salvaging: '&4Bạn không thể phục hồi giáp của Slimefun!'
++  not-working: '&4Bạn không thể sử dụng vật phẩm Slimefun trên đe'
++  mcmmo-salvaging: '&4Bạn không thể tháo dỡ vật phẩm Slimefun!'
+ brewing_stand:
+-  not-working: '&4Bạn không thể sử dụng các vật phẩm Slimefun trong quầy pha chế thuốc!'
++  not-working: '&4Bạn không thể sử dụng vật phẩm Slimefun trên bàn pha chế!'
+ cartography_table:
+-  not-working: '&4Bạn không thể sử dụng vật phẩm sủa Slimefun trong bàn sửa bản đồ'
++  not-working: '&4Bạn không thể sử dụng vật phẩm Slimefun trên bàn vẽ bản đồ!'
++smithing_table:
++  not-working: '&4Bạn không thể sử dụng vật phẩm Slimefun làm nguyên liệu rèn!'
+ villagers:
+-  no-trading: '&4Bạn không thể trao đổi các  vật phẩm Slimefun với dân làng!'
++  no-trading: '&4Bạn không thể dùng vật phẩm Slimefun để giao dịch với dân làng!'
+ backpack:
+-  already-open: '&cXin lỗi, cái Ba lô này đã được mở ở một nơi nào khác!'
+-  no-stack: '&cBạn không thể xếp nhiều Ba lô lại với nhau'
++  already-open: '&cXin lỗi, chiếc balo này đã được mở ở nơi khác!'
++  no-stack: '&cBạn không thể cầm cùng lúc hai chiếc balo'
++  set-name: '&eVui lòng nhập tên balo'
++  not-backpack-owner: '&cChủ sở hữu balo này không trực tuyến, bạn không có quyền sử dụng nó!'
++  not-original-item: '&cVui lòng không đổi vật phẩm đang cầm khi nhập tên!'
+ workbench:
+-  not-enhanced: '&4Bạn không thể sử dụng vật phẩm Slimefun ở trên bàn làm việc thông thường'
++  not-enhanced: '&4Bạn không thể sử dụng vật phẩm Slimefun trên bàn chế tạo thông thường'
+ cauldron:
+-  no-discoloring: '&4Bạn không thể đổi màu giáp của Slimefun'
++  no-discoloring: '&4Bạn không thể dùng vạc để tẩy màu vật phẩm Slimefun'
++crafter:
++  not-working: '&4Bạn không thể dùng vật phẩm Slimefun để chế tạo trên máy chế tạo tự động'
+ gps:
+-  deathpoint: '&4Điểm chết &7%date%'
++  deathpoint: '&4Điểm tử vong &7%date%'
++  status-online: 'Trực tuyến'
++  status-offline: 'Ngoại tuyến'
+   waypoint:
+-    new: '&eVui lòng nhập tên cho điểm tham chiếu mới của bạn trên khung chat. &7(Mã màu được hỗ trợ!)'
+-    added: '&aĐã thêm thành công một điểm tham chiếu mới'
+-    max: '&4Bạn đã đạt đến số lượng điểm tham chiếu tối đa'
+-    duplicate: '&4Bạn từng tạo vị trí dịch chuyển tên: &f%waypoint% &4rồi'
++    new: '&eHãy đặt tên cho điểm dịch chuyển của bạn &7(hỗ trợ mã màu!)'
++    added: '&aĐã thêm điểm dịch chuyển mới thành công'
++    max: '&4Bạn đã đạt số lượng điểm dịch chuyển tối đa có thể thiết lập'
++    duplicate: '&4Đã có điểm dịch chuyển trùng tên: &f%waypoint%'
+   insufficient-complexity:
+-    - '&4Độ phức tạp của mạng GPS không đủ: &c%complexity%'
+-    - '&4a) Bạn chưa có thiết lập Mạng GPS'
+-    - '&4b) Mạng GPS của bạn không đủ phức tạp'
++    - '&4Độ phức tạp mạng lưới GPS không đủ: &c%complexity%'
++    - '&4a) Bạn chưa thiết lập một mạng lưới GPS'
++    - '&4b) Độ phức tạp mạng lưới GPS của bạn chưa đủ, hãy đặt thêm vài máy phát tín hiệu GPS'
+   geo:
+-    scan-required: '&4Yêu cầu Quét GEO! &cQuét chunk này bằng Máy Quét GEO trước!'
++    scan-required: '&4Cần thực hiện quét tài nguyên thiên nhiên trước! &cVui lòng sử dụng máy quét tài nguyên thiên nhiên trước!'
+ inventory:
+-  no-access: '&4Bạn không được phép truy cập vào khối này'
++  no-access: '&4Bạn không có quyền sử dụng khối này'
+ android:
+-  started: '&7Thiết bị Android của bạn đã tiếp tục chạy đoạn mã của nó'
+-  stopped: '&7Thiết bị Android của bạn đã dùng chạy đoạn mã của nó'
++  started: '&7Robot đang hoạt động theo kịch bản'
++  stopped: '&7Robot đã dừng hoạt động'
+   scripts:
+-    already-uploaded: '&4Đoạn mã này đã được tải lên.'
++    already-uploaded: '&4Bạn đã tải lên kịch bản này rồi.'
+     editor: 'Trình chỉnh sửa kịch bản'
+-    too-long: '&cĐoạn mã quá dài để chỉnh sửa!'
++    too-long: '&cĐộ dài kịch bản đã đạt giới hạn, bạn không thể chỉnh sửa thêm!'
+     instructions:
+-      START: '&2Bắt đầu chạy Đoạn Mã'
+-      REPEAT: '&9Lặp lại Đoạn Mã'
+-      WAIT: '&eĐợi 0.5s'
+-      GO_FORWARD: '&7Đi thẳng'
++      START: '&2Chạy kịch bản'
++      REPEAT: '&9Lặp lại kịch bản'
++      WAIT: '&eChờ 0.5 giây'
++      GO_FORWARD: '&7Đi về phía trước'
+       GO_UP: '&7Đi lên'
+       GO_DOWN: '&7Đi xuống'
+       TURN_LEFT: '&7Rẽ trái'
+       TURN_RIGHT: '&7Rẽ phải'
+       DIG_UP: '&bĐào lên'
+-      DIG_FORWARD: '&bĐào thẳng'
++      DIG_FORWARD: '&bĐào phía trước'
+       DIG_DOWN: '&bĐào xuống'
+-      MOVE_AND_DIG_UP: '&bDi chuyển và đào lên'
+-      MOVE_AND_DIG_FORWARD: '&bDi chuyển và đào thẳng'
+-      MOVE_AND_DIG_DOWN: '&bDi chuyển và đào xuống'
+-      ATTACK_MOBS_ANIMALS: '&4Tấn công &c(Mob và Động vật hung giữ)'
+-      ATTACK_MOBS: '&4Tấn công &c(Các mob hung dữ)'
+-      ATTACK_ANIMALS: '&4Tấn công &c(Động vật)'
+-      ATTACK_ANIMALS_ADULT: '&4Tấn công &c(Động vật &7[Trường thành]&c)'
+-      CHOP_TREE: '&cChặt và trồng lại'
+-      CATCH_FISH: '&bBắt cá'
+-      FARM_FORWARD: '&bThu hoạch và trồng lại'
+-      FARM_DOWN: '&bThu hoạch và trồng lại &7(Khối bên dưới)'
+-      FARM_EXOTIC_FORWARD: '&bThu hoạch và thay thế nâng cao'
+-      FARM_EXOTIC_DOWN: '&bThu hoạch và thay thế nâng ca o&7(Khối ở dưới)'
+-      INTERFACE_ITEMS: '&9Đẩy nội dung túi đồ lên giao diện'
+-      INTERFACE_FUEL: '&cKéo nhiên liệu từ giao diện'
++      MOVE_AND_DIG_UP: '&bĐào lên và di chuyển'
++      MOVE_AND_DIG_FORWARD: '&bĐào phía trước và di chuyển'
++      MOVE_AND_DIG_DOWN: '&bĐào xuống và di chuyển'
++      ATTACK_MOBS_ANIMALS: '&4Tấn công &c(quái vật & động vật)'
++      ATTACK_MOBS: '&4Tấn công &c(quái vật)'
++      ATTACK_ANIMALS: '&4Tấn công &c(động vật)'
++      ATTACK_ANIMALS_ADULT: '&4Tấn công &c(động vật trưởng thành)'
++      CHOP_TREE: '&cChặt cây và trồng lại cây con'
++      CATCH_FISH: '&bCâu cá'
++      FARM_FORWARD: '&bTự động thu hoạch và trồng lại cây trồng'
++      FARM_DOWN: '&bTự động thu hoạch và trồng lại cây trồng phía dưới'
++      FARM_EXOTIC_FORWARD: '&bTự động thu hoạch và trồng lại tất cả cây trồng'
++      FARM_EXOTIC_DOWN: '&bTự động thu hoạch và trồng lại tất cả cây trồng phía dưới'
++      INTERFACE_ITEMS: '&9Đặt vật phẩm trong túi đồ vào thùng chứa phía trước'
++      INTERFACE_FUEL: '&cLấy nhiên liệu ra khỏi thùng chứa phía trước'
+     enter-name:
+       - ''
+-      - '&eVui lòng nhập tên cho đoạn mã của bạn'
++      - '&eHãy đặt tên cho kịch bản của bạn'
+       - ''
+     uploaded:
+       - '&bĐang tải lên...'
+-      - '&aTải đoạn mã lên thành công!'
++      - '&aTải lên kịch bản thành công!'
+     rating:
+-      own: '&4Bạn không thể xếp hạng đoạn mã của chính mình!'
+-      already: '&4Bạn đã để lại Xếp Hạng cho đoạn mã này!'
++      own: '&4Bạn không thể tự đánh giá kịch bản của chính mình!'
++      already: '&4Bạn đã để lại đánh giá cho kịch bản này rồi!'
++  access-manager:
++    title: '&bTrình quản lý quyền robot'
++    subtitle: '&8⇨ &7Nhấp để mở trình quản lý'
++
++    menu:
++      add-player-title: '&aThêm người chơi tin cậy'
++      add-player: '&aChuột trái > Thêm người chơi tin cậy'
++      delete-player: '&cChuột trái > Xóa người chơi tin cậy'
++
++    messages:
++      input: 'Vui lòng nhập ID của người chơi tin cậy bạn muốn thêm.'
++      cannot-find-player: '&cKhông tìm thấy người chơi bạn muốn thêm: %player%'
++      is-trusted-player: '&a%player% đã là người chơi tin cậy của bạn rồi!'
++      is-not-trusted-player: "&c%player% không phải là người chơi tin cậy của bạn!"
++      cannot-add-yourself: '&cBạn không thể thêm chính mình làm người chơi tin cậy!'
++      add-success: '&aĐã thêm thành công người chơi tin cậy %player%.'
++      delete-success: '&aĐã xóa thành công người chơi tin cậy %player%.'
++      reach-limit: '&cSố lượng người chơi tin cậy đã đạt giới hạn tối đa (10), vui lòng xóa bớt người chơi hiện có trước khi thêm mới!'
+ languages:
+-  default: 'Máy chủ-Mặc định'
++  default: 'Ngôn ngữ mặc định của máy chủ'
+   en: 'Tiếng Anh'
+   de: 'Tiếng Đức'
+   fr: 'Tiếng Pháp'
+@@ -320,8 +449,8 @@ languages:
+   lv: 'Tiếng Latvia'
+   ru: 'Tiếng Nga'
+   sk: 'Tiếng Slovak'
+-  zh-CN: 'Tiếng Trung (Trung Quốc)'
+-  zh-TW: 'Tiếng Trung Quốc (Đài Loan)'
++  zh-CN: 'Tiếng Trung giản thể (Trung Quốc)'
++  zh-TW: 'Tiếng Trung phồn thể (Đài Loan)'
+   vi: 'Tiếng Việt'
+   id: 'Tiếng Indonesia'
+   el: 'Tiếng Hy Lạp'
+@@ -338,12 +467,14 @@ languages:
+   ja: 'Tiếng Nhật'
+   fa: 'Tiếng Ba Tư'
+   th: 'Tiếng Thái'
+-  tl: 'Tiếng Filipino'
+-  ro: 'Tiếng Rumani'
++  tl: 'Tiếng Tagalog'
++  ro: 'Tiếng Romania'
+   bg: 'Tiếng Bulgaria'
+   ko: 'Tiếng Hàn'
+   tr: 'Tiếng Thổ Nhĩ Kỳ'
+   hr: 'Tiếng Croatia'
+   mk: 'Tiếng Macedonia'
+   sr: 'Tiếng Serbia'
+-  be: 'Tiếng Bêlarut'
++  be: 'Tiếng Belarus'
++  si-LK: 'Tiếng Sinhala'
++  lt: 'Tiếng Litva'
+\ No newline at end of file
+diff --git a/src/main/resources/languages/vi/recipes.yml b/src/main/resources/languages/vi/recipes.yml
+index 731974f81..82fc6a70c 100644
+--- a/src/main/resources/languages/vi/recipes.yml
++++ b/src/main/resources/languages/vi/recipes.yml
+@@ -1,158 +1,170 @@
+ ---
+-minecraft:
+-  blasting:
+-    lore:
+-    - Nung vật phẩm này trong một lò nung phản ứng
+-    - để chế tạo vật phẩm mình muốn
+-    name: Công thức lò nung phản ứng
+-  campfire:
++slimefun:
++  multiblock:
++    name: 'Cấu trúc đa khối'
+     lore:
+-    - Nung vật phẩm này trên một lửa trại
+-    - để chế tạo vật phẩm bạn muốn
+-    name: Công thức nung trên lửa trại
+-  furnace:
++      - 'Xây dựng bằng các khối theo'
++      - 'cấu trúc được hiển thị. Vật phẩm này'
++      - 'không thể được chế tạo.'
++  enhanced_crafting_table:
++    name: 'Bàn chế tạo tăng cường (Enhanced Crafting Table)'
+     lore:
+-    - Nung vật phẩm này trong lò
+-    - để chế tạo vật phẩm bạn muốn
+-    name: Công thức nung lò nung
+-  shaped:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong Bàn chế tạo tăng cường.'
++      - 'Một bàn chế tạo thường không đủ để làm được điều này!'
++  armor_forge:
++    name: 'Bàn rèn giáp (Armor Forge)'
+     lore:
+-    - Chế tạo vật phẩm
+-    - trong bàn chế tạo thường.
+-    - Hình dạng rất quan trọng.
+-    name: Công thức chế tạo hình
+-  shapeless:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'bằng Bàn rèn giáp'
++  grind_stone:
++    name: 'Đá mài (Grind Stone)'
+     lore:
+-    - Chế tạo vật phẩm này
+-    - trong bàn chế tạo thường
+-    - Công thức này vô dạng.
+-    name: Công thức chế tạo vô dạng
+-  smoking:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'bằng cách sử dụng Đá mài'
++  smeltery:
++    name: 'Lò nung kim loại (Smeltery)'
+     lore:
+-    - Nung vật phẩm này trong máy tạo hơi khói
+-    - để chế tạo vật phẩm bạn mong muốn
+-    name: Công thức máy tạo hơi khói
+-  stonecutting:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'bằng Lò nung kim loại'
++  ore_crusher:
++    name: 'Máy nghiền khoáng sản (Ore Crusher)'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng máy cắt đá
+-    name: Công thức máy cắt đá
+-slimefun:
+-  ancient_altar:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong Máy nghiền khoáng sản'
++  mob_drop:
++    name: 'Vật phẩm rơi ra từ sinh vật'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Ancient Altar.
+-    - Kiểm tra Ancient Altar biết thêm thông tin
+-    name: Ancient Altar
+-  armor_forge:
++      - 'Tiêu diệt sinh vật được chỉ định'
++      - 'để nhận được vật phẩm này'
++  gold_pan:
++    name: 'Chảo đãi vàng (Gold Pan)'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Armor Forge
+-    name: Armor Forge
++      - 'Sử dụng Chảo đãi vàng'
++      - 'để nhận được vật phẩm này'
+   compressor:
++    name: 'Máy nén (Compressor)'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Compressor
+-    name: Compressor
+-  enhanced_crafting_table:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong Máy nén'
++  pressure_chamber:
++    name: 'Buồng áp suất (Pressure Chamber)'
+     lore:
+-    - Chế tạo vật phẩm được hiển thị
+-    - trong Enhanced Crafting Table.
+-    - Một bàn chế tạo bình thường sẽ không đủ!
+-    name: Enhanced Crafting Table
+-  food_composter:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong Buồng áp suất'
++  ore_washer:
++    name: 'Máy rửa khoáng sản (Ore Washer)'
++    lore:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong Máy rửa khoáng sản'
++  juicer:
++    name: 'Máy ép trái cây (Juicer)'
++    lore:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'để làm nước ép trong Máy ép trái cây'
++  magic_workbench:
++    name: 'Bàn chế tạo phép thuật (Magic Workbench)'
++    lore:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong Bàn chế tạo phép thuật'
++  ancient_altar:
++    name: 'Bàn thờ cổ đại (Ancient Altar)'
++    lore:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'bằng cách sử dụng Bàn thờ cổ đại'
++      - 'Xem trang Bàn thờ cổ đại để biết thêm thông tin'
++  heated_pressure_chamber:
++    name: 'Buồng áp suất gia nhiệt (Heated Pressure Chamber)'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Food Composter
+-    name: Food Composter
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'bằng Buồng áp suất gia nhiệt'
+   food_fabricator:
++    name: 'Máy chế biến thực phẩm (Food Fabricator)'
++    lore:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'bằng cách sử dụng Máy chế biến thực phẩm'
++  food_composter:
++    name: 'Máy ủ phân thực phẩm (Food Composter)'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Food Fabricator
+-    name: Food Fabricator
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong Máy ủ phân thực phẩm'
+   freezer:
++    name: 'Tủ lạnh (Freezer)'
+     lore:
+-    - Chế tạo vật phẩm như đã hiển thị
+-    - sử dụng Freezer
+-    name: Freezer
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong Tủ lạnh'
+   geo_miner:
++    name: 'Máy khai thác tài nguyên thiên nhiên (GEO Miner)'
+     lore:
+-    - Vật phẩm này có thể kiểm được
+-    - bàng cách sử dụng GEO Miner
+-    name: GEO Miner
+-  gold_pan:
+-    lore:
+-    - Dùng Gold Pan để
+-    - lấy vật phẩm này
+-    name: Gold Pan
+-  grind_stone:
+-    lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Grind Stone
+-    name: Grind Stone
+-  heated_pressure_chamber:
++      - 'Vật phẩm này có thể nhận được'
++      - 'thông qua Máy khai thác tài nguyên thiên nhiên'
++  nuclear_reactor:
++    name: 'Lò phản ứng hạt nhân (Nuclear Reactor)'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Heated Pressure Chamber
+-    name: Heated Pressure Chamber
+-  juicer:
++      - 'Vật phẩm này là sản phẩm phụ'
++      - 'sinh ra trong quá trình vận hành lò phản ứng hạt nhân'
++  oil_pump:
++    name: 'Máy bơm dầu (Oil Pump)'
+     lore:
+-    - Chế tạo nước ép này như đã hiển thị
+-    - sử dụng Juicer
+-    name: Juicer
+-  magic_workbench:
++      - 'Vật phẩm này có thể được'
++      - 'thu thập bằng Máy bơm dầu'
++  pickaxe_of_containment:
++    name: 'Cuốc của lồng giam quái (Pickaxe of Containment)'
+     lore:
+-    - Chế tạo vật phẩm này như hình
+-    - sử dụng Magic Workbench
+-    name: Magic Workbench
+-  mob_drop:
++      - 'Khối này có thể nhận được'
++      - 'sau khi được đào bằng'
++      - 'Cuốc của lồng giam quái'
++  refinery:
++    name: 'Máy lọc dầu (Refinery)'
+     lore:
+-    - Giết con vật đó để
+-    - lấy vật phẩm này
+-    name: Vật phẩm bị rơi ra từ con vật bị giết
+-  multiblock:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'bằng Máy lọc dầu'
++  barter_drop:
++    name: 'Vật phẩm nhận từ trao đổi với Piglin'
+     lore:
+-    - Xây công trình đã hiển thị
+-    - hiển thị. Đây không phải công thức chế tạo
+-    name: Đa khối
+-  nuclear_reactor:
++      - 'Trao đổi thỏi vàng với Piglin'
++      - 'để có thể nhận được vật phẩm này'
++minecraft:
++  shaped:
++    name: 'Chế tạo có thứ tự'
+     lore:
+-    - Vật phẩm này là sản phẩm phụ
+-    - của Nuclear Reactor
+-    name: Nuclear Reactor
+-  ore_crusher:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong bàn chế tạo thông thường'
++      - 'Thứ tự sắp xếp rất quan trọng.'
++  shapeless:
++    name: 'Chế tạo không thứ tự'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Ore Crusher
+-    name: Ore Crusher
+-  ore_washer:
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'trong bàn chế tạo thông thường.'
++      - 'Thứ tự sắp xếp không quan trọng.'
++  furnace:
++    name: 'Công thức lò nung'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Ore Washer
+-    name: Ore Washer
+-  pressure_chamber:
++      - 'Nung trong lò nung'
++      - 'để chế tạo ra vật phẩm bạn muốn'
++  blasting:
++    name: 'Công thức lò cao'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Pressure Chamber
+-    name: Pressure Chamber
+-  smeltery:
++      - 'Nung trong lò cao'
++      - 'để chế tạo ra vật phẩm bạn muốn'
++  smoking:
++    name: 'Công thức lò hun khói'
+     lore:
+-    - Chế tạo vật phẩm này như đã hiển thị
+-    - sử dụng Smeltery
+-    name: Smeltery
+-  oil_pump:
+-    name: Oil Pump
++      - 'Nung trong lò hun khói'
++      - 'để chế tạo ra vật phẩm bạn muốn'
++  campfire:
++    name: 'Công thức đống lửa trại'
+     lore:
+-    - Vật phẩm này có thể kiếm được
+-    - bằng cách sử dụng Oil Pump
+-  pickaxe_of_containment:
+-    name: Pickaxe of Containment
++      - 'Nung trên đống lửa trại'
++      - 'để chế tạo ra vật phẩm bạn muốn'
++  stonecutting:
++    name: 'Công thức máy cắt đá'
+     lore:
+-    - Spawner có thể thu được
+-    - bằng cách đập với
+-    - Pickaxe of Containment
+-  refinery:
+-    name: Refinery
++      - 'Chế tạo theo công thức đã hiển thị'
++      - 'bằng cách sử dụng máy cắt đá'
++  smithing:
++    name: 'Bàn rèn'
+     lore:
+-    - Chế tạo vật phẩm này như hình
+-    - sử dụng Refinery
++      - 'Theo công thức đã hiển thị'
++      - 'chế tạo trong bàn rèn'
++      
+\ No newline at end of file
+diff --git a/src/main/resources/languages/vi/researches.yml b/src/main/resources/languages/vi/researches.yml
+index 38d6f3295..de93e962f 100644
+--- a/src/main/resources/languages/vi/researches.yml
++++ b/src/main/resources/languages/vi/researches.yml
+@@ -250,3 +250,14 @@ slimefun:
+   bee_armor: Giáp ong
+   wise_talisman: Bùa ma thuật của sự Tinh Khôn
+   book_binder: Sách phù phép Ràng Buộc
++  medium_tier_electric_ingot_machines: Máy chế tạo phôi điện cao cấp
++  trident: Cây đinh ba
++  auto_crafting: Chế tạo tự động
++  produce_collector: Máy thu hoạch tự động
++  improved_generators: Máy phát điện cải tiến
++  ingredients_and_cheese: Ẩm thực Slimefun
++  medium_tier_auto_enchanting: Phù phép tự động cao cấp
++  portable_teleporter: Dịch chuyển từ mọi nơi
++  farmer_talisman: Bùa hộ mệnh nông dân
++  rainbow_armor: Tôi muốn thấy cầu vồng trên bầu trời cao
++
+diff --git a/src/main/resources/languages/zh-CN/messages.yml b/src/main/resources/languages/zh-CN/messages.yml
+index 157624b38..a801385fa 100644
+--- a/src/main/resources/languages/zh-CN/messages.yml
++++ b/src/main/resources/languages/zh-CN/messages.yml
+@@ -57,8 +57,8 @@ commands:
+     disabled: '&7已禁用调试模式'
+   reload:
+     description: "重载 Slimefun 配置文件"
+-    success: "&a成功重载配置文件."
+-    failed: "&c重载配置文件失败! 你可能需要重启服务器以应用更改, 查看后台输出信息了解更多."
++    reload-success: "&a成功重载配置文件."
++    reload-failed: "&c重载配置文件失败! 你可能需要重启服务器以应用更改, 查看后台输出信息了解更多."
+   migrate:
+     description: "迁移旧数据"
+     confirm: "&c你确定要进行数据迁移吗? 确认请输入 /sf migrate confirm 开始迁移\n迁移过程中请不要让玩家进入服务器操作 Slimefun 相关机器及物品!"
+@@ -259,6 +259,7 @@ messages:
+   no-iron-golem-heal: '&c这不是铁锭. 不能用来治疗铁傀儡!'
+   link-prompt: '&e单击此处:'
+   diet-cookie: '&e你感觉变轻了...'
++  await-deletion: '&c你不能在刚破坏一个粘液方块后立即放置另一个。请稍后再试。'
+   fortune-cookie:
+     - '&7救救我! 我被困在了幸运饼干工厂里!'
+     - '&7你明天将会死在...     苦力怕的手下'
+diff --git a/src/main/resources/languages/zh-CN/researches.yml b/src/main/resources/languages/zh-CN/researches.yml
+index a0c233f74..d11c52344 100644
+--- a/src/main/resources/languages/zh-CN/researches.yml
++++ b/src/main/resources/languages/zh-CN/researches.yml
+@@ -259,3 +259,4 @@ slimefun:
+   medium_tier_auto_enchanting: 高速自动附魔/祛魔
+   portable_teleporter: 从任何地方传送
+   farmer_talisman: 农夫护身符
++  rainbow_armor: 我想看见天上的彩虹
+diff --git a/src/main/resources/profile-storage.yml b/src/main/resources/profile-storage.yml
+index ab9f474df..df79bb373 100644
+--- a/src/main/resources/profile-storage.yml
++++ b/src/main/resources/profile-storage.yml
+@@ -1,69 +1,69 @@
+ #########################################################################
+-# 数据库类型, 可选的有 SQLITE, MYSQL, POSTGRESQL
+-# 注意: 在切换数据库类型时, 我们并不会自动帮你迁移数据 :)
+-# 注意: 当使用MYSQL跨服时，请务必将 config.yml 中的 allow-open-when-owner-offline 设置为 false
+-#      以防止玩家在不同服务器打开同一个背包刷物品。
++# Loại cơ sở dữ liệu, có thể chọn SQLITE, MYSQL, POSTGRESQL
++# Lưu ý: Khi chuyển loại cơ sở dữ liệu, chúng tôi sẽ không tự động di chuyển dữ liệu cho bạn :)
++# Lưu ý: Khi dùng MYSQL đa server, nhất định phải đặt allow-open-when-owner-offline trong config.yml thành false
++#      để tránh người chơi mở cùng một ba lô trên các server khác nhau để nhân vật phẩm.
+ storageType: SQLITE
+ 
+-# 使用Base64编码数据字段
++# Mã hóa Base64 cho trường dữ liệu
+ base64EncodeVal: true
+ #########################################################################
+ 
+ #########################################################################
+-# 数据库读写线程数
+-# 当使用MYSQL时，建议 最大连接数 = 读取 + 写入线程数，且读取线程数量应当大于写入线程。
+-# 注意: 线程数并非越多越好，过多反而会导致性能下降。请分配合适的数量。
++# Số luồng đọc ghi cơ sở dữ liệu
++# Khi dùng MYSQL, nên đặt số kết nối tối đa = số luồng đọc + ghi, và số luồng đọc nên lớn hơn luồng ghi.
++# Lưu ý: Số luồng không phải càng nhiều càng tốt, quá nhiều có thể làm giảm hiệu suất. Hãy phân bổ số lượng phù hợp.
+ 
+-# 读取线程数
++# Số luồng đọc
+ readExecutorThread: 7
+-# 写入线程数
++# Số luồng ghi
+ writeExecutorThread: 3
+ #########################################################################
+ 
+ #########################################################################
+-# Sqlite 配置
++# Cấu hình Sqlite
+ sqlite:
+   maxConnection: 5
+ #########################################################################
+ 
+ #########################################################################
+-# MySQL 配置
++# Cấu hình MySQL
+ mysql:
+-  # 数据库连接地址
++  # Địa chỉ kết nối cơ sở dữ liệu
+   host: "127.0.0.1"
+-  # 数据库连接端口
++  # Cổng kết nối cơ sở dữ liệu
+   port: 3306
+-  # 数据库名
++  # Tên cơ sở dữ liệu
+   database: ""
+-  # 表前缀
++  # Tiền tố bảng
+   tablePrefix: ""
+-  # 连接用户名
++  # Tên người dùng kết nối
+   user: ""
+-  # 连接用户密码
++  # Mật khẩu người dùng kết nối
+   password: ""
+-  # 是否使用加密连接
++  # Có sử dụng kết nối mã hóa không
+   useSSL: false
+-  # 最大连接数
++  # Số kết nối tối đa
+   maxConnection: 10
+ #########################################################################
+ 
+ #########################################################################
+-# PostgreSQL 配置
++# Cấu hình PostgreSQL
+ postgresql:
+-  # 数据库连接地址
++  # Địa chỉ kết nối cơ sở dữ liệu
+   host: "127.0.0.1"
+-  # 数据库连接端口
++  # Cổng kết nối cơ sở dữ liệu
+   port: 3306
+-  # 数据库名
++  # Tên cơ sở dữ liệu
+   database: ""
+-  # 表前缀
++  # Tiền tố bảng
+   tablePrefix: ""
+-  # 连接用户名
++  # Tên người dùng kết nối
+   user: ""
+-  # 连接用户密码
++  # Mật khẩu người dùng kết nối
+   password: ""
+-  # 是否使用加密连接
++  # Có sử dụng kết nối mã hóa không
+   useSSL: false
+-  # 最大连接数
++  # Số kết nối tối đa
+   maxConnection: 10
+ #########################################################################
+\ No newline at end of file
 -- 
 2.47.3
+

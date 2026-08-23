@@ -1,0 +1,105 @@
+From 4961f72a5363435c46e48071d39daa095650a1d0 Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Sun, 23 Aug 2026 14:33:59 +0700
+Subject: [PATCH] feat: more Folia scheduling optimizations
+
+- MiningTask: anchor column progression to the chest location instead of
+  the owner's entity scheduler. On Folia, entity tasks are discarded when
+  the owner logs off and a null player would throw an NPE, silently
+  stalling a running miner. All mining work is block-based anyway.
+- ElevatorPlate: teleport via runSyncAtEntity so reading the player's eye
+  location happens on the player's region thread instead of Folia's
+  global region.
+---
+ .../items/elevator/ElevatorPlate.java         | 54 ++++++++++---------
+ .../items/multiblocks/miner/MiningTask.java   |  9 +++-
+ 2 files changed, 38 insertions(+), 25 deletions(-)
+
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/elevator/ElevatorPlate.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/elevator/ElevatorPlate.java
+index 551d904a2..bb0ad5a14 100644
+--- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/elevator/ElevatorPlate.java
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/elevator/ElevatorPlate.java
+@@ -235,30 +235,36 @@ public class ElevatorPlate extends SimpleSlimefunItem<BlockUseHandler> {
+ 
+     @ParametersAreNonnullByDefault
+     private void teleport(Player player, ElevatorFloor floor) {
+-        Slimefun.runSync(() -> {
+-            users.add(player.getUniqueId());
+-
+-            float yaw = player.getEyeLocation().getYaw() + 180;
+-
+-            if (yaw > 180) {
+-                yaw = -180 + (yaw - 180);
+-            }
+-
+-            Location loc = floor.getLocation();
+-            Location destination = new Location(
+-                    player.getWorld(),
+-                    loc.getX() + 0.5,
+-                    loc.getY() + 0.4,
+-                    loc.getZ() + 0.5,
+-                    yaw,
+-                    player.getEyeLocation().getPitch());
+-
+-            player.teleportAsync(destination).thenAccept(teleported -> {
+-                if (teleported.booleanValue()) {
+-                    player.sendTitle(ChatColor.WHITE + ChatColors.color(floor.getName()), null, 20, 60, 20);
+-                }
+-            });
+-        });
++        /*
++         * Run on the player's region scheduler: this reads the player's eye location
++         * and teleports them, which must not happen on Folia's global region thread.
++         */
++        Slimefun.runSyncAtEntity(
++                () -> {
++                    users.add(player.getUniqueId());
++
++                    float yaw = player.getEyeLocation().getYaw() + 180;
++
++                    if (yaw > 180) {
++                        yaw = -180 + (yaw - 180);
++                    }
++
++                    Location loc = floor.getLocation();
++                    Location destination = new Location(
++                            player.getWorld(),
++                            loc.getX() + 0.5,
++                            loc.getY() + 0.4,
++                            loc.getZ() + 0.5,
++                            yaw,
++                            player.getEyeLocation().getPitch());
++
++                    player.teleportAsync(destination).thenAccept(teleported -> {
++                        if (teleported.booleanValue()) {
++                            player.sendTitle(ChatColor.WHITE + ChatColors.color(floor.getName()), null, 20, 60, 20);
++                        }
++                    });
++                },
++                player);
+     }
+ 
+     @ParametersAreNonnullByDefault
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/multiblocks/miner/MiningTask.java b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/multiblocks/miner/MiningTask.java
+index 05ad57340..3474b4a69 100644
+--- a/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/multiblocks/miner/MiningTask.java
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/implementation/items/multiblocks/miner/MiningTask.java
+@@ -252,7 +252,14 @@ class MiningTask implements Runnable {
+             return;
+         }
+ 
+-        Slimefun.runSyncAtEntity(this, 5, Bukkit.getPlayer(owner));
++        /*
++         * Schedule on the miner's own region instead of the owner's entity scheduler.
++         * On Folia, entity-scheduled tasks are discarded when the owner logs off (and a
++         * null player would throw), which would silently stall the miner mid-operation.
++         * Every subsequent step only touches blocks around the chest, so anchoring the
++         * task to the chest location keeps it running independently of the owner.
++         */
++        Slimefun.runSyncAtLocation(this, 5, chest.getLocation());
+     }
+ 
+     /**
+-- 
+2.47.3
+
