@@ -1,0 +1,49 @@
+From f4fbead2ccdab878f91e299b30b4606abc609f62 Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Mon, 2 Nov 2026 18:59:59 +0700
+Subject: [PATCH] feat: supported 26.3
+
+---
+ .../thebusybiscuit/slimefun4/api/MinecraftVersion.java   | 5 +++++
+ .../slimefun4/utils/TestMinecraftVersion.java            | 9 +++++++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/src/main/java/io/github/thebusybiscuit/slimefun4/api/MinecraftVersion.java b/src/main/java/io/github/thebusybiscuit/slimefun4/api/MinecraftVersion.java
+index b992d628e..2afe3b051 100644
+--- a/src/main/java/io/github/thebusybiscuit/slimefun4/api/MinecraftVersion.java
++++ b/src/main/java/io/github/thebusybiscuit/slimefun4/api/MinecraftVersion.java
+@@ -69,6 +69,11 @@ public enum MinecraftVersion {
+      */
+     MINECRAFT_26_2(26, 2, "26.2.x"),
+ 
++    /**
++     * This constant represents Minecraft (Java Edition) Version 26.3
++     */
++    MINECRAFT_26_3(26, 3, "26.3.x"),
++
+     /**
+      * This constant represents an exceptional state in which we were unable
+      * to identify the Minecraft Version we are using
+diff --git a/src/test/java/io/github/thebusybiscuit/slimefun4/utils/TestMinecraftVersion.java b/src/test/java/io/github/thebusybiscuit/slimefun4/utils/TestMinecraftVersion.java
+index 47870c9e0..15466b1a0 100644
+--- a/src/test/java/io/github/thebusybiscuit/slimefun4/utils/TestMinecraftVersion.java
++++ b/src/test/java/io/github/thebusybiscuit/slimefun4/utils/TestMinecraftVersion.java
+@@ -23,6 +23,15 @@ class TestMinecraftVersion {
+         Assertions.assertTrue(MinecraftVersion.MINECRAFT_26_1.isMinecraftVersion(26, 1, 99));
+     }
+ 
++    @Test
++    @DisplayName("Three-arg API should support 26.3.x series up to 26.3")
++    void testThreeArgMatchesLatestVersioning() {
++        Assertions.assertTrue(MinecraftVersion.MINECRAFT_26_3.isMinecraftVersion(26, 3, 0));
++        Assertions.assertTrue(MinecraftVersion.MINECRAFT_26_3.isMinecraftVersion(26, 3, 99));
++        Assertions.assertFalse(MinecraftVersion.MINECRAFT_26_2.isMinecraftVersion(26, 3, 0));
++        Assertions.assertFalse(MinecraftVersion.MINECRAFT_26_3.isMinecraftVersion(26, 4, 0));
++    }
++
+     @Test
+     @DisplayName("Three-arg API should split 1.20.x and 1.20.5+ by patch")
+     void testThreeArgPatchRangeForOneTwenty() {
+-- 
+2.47.3
+
